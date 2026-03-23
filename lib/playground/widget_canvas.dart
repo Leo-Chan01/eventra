@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/shared/widgets/eventra_date_picker_textfield.dart';
 import 'package:eventra/shared/widgets/eventra_email_textfield.dart';
 import 'package:eventra/shared/widgets/eventra_phone_textfield.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _WidgetCanvasState extends State<WidgetCanvas> {
         ),
       ),
       body: Center(
-        child: EventraPhoneTextfield(),
+        child: EventraDatePickerTextfield(),
       ),
     );
   }
