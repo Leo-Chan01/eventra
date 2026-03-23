@@ -2,14 +2,26 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
-class EventraEmailTextField extends StatefulWidget {
-  const EventraEmailTextField({super.key});
+class EventraGeneralTextfield extends StatefulWidget {
+  const EventraGeneralTextfield({
+    required this.hint,
+    required this.label,
+    required this.autoFillHints,
+    required this.keyboardType,
+    super.key,
+  });
+
+  final String hint;
+  final String label;
+  final Iterable<String>? autoFillHints;
+  final TextInputType keyboardType;
 
   @override
-  State<EventraEmailTextField> createState() => _EventraEmailTextFieldState();
+  State<EventraGeneralTextfield> createState() =>
+      _EventraGeneralTextfieldState();
 }
 
-class _EventraEmailTextFieldState extends State<EventraEmailTextField> {
+class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
   @override
   Widget build(BuildContext context) {
     final inputDecoration = Theme.of(context).inputDecorationTheme;
@@ -20,14 +32,14 @@ class _EventraEmailTextFieldState extends State<EventraEmailTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Email Address',
+          widget.label,
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
-          keyboardType: TextInputType.emailAddress,
-          autofillHints: const [AutofillHints.email],
+          keyboardType: widget.keyboardType,
+          autofillHints: widget.autoFillHints,
           decoration: InputDecoration(
-            hintText: 'Enter your email address',
+            hintText: widget.hint,
             hintStyle: inputDecoration.hintStyle,
             border: inputDecoration.border,
             enabledBorder: inputDecoration.enabledBorder,

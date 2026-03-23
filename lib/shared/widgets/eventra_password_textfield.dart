@@ -2,14 +2,17 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
-class EventraEmailTextField extends StatefulWidget {
-  const EventraEmailTextField({super.key});
+class EventraPasswordTextfield extends StatefulWidget {
+  const EventraPasswordTextfield({required this.isConfirmPassword, super.key});
+
+  final bool isConfirmPassword;
 
   @override
-  State<EventraEmailTextField> createState() => _EventraEmailTextFieldState();
+  State<EventraPasswordTextfield> createState() =>
+      _EventraPasswordTextfieldState();
 }
 
-class _EventraEmailTextFieldState extends State<EventraEmailTextField> {
+class _EventraPasswordTextfieldState extends State<EventraPasswordTextfield> {
   @override
   Widget build(BuildContext context) {
     final inputDecoration = Theme.of(context).inputDecorationTheme;
@@ -20,14 +23,17 @@ class _EventraEmailTextFieldState extends State<EventraEmailTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Email Address',
+          widget.isConfirmPassword ? 'Confirm Password' : 'Password',
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
-          keyboardType: TextInputType.emailAddress,
-          autofillHints: const [AutofillHints.email],
+          obscureText: true,
+          keyboardType: TextInputType.visiblePassword,
+          autofillHints: const [AutofillHints.password],
           decoration: InputDecoration(
-            hintText: 'Enter your email address',
+            hintText: widget.isConfirmPassword
+                ? 'Confirm your password'
+                : 'Enter your password',
             hintStyle: inputDecoration.hintStyle,
             border: inputDecoration.border,
             enabledBorder: inputDecoration.enabledBorder,

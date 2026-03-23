@@ -1,4 +1,5 @@
 import 'package:eventra/core/constants/app_constants.dart';
+import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
@@ -65,20 +66,27 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColorSchemes.lightSurfaceVariant,
+        hintStyle: 16.w400.copyWith(
+          color: colorScheme.onSurface.withValues(alpha: 0.5),
+        ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: colorScheme.outline,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: colorScheme.outline,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: colorScheme.error),
         ),
         contentPadding: const EdgeInsets.symmetric(
