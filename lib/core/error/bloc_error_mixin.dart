@@ -57,7 +57,8 @@ mixin BlocErrorMixin {
     );
   }
 
-  /// Handle async operation with automatic error handling for non-Either returns
+  /// Handle async operation with automatic error handling
+  /// for non-Either returns
   Future<T?> handleAsync<T>({
     required Future<T> Function() operation,
     String? errorContext,

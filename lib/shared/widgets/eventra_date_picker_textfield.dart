@@ -1,3 +1,6 @@
+//
+// ignore_for_file: unnecessary_raw_strings
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +65,7 @@ class _DateInputFormatter extends TextInputFormatter {
     final text = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
 
     // Day validation (DD)
+    // ignore: prefer_is_empty
     if (text.length >= 1) {
       final dayFirstDigit = int.parse(text[0]);
       if (dayFirstDigit > 3) return oldValue;
@@ -102,7 +106,7 @@ class _DateInputFormatter extends TextInputFormatter {
     }
 
     final buffer = StringBuffer();
-    for (int i = 0; i < text.length; i++) {
+    for (var i = 0; i < text.length; i++) {
       if (i > 7) break; // Limit to 8 digits
       buffer.write(text[i]);
       if ((i == 1 || i == 3) && i != text.length - 1) {

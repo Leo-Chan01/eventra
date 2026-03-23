@@ -1,3 +1,9 @@
+//
+// ignore_for_file: avoid_catches_without_on_clauses
+
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -190,7 +196,7 @@ class GlobalSnackBar {
           ),
         );
     } catch (e) {
-      // Silently handle errors when widget tree is deactivated
+      if (kDebugMode) log('An error occured $e');
     }
   }
 
@@ -202,7 +208,8 @@ class GlobalSnackBar {
     final colorScheme = theme.colorScheme;
     switch (type) {
       case SnackBarType.success:
-        // Use a green from tertiary or generate from theme, fallback to semantic green
+        // Use a green from tertiary or generate from theme,
+        //fallback to semantic green
         final successColor = colorScheme.tertiary.withValues(alpha: 0.9);
         return _SnackBarConfig(
           backgroundColor: successColor,
