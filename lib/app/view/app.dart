@@ -45,8 +45,10 @@ class App extends StatelessWidget {
                         scaffoldMessengerKey:
                             GlobalSnackBar.scaffoldMessengerKey,
                         builder: (context, child) {
-                          return BlocBuilder<ConnectivityBloc,
-                              ConnectivityState>(
+                          return BlocBuilder<
+                            ConnectivityBloc,
+                            ConnectivityState
+                          >(
                             builder: (context, connectivityState) {
                               return ConnectivityOverlay(
                                 connectivityStatus: connectivityState.status,

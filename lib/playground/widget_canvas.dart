@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
 
 class WidgetCanvas extends StatefulWidget {
@@ -13,9 +14,13 @@ class WidgetCanvas extends StatefulWidget {
 class _WidgetCanvasState extends State<WidgetCanvas> {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: Center(
-        child: Text('Widget Canvas'),
+        child: Text(
+          'Widget Canvas',
+          style: 14.w400.copyWith(color: colorScheme.onSurface),
+        ),
       ),
     );
   }
