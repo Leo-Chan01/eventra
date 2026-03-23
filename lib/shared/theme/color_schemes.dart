@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 class AppColorSchemes {
   AppColorSchemes._();
 
-  static const Color lightSurfaceVariant = Color(0xFFF0F2F5);
+  static const Color lightSurfaceVariant = Color(0xFFF8F8FA);
   static const Color darkSurfaceVariant = Color(0xFF1E1E1E);
+
+  static const Color termsAndConditionsTextColor = Color(0xFF4B5563);
+  static const Color termsAndConditionsTextColorDark = Color(0xFF9CA3AF);
+  static const Color subtitleTextColor = Color(0xFF374151);
+  static const Color subtitleTextColorDark = Color(0xFFD1D5DB);
 
   /// Default light color scheme.
   static const ColorScheme lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xFF0061A4),
+    primary: Color(0xFFFF5F1F),
     onPrimary: Color(0xFFFFFFFF),
-    primaryContainer: Color(0xFFD1E4FF),
-    onPrimaryContainer: Color(0xFF001D36),
+    primaryContainer: Color(0xFFFFDBCE),
+    onPrimaryContainer: Color(0xFF351000),
     secondary: Color(0xFF535F70),
     onSecondary: Color(0xFFFFFFFF),
     secondaryContainer: Color(0xFFD7E3F7),
@@ -26,21 +31,21 @@ class AppColorSchemes {
     onError: Color(0xFFFFFFFF),
     errorContainer: Color(0xFFFFDAD6),
     onErrorContainer: Color(0xFF410002),
-    surface: Color(0xFFF8F9FF),
-    onSurface: Color(0xFF191C20),
+    surface: Color(0xFFFFFFFF),
+    onSurface: Color(0xFF111827),
     surfaceContainerHighest: Color(0xFFDFE2EB),
-    onSurfaceVariant: Color(0xFF43474E),
-    outline: Color(0xFF73777F),
+    onSurfaceVariant: Color(0xFF717680),
+    outline: Color(0x1A000000),
     shadow: Color(0xFF000000),
   );
 
   /// Default dark color scheme.
   static const ColorScheme darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFF9ECAFF),
-    onPrimary: Color(0xFF003258),
-    primaryContainer: Color(0xFF00497D),
-    onPrimaryContainer: Color(0xFFD1E4FF),
+    primary: Color(0xFFFFB598),
+    onPrimary: Color(0xFF5B1B00),
+    primaryContainer: Color(0xFF812B00),
+    onPrimaryContainer: Color(0xFFFFDBCE),
     secondary: Color(0xFFBBC7DB),
     onSecondary: Color(0xFF253140),
     secondaryContainer: Color(0xFF3B4858),

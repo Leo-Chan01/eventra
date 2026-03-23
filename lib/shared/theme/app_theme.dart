@@ -5,40 +5,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  /// Generate a ColorScheme from brand colors
-  static ColorScheme _colorSchemeFromBrand({
-    required bool isDark,
-    Color? primaryColor,
-    Color? secondaryColor,
-  }) {
-    if (primaryColor != null) {
-      final baseScheme = ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        brightness: isDark ? Brightness.dark : Brightness.light,
-      );
-
-      if (secondaryColor != null) {
-        return baseScheme.copyWith(
-          secondary: secondaryColor,
-          onSecondary: isDark ? Colors.black : Colors.white,
-          secondaryContainer: secondaryColor.withValues(alpha: 0.2),
-        );
-      }
-      return baseScheme;
-    }
-
-    return isDark
-        ? AppColorSchemes.darkColorScheme
-        : AppColorSchemes.lightColorScheme;
-  }
-
   /// Light Theme
-  static ThemeData lightTheme({Color? primaryColor, Color? secondaryColor}) {
-    final colorScheme = _colorSchemeFromBrand(
-      primaryColor: primaryColor,
-      secondaryColor: secondaryColor,
-      isDark: false,
-    );
+  static ThemeData lightTheme() {
+    const colorScheme = AppColorSchemes.lightColorScheme;
 
     return ThemeData(
       useMaterial3: true,
@@ -74,6 +43,8 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
+          disabledBackgroundColor: colorScheme.primary.withValues(alpha: 0.5),
+          disabledForegroundColor: colorScheme.onPrimary.withValues(alpha: 0.5),
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -83,8 +54,9 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: colorScheme.primary,
+          disabledForegroundColor: colorScheme.primary.withValues(alpha: 0.5),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          side: BorderSide(color: colorScheme.outline),
+          side: BorderSide(color: colorScheme.outline.withValues(alpha: 0.5)),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
@@ -118,12 +90,8 @@ class AppTheme {
   }
 
   /// Dark Theme
-  static ThemeData darkTheme({Color? primaryColor, Color? secondaryColor}) {
-    final colorScheme = _colorSchemeFromBrand(
-      primaryColor: primaryColor,
-      secondaryColor: secondaryColor,
-      isDark: true,
-    );
+  static ThemeData darkTheme() {
+    const colorScheme = AppColorSchemes.darkColorScheme;
 
     return ThemeData(
       useMaterial3: true,
@@ -152,6 +120,29 @@ class AppTheme {
         elevation: 0,
         shadowColor: colorScheme.shadow.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+
+      // Button Themes
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          disabledBackgroundColor: colorScheme.primary.withValues(alpha: 0.5),
+          disabledForegroundColor: colorScheme.onPrimary.withValues(alpha: 0.5),
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          disabledForegroundColor: colorScheme.primary.withValues(alpha: 0.5),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          side: BorderSide(color: colorScheme.outline.withValues(alpha: 0.5)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
       ),
 
       // Input Decoration Theme
