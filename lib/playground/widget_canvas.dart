@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
-import 'package:eventra/shared/widgets/eventra_date_picker_textfield.dart';
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_social_button.dart';
 import 'package:flutter/material.dart';
 
 class WidgetCanvas extends StatefulWidget {
@@ -23,7 +24,11 @@ class _WidgetCanvasState extends State<WidgetCanvas> {
           style: 14.w400.copyWith(color: colorScheme.onSurface),
         ),
       ),
-      body: const Center(child: EventraDatePickerTextfield()),
+      body: const Center(
+        child: EventraButton.outlined(
+          buttonText: 'Eventra',
+        ),
+      ),
     );
   }
 }

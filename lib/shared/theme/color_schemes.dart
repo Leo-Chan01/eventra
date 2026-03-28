@@ -12,57 +12,105 @@ class AppColorSchemes {
   static const Color subtitleTextColor = Color(0xFF374151);
   static const Color subtitleTextColorDark = Color(0xFFD1D5DB);
 
+  // Primary
+  static const Color primary50 = Color(0xFFFEF0E8);
+  static const Color primary100 = Color(0xFFFCD4B8);
+  static const Color primary200 = Color(0xFFFAB080);
+  static const Color primary300 = Color(0xFFF98551);
+  static const Color primary400 = Color(0xFFFF783B);
+  static const Color primary500 = Color(0xFFF85F21);
+  static const Color primary600 = Color(0xFFD94E11);
+  static const Color primary700 = Color(0xFFA83B08);
+  static const Color primary800 = Color(0xFF6E2704);
+  static const Color primary900 = Color(0xFF3D1E00);
+  static const Color primary950 = Color(0xFF1F0F00);
+
+  // Secondary
+  static const Color secondary50 = Color(0xFFFAFBFF);
+  static const Color secondary100 = Color(0xFFEEF0F8);
+  static const Color secondary200 = Color(0xFFBFC5DE);
+  static const Color secondary400 = Color(0xFF6275A8);
+  static const Color secondary600 = Color(0xFF2E4077);
+  static const Color secondary900 = Color(0xFF12173A);
+
+  // Accent
+  static const Color accent50 = Color(0xFFFFF7E0);
+  static const Color accent200 = Color(0xFFFDDFA0);
+  static const Color accent500 = Color(0xFFF5A622);
+  static const Color accent700 = Color(0xFFC47C02);
+  static const Color accent900 = Color(0xFF7A4C00);
+
+  // Neutrals
+  static const Color neutrals50 = Color(0xFFFAFAF8);
+  static const Color neutrals100 = Color(0xFFF2F0EC);
+  static const Color neutrals200 = Color(0xFFE0DED8);
+  static const Color neutrals300 = Color(0xFFC4C1B8);
+  static const Color neutrals400 = Color(0xFF9C9990);
+  static const Color neutrals500 = Color(0xFF6B6860);
+  static const Color neutrals700 = Color(0xFF3A3835);
+  static const Color neutrals900 = Color(0xFF1A1918);
+
+  // Success
+  static const Color success = Color(0xFF39C07A);
+  static const Color warning = Color(0xFFF5A622);
+  static const Color error = Color(0xFFE8384A);
+
+  // Others
+  static const Color goldStar = Color(0xFF3B7DD8);
+  static const Color darkSurface = Color(0xFFF5A622);
+  static const Color errorBlack = Color(0xFF12173A);
+
   /// Default light color scheme.
   static const ColorScheme lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xFFFF5F1F),
+    primary: primary500,
     onPrimary: Color(0xFFFFFFFF),
-    primaryContainer: Color(0xFFFFDBCE),
-    onPrimaryContainer: Color(0xFF351000),
-    secondary: Color(0xFF535F70),
+    primaryContainer: primary100,
+    onPrimaryContainer: primary900,
+    secondary: secondary600,
     onSecondary: Color(0xFFFFFFFF),
-    secondaryContainer: Color(0xFFD7E3F7),
-    onSecondaryContainer: Color(0xFF101C2B),
-    tertiary: Color(0xFF6B5778),
+    secondaryContainer: secondary100,
+    onSecondaryContainer: secondary900,
+    tertiary: accent500,
     onTertiary: Color(0xFFFFFFFF),
-    tertiaryContainer: Color(0xFFF2DAFF),
-    onTertiaryContainer: Color(0xFF251431),
-    error: Color(0xFFBA1A1A),
+    tertiaryContainer: accent200,
+    onTertiaryContainer: accent900,
+    error: error,
     onError: Color(0xFFFFFFFF),
-    errorContainer: Color(0xFFFFDAD6),
-    onErrorContainer: Color(0xFF410002),
-    surface: Color(0xFFFFFFFF),
-    onSurface: Color(0xFF111827),
-    surfaceContainerHighest: Color(0xFFDFE2EB),
-    onSurfaceVariant: Color(0xFF717680),
-    outline: Color(0x1A000000),
+    errorContainer: errorBlack,
+    onErrorContainer: error,
+    surface: neutrals50,
+    onSurface: neutrals900,
+    surfaceContainerHighest: neutrals200,
+    onSurfaceVariant: neutrals500,
+    outline: neutrals300,
     shadow: Color(0xFF000000),
   );
 
   /// Default dark color scheme.
   static const ColorScheme darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFFFFB598),
-    onPrimary: Color(0xFF5B1B00),
-    primaryContainer: Color(0xFF812B00),
-    onPrimaryContainer: Color(0xFFFFDBCE),
-    secondary: Color(0xFFBBC7DB),
-    onSecondary: Color(0xFF253140),
-    secondaryContainer: Color(0xFF3B4858),
-    onSecondaryContainer: Color(0xFFD7E3F7),
-    tertiary: Color(0xFFD6BEE4),
-    onTertiary: Color(0xFF3B2948),
-    tertiaryContainer: Color(0xFF523F5F),
-    onTertiaryContainer: Color(0xFFF2DAFF),
-    error: Color(0xFFFFB4AB),
-    onError: Color(0xFF690005),
-    errorContainer: Color(0xFF93000A),
-    onErrorContainer: Color(0xFFFFDAD6),
-    surface: Color(0xFF111318),
-    onSurface: Color(0xFFE2E2E9),
-    surfaceContainerHighest: Color(0xFF43474E),
-    onSurfaceVariant: Color(0xFFC3C7CF),
-    outline: Color(0xFF8D9199),
+    primary: darkSurface,
+    onPrimary: primary950,
+    primaryContainer: primary700,
+    onPrimaryContainer: primary50,
+    secondary: secondary200,
+    onSecondary: secondary900,
+    secondaryContainer: secondary600,
+    onSecondaryContainer: secondary100,
+    tertiary: accent200,
+    onTertiary: accent900,
+    tertiaryContainer: accent500,
+    onTertiaryContainer: accent50,
+    error: error,
+    onError: Color(0xFFFFFFFF),
+    errorContainer: errorBlack,
+    onErrorContainer: error,
+    surface: neutrals900,
+    onSurface: neutrals50,
+    surfaceContainerHighest: neutrals700,
+    onSurfaceVariant: neutrals300,
+    outline: neutrals500,
     shadow: Color(0xFF000000),
   );
 }

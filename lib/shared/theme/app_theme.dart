@@ -48,17 +48,30 @@ class AppTheme {
           disabledForegroundColor: colorScheme.onPrimary.withValues(alpha: 0.5),
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+        ),
+      ),
+
+      buttonTheme: ButtonThemeData(
+        buttonColor: colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
         ),
       ),
 
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
+          backgroundColor: colorScheme.surface,
           foregroundColor: colorScheme.primary,
+          disabledBackgroundColor: colorScheme.surface.withValues(alpha: 0.5),
           disabledForegroundColor: colorScheme.primary.withValues(alpha: 0.5),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          side: BorderSide(color: colorScheme.outline.withValues(alpha: 0.5)),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          side: BorderSide(color: colorScheme.primary),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
         ),
       ),
 

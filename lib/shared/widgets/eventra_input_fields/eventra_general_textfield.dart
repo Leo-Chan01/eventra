@@ -1,6 +1,8 @@
+import 'package:eventra/core/utils/custom_log_file.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 class EventraGeneralTextfield extends StatefulWidget {
   const EventraGeneralTextfield({
@@ -8,6 +10,16 @@ class EventraGeneralTextfield extends StatefulWidget {
     required this.label,
     required this.autoFillHints,
     required this.keyboardType,
+    this.isPin = false,
+    super.key,
+  });
+
+  const EventraGeneralTextfield.pinPut({
+    required this.hint,
+    required this.label,
+    required this.autoFillHints,
+    required this.keyboardType,
+    this.isPin = true,
     super.key,
   });
 
@@ -15,6 +27,7 @@ class EventraGeneralTextfield extends StatefulWidget {
   final String label;
   final Iterable<String>? autoFillHints;
   final TextInputType keyboardType;
+  final bool isPin;
 
   @override
   State<EventraGeneralTextfield> createState() =>
@@ -26,6 +39,12 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
   Widget build(BuildContext context) {
     final inputDecoration = Theme.of(context).inputDecorationTheme;
     const directColorScheme = AppColorSchemes.subtitleTextColor;
+
+    if (widget.isPin) {
+      return const Pinput(
+        onCompleted: kLogs,
+      );
+    }
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: 8,
