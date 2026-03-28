@@ -5,6 +5,7 @@ class EventraButton extends StatefulWidget {
   const EventraButton({
     required this.buttonText,
     this.width,
+    this.onPressed,
     this.isOutlined = false,
     super.key,
   });
@@ -12,6 +13,7 @@ class EventraButton extends StatefulWidget {
   const EventraButton.outlined({
     required this.buttonText,
     this.width,
+    this.onPressed,
     this.isOutlined = true,
     super.key,
   });
@@ -19,6 +21,7 @@ class EventraButton extends StatefulWidget {
   final String buttonText;
   final double? width;
   final bool isOutlined;
+  final VoidCallback? onPressed;
 
   @override
   State<EventraButton> createState() => _EventraButtonState();
@@ -34,7 +37,7 @@ class _EventraButtonState extends State<EventraButton> {
         width: widget.width ?? MediaQuery.sizeOf(context).width,
         height: 53,
         child: OutlinedButton(
-          onPressed: () {},
+          onPressed: widget.onPressed,
           style: theme.outlinedButtonTheme.style,
           child: Text(
             widget.buttonText,
@@ -47,7 +50,7 @@ class _EventraButtonState extends State<EventraButton> {
       width: widget.width ?? MediaQuery.sizeOf(context).width,
       height: 53,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: theme.colorScheme.primary,
           foregroundColor: theme.colorScheme.onPrimary,

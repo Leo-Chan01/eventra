@@ -1,7 +1,11 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+    "onboardingTitle1": "Find Trusted Vendors",
+    "onboardingDescription1": "Connect with verified decorators, DJs, photographers, planners, and more for your special events",
+    "onboardingTitle2": "Book With Confidence",
+    "onboardingDescription2": "Transparent pricing, verified reviews, and a structured booking system that puts you in control",
+    "onboardingTitle3": "Safe. Simple. Secure.",
+    "onboardingDescription3": "With verified profiles, secure payments, and real-time support, both clients and vendors are safe on Eventra.",
+    "onboardingButtonNext": "Next",
+    "onboardingButtonGetStarted": "Get Started"
 }
