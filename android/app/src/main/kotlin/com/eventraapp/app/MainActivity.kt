@@ -1,4 +1,4 @@
-package com.eventra.app
+package com.eventraapp.app
 
 import io.flutter.embedding.android.FlutterActivity
 

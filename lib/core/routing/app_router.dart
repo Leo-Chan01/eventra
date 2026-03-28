@@ -1,3 +1,5 @@
+import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
 import 'package:eventra/playground/widget_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -10,13 +12,23 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: WidgetCanvas.path,
+    initialLocation: OnboardingLoadingPage.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
         path: WidgetCanvas.path,
         name: WidgetCanvas.name,
         builder: (context, state) => const WidgetCanvas(),
+      ),
+      GoRoute(
+        path: OnboardingLoadingPage.path,
+        name: OnboardingLoadingPage.name,
+        builder: (context, state) => const OnboardingLoadingPage(),
+      ),
+      GoRoute(
+        path: OnboardingSlidesPage.path,
+        name: OnboardingSlidesPage.name,
+        builder: (context, state) => const OnboardingSlidesPage(),
       ),
     ],
   );
