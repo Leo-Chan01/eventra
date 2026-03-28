@@ -7,9 +7,9 @@ class OnboardingSlidesState {
   });
 
   factory OnboardingSlidesState.initial() => const OnboardingSlidesState(
-        currentIndex: 0,
-        isLastSlide: false,
-      );
+    currentIndex: 0,
+    isLastSlide: false,
+  );
 
   final int currentIndex;
   final bool isLastSlide;

@@ -7,5 +7,12 @@
     "onboardingTitle3": "Safe. Simple. Secure.",
     "onboardingDescription3": "With verified profiles, secure payments, and real-time support, both clients and vendors are safe on Eventra.",
     "onboardingButtonNext": "Next",
-    "onboardingButtonGetStarted": "Get Started"
+    "onboardingButtonGetStarted": "Get Started",
+    "accountTypeSelectionTitle": "Select your Account type?",
+    "accountTypeSelectionSubtitle": "Select the type of account you will like to create, whether you're planning, providing, or organising events",
+    "accountTypeClientTitle": "Client",
+    "accountTypeClientDescription": "Book vendors, plan your events and buy your ticket.",
+    "accountTypeVendorTitle": "Vendor",
+    "accountTypeVendorDescription": "Get booked by clients and Showcase your services",
+    "continueWithoutSignup": "Continue without signup"
 }
