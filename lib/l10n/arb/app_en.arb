@@ -14,5 +14,15 @@
     "accountTypeClientDescription": "Book vendors, plan your events and buy your ticket.",
     "accountTypeVendorTitle": "Vendor",
     "accountTypeVendorDescription": "Get booked by clients and Showcase your services",
-    "continueWithoutSignup": "Continue without signup"
+    "continueWithoutSignup": "Continue without signup",
+    "signupTitle": "Get started",
+    "signupSubtitle": "Please fill the from below to make it easier for us to know you.",
+    "emailLabel": "Email Address",
+    "emailHint": "Enter your email address",
+    "signupButton": "Sign Up",
+    "orDivider": "OR",
+    "socialSignupGoogle": "Continue with Google",
+    "socialSignupApple": "Continue with Apple",
+    "alreadyHaveAccount": "Already have an account? ",
+    "signInLink": "Sign in"
 }

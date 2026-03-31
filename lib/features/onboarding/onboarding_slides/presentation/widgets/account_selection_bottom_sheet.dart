@@ -1,9 +1,11 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/widgets/account_type_card.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AccountSelectionBottomSheet extends StatefulWidget {
   const AccountSelectionBottomSheet({super.key});
@@ -16,6 +18,21 @@ class AccountSelectionBottomSheet extends StatefulWidget {
 class _AccountSelectionBottomSheetState
     extends State<AccountSelectionBottomSheet> {
   AccountType? _selectedType;
+
+  void _onTypeSelected(AccountType type) {
+    setState(() => _selectedType = type);
+
+    Future.delayed(const Duration(milliseconds: 400), () {
+      if (mounted) {
+        context
+          ..pop()
+          ..pushNamed(
+            SignupPage.name,
+            extra: type,
+          );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +82,7 @@ class _AccountSelectionBottomSheetState
             description: l10n.accountTypeClientDescription,
             vectorAsset: EventraVectors.clientVector,
             isSelected: _selectedType == AccountType.client,
-            onTap: () => setState(() => _selectedType = AccountType.client),
+            onTap: () => _onTypeSelected(AccountType.client),
           ),
           16.vertSpacing,
           AccountTypeCard(
@@ -73,7 +90,7 @@ class _AccountSelectionBottomSheetState
             description: l10n.accountTypeVendorDescription,
             vectorAsset: EventraVectors.vendorVector,
             isSelected: _selectedType == AccountType.vendor,
-            onTap: () => setState(() => _selectedType = AccountType.vendor),
+            onTap: () => _onTypeSelected(AccountType.vendor),
           ),
           32.vertSpacing,
           TextButton(

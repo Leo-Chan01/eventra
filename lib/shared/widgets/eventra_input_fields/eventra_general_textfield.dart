@@ -10,6 +10,7 @@ class EventraGeneralTextfield extends StatefulWidget {
     required this.label,
     required this.autoFillHints,
     required this.keyboardType,
+    this.onChanged,
     this.isPin = false,
     super.key,
   });
@@ -19,6 +20,7 @@ class EventraGeneralTextfield extends StatefulWidget {
     required this.label,
     required this.autoFillHints,
     required this.keyboardType,
+    this.onChanged,
     this.isPin = true,
     super.key,
   });
@@ -27,6 +29,7 @@ class EventraGeneralTextfield extends StatefulWidget {
   final String label;
   final Iterable<String>? autoFillHints;
   final TextInputType keyboardType;
+  final ValueChanged<String>? onChanged;
   final bool isPin;
 
   @override
@@ -41,8 +44,11 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
     const directColorScheme = AppColorSchemes.subtitleTextColor;
 
     if (widget.isPin) {
-      return const Pinput(
-        onCompleted: kLogs,
+      return Pinput(
+        onCompleted: (val) {
+          kLogs(val);
+          widget.onChanged?.call(val);
+        },
       );
     }
     return Column(
@@ -57,6 +63,7 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
         TextFormField(
           keyboardType: widget.keyboardType,
           autofillHints: widget.autoFillHints,
+          onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: widget.hint,
             hintStyle: inputDecoration.hintStyle,

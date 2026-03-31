@@ -1,11 +1,20 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class EventraSocialButton extends StatefulWidget {
-  const EventraSocialButton({required this.buttonText, this.width, super.key});
+  const EventraSocialButton({
+    required this.buttonText,
+    required this.vectorAsset,
+    this.width,
+    this.onPressed,
+    super.key,
+  });
 
   final String buttonText;
+  final String vectorAsset;
   final double? width;
+  final VoidCallback? onPressed;
 
   @override
   State<EventraSocialButton> createState() => _EventraSocialButtonState();
@@ -15,26 +24,38 @@ class _EventraSocialButtonState extends State<EventraSocialButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return SizedBox(
       width: widget.width ?? MediaQuery.sizeOf(context).width,
-      height: 53,
+      height: 60,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: theme.colorScheme.primary,
-          foregroundColor: theme.colorScheme.onPrimary,
-          disabledBackgroundColor: theme.colorScheme.primary.withValues(
+          backgroundColor: colorScheme.surfaceContainerHighest.withValues(
             alpha: 0.5,
           ),
-          disabledForegroundColor: theme.colorScheme.onPrimary.withValues(
-            alpha: 0.5,
-          ),
+          foregroundColor: colorScheme.onSurface,
           elevation: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
         ),
-        child: Text(
-          'Button',
-          style: 14.w400,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              widget.vectorAsset,
+              height: 24,
+              width: 24,
+            ),
+            12.horizSpacing,
+            Text(
+              widget.buttonText,
+              style: 16.w500,
+            ),
+          ],
         ),
       ),
     );
