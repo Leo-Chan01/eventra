@@ -7,7 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class EventraDatePickerTextfield extends StatefulWidget {
-  const EventraDatePickerTextfield({super.key});
+  const EventraDatePickerTextfield({
+    required this.label,
+    required this.hint,
+    this.onChanged,
+    super.key,
+  });
+
+  final String label;
+  final String hint;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<EventraDatePickerTextfield> createState() =>
@@ -16,6 +25,14 @@ class EventraDatePickerTextfield extends StatefulWidget {
 
 class _EventraDatePickerTextfieldState
     extends State<EventraDatePickerTextfield> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final inputDecoration = Theme.of(context).inputDecorationTheme;
@@ -26,17 +43,24 @@ class _EventraDatePickerTextfieldState
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Birthday',
+          widget.label,
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
+          controller: _controller,
           keyboardType: TextInputType.number,
           autofillHints: const [AutofillHints.birthday],
           inputFormatters: [
             _DateInputFormatter(),
           ],
+          onChanged: (value) {
+            if (value.length == 10) {
+              // DD/MM/YYYY
+              widget.onChanged?.call(value);
+            }
+          },
           decoration: InputDecoration(
-            hintText: 'DD/MM/YYYY',
+            hintText: widget.hint,
             hintStyle: inputDecoration.hintStyle,
             border: inputDecoration.border,
             enabledBorder: inputDecoration.enabledBorder,

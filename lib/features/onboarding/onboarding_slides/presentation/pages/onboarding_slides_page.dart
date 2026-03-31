@@ -41,6 +41,7 @@ class _OnboardingSlidesPageState extends State<OnboardingSlidesPage> {
           child: Column(
             children: [
               Expanded(
+                flex: 3,
                 child: BlocBuilder<OnboardingSlidesBloc, OnboardingSlidesState>(
                   builder: (context, state) {
                     return PageView.builder(
@@ -72,7 +73,7 @@ class _OnboardingSlidesPageState extends State<OnboardingSlidesPage> {
                         );
                       },
                     ),
-                    42.vertSpacing,
+                    58.vertSpacing,
                     BlocBuilder<OnboardingSlidesBloc, OnboardingSlidesState>(
                       builder: (context, state) {
                         return EventraButton(

@@ -2,6 +2,7 @@ import 'package:eventra/core/constants/app_constants.dart';
 import 'package:eventra/core/internet/connectivity_bloc.dart';
 import 'package:eventra/core/routing/app_router.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
+import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/theme/app_theme.dart';
 import 'package:eventra/shared/theme/theme_bloc.dart';
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ConnectivityBloc()),
         BlocProvider(create: (_) => ThemeBloc()),
+        BlocProvider(create: (_) => SignupBloc()),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {

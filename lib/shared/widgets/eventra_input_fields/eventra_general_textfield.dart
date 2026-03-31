@@ -8,20 +8,22 @@ class EventraGeneralTextfield extends StatefulWidget {
   const EventraGeneralTextfield({
     required this.hint,
     required this.label,
-    required this.autoFillHints,
+    this.autoFillHints,
     required this.keyboardType,
     this.onChanged,
     this.isPin = false,
+    this.obscureText = false,
     super.key,
   });
 
   const EventraGeneralTextfield.pinPut({
     required this.hint,
     required this.label,
-    required this.autoFillHints,
+    this.autoFillHints,
     required this.keyboardType,
     this.onChanged,
     this.isPin = true,
+    this.obscureText = false,
     super.key,
   });
 
@@ -31,6 +33,7 @@ class EventraGeneralTextfield extends StatefulWidget {
   final TextInputType keyboardType;
   final ValueChanged<String>? onChanged;
   final bool isPin;
+  final bool obscureText;
 
   @override
   State<EventraGeneralTextfield> createState() =>
@@ -61,6 +64,7 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
+          obscureText: widget.obscureText,
           keyboardType: widget.keyboardType,
           autofillHints: widget.autoFillHints,
           onChanged: widget.onChanged,

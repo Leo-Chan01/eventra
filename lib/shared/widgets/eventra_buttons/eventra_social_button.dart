@@ -32,9 +32,7 @@ class _EventraSocialButtonState extends State<EventraSocialButton> {
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: colorScheme.surfaceContainerHighest.withValues(
-            alpha: 0.5,
-          ),
+          backgroundColor: colorScheme.secondaryContainer,
           foregroundColor: colorScheme.onSurface,
           elevation: 0,
           shape: RoundedRectangleBorder(

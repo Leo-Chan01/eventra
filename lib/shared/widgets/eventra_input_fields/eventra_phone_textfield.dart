@@ -3,7 +3,16 @@ import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class EventraPhoneTextfield extends StatefulWidget {
-  const EventraPhoneTextfield({super.key});
+  const EventraPhoneTextfield({
+    required this.label,
+    required this.hint,
+    this.onChanged,
+    super.key,
+  });
+
+  final String label;
+  final String hint;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<EventraPhoneTextfield> createState() => _EventraPhoneTextfieldState();
@@ -20,14 +29,15 @@ class _EventraPhoneTextfieldState extends State<EventraPhoneTextfield> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Phone Number',
+          widget.label,
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
           keyboardType: TextInputType.phone,
           autofillHints: const [AutofillHints.telephoneNumber],
+          onChanged: widget.onChanged,
           decoration: InputDecoration(
-            hintText: '000 0000 0000',
+            hintText: widget.hint,
             hintStyle: inputDecoration.hintStyle,
             prefixIcon: Padding(
               padding: const EdgeInsets.only(left: 16, right: 12),

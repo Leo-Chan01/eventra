@@ -1,4 +1,9 @@
+import 'package:eventra/features/auth/signup/presentation/pages/otp_verification_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/personal_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
+import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
@@ -23,6 +28,11 @@ class AppRouter {
         builder: (context, state) => const WidgetCanvas(),
       ),
       GoRoute(
+        path: HomePage.path,
+        name: HomePage.name,
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
         path: OnboardingLoadingPage.path,
         name: OnboardingLoadingPage.name,
         builder: (context, state) => const OnboardingLoadingPage(),
@@ -39,6 +49,26 @@ class AppRouter {
           final accountType = state.extra as AccountType;
           return SignupPage(accountType: accountType);
         },
+      ),
+      GoRoute(
+        path: OTPVerificationPage.path,
+        name: OTPVerificationPage.name,
+        builder: (context, state) => const OTPVerificationPage(),
+      ),
+      GoRoute(
+        path: PersonalDetailsPage.path,
+        name: PersonalDetailsPage.name,
+        builder: (context, state) => const PersonalDetailsPage(),
+      ),
+      GoRoute(
+        path: WelcomeSuccessPage.path,
+        name: WelcomeSuccessPage.name,
+        builder: (context, state) => const WelcomeSuccessPage(),
+      ),
+      GoRoute(
+        path: TermsAndConditionsPage.path,
+        name: TermsAndConditionsPage.name,
+        builder: (context, state) => const TermsAndConditionsPage(),
       ),
     ],
   );
