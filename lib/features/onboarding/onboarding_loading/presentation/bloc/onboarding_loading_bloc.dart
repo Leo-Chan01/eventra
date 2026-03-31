@@ -54,7 +54,7 @@ class OnboardingLoadingBloc
   ) async {
     emit(OnboardingLoadingInProgress());
 
-    // TODO: Add actual initialization logic here (e.g., config fetching)
+    // TODO(eventra): Add actual initialization logic here
     // For now, we'll simulate a small delay to mimic async work
     await Future<void>.delayed(const Duration(milliseconds: 1500));
 

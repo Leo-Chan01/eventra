@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -22,16 +24,19 @@ class _AccountSelectionBottomSheetState
   void _onTypeSelected(AccountType type) {
     setState(() => _selectedType = type);
 
-    Future.delayed(const Duration(milliseconds: 400), () {
-      if (mounted) {
-        context
-          ..pop()
-          ..pushNamed(
-            SignupPage.name,
-            extra: type,
+    unawaited(
+      Future.delayed(const Duration(milliseconds: 400), () {
+        if (mounted) {
+          context.pop();
+          unawaited(
+            context.pushNamed(
+              SignupPage.name,
+              extra: type,
+            ),
           );
-      }
-    });
+        }
+      }),
+    );
   }
 
   @override

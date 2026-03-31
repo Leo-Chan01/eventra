@@ -1,6 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
-import 'package:eventra/shared/widgets/eventra_buttons/eventra_social_button.dart';
 import 'package:flutter/material.dart';
 
 class WidgetCanvas extends StatefulWidget {

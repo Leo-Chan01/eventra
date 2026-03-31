@@ -7,6 +7,7 @@ class EventraButton extends StatefulWidget {
     this.width,
     this.onPressed,
     this.isOutlined = false,
+    this.isLoading = false,
     super.key,
   });
 
@@ -15,12 +16,14 @@ class EventraButton extends StatefulWidget {
     this.width,
     this.onPressed,
     this.isOutlined = true,
+    this.isLoading = false,
     super.key,
   });
 
   final String buttonText;
   final double? width;
   final bool isOutlined;
+  final bool isLoading;
   final VoidCallback? onPressed;
 
   @override
@@ -39,10 +42,21 @@ class _EventraButtonState extends State<EventraButton> {
         child: OutlinedButton(
           onPressed: widget.onPressed,
           style: theme.outlinedButtonTheme.style,
-          child: Text(
-            widget.buttonText,
-            style: 14.w400,
-          ),
+          child: widget.isLoading
+              ? SizedBox(
+                  height: 14,
+                  width: 14,
+                  child: CircularProgressIndicator.adaptive(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      theme.colorScheme.primary,
+                    ),
+                  ),
+                )
+              : Text(
+                  widget.buttonText,
+                  style: 14.w400,
+                ),
         ),
       );
     }
@@ -50,7 +64,7 @@ class _EventraButtonState extends State<EventraButton> {
       width: widget.width ?? MediaQuery.sizeOf(context).width,
       height: 53,
       child: ElevatedButton(
-        onPressed: widget.onPressed,
+        onPressed: widget.isLoading ? null : widget.onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: theme.colorScheme.primary,
           foregroundColor: theme.colorScheme.onPrimary,
@@ -63,10 +77,21 @@ class _EventraButtonState extends State<EventraButton> {
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         ),
-        child: Text(
-          widget.buttonText,
-          style: 14.w400,
-        ),
+        child: widget.isLoading
+            ? const SizedBox(
+                height: 14,
+                width: 14,
+                child: CircularProgressIndicator.adaptive(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.white,
+                  ),
+                ),
+              )
+            : Text(
+                widget.buttonText,
+                style: 14.w400,
+              ),
       ),
     );
   }

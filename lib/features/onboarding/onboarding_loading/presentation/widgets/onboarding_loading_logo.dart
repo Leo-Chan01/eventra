@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -60,7 +61,7 @@ class _OnboardingLoadingLogoState extends State<OnboardingLoadingLogo>
     _textFadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.6, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.6, 1, curve: Curves.easeIn),
       ),
     );
 
@@ -70,7 +71,7 @@ class _OnboardingLoadingLogoState extends State<OnboardingLoadingLogo>
       }
     });
 
-    _controller.forward();
+    unawaited(_controller.forward());
   }
 
   @override

@@ -36,7 +36,10 @@ class TermsAndConditionsPage extends StatelessWidget {
               _LastUpdatedBanner(l10n: l10n),
               24.vertSpacing,
               Text(
-                'Welcome to Eventra. By accessing or using the Eventra mobile application or website (\"Platform\"), you agree to be bound by these Terms and Conditions (\"Terms\"). If you do not agree, please do not use the Platform.',
+                'Welcome to Eventra. By accessing or using the Eventra mobile '
+                'application or website ("Platform"), you agree to be bound by '
+                'these Terms and Conditions ("Terms"). If you do not agree, '
+                'please do not use the Platform.',
                 style: 14.regular.copyWith(
                   color: colorScheme.onSurfaceVariant,
                   height: 1.5,

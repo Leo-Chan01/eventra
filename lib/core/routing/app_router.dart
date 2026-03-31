@@ -1,3 +1,9 @@
+import 'package:eventra/features/auth/forgot_password/presentation/pages/forgot_password_otp_page.dart';
+import 'package:eventra/features/auth/forgot_password/presentation/pages/forgot_password_page.dart';
+import 'package:eventra/features/auth/forgot_password/presentation/pages/password_reset_success_page.dart';
+import 'package:eventra/features/auth/forgot_password/presentation/pages/reset_password_page.dart';
+import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
+import 'package:eventra/features/auth/setup_pin/presentation/pages/setup_pin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/otp_verification_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/personal_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
@@ -23,6 +29,11 @@ class AppRouter {
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
+        path: LoginPage.path,
+        name: LoginPage.name,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
         path: WidgetCanvas.path,
         name: WidgetCanvas.name,
         builder: (context, state) => const WidgetCanvas(),
@@ -46,7 +57,7 @@ class AppRouter {
         path: SignupPage.path,
         name: SignupPage.name,
         builder: (context, state) {
-          final accountType = state.extra as AccountType;
+          final accountType = state.extra as AccountType? ?? AccountType.client;
           return SignupPage(accountType: accountType);
         },
       ),
@@ -69,6 +80,31 @@ class AppRouter {
         path: TermsAndConditionsPage.path,
         name: TermsAndConditionsPage.name,
         builder: (context, state) => const TermsAndConditionsPage(),
+      ),
+      GoRoute(
+        path: ForgotPasswordPage.path,
+        name: ForgotPasswordPage.name,
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        path: ForgotPasswordOtpPage.path,
+        name: ForgotPasswordOtpPage.name,
+        builder: (context, state) => const ForgotPasswordOtpPage(),
+      ),
+      GoRoute(
+        path: ResetPasswordPage.path,
+        name: ResetPasswordPage.name,
+        builder: (context, state) => const ResetPasswordPage(),
+      ),
+      GoRoute(
+        path: PasswordResetSuccessPage.path,
+        name: PasswordResetSuccessPage.name,
+        builder: (context, state) => const PasswordResetSuccessPage(),
+      ),
+      GoRoute(
+        path: SetupPinPage.path,
+        name: SetupPinPage.name,
+        builder: (context, state) => const SetupPinPage(),
       ),
     ],
   );

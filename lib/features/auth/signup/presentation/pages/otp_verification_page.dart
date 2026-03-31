@@ -36,24 +36,6 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
     _startTimer();
   }
 
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_secondsRemaining > 0) {
-          _secondsRemaining--;
-        } else {
-          _timer.cancel();
-        }
-      });
-    });
-  }
-
-  String _formatTime(int seconds) {
-    final minutes = seconds ~/ 60;
-    final remainingSeconds = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
-  }
-
   @override
   void dispose() {
     _timer.cancel();
@@ -141,12 +123,14 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                                 }
                               : null,
                           child: Text(
-                            l10n.otpResendLink(_formatTime(_secondsRemaining)),
+                            l10n.otpResendLink(
+                              _formatTime(_secondsRemaining),
+                            ),
                             style: 14.bold.copyWith(
                               color: _secondsRemaining == 0
                                   ? colorScheme.primary
-                                  : colorScheme.onSurfaceVariant.withOpacity(
-                                      0.5,
+                                  : colorScheme.onSurfaceVariant.withValues(
+                                      alpha: 0.5,
                                     ),
                             ),
                           ),
@@ -158,7 +142,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                   EventraButton(
                     buttonText: l10n.otpVerifyButton,
                     onPressed: () {
-                      context.pushNamed(PersonalDetailsPage.name);
+                      unawaited(context.pushNamed(PersonalDetailsPage.name));
                     },
                   ),
                   24.vertSpacing,
@@ -169,6 +153,26 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
         ),
       ),
     );
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_secondsRemaining > 0) {
+          _secondsRemaining--;
+        } else {
+          _timer.cancel();
+        }
+      });
+    });
+  }
+
+  String _formatTime(int seconds) {
+    final minutes = seconds ~/ 60;
+    final remainingSeconds = seconds % 60;
+    final minutesString = minutes.toString().padLeft(2, '0');
+    final secondsString = remainingSeconds.toString().padLeft(2, '0');
+    return '$minutesString:$secondsString';
   }
 
   void _onOtpChanged() {
@@ -208,7 +212,7 @@ class _OtpInputBox extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: colorScheme.outline.withOpacity(0.3),
+              color: colorScheme.outline.withValues(alpha: 0.3),
             ),
           ),
           focusedBorder: OutlineInputBorder(
@@ -218,7 +222,7 @@ class _OtpInputBox extends StatelessWidget {
               width: 2,
             ),
           ),
-          fillColor: colorScheme.surfaceVariant.withOpacity(0.1),
+          fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
           filled: true,
         ),
         onChanged: onChanged,

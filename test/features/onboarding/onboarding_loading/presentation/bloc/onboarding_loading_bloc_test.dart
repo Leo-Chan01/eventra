@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/bloc/onboarding_loading_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +13,7 @@ void main() {
     });
 
     tearDown(() {
-      onboardingLoadingBloc.close();
+      unawaited(onboardingLoadingBloc.close());
     });
 
     test('initial state is OnboardingLoadingInitial', () {
@@ -19,7 +21,8 @@ void main() {
     });
 
     blocTest<OnboardingLoadingBloc, OnboardingLoadingState>(
-      'emits [OnboardingLoadingInProgress, OnboardingLoadingWaitingForAnimation] '
+      'emits [OnboardingLoadingInProgress, '
+      'OnboardingLoadingWaitingForAnimation] '
       'when OnboardingLoadingStarted is added and animation is not yet done',
       build: () => onboardingLoadingBloc,
       act: (bloc) => bloc.add(OnboardingLoadingStarted()),
@@ -32,7 +35,8 @@ void main() {
 
     blocTest<OnboardingLoadingBloc, OnboardingLoadingState>(
       'emits [OnboardingLoadingSuccess] '
-      'when both OnboardingLoadingStarted and OnboardingLoadingAnimationCompleted are done',
+      'when both OnboardingLoadingStarted and '
+      'OnboardingLoadingAnimationCompleted are done',
       build: () => onboardingLoadingBloc,
       act: (bloc) async {
         bloc.add(OnboardingLoadingStarted());
@@ -51,8 +55,9 @@ void main() {
       'when animation completes before initialization finishes',
       build: () => onboardingLoadingBloc,
       act: (bloc) async {
-        bloc.add(OnboardingLoadingAnimationCompleted());
-        bloc.add(OnboardingLoadingStarted());
+        bloc
+          ..add(OnboardingLoadingAnimationCompleted())
+          ..add(OnboardingLoadingStarted());
       },
       wait: const Duration(milliseconds: 1600),
       expect: () => [

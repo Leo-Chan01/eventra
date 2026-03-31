@@ -1,13 +1,19 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/otp_verification_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/personal_details_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_social_button.dart';
 import 'package:eventra/shared/widgets/eventra_input_fields/eventra_general_textfield.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -88,7 +94,9 @@ class _SignupPageState extends State<SignupPage> {
                               context.read<SignupBloc>().add(
                                 const SignupMethodChanged(SignupMethod.email),
                               );
-                              context.pushNamed('otp-verification');
+                              unawaited(
+                                context.pushNamed(OTPVerificationPage.name),
+                              );
                             },
                           );
                         },
@@ -131,7 +139,9 @@ class _SignupPageState extends State<SignupPage> {
                           context.read<SignupBloc>().add(
                             const SignupMethodChanged(SignupMethod.google),
                           );
-                          context.pushNamed('personal-details');
+                          unawaited(
+                            context.pushNamed(PersonalDetailsPage.name),
+                          );
                         },
                       ),
                       16.vertSpacing,
@@ -142,7 +152,9 @@ class _SignupPageState extends State<SignupPage> {
                           context.read<SignupBloc>().add(
                             const SignupMethodChanged(SignupMethod.apple),
                           );
-                          context.pushNamed('personal-details');
+                          unawaited(
+                            context.pushNamed(PersonalDetailsPage.name),
+                          );
                         },
                       ),
                       const Spacer(),
@@ -159,6 +171,10 @@ class _SignupPageState extends State<SignupPage> {
                                 style: 16.w500.copyWith(
                                   color: const Color(0xFF0078FF),
                                 ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    context.goNamed(LoginPage.name);
+                                  },
                               ),
                             ],
                           ),

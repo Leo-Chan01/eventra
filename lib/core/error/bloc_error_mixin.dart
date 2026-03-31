@@ -70,7 +70,7 @@ mixin BlocErrorMixin {
       final result = await operation();
       onSuccess?.call(result);
       return result;
-    } catch (e, stackTrace) {
+    } on Object catch (e, stackTrace) {
       final failure = ErrorHandler.handleException(e, stackTrace);
       if (onError != null) {
         onError(failure);

@@ -2,6 +2,9 @@ import 'package:eventra/core/constants/app_constants.dart';
 import 'package:eventra/core/internet/connectivity_bloc.dart';
 import 'package:eventra/core/routing/app_router.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
+import 'package:eventra/features/auth/forgot_password/presentation/bloc/forgot_password_bloc.dart';
+import 'package:eventra/features/auth/login/presentation/bloc/login_bloc.dart';
+import 'package:eventra/features/auth/setup_pin/presentation/bloc/setup_pin_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/theme/app_theme.dart';
@@ -21,6 +24,9 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => ConnectivityBloc()),
         BlocProvider(create: (_) => ThemeBloc()),
         BlocProvider(create: (_) => SignupBloc()),
+        BlocProvider(create: (_) => LoginBloc()),
+        BlocProvider(create: (_) => ForgotPasswordBloc()),
+        BlocProvider(create: (_) => SetupPinBloc()),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {

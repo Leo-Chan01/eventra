@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/onboarding_slide.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/bloc/onboarding_slides_bloc.dart';
@@ -90,9 +92,11 @@ class _OnboardingSlidesPageState extends State<OnboardingSlidesPage> {
                                     const AccountSelectionBottomSheet(),
                               );
                             } else {
-                              _pageController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
+                              unawaited(
+                                _pageController.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut,
+                                ),
                               );
                             }
                           },

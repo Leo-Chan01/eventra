@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:eventra/shared/widgets/eventra_input_fields/eventra_date_picker_textfield.dart';
@@ -50,7 +53,9 @@ class PersonalDetailsPage extends StatelessWidget {
                         children: [
                           Text(
                             l10n.personalDetailsTitle,
-                            style: 32.bold.copyWith(color: colorScheme.onSurface),
+                            style: 32.bold.copyWith(
+                              color: colorScheme.onSurface,
+                            ),
                           ),
                           8.vertSpacing,
                           Text(
@@ -65,9 +70,9 @@ class PersonalDetailsPage extends StatelessWidget {
                             hint: l10n.firstNameHint,
                             autoFillHints: const [AutofillHints.givenName],
                             keyboardType: TextInputType.name,
-                            onChanged: (val) => context
-                                .read<SignupBloc>()
-                                .add(SignupFirstNameChanged(val)),
+                            onChanged: (val) => context.read<SignupBloc>().add(
+                              SignupFirstNameChanged(val),
+                            ),
                           ),
                           24.vertSpacing,
                           EventraGeneralTextfield(
@@ -75,9 +80,9 @@ class PersonalDetailsPage extends StatelessWidget {
                             hint: l10n.lastNameHint,
                             autoFillHints: const [AutofillHints.familyName],
                             keyboardType: TextInputType.name,
-                            onChanged: (val) => context
-                                .read<SignupBloc>()
-                                .add(SignupLastNameChanged(val)),
+                            onChanged: (val) => context.read<SignupBloc>().add(
+                              SignupLastNameChanged(val),
+                            ),
                           ),
                           24.vertSpacing,
                           EventraDatePickerTextfield(
@@ -92,21 +97,21 @@ class PersonalDetailsPage extends StatelessWidget {
                                   final month = int.parse(parts[1]);
                                   final year = int.parse(parts[2]);
                                   context.read<SignupBloc>().add(
-                                        SignupBirthdayChanged(
-                                          DateTime(year, month, day),
-                                        ),
-                                      );
+                                    SignupBirthdayChanged(
+                                      DateTime(year, month, day),
+                                    ),
+                                  );
                                 }
-                              } catch (_) {}
+                              } on Exception catch (_) {}
                             },
                           ),
                           24.vertSpacing,
                           EventraPhoneTextfield(
                             label: l10n.phoneLabel,
                             hint: l10n.phoneHint,
-                            onChanged: (val) => context
-                                .read<SignupBloc>()
-                                .add(SignupPhoneChanged(val)),
+                            onChanged: (val) => context.read<SignupBloc>().add(
+                              SignupPhoneChanged(val),
+                            ),
                           ),
                           if (state.signupMethod == SignupMethod.email) ...[
                             24.vertSpacing,
@@ -147,8 +152,8 @@ class PersonalDetailsPage extends StatelessWidget {
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () => context.pushNamed(
-                                          TermsAndConditionsPage.name,
-                                        ),
+                                      TermsAndConditionsPage.name,
+                                    ),
                                 ),
                                 TextSpan(text: l10n.termsAcceptanceAnd),
                                 TextSpan(
@@ -157,9 +162,7 @@ class PersonalDetailsPage extends StatelessWidget {
                                     color: colorScheme.primary,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      // Navigate to Privacy Policy if implemented
-                                    },
+                                    ..onTap = () {},
                                 ),
                               ],
                             ),
@@ -168,9 +171,9 @@ class PersonalDetailsPage extends StatelessWidget {
                           EventraButton(
                             buttonText: l10n.continueButton,
                             onPressed: () {
-                              // For now, just navigate to Success
-                              // In real implementation, this would trigger the bloc submission
-                              context.pushNamed('welcome-success');
+                              unawaited(
+                                context.pushNamed(WelcomeSuccessPage.name),
+                              );
                             },
                           ),
                           24.vertSpacing,
