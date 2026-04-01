@@ -59,5 +59,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) {
     emit(state.copyWith(method: event.method));
+    AppRouter.router.goNamed(HomePage.name);
   }
 }
