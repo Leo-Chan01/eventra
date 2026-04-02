@@ -1,6 +1,9 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/home/presentation/widgets/header_icon.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -49,73 +52,18 @@ class HomeHeader extends StatelessWidget {
         ),
         Row(
           children: [
-            _HeaderIcon(
-              icon: Icons.chat_bubble_outline_rounded,
+            HeaderIcon(
+              icon: SvgPicture.asset(EventraVectors.chatMessage),
               onPressed: () {},
             ),
             12.horizSpacing,
-            _HeaderIcon(
-              icon: Icons.notifications_none_rounded,
+            HeaderIcon(
+              icon: SvgPicture.asset(EventraVectors.notificationBell),
               hasNotification: true,
               onPressed: () {},
             ),
           ],
         ),
-      ],
-    );
-  }
-}
-
-class _HeaderIcon extends StatelessWidget {
-  const _HeaderIcon({
-    required this.icon,
-    required this.onPressed,
-    this.hasNotification = false,
-  });
-
-  final IconData icon;
-  final VoidCallback onPressed;
-  final bool hasNotification;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: colorScheme.outline.withValues(alpha: 0.1),
-            ),
-          ),
-          child: IconButton(
-            onPressed: onPressed,
-            icon: Icon(
-              icon,
-              color: colorScheme.onSurface,
-              size: 24,
-            ),
-          ),
-        ),
-        if (hasNotification)
-          Positioned(
-            right: 8,
-            top: 8,
-            child: Container(
-              width: 10,
-              height: 10,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.white,
-                  width: 2,
-                ),
-              ),
-            ),
-          ),
       ],
     );
   }

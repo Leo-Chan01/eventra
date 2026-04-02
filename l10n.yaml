@@ -7,3 +7,6 @@ nullable-getter: false
 # Needed to ensure the formatter does not run on the generated files.
 # See https://github.com/dart-lang/dart_style/issues/864 for more information
 header: "// dart format off\n// coverage:ignore-file"
+
+# Missing translation report
+untranslated-messages-file: lib/l10n/untranslated_messages.json

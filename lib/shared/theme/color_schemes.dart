@@ -6,6 +6,8 @@ class AppColorSchemes {
 
   static const Color lightSurfaceVariant = Color(0xFFF8F8FA);
   static const Color darkSurfaceVariant = Color(0xFF1E1E1E);
+  static const Color termsAndConditionTitleBackgroundColor = Color(0xFFF9FAFB);
+  static const Color importantNoticeBackgroundColor = Color(0xFFFFF9F6);
 
   static const Color termsAndConditionsTextColor = Color(0xFF4B5563);
   static const Color termsAndConditionsTextColorDark = Color(0xFF9CA3AF);

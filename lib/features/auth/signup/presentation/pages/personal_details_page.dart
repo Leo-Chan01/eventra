@@ -51,6 +51,7 @@ class PersonalDetailsPage extends StatelessWidget {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          20.vertSpacing,
                           Text(
                             l10n.personalDetailsTitle,
                             style: 32.bold.copyWith(

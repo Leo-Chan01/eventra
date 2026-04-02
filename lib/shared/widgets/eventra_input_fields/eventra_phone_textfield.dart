@@ -48,7 +48,9 @@ class _EventraPhoneTextfieldState extends State<EventraPhoneTextfield> {
                     Text(
                       '234',
                       style: 16.w400.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.5),
                       ),
                     ),
                     const SizedBox(width: 4),

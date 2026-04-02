@@ -1,9 +1,12 @@
+import 'package:eventra/core/utils/lottie_decorder.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomeSuccessPage extends StatelessWidget {
   const WelcomeSuccessPage({super.key});
@@ -25,37 +28,49 @@ class WelcomeSuccessPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(),
-              // Placeholder for Lottie animation
-              SizedBox(
-                height: 250,
-                child: Center(
-                  child: Icon(
-                    Icons.celebration,
-                    size: 100,
-                    color: colorScheme.primary,
-                  ),
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Stack(
+                  children: [
+                    Align(
+                      child: Lottie.asset(
+                        EventraAnims.confettiEmoji,
+                        height: 145,
+                        repeat: true,
+                        decoder: customDecoder,
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: Lottie.asset(
+                        EventraAnims.success,
+                        repeat: true,
+                        decoder: customDecoder,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              // Un-comment when confetti.json is available
-              // Lottie.asset(
-              //   'assets/anims/confetti.json',
-              //   height: 250,
-              //   repeat: true,
-              // ),
+
               32.vertSpacing,
-              Text(
-                l10n.welcomeTitle,
-                textAlign: TextAlign.center,
-                style: 32.bold.copyWith(color: colorScheme.onSurface),
-              ),
-              16.vertSpacing,
-              Text(
-                l10n.welcomeDescription,
-                textAlign: TextAlign.center,
-                style: 16.regular.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                  height: 1.5,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Text(
+                      l10n.welcomeTitle,
+                      textAlign: TextAlign.center,
+                      style: 32.bold.copyWith(color: colorScheme.onSurface),
+                    ),
+                    16.vertSpacing,
+                    Text(
+                      l10n.welcomeDescription,
+                      textAlign: TextAlign.center,
+                      style: 14.regular.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                        height: 1.5,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const Spacer(),

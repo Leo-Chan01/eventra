@@ -5,6 +5,7 @@ import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart'
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/personal_details_page.dart';
+import 'package:eventra/features/home/presentation/widgets/otp_input_box.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: List.generate(
                       5,
-                      (index) => _OtpInputBox(
+                      (index) => OtpInputBox(
                         controller: _controllers[index],
                         focusNode: _focusNodes[index],
                         onChanged: (value) {
@@ -178,55 +179,5 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
   void _onOtpChanged() {
     final otp = _controllers.map((c) => c.text).join();
     context.read<SignupBloc>().add(SignupOtpChanged(otp));
-  }
-}
-
-class _OtpInputBox extends StatelessWidget {
-  const _OtpInputBox({
-    required this.controller,
-    required this.focusNode,
-    required this.onChanged,
-  });
-
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final ValueChanged<String> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    return SizedBox(
-      width: 60,
-      height: 60,
-      child: TextFormField(
-        controller: controller,
-        focusNode: focusNode,
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        maxLength: 1,
-        style: 24.bold.copyWith(color: colorScheme.onSurface),
-        decoration: InputDecoration(
-          counterText: '',
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: colorScheme.outline.withValues(alpha: 0.3),
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: colorScheme.primary,
-              width: 2,
-            ),
-          ),
-          fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
-          filled: true,
-        ),
-        onChanged: onChanged,
-      ),
-    );
   }
 }

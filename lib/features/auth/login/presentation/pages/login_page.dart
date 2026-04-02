@@ -100,32 +100,8 @@ class LoginPage extends StatelessWidget {
                           ),
                           8.vertSpacing,
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: Checkbox(
-                                      value: state.rememberMe,
-                                      onChanged: (_) => context
-                                          .read<LoginBloc>()
-                                          .add(const LoginRememberMeToggled()),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                    ),
-                                  ),
-                                  8.horizSpacing,
-                                  Text(
-                                    l10n.rememberMeLabel,
-                                    style: 14.w500.copyWith(
-                                      color: colorScheme.onSurface,
-                                    ),
-                                  ),
-                                ],
-                              ),
                               TextButton(
                                 onPressed: () =>
                                     context.pushNamed(ForgotPasswordPage.name),

@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 
 class VendorCardTopRated extends StatelessWidget {
@@ -16,57 +17,98 @@ class VendorCardTopRated extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Container(
-      width: 160,
-      padding: const EdgeInsets.all(12),
+      width: double.infinity,
       decoration: BoxDecoration(
         color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(
           color: colorScheme.outline.withValues(alpha: 0.1),
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 35,
-            backgroundImage: AssetImage(vendor.image),
-            backgroundColor: colorScheme.primaryContainer,
-          ),
-          12.vertSpacing,
-          Text(
-            vendor.name,
-            style: 14.bold.copyWith(
-              color: colorScheme.onSurface,
-            ),
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          4.vertSpacing,
-          Text(
-            vendor.category,
-            style: 12.regular.copyWith(
-              color: colorScheme.onSurfaceVariant,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          8.vertSpacing,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Stack(
             children: [
-              const Icon(
-                Icons.star_rounded,
-                color: Colors.amber,
-                size: 14,
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(24),
+                ),
+                child: Image.asset(
+                  vendor.image,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
-              4.horizSpacing,
-              Text(
-                '${vendor.rating}',
-                style: 12.w500.copyWith(
-                  color: colorScheme.onSurface,
+              Positioned(
+                top: 16,
+                right: 16,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    vendor.isFavorite
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_border_rounded,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        vendor.name,
+                        style: 20.bold.copyWith(
+                          color: colorScheme.onSurface,
+                        ),
+                      ),
+                      4.vertSpacing,
+                      Text(
+                        vendor.category,
+                        style: 14.regular.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                      8.vertSpacing,
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star_rounded,
+                            color: Colors.amber,
+                            size: 18,
+                          ),
+                          4.horizSpacing,
+                          Text(
+                            '(${vendor.rating})',
+                            style: 14.w500.copyWith(
+                              color: colorScheme.onSurface,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                EventraButton(
+                  buttonText: 'View Profile',
+                  width: 120,
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ],
       ),
