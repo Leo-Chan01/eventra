@@ -22,13 +22,6 @@ class CatalogItemActionBar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
       decoration: BoxDecoration(
         color: colorScheme.surface,
-        boxShadow: [
-          BoxShadow(
-            color: colorScheme.shadow.withValues(alpha: 0.06),
-            blurRadius: 16,
-            offset: const Offset(0, -4),
-          ),
-        ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -36,7 +29,7 @@ class CatalogItemActionBar extends StatelessWidget {
           EventraButton.withIcon(
             buttonText: l10n.vendorDetailMessageVendor,
             onPressed: onMessageVendor,
-            icon: EventraVectors.chatMessage,
+            icon: EventraVectors.messages,
           ),
           // const SizedBox(height: 10),
           // EventraButton(

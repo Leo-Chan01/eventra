@@ -23,6 +23,7 @@ class EventraVectors {
       'assets/svgs/love-button-vendor-deets.svg';
   static const String loveVendorDeets = 'assets/svgs/love-vendor-deets.svg';
   static const String mailIcon = 'assets/svgs/mail-icon.svg';
+  static const String messages = 'assets/svgs/messages.svg';
   static const String notificationBell = 'assets/svgs/notification-bell.svg';
   static const String searchNormal = 'assets/svgs/search-normal.svg';
   static const String shareButtonVendorDeets =

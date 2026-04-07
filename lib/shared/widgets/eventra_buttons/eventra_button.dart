@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class EventraButton extends StatefulWidget {
   const EventraButton({
@@ -149,6 +150,53 @@ class _EventraButtonState extends State<EventraButton> {
         ),
       );
     }
+
+    if (widget.isWithIcon) {
+      return SizedBox(
+        width: widget.width ?? MediaQuery.sizeOf(context).width,
+        height: widget.height ?? 53,
+        child: ElevatedButton.icon(
+          onPressed: widget.isLoading ? null : widget.onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: theme.colorScheme.primary,
+            foregroundColor: theme.colorScheme.onPrimary,
+            disabledBackgroundColor: theme.colorScheme.primary.withValues(
+              alpha: 0.5,
+            ),
+            disabledForegroundColor: theme.colorScheme.onPrimary.withValues(
+              alpha: 0.5,
+            ),
+            elevation: 0,
+            padding:
+                widget.padding ?? const EdgeInsets.symmetric(horizontal: 24),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 24),
+            ),
+          ),
+          icon: widget.isLoading
+              ? const SizedBox(
+                  height: 14,
+                  width: 14,
+                  child: CircularProgressIndicator.adaptive(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
+                    ),
+                  ),
+                )
+              : SvgPicture.asset(
+                  widget.icon!,
+                  height: 20,
+                  width: 20,
+                ),
+          label: Text(
+            widget.buttonText,
+            style: 14.w400,
+          ),
+        ),
+      );
+    }
+
     return SizedBox(
       width: widget.width ?? MediaQuery.sizeOf(context).width,
       height: 53,

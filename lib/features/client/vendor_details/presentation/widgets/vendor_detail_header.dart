@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
+import 'package:eventra/features/client/vendor_details/presentation/widgets/circle_action_button.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_tag_chip.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
@@ -133,14 +134,14 @@ class _CoverSection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _CircleActionButton(
+                  CircleActionButton(
                     icon: EventraVectors.loveButtonVendorDeets,
                     onPressed: () async => Navigator.of(context).maybePop(),
                   ),
                   Row(
                     spacing: 10,
                     children: [
-                      _CircleActionButton(
+                      CircleActionButton(
                         icon: EventraVectors.loveVendorDeets,
                         onPressed: () async {
                           await SharePlus.instance.share(
@@ -148,7 +149,7 @@ class _CoverSection extends StatelessWidget {
                           );
                         },
                       ),
-                      _CircleActionButton(
+                      CircleActionButton(
                         icon: EventraVectors.shareButtonVendorDeets,
                         onPressed: () async {
                           await SharePlus.instance.share(
@@ -200,33 +201,7 @@ class _CoverSection extends StatelessWidget {
   }
 }
 
-class _CircleActionButton extends StatelessWidget {
-  const _CircleActionButton({
-    required this.icon,
-    required this.onPressed,
-  });
 
-  final String icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return GestureDetector(
-      onTap: onPressed,
-      child: SizedBox(
-        width: 36,
-        height: 36,
-        child: SvgPicture.asset(
-          icon,
-          width: 18,
-          height: 18,
-        ),
-      ),
-    );
-  }
-}
 
 class _ProfileAvatar extends StatelessWidget {
   const _ProfileAvatar({required this.imageUrl});

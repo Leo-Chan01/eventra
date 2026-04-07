@@ -18,7 +18,7 @@ class CatalogItemExpectPoint extends StatelessWidget {
           HugeIcon(
             icon: HugeIcons.strokeRoundedCheckmarkCircle01,
             size: 16,
-            color: colorScheme.primary,
+            color: colorScheme.onSurfaceVariant,
           ),
           10.horizSpacing,
           Expanded(

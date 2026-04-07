@@ -22,6 +22,7 @@ void main() {
     expect(File(EventraVectors.loveButtonVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.loveVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.mailIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.notificationBell).existsSync(), isTrue);
     expect(File(EventraVectors.searchNormal).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);

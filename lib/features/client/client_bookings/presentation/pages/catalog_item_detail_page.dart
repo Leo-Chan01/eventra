@@ -6,9 +6,12 @@ import 'package:eventra/features/client/client_bookings/presentation/widgets/cat
 import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
+import 'package:eventra/features/client/vendor_details/presentation/widgets/circle_action_button.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CatalogItemDetailArgs {
   const CatalogItemDetailArgs({
@@ -46,30 +49,79 @@ class CatalogItemDetailPage extends StatelessWidget {
                       item: args.catalogItem,
                       vendorName: args.vendorName,
                     ),
-                    SafeArea(
-                      bottom: false,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: GestureDetector(
-                          onTap: () => Navigator.of(context).maybePop(),
-                          child: Container(
-                            width: 36,
-                            height: 36,
-                            decoration: BoxDecoration(
-                              color: colorScheme.surface.withValues(
-                                alpha: 0.85,
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: SafeArea(
+                        bottom: false,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CircleActionButton(
+                                icon: EventraVectors.loveButtonVendorDeets,
+                                onPressed: () async =>
+                                    Navigator.of(context).maybePop(),
                               ),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              size: 18,
-                              color: colorScheme.onSurface,
-                            ),
+                              Row(
+                                spacing: 10,
+                                children: [
+                                  CircleActionButton(
+                                    icon: EventraVectors.loveVendorDeets,
+                                    onPressed: () async {
+                                      await SharePlus.instance.share(
+                                        ShareParams(
+                                          text: '${args.vendorName} on Eventra',
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  CircleActionButton(
+                                    icon: EventraVectors.shareButtonVendorDeets,
+                                    onPressed: () async {
+                                      await SharePlus.instance.share(
+                                        ShareParams(
+                                          text: '${args.vendorName} on Eventra',
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
+                    // SafeArea(
+                    //   bottom: false,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(12),
+                    //     child: GestureDetector(
+                    //       onTap: () => Navigator.of(context).maybePop(),
+                    //       child: Container(
+                    //         width: 36,
+                    //         height: 36,
+                    //         decoration: BoxDecoration(
+                    //           color: colorScheme.surface.withValues(
+                    //             alpha: 0.85,
+                    //           ),
+                    //           shape: BoxShape.circle,
+                    //         ),
+                    //         child: Icon(
+                    //           Icons.arrow_back_ios_new_rounded,
+                    //           size: 18,
+                    //           color: colorScheme.onSurface,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
