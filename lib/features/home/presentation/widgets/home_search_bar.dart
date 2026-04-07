@@ -1,6 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({
@@ -27,26 +29,49 @@ class HomeSearchBar extends StatelessWidget {
               child: Container(
                 height: 52,
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerHighest.withValues(
-                    alpha: 0.3,
-                  ),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: TextField(
-                  readOnly: true,
                   decoration: InputDecoration(
+                    fillColor: const Color(0xFFFAFAFA),
                     hintText: l10n.homeSearchPlaceholder,
                     hintStyle: 14.regular.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
-                    prefixIcon: Icon(
-                      Icons.search_rounded,
-                      color: colorScheme.onSurfaceVariant,
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: SvgPicture.asset(
+                        EventraVectors.searchNormal,
+                        height: 20,
+                        width: 20,
+                      ),
                     ),
                     border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: colorScheme.surfaceContainerHighest.withValues(
+                          alpha: 0.3,
+                        ),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: colorScheme.surfaceContainerHighest.withValues(
+                          alpha: 0.3,
+                        ),
+                      ),
+                    ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 14),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: SizedBox(
+                        height: 52,
+                        width: 52,
+                        child: SvgPicture.asset(EventraVectors.filterIcon),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -54,22 +79,6 @@ class HomeSearchBar extends StatelessWidget {
           ),
         ),
         12.horizSpacing,
-        Container(
-          height: 52,
-          width: 52,
-          decoration: BoxDecoration(
-            color: colorScheme.primary.withValues(alpha: 0.08),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: IconButton(
-            key: const Key('home_filter_button'),
-            onPressed: onTapFilter,
-            icon: Icon(
-              Icons.tune_rounded,
-              color: colorScheme.primary,
-            ),
-          ),
-        ),
       ],
     );
   }

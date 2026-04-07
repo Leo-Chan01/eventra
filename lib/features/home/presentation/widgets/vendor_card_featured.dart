@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class VendorCardFeatured extends StatelessWidget {
@@ -21,7 +22,7 @@ class VendorCardFeatured extends StatelessWidget {
       child: Container(
         width: 188,
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
+          color: AppColorSchemes.neutrals0,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -48,26 +49,26 @@ class VendorCardFeatured extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 10,
-                  right: 10,
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: colorScheme.surface.withValues(alpha: 0.9),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      vendor.isFavorite
-                          ? Icons.favorite_rounded
-                          : Icons.favorite_border_rounded,
-                      color: vendor.isFavorite
-                          ? colorScheme.error
-                          : colorScheme.onSurfaceVariant,
-                      size: 18,
-                    ),
-                  ),
-                ),
+                // Positioned(
+                //   top: 10,
+                //   right: 10,
+                //   child: Container(
+                //     padding: const EdgeInsets.all(6),
+                //     decoration: BoxDecoration(
+                //       color: colorScheme.surface.withValues(alpha: 0.9),
+                //       shape: BoxShape.circle,
+                //     ),
+                //     child: Icon(
+                //       vendor.isFavorite
+                //           ? Icons.favorite_rounded
+                //           : Icons.favorite_border_rounded,
+                //       color: vendor.isFavorite
+                //           ? colorScheme.error
+                //           : colorScheme.onSurfaceVariant,
+                //       size: 18,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             Padding(
@@ -77,14 +78,14 @@ class VendorCardFeatured extends StatelessWidget {
                 children: [
                   Text(
                     vendor.name,
-                    style: 15.w700.copyWith(color: colorScheme.onSurface),
+                    style: 16.w400.copyWith(color: colorScheme.onSurface),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.vertSpacing,
                   Text(
-                    vendor.location,
-                    style: 12.w400.copyWith(
+                    vendor.category,
+                    style: 14.w400.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
                   ),
@@ -103,11 +104,11 @@ class VendorCardFeatured extends StatelessWidget {
                       ),
                     ],
                   ),
-                  8.vertSpacing,
-                  Text(
-                    vendor.startingPrice.getValue,
-                    style: 12.w700.copyWith(color: colorScheme.primary),
-                  ),
+                  // 8.vertSpacing,
+                  // Text(
+                  //   vendor.startingPrice.getValue,
+                  //   style: 12.w700.copyWith(color: colorScheme.primary),
+                  // ),
                 ],
               ),
             ),

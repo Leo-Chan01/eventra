@@ -57,7 +57,6 @@ class HomeHeader extends StatelessWidget {
         10.horizSpacing,
         HeaderIcon(
           icon: SvgPicture.asset(EventraVectors.notificationBell),
-          hasNotification: true,
           onPressed: () => context.pushNamed(ClientNotificationsPage.name),
         ),
       ],

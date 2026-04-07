@@ -104,7 +104,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         description:
             'This is an intimate decoration and its comes with different styles.',
         price: 10000,
-        image: EventraImages.onboardingImage1,
+        image: EventraImages.weddingImage,
         whatToExpect: [
           '3 Different outfits',
           '20 edited pictures',
@@ -117,7 +117,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         description:
             'This is an intimate decoration and its comes with different styles.',
         price: 500000,
-        image: EventraImages.onboardingImage2,
+        image: EventraImages.weddingImage,
         whatToExpect: [
           '3 Different outfits',
           '20 edited pictures',
@@ -130,7 +130,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         description:
             'This is an intimate decoration and its comes with different styles.',
         price: 10000,
-        image: EventraImages.onboardingImage1,
+        image: EventraImages.weddingImage,
         whatToExpect: [
           '3 Different outfits',
           '20 edited pictures',
@@ -156,7 +156,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       VendorReview(
         id: 'rev-001',
         reviewerName: 'Moses Simon',
-        reviewerAvatar: EventraImages.onboardingImage2,
+        reviewerAvatar: EventraImages.weddingImage,
         rating: 4.5,
         date: '20-06-2025',
         body:
@@ -165,7 +165,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       VendorReview(
         id: 'rev-002',
         reviewerName: 'Moses Simon',
-        reviewerAvatar: EventraImages.onboardingImage1,
+        reviewerAvatar: EventraImages.weddingImage,
         rating: 4.0,
         date: '25-01-2025',
         body:
@@ -174,7 +174,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       VendorReview(
         id: 'rev-003',
         reviewerName: 'Moses Simon',
-        reviewerAvatar: EventraImages.onboardingImage2,
+        reviewerAvatar: EventraImages.weddingImage,
         rating: 3.5,
         date: '25-01-2025',
         body:
@@ -186,7 +186,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       RelatedVendor(
         id: 'vendor-rel-001',
         name: 'Pozera Events',
-        image: EventraImages.onboardingImage1,
+        image: EventraImages.weddingImage,
         category: 'Decor',
         location: 'Lagos',
         rating: 4.85,
@@ -194,7 +194,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       RelatedVendor(
         id: 'vendor-rel-002',
         name: 'Crystal Photos',
-        image: EventraImages.onboardingImage2,
+        image: EventraImages.weddingImage,
         category: 'Photography',
         location: 'Lagos',
         rating: 4.70,
@@ -209,8 +209,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       tags: ['Decorator', 'Planner'],
       rating: 4.85,
       reviewsCount: 380,
-      coverImage: EventraImages.onboardingImage1,
-      profileImage: EventraImages.onboardingImage2,
+      coverImage: EventraImages.weddingImage,
+      profileImage: EventraImages.weddingImage,
       location: 'Lagos',
       followersCount: 1400,
       services: [
@@ -221,12 +221,12 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       ],
       catalogItems: catalogItems,
       videoThumbnails: [
-        EventraImages.onboardingImage1,
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
-        EventraImages.onboardingImage2,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
       ],
       reviews: reviews,
       relatedVendors: relatedVendors,
@@ -247,8 +247,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       tags: const ['Photographer', 'Videographer'],
       rating: 4.8,
       reviewsCount: 86,
-      coverImage: EventraImages.onboardingImage2,
-      profileImage: EventraImages.onboardingImage1,
+      coverImage: EventraImages.weddingImage,
+      profileImage: EventraImages.weddingImage,
       location: 'Victoria Island, Lagos',
       followersCount: 980,
       services: const [
@@ -264,7 +264,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           description:
               'A beautiful pre-wedding session to celebrate your love story.',
           price: 250000,
-          image: EventraImages.onboardingImage2,
+          image: EventraImages.weddingImage,
           whatToExpect: [
             '4 Hours of shooting',
             '50 edited pictures',
@@ -277,7 +277,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           description:
               'Complete wedding day coverage from preparation to reception.',
           price: 750000,
-          image: EventraImages.onboardingImage1,
+          image: EventraImages.weddingImage,
           whatToExpect: [
             'Full day coverage',
             '200 edited pictures',
@@ -286,10 +286,10 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         ),
       ],
       videoThumbnails: const [
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
@@ -310,8 +310,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       tags: const ['Decorator', 'Florist'],
       rating: 4.7,
       reviewsCount: 114,
-      coverImage: EventraImages.onboardingImage1,
-      profileImage: EventraImages.onboardingImage2,
+      coverImage: EventraImages.weddingImage,
+      profileImage: EventraImages.weddingImage,
       location: 'Ikoyi, Lagos',
       followersCount: 1200,
       services: const [
@@ -326,7 +326,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           title: 'Classic Wedding Package',
           description: 'Elegant floral décor for intimate weddings.',
           price: 150000,
-          image: EventraImages.onboardingImage1,
+          image: EventraImages.weddingImage,
           whatToExpect: [
             'Full venue flowers',
             'Bridal bouquet',
@@ -335,9 +335,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         ),
       ],
       videoThumbnails: const [
-        EventraImages.onboardingImage1,
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
@@ -358,8 +358,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       tags: const ['Catering', 'Chef'],
       rating: 4.9,
       reviewsCount: 120,
-      coverImage: EventraImages.onboardingImage2,
-      profileImage: EventraImages.onboardingImage1,
+      coverImage: EventraImages.weddingImage,
+      profileImage: EventraImages.weddingImage,
       location: 'Lekki, Lagos',
       followersCount: 2100,
       services: const [
@@ -375,7 +375,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           description:
               'Full buffet setup for corporate events and team lunches.',
           price: 180000,
-          image: EventraImages.onboardingImage2,
+          image: EventraImages.weddingImage,
           whatToExpect: [
             '3-course meal',
             'Service staff included',
@@ -384,8 +384,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         ),
       ],
       videoThumbnails: const [
-        EventraImages.onboardingImage2,
-        EventraImages.onboardingImage1,
+        EventraImages.weddingImage,
+        EventraImages.weddingImage,
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,

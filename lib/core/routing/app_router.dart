@@ -33,7 +33,8 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: OnboardingLoadingPage.path,
+    // initialLocation: OnboardingLoadingPage.path,
+    initialLocation: HomePage.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(

@@ -1,6 +1,7 @@
 import 'package:eventra/features/home/presentation/widgets/home_bottom_nav_item.dart';
 import 'package:eventra/features/home/presentation/widgets/home_bottom_search_action.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class EventraBottomNav extends StatelessWidget {
@@ -29,7 +30,7 @@ class EventraBottomNav extends StatelessWidget {
           SizedBox(
             key: const Key('nav_tab_0'),
             child: HomeBottomNavItem(
-              iconData: Icons.home_rounded,
+              iconPath: EventraVectors.homeIcon,
               label: l10n.navHome,
               isActive: currentIndex == 0,
               onTap: () => onTap(0),
@@ -38,7 +39,7 @@ class EventraBottomNav extends StatelessWidget {
           SizedBox(
             key: const Key('nav_tab_1'),
             child: HomeBottomNavItem(
-              iconData: Icons.explore_outlined,
+              iconPath: EventraVectors.stickynote,
               label: l10n.navEnquiries,
               isActive: currentIndex == 1,
               onTap: () => onTap(1),
@@ -48,7 +49,7 @@ class EventraBottomNav extends StatelessWidget {
           SizedBox(
             key: const Key('nav_tab_3'),
             child: HomeBottomNavItem(
-              iconData: Icons.favorite_outline_rounded,
+              iconPath: EventraVectors.showcaseIcon,
               label: l10n.navShowcase,
               isActive: currentIndex == 3,
               onTap: () => onTap(3),
@@ -57,7 +58,8 @@ class EventraBottomNav extends StatelessWidget {
           SizedBox(
             key: const Key('nav_tab_4'),
             child: HomeBottomNavItem(
-              iconData: Icons.person_outline_rounded,
+              pathIsImage: true,
+              iconPath: EventraImages.profileDummy,
               label: l10n.navProfile,
               isActive: currentIndex == 4,
               onTap: () => onTap(4),

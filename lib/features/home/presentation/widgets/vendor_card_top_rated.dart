@@ -1,6 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 
@@ -21,38 +23,42 @@ class VendorCardTopRated extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(24),
+        color: AppColorSchemes.neutrals0,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-            child: Image.asset(
-              vendor.image,
-              height: 176,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(10),
+              ),
+              child: Image.asset(
+                EventraImages.womanWithweddinggown,
+                height: 176,
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
+                  flex: 3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         vendor.name,
-                        style: 18.w700.copyWith(color: colorScheme.onSurface),
+                        style: 16.w500.copyWith(color: colorScheme.onSurface),
                       ),
                       4.vertSpacing,
                       Text(
-                        vendor.location,
-                        style: 13.w400.copyWith(
+                        vendor.category,
+                        style: 14.w400.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
@@ -66,26 +72,23 @@ class VendorCardTopRated extends StatelessWidget {
                           ),
                           4.horizSpacing,
                           Text(
-                            '${vendor.rating} • ${vendor.category}',
-                            style: 13.w500.copyWith(
-                              color: colorScheme.onSurface,
+                            '(${vendor.rating})',
+                            style: 14.w500.copyWith(
+                              color: colorScheme.onSurfaceVariant,
                             ),
                           ),
                         ],
-                      ),
-                      6.vertSpacing,
-                      Text(
-                        vendor.startingPrice.getValue,
-                        style: 13.w700.copyWith(color: colorScheme.primary),
                       ),
                     ],
                   ),
                 ),
                 12.horizSpacing,
-                EventraButton(
-                  buttonText: context.l10n.homeViewProfile,
-                  width: 110,
-                  onPressed: onViewProfile,
+                Flexible(
+                  flex: 2,
+                  child: EventraButton.smallBorder(
+                    buttonText: context.l10n.homeViewProfile,
+                    onPressed: onViewProfile,
+                  ),
                 ),
               ],
             ),

@@ -14,16 +14,11 @@ class HomeBottomSearchAction extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: colorScheme.primary,
-          shape: BoxShape.circle,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         child: SvgPicture.asset(
-          EventraVectors.homeIconSearch,
-          width: 22,
-          height: 22,
-          colorFilter: ColorFilter.mode(colorScheme.onPrimary, BlendMode.srcIn),
+          EventraVectors.homeIconSearchNew,
+          width: 55,
+          height: 55,
         ),
       ),
     );

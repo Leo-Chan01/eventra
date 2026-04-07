@@ -63,8 +63,8 @@ class _HomePromoBannerState extends State<HomePromoBanner> {
             itemBuilder: (context, index) {
               return HomePromoBannerImage(
                 imagePath: index == 1
-                    ? EventraImages.onboardingImage2
-                    : EventraImages.onboardingImage1,
+                    ? EventraImages.headerCarouselImage
+                    : EventraImages.headerCarouselImage,
               );
             },
           ),

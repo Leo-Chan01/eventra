@@ -43,6 +43,7 @@ class AppColorSchemes {
   static const Color accent900 = Color(0xFF7A4C00);
 
   // Neutrals
+  static const Color neutrals0 = Color(0xFFFFFFFF);
   static const Color neutrals50 = Color(0xFFFAFAF8);
   static const Color neutrals100 = Color(0xFFF2F0EC);
   static const Color neutrals200 = Color(0xFFE0DED8);

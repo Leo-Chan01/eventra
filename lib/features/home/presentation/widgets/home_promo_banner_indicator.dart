@@ -21,7 +21,7 @@ class HomePromoBannerIndicator extends StatelessWidget {
             borderRadius: BorderRadius.circular(999),
             color: activeIndex == index
                 ? colorScheme.primary
-                : colorScheme.primary.withValues(alpha: 0.3),
+                : colorScheme.onSurface.withValues(alpha: 0.3),
           ),
         ),
       ),

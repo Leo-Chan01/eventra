@@ -13,6 +13,7 @@ void main() {
     expect(File(EventraVectors.eventraPrimaryText).existsSync(), isTrue);
     expect(File(EventraVectors.filterIcon).existsSync(), isTrue);
     expect(File(EventraVectors.googleIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.homeIconSearchNew).existsSync(), isTrue);
     expect(File(EventraVectors.homeIcon).existsSync(), isTrue);
     expect(File(EventraVectors.homeIconSearch).existsSync(), isTrue);
     expect(File(EventraVectors.infoIcon).existsSync(), isTrue);

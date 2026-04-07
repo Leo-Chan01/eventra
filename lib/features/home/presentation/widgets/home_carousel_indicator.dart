@@ -27,7 +27,7 @@ class HomeCarouselIndicator extends StatelessWidget {
             borderRadius: BorderRadius.circular(999),
             color: activeIndex == index
                 ? colorScheme.primary
-                : colorScheme.primary.withValues(alpha: 0.24),
+                : colorScheme.onSurface.withValues(alpha: 0.25),
           ),
         ),
       ),

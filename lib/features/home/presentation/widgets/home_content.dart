@@ -31,6 +31,7 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(0, 16, 0, 120),
@@ -68,8 +69,8 @@ class HomeContent extends StatelessWidget {
             onSeeAll: () {},
           ),
           12.vertSpacing,
-          SizedBox(
-            height: 252,
+          AspectRatio(
+            aspectRatio: 16 / 9,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -77,14 +78,17 @@ class HomeContent extends StatelessWidget {
               separatorBuilder: (context, index) => 12.horizSpacing,
               itemBuilder: (context, index) {
                 final vendor = state.vendors[index];
-                return VendorCardFeatured(
-                  vendor: vendor,
-                  onTap: () {
-                    context.read<VendorDetailBloc>().add(
-                      VendorSelected(vendor.id),
-                    );
-                    context.pushNamed(VendorDetailPage.name);
-                  },
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: VendorCardFeatured(
+                    vendor: vendor,
+                    onTap: () async {
+                      context.read<VendorDetailBloc>().add(
+                        VendorSelected(vendor.id),
+                      );
+                      await context.pushNamed(VendorDetailPage.name);
+                    },
+                  ),
                 );
               },
             ),

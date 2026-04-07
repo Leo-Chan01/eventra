@@ -26,16 +26,19 @@ class HomeCategoryChip extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected
-              ? colorScheme.primary
-              : colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
+          color: isSelected ? colorScheme.primary : null,
           borderRadius: BorderRadius.circular(999),
+          border: Border.all(
+            color: isSelected
+                ? colorScheme.primary
+                : colorScheme.onSurfaceVariant.withValues(alpha: 0.2),
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (icon.isNotEmpty) ...[
-              Text(icon, style: const TextStyle(fontSize: 14)),
+              Image.asset(icon),
               6.horizSpacing,
             ],
             Text(

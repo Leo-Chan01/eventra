@@ -12,6 +12,8 @@ class EventraVectors {
       'assets/svgs/eventra-primary-text.svg';
   static const String filterIcon = 'assets/svgs/filter_icon.svg';
   static const String googleIcon = 'assets/svgs/google-icon.svg';
+  static const String homeIconSearchNew =
+      'assets/svgs/home-icon-search-new.svg';
   static const String homeIcon = 'assets/svgs/home-icon.svg';
   static const String homeIconSearch = 'assets/svgs/home_icon_search.svg';
   static const String infoIcon = 'assets/svgs/info-icon.svg';

@@ -20,10 +20,6 @@ class HeaderIcon extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.28),
-            shape: BoxShape.circle,
-          ),
           child: IconButton(
             onPressed: onPressed,
             icon: icon,

@@ -25,7 +25,7 @@ class SectionHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: 18.bold.copyWith(
+            style: 20.w400.copyWith(
               color: colorScheme.onSurface,
             ),
           ),
