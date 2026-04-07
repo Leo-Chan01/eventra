@@ -9,6 +9,9 @@ import 'package:eventra/features/auth/signup/presentation/pages/personal_details
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
+import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
+import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
+import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -42,6 +45,21 @@ class AppRouter {
         path: HomePage.path,
         name: HomePage.name,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: ClientNotificationsPage.path,
+        name: ClientNotificationsPage.name,
+        builder: (context, state) => const ClientNotificationsPage(),
+      ),
+      GoRoute(
+        path: TransactionHistoryPage.path,
+        name: TransactionHistoryPage.name,
+        builder: (context, state) => const TransactionHistoryPage(),
+      ),
+      GoRoute(
+        path: TransactionDetailsPage.path,
+        name: TransactionDetailsPage.name,
+        builder: (context, state) => const TransactionDetailsPage(),
       ),
       GoRoute(
         path: OnboardingLoadingPage.path,

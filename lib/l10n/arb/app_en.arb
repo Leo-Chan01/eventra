@@ -151,6 +151,60 @@
     "navSearch": "Search",
     "navShowcase": "Favourites",
     "navProfile": "Profile",
+    "notificationsTitle": "Notification",
+    "notificationsAllCount": "All ({count})",
+    "@notificationsAllCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "notificationsUnreadCount": "Unread ({count})",
+    "@notificationsUnreadCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "notificationsActionComingSoon": "This action will be available soon.",
+    "notificationsTransactionHistoryTitle": "Transaction History",
+    "notificationsSearchTransactionsHint": "Search transactions...",
+    "notificationsFilterAll": "All",
+    "notificationsFilterCompleted": "Completed",
+    "notificationsFilterPending": "Pending",
+    "notificationsFilterFailed": "Failed",
+    "notificationsTotalSpent": "Total Spent",
+    "notificationsTotalRefunds": "Total Refunds",
+    "notificationsRecentTransactions": "RECENT TRANSACTIONS",
+    "notificationsTransactionDetailsTitle": "Transaction Details",
+    "notificationsPaymentSuccessfulTitle": "Payment Successful",
+    "notificationsPaymentSuccessfulMessage": "Your payment has been processed successfully",
+    "notificationsVendorDetailsTitle": "Vendor Details",
+    "notificationsPaymentSent": "Payment Sent",
+    "notificationsContactVendor": "Contact Vendor",
+    "notificationsContactVendorFeedback": "We’ll help you contact this vendor shortly.",
+    "notificationsEventInformationTitle": "Event Information",
+    "notificationsEventType": "Event Type",
+    "notificationsEventDate": "Event Date",
+    "notificationsEventDescription": "Description",
+    "notificationsPaymentBreakdownTitle": "Payment Breakdown",
+    "notificationsSubtotal": "Subtotal",
+    "notificationsServiceFee": "Service Fee",
+    "notificationsTax": "Tax",
+    "notificationsTotalAmount": "Total Amount",
+    "notificationsPaymentMethodTitle": "Payment Method",
+    "notificationsPrimaryPaymentMethod": "Primary payment method",
+    "notificationsTransactionReferenceTitle": "Transaction Reference",
+    "notificationsReferenceCopied": "Transaction reference copied.",
+    "notificationsDownloadReceipt": "Download Receipt",
+    "notificationsReceiptComingSoon": "Receipt download will be available soon.",
+    "notificationsShareComingSoon": "Share options will be available soon.",
+    "notificationsNeedHelpTitle": "Need Help?",
+    "notificationsNeedHelpMessage": "If you have any questions about this transaction, our support team is here to help.",
+    "notificationsContactSupport": "Contact Support",
+    "notificationsSupportComingSoon": "Support contact options will be available soon.",
     "createPinTitle": "Create Pin",
     "createPinSubtitle": "You will use this pin for signing in and confirming your transactions."
 }

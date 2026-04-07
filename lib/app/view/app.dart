@@ -6,6 +6,7 @@ import 'package:eventra/features/auth/forgot_password/presentation/bloc/forgot_p
 import 'package:eventra/features/auth/login/presentation/bloc/login_bloc.dart';
 import 'package:eventra/features/auth/setup_pin/presentation/bloc/setup_pin_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
+import 'package:eventra/features/client/client_notification/presentation/bloc/client_notification_bloc.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/theme/app_theme.dart';
@@ -29,6 +30,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => ForgotPasswordBloc()),
         BlocProvider(create: (_) => SetupPinBloc()),
         BlocProvider(create: (_) => HomeBloc()),
+        BlocProvider(create: (_) => ClientNotificationBloc()),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {

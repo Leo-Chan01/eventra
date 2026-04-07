@@ -1,9 +1,12 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
+import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/home/presentation/widgets/header_icon.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -49,13 +52,13 @@ class HomeHeader extends StatelessWidget {
         ),
         HeaderIcon(
           icon: SvgPicture.asset(EventraVectors.chatMessage),
-          onPressed: () {},
+          onPressed: () => context.pushNamed(TransactionHistoryPage.name),
         ),
         10.horizSpacing,
         HeaderIcon(
           icon: SvgPicture.asset(EventraVectors.notificationBell),
           hasNotification: true,
-          onPressed: () {},
+          onPressed: () => context.pushNamed(ClientNotificationsPage.name),
         ),
       ],
     );

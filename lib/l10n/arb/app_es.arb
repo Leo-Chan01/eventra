@@ -27,5 +27,59 @@
     "navEnquiries": "Explorar",
     "navSearch": "Buscar",
     "navShowcase": "Favoritos",
-    "navProfile": "Perfil"
+    "navProfile": "Perfil",
+    "notificationsTitle": "Notificación",
+    "notificationsAllCount": "Todas ({count})",
+    "@notificationsAllCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "notificationsUnreadCount": "No leídas ({count})",
+    "@notificationsUnreadCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "notificationsActionComingSoon": "Esta acción estará disponible pronto.",
+    "notificationsTransactionHistoryTitle": "Historial de transacciones",
+    "notificationsSearchTransactionsHint": "Buscar transacciones...",
+    "notificationsFilterAll": "Todas",
+    "notificationsFilterCompleted": "Completadas",
+    "notificationsFilterPending": "Pendientes",
+    "notificationsFilterFailed": "Fallidas",
+    "notificationsTotalSpent": "Total gastado",
+    "notificationsTotalRefunds": "Total reembolsado",
+    "notificationsRecentTransactions": "TRANSACCIONES RECIENTES",
+    "notificationsTransactionDetailsTitle": "Detalles de la transacción",
+    "notificationsPaymentSuccessfulTitle": "Pago exitoso",
+    "notificationsPaymentSuccessfulMessage": "Tu pago se ha procesado correctamente",
+    "notificationsVendorDetailsTitle": "Detalles del proveedor",
+    "notificationsPaymentSent": "Pago enviado",
+    "notificationsContactVendor": "Contactar proveedor",
+    "notificationsContactVendorFeedback": "Te ayudaremos a contactar a este proveedor pronto.",
+    "notificationsEventInformationTitle": "Información del evento",
+    "notificationsEventType": "Tipo de evento",
+    "notificationsEventDate": "Fecha del evento",
+    "notificationsEventDescription": "Descripción",
+    "notificationsPaymentBreakdownTitle": "Desglose del pago",
+    "notificationsSubtotal": "Subtotal",
+    "notificationsServiceFee": "Cargo por servicio",
+    "notificationsTax": "Impuesto",
+    "notificationsTotalAmount": "Monto total",
+    "notificationsPaymentMethodTitle": "Método de pago",
+    "notificationsPrimaryPaymentMethod": "Método de pago principal",
+    "notificationsTransactionReferenceTitle": "Referencia de transacción",
+    "notificationsReferenceCopied": "Referencia copiada.",
+    "notificationsDownloadReceipt": "Descargar recibo",
+    "notificationsReceiptComingSoon": "La descarga del recibo estará disponible pronto.",
+    "notificationsShareComingSoon": "Las opciones para compartir estarán disponibles pronto.",
+    "notificationsNeedHelpTitle": "¿Necesitas ayuda?",
+    "notificationsNeedHelpMessage": "Si tienes alguna pregunta sobre esta transacción, nuestro equipo de soporte está aquí para ayudarte.",
+    "notificationsContactSupport": "Contactar soporte",
+    "notificationsSupportComingSoon": "Las opciones de soporte estarán disponibles pronto."
 }
