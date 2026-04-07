@@ -81,5 +81,78 @@
     "notificationsNeedHelpTitle": "¿Necesitas ayuda?",
     "notificationsNeedHelpMessage": "Si tienes alguna pregunta sobre esta transacción, nuestro equipo de soporte está aquí para ayudarte.",
     "notificationsContactSupport": "Contactar soporte",
-    "notificationsSupportComingSoon": "Las opciones de soporte estarán disponibles pronto."
+    "notificationsSupportComingSoon": "Las opciones de soporte estarán disponibles pronto.",
+    "vendorDetailAbout": "Acerca de",
+    "vendorDetailCatalog": "Catálogo",
+    "vendorDetailVideos": "Videos",
+    "vendorDetailReviews": "Reseñas",
+    "vendorDetailServices": "Servicios",
+    "vendorDetailVerificationAndTrust": "Verificación y confianza",
+    "vendorDetailTopRated": "Mejor valorado",
+    "vendorDetailIdVerified": "ID Verificado (Emitido por el gobierno)",
+    "vendorDetailBackgroundChecked": "Verificación de antecedentes - Aprobado",
+    "vendorDetailVerificationBadge": "Insignia de verificación - Sí",
+    "vendorDetailRelatedVendors": "PROVEEDORES RELACIONADOS",
+    "vendorDetailMakeEnquiry": "Hacer una consulta",
+    "vendorDetailMessageVendor": "Mensaje al proveedor",
+    "vendorDetailFollowers": "{count} seguidores",
+    "@vendorDetailFollowers": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailRatings": "{count} valoraciones",
+    "@vendorDetailRatings": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailRatingReviews": "{count} reseñas",
+    "@vendorDetailRatingReviews": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailShareTitle": "Enviar a tu contacto",
+    "vendorDetailShareTo": "Compartir en",
+    "vendorDetailCopyLink": "Copiar",
+    "vendorDetailLinkCopied": "Enlace copiado al portapapeles.",
+    "catalogItemWhatToExpect": "Qué esperar",
+    "enquirySentTitle": "¡Consulta enviada!",
+    "enquirySentMessage": "Recibirás una notificación cuando {vendorName} revise tu consulta.",
+    "@enquirySentMessage": {
+      "placeholders": {
+        "vendorName": {
+          "type": "String"
+        }
+      }
+    },
+    "enquirySentViewProfile": "Ver perfil",
+    "inboxTitle": "Mensajes",
+    "inboxSearchHint": "Buscar proveedores",
+    "inboxToday": "Hoy",
+    "inboxYesterday": "Ayer",
+    "inboxOnline": "En línea",
+    "inboxOffline": "Desconectado",
+    "inboxNoMessages": "Sin mensajes aún",
+    "chatInputHint": "Escribe...",
+    "chatEnquiry": "Consulta del cliente",
+    "chatEnquiryView": "Ver",
+    "chatInvoice": "Factura de reserva",
+    "chatInvoiceView": "Ver",
+    "chatConfirmedTitle": "¡Consulta confirmada!",
+    "chatConfirmedMessage": "Ahora puedes chatear con {vendorName} para más detalles sobre la reserva.",
+    "@chatConfirmedMessage": {
+      "placeholders": {
+        "vendorName": {
+          "type": "String"
+        }
+      }
+    }
 }

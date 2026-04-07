@@ -6,7 +6,10 @@ import 'package:eventra/features/auth/forgot_password/presentation/bloc/forgot_p
 import 'package:eventra/features/auth/login/presentation/bloc/login_bloc.dart';
 import 'package:eventra/features/auth/setup_pin/presentation/bloc/setup_pin_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
+import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
+import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/client_notification/presentation/bloc/client_notification_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/theme/app_theme.dart';
@@ -31,6 +34,9 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => SetupPinBloc()),
         BlocProvider(create: (_) => HomeBloc()),
         BlocProvider(create: (_) => ClientNotificationBloc()),
+        BlocProvider(create: (_) => VendorDetailBloc()),
+        BlocProvider(create: (_) => ClientBookingBloc()),
+        BlocProvider(create: (_) => ClientInboxBloc()),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {

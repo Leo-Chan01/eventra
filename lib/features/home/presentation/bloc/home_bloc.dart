@@ -301,6 +301,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     const allVendors = [
       Vendor(
+        id: 'vendor-004',
         name: 'Foodies Event',
         category: 'Catering',
         rating: 4.9,
@@ -311,6 +312,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         isFavorite: true,
       ),
       Vendor(
+        id: 'vendor-002',
         name: 'Swift Pixel',
         category: 'Photography',
         rating: 4.8,
@@ -320,6 +322,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         startingPrice: 220000,
       ),
       Vendor(
+        id: 'vendor-003',
         name: 'Wedding Grove',
         category: 'Decor',
         rating: 4.7,
@@ -329,6 +332,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         startingPrice: 150000,
       ),
       Vendor(
+        id: 'vendor-001',
         name: 'Zin Events',
         category: 'MC',
         rating: 4.8,

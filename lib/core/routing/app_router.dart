@@ -9,9 +9,14 @@ import 'package:eventra/features/auth/signup/presentation/pages/personal_details
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
+import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
+import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -123,6 +128,31 @@ class AppRouter {
         path: SetupPinPage.path,
         name: SetupPinPage.name,
         builder: (context, state) => const SetupPinPage(),
+      ),
+      GoRoute(
+        path: VendorDetailPage.path,
+        name: VendorDetailPage.name,
+        builder: (context, state) => const VendorDetailPage(),
+      ),
+      GoRoute(
+        path: CatalogItemDetailPage.path,
+        name: CatalogItemDetailPage.name,
+        builder: (context, state) => const CatalogItemDetailPage(),
+      ),
+      GoRoute(
+        path: EnquirySentPage.path,
+        name: EnquirySentPage.name,
+        builder: (context, state) => const EnquirySentPage(),
+      ),
+      GoRoute(
+        path: ClientInboxPage.path,
+        name: ClientInboxPage.name,
+        builder: (context, state) => const ClientInboxPage(),
+      ),
+      GoRoute(
+        path: ChatPage.path,
+        name: ChatPage.name,
+        builder: (context, state) => const ChatPage(),
       ),
     ],
   );

@@ -1,4 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/home_categories.dart';
 import 'package:eventra/features/home/presentation/widgets/home_header.dart';
@@ -12,6 +14,7 @@ import 'package:eventra/features/home/presentation/widgets/vendor_card_featured.
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({
@@ -73,7 +76,16 @@ class HomeContent extends StatelessWidget {
               itemCount: state.vendors.length,
               separatorBuilder: (context, index) => 12.horizSpacing,
               itemBuilder: (context, index) {
-                return VendorCardFeatured(vendor: state.vendors[index]);
+                final vendor = state.vendors[index];
+                return VendorCardFeatured(
+                  vendor: vendor,
+                  onTap: () {
+                    context.read<VendorDetailBloc>().add(
+                      VendorSelected(vendor.id),
+                    );
+                    context.pushNamed(VendorDetailPage.name);
+                  },
+                );
               },
             ),
           ),

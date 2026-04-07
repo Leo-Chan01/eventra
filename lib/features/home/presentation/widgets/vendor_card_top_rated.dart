@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 class VendorCardTopRated extends StatelessWidget {
   const VendorCardTopRated({
     required this.vendor,
+    this.onViewProfile,
     super.key,
   });
 
   final Vendor vendor;
+  final VoidCallback? onViewProfile;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +85,7 @@ class VendorCardTopRated extends StatelessWidget {
                 EventraButton(
                   buttonText: context.l10n.homeViewProfile,
                   width: 110,
-                  onPressed: () {},
+                  onPressed: onViewProfile,
                 ),
               ],
             ),

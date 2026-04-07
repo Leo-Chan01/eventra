@@ -1,7 +1,11 @@
+import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/features/home/presentation/widgets/home_carousel_indicator.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_card_top_rated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeTopRatedCarousel extends StatefulWidget {
   const HomeTopRatedCarousel({required this.vendors, super.key});
@@ -41,9 +45,18 @@ class _HomeTopRatedCarouselState extends State<HomeTopRatedCarousel> {
             },
             itemCount: widget.vendors.length,
             itemBuilder: (context, index) {
+              final vendor = widget.vendors[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: VendorCardTopRated(vendor: widget.vendors[index]),
+                child: VendorCardTopRated(
+                  vendor: vendor,
+                  onViewProfile: () async {
+                    context.read<VendorDetailBloc>().add(
+                      VendorSelected(vendor.id),
+                    );
+                    await context.pushNamed(VendorDetailPage.name);
+                  },
+                ),
               );
             },
           ),

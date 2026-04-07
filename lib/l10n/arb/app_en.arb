@@ -206,5 +206,78 @@
     "notificationsContactSupport": "Contact Support",
     "notificationsSupportComingSoon": "Support contact options will be available soon.",
     "createPinTitle": "Create Pin",
-    "createPinSubtitle": "You will use this pin for signing in and confirming your transactions."
+    "createPinSubtitle": "You will use this pin for signing in and confirming your transactions.",
+    "vendorDetailAbout": "About",
+    "vendorDetailCatalog": "Catalog",
+    "vendorDetailVideos": "Videos",
+    "vendorDetailReviews": "Reviews",
+    "vendorDetailServices": "Services",
+    "vendorDetailVerificationAndTrust": "Verification and trust",
+    "vendorDetailTopRated": "Top rated",
+    "vendorDetailIdVerified": "ID Verified (Government-issued)",
+    "vendorDetailBackgroundChecked": "Background Check-Passed",
+    "vendorDetailVerificationBadge": "Verification badge - Yes",
+    "vendorDetailRelatedVendors": "RELATED VENDORS",
+    "vendorDetailMakeEnquiry": "Make Enquiry",
+    "vendorDetailMessageVendor": "Message Vendor",
+    "vendorDetailFollowers": "{count} followers",
+    "@vendorDetailFollowers": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailRatings": "{count} ratings",
+    "@vendorDetailRatings": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailRatingReviews": "{count} reviews",
+    "@vendorDetailRatingReviews": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "vendorDetailShareTitle": "Send to your contact",
+    "vendorDetailShareTo": "Share to",
+    "vendorDetailCopyLink": "Copy",
+    "vendorDetailLinkCopied": "Link copied to clipboard.",
+    "catalogItemWhatToExpect": "What to expect",
+    "enquirySentTitle": "Enquiry Sent!",
+    "enquirySentMessage": "You will get a notification once {vendorName} reviews your enquiry.",
+    "@enquirySentMessage": {
+      "placeholders": {
+        "vendorName": {
+          "type": "String"
+        }
+      }
+    },
+    "enquirySentViewProfile": "View profile",
+    "inboxTitle": "Messages",
+    "inboxSearchHint": "Search for vendors",
+    "inboxToday": "Today",
+    "inboxYesterday": "Yesterday",
+    "inboxOnline": "Online",
+    "inboxOffline": "Offline",
+    "inboxNoMessages": "No messages yet",
+    "chatInputHint": "Type...",
+    "chatEnquiry": "Client Enquiry",
+    "chatEnquiryView": "View",
+    "chatInvoice": "Booking Invoice",
+    "chatInvoiceView": "View",
+    "chatConfirmedTitle": "Enquiry confirmed!",
+    "chatConfirmedMessage": "You can now chat with {vendorName} for more details on booking.",
+    "@chatConfirmedMessage": {
+      "placeholders": {
+        "vendorName": {
+          "type": "String"
+        }
+      }
+    }
 }

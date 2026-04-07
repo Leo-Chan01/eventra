@@ -22,9 +22,11 @@ class Vendor extends Equatable {
     required this.image,
     required this.location,
     required this.startingPrice,
+    this.id = '',
     this.isFavorite = false,
   });
 
+  final String id;
   final String name;
   final String category;
   final double rating;
@@ -36,6 +38,7 @@ class Vendor extends Equatable {
 
   @override
   List<Object?> get props => [
+    id,
     name,
     category,
     rating,
