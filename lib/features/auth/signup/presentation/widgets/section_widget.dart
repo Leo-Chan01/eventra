@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class Section extends StatelessWidget {
   const Section({
     required this.title,
+    super.key,
     this.content,
     this.items,
     this.itemIcon,

@@ -21,10 +21,8 @@ class HeaderIcon extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
+            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.28),
             shape: BoxShape.circle,
-            border: Border.all(
-              color: colorScheme.outline.withValues(alpha: 0.1),
-            ),
           ),
           child: IconButton(
             onPressed: onPressed,
@@ -33,18 +31,14 @@ class HeaderIcon extends StatelessWidget {
         ),
         if (hasNotification)
           Positioned(
-            right: 8,
-            top: 8,
+            right: 10,
+            top: 10,
             child: Container(
               width: 10,
               height: 10,
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: colorScheme.error,
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.white,
-                  width: 2,
-                ),
               ),
             ),
           ),

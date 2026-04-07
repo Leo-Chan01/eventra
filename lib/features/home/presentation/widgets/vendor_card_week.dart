@@ -12,35 +12,25 @@ class VendorCardWeek extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.18),
+        borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(16),
-            ),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
             child: Image.asset(
               vendor.image,
-              height: 150,
+              height: 120,
               width: double.infinity,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Container(
-                height: 150,
+                height: 120,
                 width: double.infinity,
                 color: colorScheme.primaryContainer,
                 child: Icon(
@@ -52,34 +42,34 @@ class VendorCardWeek extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Text(
-                    vendor.name,
-                    style: 16.bold.copyWith(
-                      color: colorScheme.onSurface,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Text(
+                  vendor.name,
+                  style: 14.w700.copyWith(color: colorScheme.onSurface),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
+                4.vertSpacing,
                 Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.star_rounded,
-                      color: Colors.amber,
-                      size: 18,
+                      color: colorScheme.tertiary,
+                      size: 16,
                     ),
                     4.horizSpacing,
                     Text(
                       '${vendor.rating}',
-                      style: 14.w500.copyWith(
-                        color: colorScheme.onSurface,
-                      ),
+                      style: 12.w600.copyWith(color: colorScheme.onSurface),
                     ),
                   ],
+                ),
+                6.vertSpacing,
+                Text(
+                  vendor.startingPrice.getValue,
+                  style: 12.w700.copyWith(color: colorScheme.primary),
                 ),
               ],
             ),

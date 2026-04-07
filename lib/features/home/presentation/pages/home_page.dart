@@ -1,15 +1,12 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.dart';
-import 'package:eventra/features/home/presentation/widgets/home_categories.dart';
 import 'package:eventra/features/home/presentation/widgets/home_content.dart';
-import 'package:eventra/features/home/presentation/widgets/home_header.dart';
-import 'package:eventra/features/home/presentation/widgets/home_join_as_vendor_cta.dart';
-import 'package:eventra/features/home/presentation/widgets/home_promo_banner.dart';
-import 'package:eventra/features/home/presentation/widgets/home_search_bar.dart';
-import 'package:eventra/features/home/presentation/widgets/vendor_card_featured.dart';
-import 'package:eventra/features/home/presentation/widgets/vendor_card_top_rated.dart';
-import 'package:eventra/features/home/presentation/widgets/vendor_card_week.dart';
+import 'package:eventra/features/home/presentation/widgets/home_explore_tab.dart';
+import 'package:eventra/features/home/presentation/widgets/home_filter_sheet.dart';
+import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,22 +20,40 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: colorScheme.surface,
           body: SafeArea(
             bottom: false,
             child: IndexedStack(
               index: state.currentIndex,
               children: [
-                HomeContent(state: state),
-                const Center(child: Text('Enquiries Page')),
-                const Center(child: Text('Search Page')),
-                const Center(child: Text('Showcase Page')),
-                const Center(child: Text('Profile Page')),
+                HomeContent(
+                  state: state,
+                  onOpenFilter: () => _openFilterSheet(context),
+                  onOpenLocationLookup: () => _openLocationLookupSheet(context),
+                ),
+                HomeExploreTab(
+                  state: state,
+                  onOpenFilter: () => _openFilterSheet(context),
+                  onOpenLocationLookup: () => _openLocationLookupSheet(context),
+                ),
+                HomeLocationLookupView(state: state),
+                Center(
+                  child: Text(
+                    l10n.navShowcase,
+                    style: 18.w600.copyWith(color: colorScheme.onSurface),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    l10n.navProfile,
+                    style: 18.w600.copyWith(color: colorScheme.onSurface),
+                  ),
+                ),
               ],
             ),
           ),
@@ -50,6 +65,65 @@ class HomePage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  void _openFilterSheet(BuildContext context) {
+    final homeBloc = context.read<HomeBloc>();
+
+    unawaited(
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        builder: (sheetContext) {
+          return BlocProvider.value(
+            value: homeBloc,
+            child: BlocBuilder<HomeBloc, HomeState>(
+              builder: (_, state) {
+                return HomeFilterSheet(
+                  state: state,
+                  onOpenLocationLookup: () {
+                    Navigator.of(sheetContext).pop();
+                    _openLocationLookupSheet(context);
+                  },
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  void _openLocationLookupSheet(BuildContext context) {
+    final homeBloc = context.read<HomeBloc>();
+
+    unawaited(
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        builder: (_) {
+          return BlocProvider.value(
+            value: homeBloc,
+            child: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                return FractionallySizedBox(
+                  heightFactor: 0.94,
+                  child: HomeLocationLookupView(
+                    state: state,
+                    showCloseAction: true,
+                    closeOnSelect: true,
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

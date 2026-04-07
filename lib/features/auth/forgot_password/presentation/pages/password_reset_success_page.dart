@@ -1,6 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +31,12 @@ class PasswordResetSuccessPage extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.green.withValues(alpha: 0.1),
+                  color: colorScheme.primary.withValues(alpha: 0.1),
                 ),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.check_circle,
-                    color: Colors.green,
+                    color: colorScheme.primary,
                     size: 80,
                   ),
                 ),

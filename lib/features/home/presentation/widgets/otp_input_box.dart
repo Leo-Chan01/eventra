@@ -6,6 +6,7 @@ class OtpInputBox extends StatelessWidget {
     required this.controller,
     required this.focusNode,
     required this.onChanged,
+    super.key,
   });
 
   final TextEditingController controller;

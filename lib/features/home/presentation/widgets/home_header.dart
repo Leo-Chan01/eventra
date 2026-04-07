@@ -16,53 +16,46 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  l10n.homeHello,
-                  style: 20.regular.copyWith(
-                    color: colorScheme.onSurface,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    l10n.homeHello,
+                    style: 22.w500.copyWith(color: colorScheme.onSurface),
                   ),
-                ),
-                4.horizSpacing,
-                Text(
-                  userName,
-                  style: 20.bold.copyWith(
-                    color: colorScheme.onSurface,
+                  4.horizSpacing,
+                  Text(
+                    userName,
+                    style: 22.w700.copyWith(color: colorScheme.onSurface),
                   ),
-                ),
-              ],
-            ),
-            Text(
-              l10n.homeExplore,
-              style: 14.regular.copyWith(
-                color: colorScheme.onSurfaceVariant,
+                ],
               ),
-            ),
-          ],
+              4.vertSpacing,
+              Text(
+                l10n.homeExplore,
+                style: 13.w400.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
         ),
-        Row(
-          children: [
-            HeaderIcon(
-              icon: SvgPicture.asset(EventraVectors.chatMessage),
-              onPressed: () {},
-            ),
-            12.horizSpacing,
-            HeaderIcon(
-              icon: SvgPicture.asset(EventraVectors.notificationBell),
-              hasNotification: true,
-              onPressed: () {},
-            ),
-          ],
+        HeaderIcon(
+          icon: SvgPicture.asset(EventraVectors.chatMessage),
+          onPressed: () {},
+        ),
+        10.horizSpacing,
+        HeaderIcon(
+          icon: SvgPicture.asset(EventraVectors.notificationBell),
+          hasNotification: true,
+          onPressed: () {},
         ),
       ],
     );

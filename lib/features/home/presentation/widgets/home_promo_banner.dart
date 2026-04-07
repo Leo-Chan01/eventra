@@ -1,4 +1,7 @@
 import 'dart:async';
+
+import 'package:eventra/features/home/presentation/widgets/home_promo_banner_image.dart';
+import 'package:eventra/features/home/presentation/widgets/home_promo_banner_indicator.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +61,7 @@ class _HomePromoBannerState extends State<HomePromoBanner> {
             },
             itemCount: 3,
             itemBuilder: (context, index) {
-              return _BannerImage(
+              return HomePromoBannerImage(
                 imagePath: index == 1
                     ? EventraImages.onboardingImage2
                     : EventraImages.onboardingImage1,
@@ -67,55 +70,8 @@ class _HomePromoBannerState extends State<HomePromoBanner> {
           ),
         ),
         const SizedBox(height: 12),
-        _PageIndicator(activeIndex: _currentPage),
+        HomePromoBannerIndicator(activeIndex: _currentPage),
       ],
-    );
-  }
-}
-
-class _BannerImage extends StatelessWidget {
-  const _BannerImage({required this.imagePath});
-  final String imagePath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-class _PageIndicator extends StatelessWidget {
-  const _PageIndicator({required this.activeIndex});
-  final int activeIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        3,
-        (index) => Container(
-          width: 8,
-          height: 8,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: activeIndex == index
-                ? colorScheme.primary
-                : colorScheme.primary.withValues(alpha: 0.3),
-          ),
-        ),
-      ),
     );
   }
 }

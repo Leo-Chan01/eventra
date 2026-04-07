@@ -1,4 +1,5 @@
 import 'package:eventra/features/home/domain/models/vendor.dart';
+import 'package:eventra/features/home/presentation/widgets/home_carousel_indicator.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_card_top_rated.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +24,14 @@ class _HomeTopRatedCarouselState extends State<HomeTopRatedCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.vendors.isEmpty) return const SizedBox.shrink();
+    if (widget.vendors.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return Column(
       children: [
         SizedBox(
-          height: 330,
+          height: 324,
           child: PageView.builder(
             controller: _pageController,
             onPageChanged: (index) {
@@ -45,47 +48,12 @@ class _HomeTopRatedCarouselState extends State<HomeTopRatedCarousel> {
             },
           ),
         ),
-        const SizedBox(height: 16),
-        _CarouselIndicator(
+        const SizedBox(height: 12),
+        HomeCarouselIndicator(
           activeIndex: _currentPage,
           count: widget.vendors.length,
         ),
       ],
-    );
-  }
-}
-
-class _CarouselIndicator extends StatelessWidget {
-  const _CarouselIndicator({
-    required this.activeIndex,
-    required this.count,
-  });
-
-  final int activeIndex;
-  final int count;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        count,
-        (index) => AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          width: activeIndex == index ? 24 : 8,
-          height: 8,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: activeIndex == index
-                ? const Color(0xFFFF5722) // Using the orange from design
-                : colorScheme.outline.withValues(alpha: 0.2),
-          ),
-        ),
-      ),
     );
   }
 }

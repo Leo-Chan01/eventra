@@ -3,5 +3,29 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    },
+    "homeHello": "Hola,",
+    "homeExplore": "Vamos a conseguirte un proveedor de confianza.",
+    "homeSearchPlaceholder": "Buscar por proveedor o ubicación",
+    "homeFeaturedVendors": "Proveedores destacados",
+    "homeTopRatedVendors": "Mejor valorados",
+    "homeVendorsOfTheWeek": "Proveedores de la semana",
+    "homeSeeAll": "Ver todo",
+    "homeJoinAsVendor": "Agregar un proveedor",
+    "homeExploreNearbyVendors": "Explora proveedores cerca de ti",
+    "homeFilterTitle": "Filtro",
+    "homeFilterCategories": "Categorías",
+    "homeFilterRating": "Calificaciones",
+    "homeFilterPriceRange": "Rango de precios",
+    "homeFilterShowResult": "Mostrar resultado",
+    "homeYourCurrentAddress": "Tu dirección actual",
+    "homeLocationLookupTitle": "Buscar ubicación",
+    "homeRecentLocations": "Ubicaciones recientes",
+    "homeSearchByLocation": "Buscar ubicación",
+    "homeViewProfile": "Ver perfil",
+    "navHome": "Inicio",
+    "navEnquiries": "Explorar",
+    "navSearch": "Buscar",
+    "navShowcase": "Favoritos",
+    "navProfile": "Perfil"
 }
