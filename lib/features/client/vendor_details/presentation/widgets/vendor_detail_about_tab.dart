@@ -4,6 +4,8 @@ import 'package:eventra/features/client/vendor_details/presentation/widgets/rela
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_service_item.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_trust_section.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -27,45 +29,77 @@ class VendorDetailAboutTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            vendor.bio,
-            style: 13.w400.copyWith(
-              color: colorScheme.onSurfaceVariant,
-              height: 1.5,
+          Card(
+            color: AppColorSchemes.neutrals0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 16,
+              ),
+              child: Text(
+                vendor.bio,
+                style: 15.w500.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                  height: 1.5,
+                ),
+              ),
             ),
           ),
           20.vertSpacing,
-          Text(
-            l10n.vendorDetailServices,
-            style: 14.w700.copyWith(color: colorScheme.onSurface),
+          Card(
+            color: AppColorSchemes.neutrals0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 16,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.vendorDetailServices,
+                    style: 14.w700.copyWith(color: colorScheme.onSurface),
+                  ),
+                  10.vertSpacing,
+                  ...vendor.services.map((s) => VendorServiceItem(label: s)),
+                ],
+              ),
+            ),
           ),
-          10.vertSpacing,
-          ...vendor.services.map((s) => VendorServiceItem(label: s)),
           20.vertSpacing,
-          VendorTrustSection(
-            title: l10n.vendorDetailVerificationAndTrust,
-            items: [
-              if (vendor.isTopRated)
-                (
-                  label: l10n.vendorDetailTopRated,
-                  icon: HugeIcons.strokeRoundedStar,
-                ),
-              if (vendor.isIdVerified)
-                (
-                  label: l10n.vendorDetailIdVerified,
-                  icon: HugeIcons.strokeRoundedIdentification,
-                ),
-              if (vendor.isBackgroundChecked)
-                (
-                  label: l10n.vendorDetailBackgroundChecked,
-                  icon: HugeIcons.strokeRoundedCheckmarkBadge01,
-                ),
-              if (vendor.hasVerificationBadge)
-                (
-                  label: l10n.vendorDetailVerificationBadge,
-                  icon: HugeIcons.strokeRoundedAward01,
-                ),
-            ],
+          Card(
+            color: AppColorSchemes.neutrals0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 16,
+              ),
+              child: VendorTrustSection(
+                title: l10n.vendorDetailVerificationAndTrust,
+                items: [
+                  if (vendor.isTopRated)
+                    (
+                      label: l10n.vendorDetailTopRated,
+                      icon: EventraVectors.goodCheckGreen,
+                    ),
+                  if (vendor.isIdVerified)
+                    (
+                      label: l10n.vendorDetailIdVerified,
+                      icon: EventraVectors.goodCheckGreen,
+                    ),
+                  if (vendor.isBackgroundChecked)
+                    (
+                      label: l10n.vendorDetailBackgroundChecked,
+                      icon: EventraVectors.goodCheckGreen,
+                    ),
+                  if (vendor.hasVerificationBadge)
+                    (
+                      label: l10n.vendorDetailVerificationBadge,
+                      icon: EventraVectors.goodCheckGreen,
+                    ),
+                ],
+              ),
+            ),
           ),
           24.vertSpacing,
           RelatedVendorsSection(

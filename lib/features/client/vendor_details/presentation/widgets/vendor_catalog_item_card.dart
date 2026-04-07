@@ -1,6 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/core/utils/price_formatter.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -23,13 +24,13 @@ class VendorCatalogItemCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
-          borderRadius: BorderRadius.circular(16),
+          color: AppColorSchemes.neutrals0,
+          borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(5),
               child: Image.asset(
                 item.image,
                 width: 64,
@@ -38,10 +39,10 @@ class VendorCatalogItemCard extends StatelessWidget {
                 errorBuilder: (_, __, ___) => Container(
                   width: 64,
                   height: 64,
-                  color: colorScheme.primaryContainer,
-                  child: Icon(
+                  color: AppColorSchemes.neutrals0,
+                  child: const Icon(
                     Icons.image_not_supported_outlined,
-                    color: colorScheme.primary,
+                    color: AppColorSchemes.neutrals500,
                   ),
                 ),
               ),
@@ -53,14 +54,14 @@ class VendorCatalogItemCard extends StatelessWidget {
                 children: [
                   Text(
                     item.title,
-                    style: 13.w700.copyWith(color: colorScheme.onSurface),
+                    style: 16.w500.copyWith(color: colorScheme.onSurface),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.vertSpacing,
                   Text(
                     item.price.getValue,
-                    style: 12.w600.copyWith(color: colorScheme.primary),
+                    style: 14.w700.copyWith(color: colorScheme.onSurface),
                   ),
                   4.vertSpacing,
                   Text(

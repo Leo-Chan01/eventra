@@ -2,23 +2,34 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
 
 class VendorTagChip extends StatelessWidget {
-  const VendorTagChip({required this.label, super.key});
+  const VendorTagChip({
+    required this.label,
+    super.key,
+    required this.isLastItem,
+  });
 
   final String label;
+  final bool isLastItem;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: colorScheme.surface.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(999),
       ),
-      child: Text(
-        label,
-        style: 11.w500.copyWith(color: colorScheme.onSurface),
+      child: Row(
+        children: [
+          Text(
+            label,
+            style: 11.w500.copyWith(color: colorScheme.onSurface),
+          ),
+          if (!isLastItem) ...[
+            Text(', ', style: 11.w500.copyWith(color: colorScheme.onSurface)),
+          ],
+        ],
       ),
     );
   }

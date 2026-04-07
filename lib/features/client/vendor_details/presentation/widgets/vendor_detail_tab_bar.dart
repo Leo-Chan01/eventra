@@ -32,21 +32,27 @@ class VendorDetailTabBar extends StatelessWidget {
                     tabs[index],
                     style: 13.w600.copyWith(
                       color: isSelected
-                          ? colorScheme.onSurface
+                          ? colorScheme.primary
                           : colorScheme.onSurfaceVariant,
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Container(
-                  height: 2,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? colorScheme.onSurface
-                        : colorScheme.outlineVariant,
-                    borderRadius: BorderRadius.circular(2),
+                if (isSelected)
+                  Container(
+                    height: 2,
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? colorScheme.primary
+                          : colorScheme.outlineVariant,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  )
+                else
+                  Container(
+                    height: 2,
+                    color: colorScheme.onSurfaceVariant.withValues(alpha: 0.2),
                   ),
-                ),
               ],
             ),
           ),

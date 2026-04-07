@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class EventraButton extends StatefulWidget {
   const EventraButton({
     required this.buttonText,
+    this.isWithIcon = false,
+    this.icon,
     this.width,
     this.height,
     this.padding,
@@ -17,6 +19,8 @@ class EventraButton extends StatefulWidget {
 
   const EventraButton.outlined({
     required this.buttonText,
+    this.isWithIcon = false,
+    this.icon,
     this.width,
     this.padding,
     this.onPressed,
@@ -30,6 +34,8 @@ class EventraButton extends StatefulWidget {
 
   const EventraButton.smallBorder({
     required this.buttonText,
+    this.isWithIcon = false,
+    this.icon,
     this.width,
     this.padding,
     this.onPressed,
@@ -41,15 +47,32 @@ class EventraButton extends StatefulWidget {
     super.key,
   });
 
+  const EventraButton.withIcon({
+    required this.buttonText,
+    required this.icon,
+    this.width,
+    this.height,
+    this.padding,
+    this.onPressed,
+    this.borderRadius,
+    this.isSmallBorderRadius = false,
+    this.isWithIcon = true,
+    this.isOutlined = false,
+    this.isLoading = false,
+    super.key,
+  });
+
   final String buttonText;
   final double? width;
   final double? height;
   final bool isOutlined;
+  final bool isWithIcon;
   final bool isLoading;
   final EdgeInsets? padding;
   final bool isSmallBorderRadius;
   final double? borderRadius;
   final VoidCallback? onPressed;
+  final String? icon;
 
   @override
   State<EventraButton> createState() => _EventraButtonState();

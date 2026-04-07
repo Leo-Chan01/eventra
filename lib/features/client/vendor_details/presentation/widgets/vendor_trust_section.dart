@@ -1,6 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class VendorTrustItem extends StatelessWidget {
   const VendorTrustItem({
@@ -10,7 +11,7 @@ class VendorTrustItem extends StatelessWidget {
   });
 
   final String label;
-  final List<List<dynamic>> icon;
+  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,15 @@ class VendorTrustItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [
-          HugeIcon(icon: icon, size: 16, color: colorScheme.primary),
+          SvgPicture.asset(
+            icon,
+            width: 16,
+            height: 16,
+            colorFilter: const ColorFilter.mode(
+              AppColorSchemes.success,
+              BlendMode.srcIn,
+            ),
+          ),
           8.horizSpacing,
           Expanded(
             child: Text(
@@ -42,7 +51,7 @@ class VendorTrustSection extends StatelessWidget {
   });
 
   final String title;
-  final List<({String label, List<List<dynamic>> icon})> items;
+  final List<({String label, String icon})> items;
 
   @override
   Widget build(BuildContext context) {

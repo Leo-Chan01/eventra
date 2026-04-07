@@ -1,6 +1,9 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
+import 'package:eventra/main_development.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 class RelatedVendorCard extends StatelessWidget {
   const RelatedVendorCard({
@@ -19,7 +22,7 @@ class RelatedVendorCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 100,
+        width: MediaQuery.sizeOf(context).width * 0.6,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,12 +30,10 @@ class RelatedVendorCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
                 vendor.image,
-                width: 100,
-                height: 80,
                 fit: BoxFit.cover,
                 errorBuilder: (_, _, _) => Container(
-                  width: 100,
-                  height: 80,
+                  width: MediaQuery.sizeOf(context).width * 0.6,
+                  height: MediaQuery.sizeOf(context).width * 0.6 * 10 / 16,
                   decoration: BoxDecoration(
                     color: colorScheme.primaryContainer,
                     borderRadius: BorderRadius.circular(12),
@@ -45,15 +46,16 @@ class RelatedVendorCard extends StatelessWidget {
               ),
             ),
             8.vertSpacing,
-            Text(
-              vendor.name,
-              style: 12.w600.copyWith(color: colorScheme.onSurface),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            2.vertSpacing,
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text(
+                  vendor.name,
+                  style: 16.w400.copyWith(color: colorScheme.onSurface),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                20.horizSpacing,
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 6,
@@ -61,7 +63,7 @@ class RelatedVendorCard extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(3),
                   ),
                   child: Text(
                     vendor.category,
@@ -71,11 +73,45 @@ class RelatedVendorCard extends StatelessWidget {
               ],
             ),
             4.vertSpacing,
-            Text(
-              vendor.location,
-              style: 10.w400.copyWith(color: colorScheme.onSurfaceVariant),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  spacing: 4,
+                  children: [
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedLocation01,
+                      size: 12,
+                      color: colorScheme.primary,
+                    ),
+                    Text(
+                      vendor.location,
+                      style: 10.w400.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      size: 12,
+                      color: AppColorSchemes.warning,
+                    ),
+                    4.horizSpacing,
+                    Text(
+                      '(${vendor.rating.toStringAsFixed(1)})',
+                      style: 10.w400.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

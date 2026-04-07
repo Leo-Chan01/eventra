@@ -26,14 +26,14 @@ class RelatedVendorsSection extends StatelessWidget {
       children: [
         Text(
           l10n.vendorDetailRelatedVendors,
-          style: 13.w700.copyWith(
-            color: colorScheme.onSurfaceVariant,
+          style: 18.w700.copyWith(
+            color: colorScheme.onSurface,
             letterSpacing: 0.5,
           ),
         ),
         12.vertSpacing,
-        SizedBox(
-          height: 160,
+        AspectRatio(
+          aspectRatio: 16 / 10,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: vendors.length,

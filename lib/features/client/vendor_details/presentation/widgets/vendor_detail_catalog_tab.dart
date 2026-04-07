@@ -16,11 +16,11 @@ class VendorDetailCatalogTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 120),
       child: ListView.separated(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
         itemCount: items.length,
+        padding: EdgeInsets.zero,
         separatorBuilder: (_, _) => 12.vertSpacing,
         itemBuilder: (context, index) {
           return VendorCatalogItemCard(

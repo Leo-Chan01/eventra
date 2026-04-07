@@ -1,4 +1,5 @@
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 
@@ -32,15 +33,16 @@ class CatalogItemActionBar extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          EventraButton.outlined(
+          EventraButton.withIcon(
             buttonText: l10n.vendorDetailMessageVendor,
             onPressed: onMessageVendor,
+            icon: EventraVectors.chatMessage,
           ),
-          const SizedBox(height: 10),
-          EventraButton(
-            buttonText: l10n.vendorDetailMakeEnquiry,
-            onPressed: onMakeEnquiry,
-          ),
+          // const SizedBox(height: 10),
+          // EventraButton(
+          //   buttonText: l10n.vendorDetailMakeEnquiry,
+          //   onPressed: onMakeEnquiry,
+          // ),
         ],
       ),
     );

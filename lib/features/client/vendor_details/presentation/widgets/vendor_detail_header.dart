@@ -1,7 +1,10 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_tag_chip.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -21,62 +24,68 @@ class VendorDetailHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _CoverSection(vendor: vendor),
+        18.vertSpacing,
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                spacing: 6,
                 children: [
                   Expanded(
-                    child: Text(
-                      vendor.name,
-                      style: 18.w700.copyWith(color: colorScheme.onSurface),
+                    child: Row(
+                      children: [
+                        Text(
+                          vendor.name,
+                          style: 22.w600.copyWith(color: colorScheme.onSurface),
+                        ),
+                        if (vendor.isVerified)
+                          SvgPicture.asset(
+                            EventraVectors.verify,
+                            height: 18,
+                            width: 18,
+                          ),
+                      ],
                     ),
                   ),
-                  if (vendor.isVerified)
-                    HugeIcon(
-                      icon: HugeIcons.strokeRoundedCheckmarkBadge01,
-                      color: colorScheme.primary,
-                      size: 20,
-                    ),
+                  Row(
+                    children: [
+                      HugeIcon(
+                        icon: HugeIcons.strokeRoundedLocation01,
+                        size: 14,
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                      4.horizSpacing,
+                      Text(
+                        vendor.location,
+                        style: 12.w400.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                      16.horizSpacing,
+                      Icon(
+                        Icons.star_rounded,
+                        color: colorScheme.tertiary,
+                        size: 14,
+                      ),
+                      4.horizSpacing,
+                      Text(
+                        '${vendor.rating}',
+                        style: 12.w600.copyWith(color: colorScheme.onSurface),
+                      ),
+                      4.horizSpacing,
+                      Text(
+                        '(${vendor.reviewsCount})',
+                        style: 12.w400.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               8.vertSpacing,
-              Row(
-                children: [
-                  HugeIcon(
-                    icon: HugeIcons.strokeRoundedLocation01,
-                    size: 14,
-                    color: colorScheme.onSurfaceVariant,
-                  ),
-                  4.horizSpacing,
-                  Text(
-                    vendor.location,
-                    style: 12.w400.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                  16.horizSpacing,
-                  Icon(
-                    Icons.star_rounded,
-                    color: colorScheme.tertiary,
-                    size: 14,
-                  ),
-                  4.horizSpacing,
-                  Text(
-                    '${vendor.rating}',
-                    style: 12.w600.copyWith(color: colorScheme.onSurface),
-                  ),
-                  4.horizSpacing,
-                  Text(
-                    '(${vendor.reviewsCount})',
-                    style: 12.w400.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
@@ -95,12 +104,13 @@ class _CoverSection extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         SizedBox(
           height: 220,
           width: double.infinity,
           child: Image.asset(
-            vendor.coverImage,
+            EventraImages.decoratorPerson,
             fit: BoxFit.cover,
             errorBuilder: (_, _, _) => ColoredBox(
               color: colorScheme.primaryContainer,
@@ -124,16 +134,29 @@ class _CoverSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _CircleActionButton(
-                    icon: HugeIcons.strokeRoundedArrowTurnBackward,
+                    icon: EventraVectors.loveButtonVendorDeets,
                     onPressed: () async => Navigator.of(context).maybePop(),
                   ),
-                  _CircleActionButton(
-                    icon: HugeIcons.strokeRoundedShare01,
-                    onPressed: () async {
-                      await SharePlus.instance.share(
-                        ShareParams(text: '${vendor.name} on Eventra'),
-                      );
-                    },
+                  Row(
+                    spacing: 10,
+                    children: [
+                      _CircleActionButton(
+                        icon: EventraVectors.loveVendorDeets,
+                        onPressed: () async {
+                          await SharePlus.instance.share(
+                            ShareParams(text: '${vendor.name} on Eventra'),
+                          );
+                        },
+                      ),
+                      _CircleActionButton(
+                        icon: EventraVectors.shareButtonVendorDeets,
+                        onPressed: () async {
+                          await SharePlus.instance.share(
+                            ShareParams(text: '${vendor.name} on Eventra'),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -142,17 +165,33 @@ class _CoverSection extends StatelessWidget {
         ),
         Positioned(
           bottom: 12,
+          right: 16,
+          child: Container(
+            decoration: BoxDecoration(
+              color: colorScheme.surface,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Wrap(
+                children: vendor.tags
+                    .map(
+                      (tag) => VendorTagChip(
+                        label: tag,
+                        isLastItem: tag == vendor.tags.last,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: -30,
           left: 16,
           child: Row(
             children: [
               _ProfileAvatar(imageUrl: vendor.profileImage),
-              12.horizSpacing,
-              Wrap(
-                spacing: 6,
-                children: vendor.tags
-                    .map((tag) => VendorTagChip(label: tag))
-                    .toList(),
-              ),
             ],
           ),
         ),
@@ -167,7 +206,7 @@ class _CircleActionButton extends StatelessWidget {
     required this.onPressed,
   });
 
-  final List<List<dynamic>> icon;
+  final String icon;
   final VoidCallback onPressed;
 
   @override
@@ -176,14 +215,14 @@ class _CircleActionButton extends StatelessWidget {
 
     return GestureDetector(
       onTap: onPressed,
-      child: Container(
+      child: SizedBox(
         width: 36,
         height: 36,
-        decoration: BoxDecoration(
-          color: colorScheme.surface.withValues(alpha: 0.85),
-          shape: BoxShape.circle,
+        child: SvgPicture.asset(
+          icon,
+          width: 18,
+          height: 18,
         ),
-        child: HugeIcon(icon: icon, size: 18, color: colorScheme.onSurface),
       ),
     );
   }
@@ -199,10 +238,11 @@ class _ProfileAvatar extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
-      width: 48,
-      height: 48,
+      width: 65,
+      height: 65,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
+        border: Border.all(color: colorScheme.surface, width: 1.5),
         color: colorScheme.primaryContainer,
       ),
       child: ClipOval(
