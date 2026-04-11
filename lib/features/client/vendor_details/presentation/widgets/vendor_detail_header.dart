@@ -5,9 +5,8 @@ import 'package:eventra/features/client/vendor_details/presentation/widgets/vend
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:share_plus/share_plus.dart';
 
 class VendorDetailHeader extends StatelessWidget {
   const VendorDetailHeader({
@@ -144,16 +143,18 @@ class _CoverSection extends StatelessWidget {
                       CircleActionButton(
                         icon: EventraVectors.loveVendorDeets,
                         onPressed: () async {
-                          await SharePlus.instance.share(
-                            ShareParams(text: '${vendor.name} on Eventra'),
+                          await AppShareBottomSheet.show(
+                            context,
+                            shareText: '${vendor.name} on Eventra',
                           );
                         },
                       ),
                       CircleActionButton(
                         icon: EventraVectors.shareButtonVendorDeets,
                         onPressed: () async {
-                          await SharePlus.instance.share(
-                            ShareParams(text: '${vendor.name} on Eventra'),
+                          await AppShareBottomSheet.show(
+                            context,
+                            shareText: '${vendor.name} on Eventra',
                           );
                         },
                       ),
@@ -200,8 +201,6 @@ class _CoverSection extends StatelessWidget {
     );
   }
 }
-
-
 
 class _ProfileAvatar extends StatelessWidget {
   const _ProfileAvatar({required this.imageUrl});

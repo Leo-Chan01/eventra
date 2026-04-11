@@ -49,7 +49,7 @@ class EventraBottomNav extends StatelessWidget {
           SizedBox(
             key: const Key('nav_tab_3'),
             child: HomeBottomNavItem(
-              iconPath: EventraVectors.showcaseIcon,
+              iconPath: EventraVectors.basilVideoOutlineClient,
               label: l10n.navShowcase,
               isActive: currentIndex == 3,
               onTap: () => onTap(3),

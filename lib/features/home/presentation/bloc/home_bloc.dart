@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:eventra/features/home/domain/models/home_reel.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,6 +89,7 @@ class HomeState extends Equatable {
     this.filterCategories = const [],
     this.vendors = const [],
     this.allVendors = const [],
+    this.reels = const [],
     this.selectedCategory = 'All',
     this.selectedFilterCategories = const ['All'],
     this.selectedRating = 1,
@@ -104,6 +106,7 @@ class HomeState extends Equatable {
   final List<String> filterCategories;
   final List<Vendor> vendors;
   final List<Vendor> allVendors;
+  final List<HomeReel> reels;
   final String selectedCategory;
   final List<String> selectedFilterCategories;
   final int selectedRating;
@@ -120,6 +123,7 @@ class HomeState extends Equatable {
     List<String>? filterCategories,
     List<Vendor>? vendors,
     List<Vendor>? allVendors,
+    List<HomeReel>? reels,
     String? selectedCategory,
     List<String>? selectedFilterCategories,
     int? selectedRating,
@@ -136,6 +140,7 @@ class HomeState extends Equatable {
       filterCategories: filterCategories ?? this.filterCategories,
       vendors: vendors ?? this.vendors,
       allVendors: allVendors ?? this.allVendors,
+      reels: reels ?? this.reels,
       selectedCategory: selectedCategory ?? this.selectedCategory,
       selectedFilterCategories:
           selectedFilterCategories ?? this.selectedFilterCategories,
@@ -156,6 +161,7 @@ class HomeState extends Equatable {
     filterCategories,
     vendors,
     allVendors,
+    reels,
     selectedCategory,
     selectedFilterCategories,
     selectedRating,
@@ -271,6 +277,39 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   static HomeState _buildInitialState() {
+    const reels = [
+      HomeReel(
+        id: 'reel-1',
+        title: 'Kenny & Femi',
+        caption: 'Look at the glamor and the beauty of this decoration',
+        imagePath: EventraImages.weddingImage,
+        creatorAvatarPath: EventraImages.profileDummy,
+        likeCount: 283,
+        shareCount: 103,
+        saveCount: 103,
+      ),
+      HomeReel(
+        id: 'reel-2',
+        title: 'Royal Garden Wedding',
+        caption: 'A clean blend of elegance, style and event ambience.',
+        imagePath: EventraImages.womanWithweddinggown,
+        creatorAvatarPath: EventraImages.profileDummy,
+        likeCount: 194,
+        shareCount: 78,
+        saveCount: 65,
+      ),
+      HomeReel(
+        id: 'reel-3',
+        title: 'Lagos Bridal Entry',
+        caption: 'Moments like this deserve a timeless visual story.',
+        imagePath: EventraImages.decoratorPerson,
+        creatorAvatarPath: EventraImages.profileDummy,
+        likeCount: 321,
+        shareCount: 120,
+        saveCount: 89,
+      ),
+    ];
+
     const categories = [
       Category(name: 'Rental', icon: EventraImages.rentalCategoryIcon),
       Category(name: 'Decorator', icon: EventraImages.decoratorCategoryIcon),
@@ -406,6 +445,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       filterCategories: filterCategories,
       allVendors: allVendors,
       vendors: allVendors,
+      reels: reels,
       recentLocations: recentLocations,
       locationSuggestions: recentLocations,
     );

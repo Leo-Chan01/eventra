@@ -36,10 +36,10 @@ class HomeSearchBar extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: InkWell(
+                  child: GestureDetector(
                     key: const Key('home_search_field'),
                     onTap: onTapSearch,
-                    borderRadius: BorderRadius.circular(10),
+                    behavior: HitTestBehavior.opaque,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Row(

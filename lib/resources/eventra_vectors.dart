@@ -7,6 +7,8 @@ class EventraVectors {
   static const String angleLeft = 'assets/svgs/angle-left.svg';
   static const String angleRight = 'assets/svgs/angle-right.svg';
   static const String appleIcon = 'assets/svgs/apple-icon.svg';
+  static const String basilVideoOutlineClient =
+      'assets/svgs/basil_video-outline-client.svg';
   static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
   static const String callIcon = 'assets/svgs/call-icon.svg';
   static const String cancelIconNoCircle =
@@ -18,6 +20,7 @@ class EventraVectors {
       'assets/svgs/chat-message-redbadge.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';
   static const String clientVector = 'assets/svgs/client-vector.svg';
+  static const String copyBlackIcon = 'assets/svgs/copy-black-icon.svg';
   static const String copyIconWhiteBg = 'assets/svgs/copy-icon-white-bg.svg';
   static const String creditCardBlueGbIcon =
       'assets/svgs/credit-card-blue-gb-icon.svg';

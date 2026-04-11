@@ -9,6 +9,7 @@ void main() {
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);
     expect(File(EventraVectors.angleRight).existsSync(), isTrue);
     expect(File(EventraVectors.appleIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.basilVideoOutlineClient).existsSync(), isTrue);
     expect(File(EventraVectors.calendarIcon).existsSync(), isTrue);
     expect(File(EventraVectors.callIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
@@ -18,6 +19,7 @@ void main() {
     expect(File(EventraVectors.chatMessageRedbadge).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessage).existsSync(), isTrue);
     expect(File(EventraVectors.clientVector).existsSync(), isTrue);
+    expect(File(EventraVectors.copyBlackIcon).existsSync(), isTrue);
     expect(File(EventraVectors.copyIconWhiteBg).existsSync(), isTrue);
     expect(File(EventraVectors.creditCardBlueGbIcon).existsSync(), isTrue);
     expect(File(EventraVectors.eventraBlackText).existsSync(), isTrue);

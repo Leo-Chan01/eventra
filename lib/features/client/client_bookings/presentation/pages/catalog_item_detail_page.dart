@@ -11,7 +11,7 @@ import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 
 class CatalogItemDetailArgs {
   const CatalogItemDetailArgs({
@@ -74,20 +74,20 @@ class CatalogItemDetailPage extends StatelessWidget {
                                   CircleActionButton(
                                     icon: EventraVectors.loveVendorDeets,
                                     onPressed: () async {
-                                      await SharePlus.instance.share(
-                                        ShareParams(
-                                          text: '${args.vendorName} on Eventra',
-                                        ),
+                                      await AppShareBottomSheet.show(
+                                        context,
+                                        shareText:
+                                            '${args.vendorName} on Eventra',
                                       );
                                     },
                                   ),
                                   CircleActionButton(
                                     icon: EventraVectors.shareButtonVendorDeets,
                                     onPressed: () async {
-                                      await SharePlus.instance.share(
-                                        ShareParams(
-                                          text: '${args.vendorName} on Eventra',
-                                        ),
+                                      await AppShareBottomSheet.show(
+                                        context,
+                                        shareText:
+                                            '${args.vendorName} on Eventra',
                                       );
                                     },
                                   ),

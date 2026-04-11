@@ -103,5 +103,22 @@ void main() {
 
       expect(find.text('Explore vendors near you'), findsOneWidget);
     });
+
+    testWidgets('reels tab shows a tiktok style feed', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('nav_tab_3')));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('home_reels_feed')), findsOneWidget);
+      expect(find.text('Kenny & Femi'), findsOneWidget);
+      expect(find.text('283'), findsOneWidget);
+    });
   });
 }

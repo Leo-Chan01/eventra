@@ -141,7 +141,7 @@ class _HomeLocationLookupViewState extends State<HomeLocationLookupView> {
                         HomeLocationQueryChanged(value),
                       );
                     },
-                      
+
                     decoration: InputDecoration(
                       fillColor: colorScheme.surface,
                       border: InputBorder.none,

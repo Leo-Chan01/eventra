@@ -7,6 +7,8 @@ import 'package:eventra/features/home/presentation/widgets/home_content.dart';
 import 'package:eventra/features/home/presentation/widgets/home_explore_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_filter_options_sheet.dart';
 import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
+import 'package:eventra/features/home/presentation/widgets/home_reels_tab.dart';
+import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,36 +29,45 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: colorScheme.surface,
-          body: SafeArea(
-            bottom: false,
-            child: IndexedStack(
-              index: state.currentIndex,
-              children: [
-                HomeContent(
+          body: IndexedStack(
+            index: state.currentIndex,
+            children: [
+              SafeArea(
+                bottom: false,
+                child: HomeContent(
                   state: state,
                   onOpenFilter: () => _openFilterSheet(context),
                   onOpenLocationLookup: () => _openLocationLookupSheet(context),
                 ),
-                HomeExploreTab(
+              ),
+              SafeArea(
+                bottom: false,
+                child: HomeExploreTab(
                   state: state,
                   onOpenFilter: () => _openFilterSheet(context),
                   onOpenLocationLookup: () => _openLocationLookupSheet(context),
                 ),
-                HomeLocationLookupView(state: state),
-                Center(
-                  child: Text(
-                    l10n.navShowcase,
-                    style: 18.w600.copyWith(color: colorScheme.onSurface),
-                  ),
-                ),
-                Center(
+              ),
+              HomeLocationLookupView(state: state),
+              HomeReelsTab(
+                reels: state.reels,
+                onShareReel: (reel) {
+                  AppShareBottomSheet.show(
+                    context,
+                    shareText: '${reel.title} on Eventra',
+                  );
+                },
+              ),
+              SafeArea(
+                bottom: false,
+                child: Center(
                   child: Text(
                     l10n.navProfile,
                     style: 18.w600.copyWith(color: colorScheme.onSurface),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           bottomNavigationBar: EventraBottomNav(
             currentIndex: state.currentIndex,
