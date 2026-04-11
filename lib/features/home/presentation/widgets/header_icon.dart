@@ -17,28 +17,28 @@ class HeaderIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Stack(
-      children: [
-        Container(
-          child: IconButton(
+    return SizedBox(
+      child: Stack(
+        children: [
+          IconButton(
             onPressed: onPressed,
             icon: icon,
           ),
-        ),
-        if (hasNotification)
-          Positioned(
-            right: 10,
-            top: 10,
-            child: Container(
-              width: 10,
-              height: 10,
-              decoration: BoxDecoration(
-                color: colorScheme.error,
-                shape: BoxShape.circle,
+          if (hasNotification)
+            Positioned(
+              right: 10,
+              top: 10,
+              child: Container(
+                width: 10,
+                height: 10,
+                decoration: BoxDecoration(
+                  color: colorScheme.error,
+                  shape: BoxShape.circle,
+                ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

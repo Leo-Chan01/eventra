@@ -1,13 +1,14 @@
+import 'package:eventra/features/client/vendor_details/domain/models/vendor_video.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_video_thumbnail.dart';
 import 'package:flutter/material.dart';
 
 class VendorDetailVideosTab extends StatelessWidget {
   const VendorDetailVideosTab({
-    required this.videoThumbnails,
+    required this.videos,
     super.key,
   });
 
-  final List<String> videoThumbnails;
+  final List<VendorVideo> videos;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,18 @@ class VendorDetailVideosTab extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          childAspectRatio: 0.78,
         ),
-        itemCount: videoThumbnails.length,
+        itemCount: videos.length,
         itemBuilder: (context, index) {
+          final video = videos[index];
+
           return VendorVideoThumbnail(
-            imageUrl: videoThumbnails[index],
+            imageUrl: video.thumbnailUrl,
+            viewCount: video.viewCount,
             onTap: () {},
           );
         },

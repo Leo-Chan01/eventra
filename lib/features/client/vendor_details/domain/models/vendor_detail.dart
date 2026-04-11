@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_review.dart';
+import 'package:eventra/features/client/vendor_details/domain/models/vendor_video.dart';
 
 class RelatedVendor extends Equatable {
   const RelatedVendor({
@@ -37,7 +38,7 @@ class VendorDetail extends Equatable {
     required this.followersCount,
     required this.services,
     required this.catalogItems,
-    required this.videoThumbnails,
+    required this.videos,
     required this.reviews,
     required this.relatedVendors,
     this.isVerified = false,
@@ -59,7 +60,7 @@ class VendorDetail extends Equatable {
   final int followersCount;
   final List<String> services;
   final List<CatalogItem> catalogItems;
-  final List<String> videoThumbnails;
+  final List<VendorVideo> videos;
   final List<VendorReview> reviews;
   final List<RelatedVendor> relatedVendors;
   final bool isVerified;
@@ -82,7 +83,7 @@ class VendorDetail extends Equatable {
     followersCount,
     services,
     catalogItems,
-    videoThumbnails,
+    videos,
     reviews,
     relatedVendors,
     isVerified,

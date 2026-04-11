@@ -50,14 +50,17 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
         ),
-        HeaderIcon(
-          icon: SvgPicture.asset(EventraVectors.chatMessage),
-          onPressed: () => context.pushNamed(TransactionHistoryPage.name),
-        ),
-        10.horizSpacing,
-        HeaderIcon(
-          icon: SvgPicture.asset(EventraVectors.notificationBell),
-          onPressed: () => context.pushNamed(ClientNotificationsPage.name),
+        Row(
+          children: [
+            HeaderIcon(
+              icon: SvgPicture.asset(EventraVectors.chatMessage),
+              onPressed: () => context.pushNamed(TransactionHistoryPage.name),
+            ),
+            HeaderIcon(
+              icon: SvgPicture.asset(EventraVectors.notificationBell),
+              onPressed: () => context.pushNamed(ClientNotificationsPage.name),
+            ),
+          ],
         ),
       ],
     );

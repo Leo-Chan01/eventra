@@ -132,7 +132,7 @@ class _TabContent extends StatelessWidget {
           );
         },
       ),
-      2 => VendorDetailVideosTab(videoThumbnails: vendor.videoThumbnails),
+      2 => VendorDetailVideosTab(videos: vendor.videos),
       _ => VendorDetailReviewsTab(
         rating: vendor.rating,
         reviewsCount: vendor.reviewsCount,

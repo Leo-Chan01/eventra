@@ -98,30 +98,6 @@ class CatalogItemDetailPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // SafeArea(
-                    //   bottom: false,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(12),
-                    //     child: GestureDetector(
-                    //       onTap: () => Navigator.of(context).maybePop(),
-                    //       child: Container(
-                    //         width: 36,
-                    //         height: 36,
-                    //         decoration: BoxDecoration(
-                    //           color: colorScheme.surface.withValues(
-                    //             alpha: 0.85,
-                    //           ),
-                    //           shape: BoxShape.circle,
-                    //         ),
-                    //         child: Icon(
-                    //           Icons.arrow_back_ios_new_rounded,
-                    //           size: 18,
-                    //           color: colorScheme.onSurface,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

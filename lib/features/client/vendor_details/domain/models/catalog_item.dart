@@ -8,6 +8,7 @@ class CatalogItem extends Equatable {
     required this.price,
     required this.image,
     required this.whatToExpect,
+    this.images = const [],
   });
 
   final String id;
@@ -16,6 +17,7 @@ class CatalogItem extends Equatable {
   final double price;
   final String image;
   final List<String> whatToExpect;
+  final List<String> images;
 
   @override
   List<Object?> get props => [
@@ -25,5 +27,6 @@ class CatalogItem extends Equatable {
     price,
     image,
     whatToExpect,
+    images,
   ];
 }

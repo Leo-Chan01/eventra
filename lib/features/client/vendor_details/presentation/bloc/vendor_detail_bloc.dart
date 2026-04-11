@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_review.dart';
+import 'package:eventra/features/client/vendor_details/domain/models/vendor_video.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -123,6 +124,12 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           '20 edited pictures',
           '2 Days Delivery',
         ],
+        images: [
+          EventraImages.weddingImage,
+          EventraImages.onboardingImage2,
+          EventraImages.cameramanImage,
+          EventraImages.femaleWeddingPlannerWorkingCeremony1,
+        ],
       ),
       CatalogItem(
         id: 'cat-003',
@@ -220,13 +227,13 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         'Stage Setup',
       ],
       catalogItems: catalogItems,
-      videoThumbnails: [
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
+      videos: [
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 300),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 30),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 500),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 400),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 300),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 100),
       ],
       reviews: reviews,
       relatedVendors: relatedVendors,
@@ -285,11 +292,11 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           ],
         ),
       ],
-      videoThumbnails: const [
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
+      videos: const [
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 300),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 120),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 240),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 80),
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
@@ -334,10 +341,10 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           ],
         ),
       ],
-      videoThumbnails: const [
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
+      videos: const [
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 300),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 30),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 500),
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
@@ -383,9 +390,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
           ],
         ),
       ],
-      videoThumbnails: const [
-        EventraImages.weddingImage,
-        EventraImages.weddingImage,
+      videos: const [
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 300),
+        VendorVideo(thumbnailUrl: EventraImages.weddingImage, viewCount: 100),
       ],
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
@@ -411,7 +418,7 @@ const _emptyVendor = VendorDetail(
   followersCount: 0,
   services: [],
   catalogItems: [],
-  videoThumbnails: [],
+  videos: [],
   reviews: [],
   relatedVendors: [],
 );

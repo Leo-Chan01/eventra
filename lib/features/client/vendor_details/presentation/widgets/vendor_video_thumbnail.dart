@@ -4,11 +4,13 @@ import 'package:hugeicons/hugeicons.dart';
 class VendorVideoThumbnail extends StatelessWidget {
   const VendorVideoThumbnail({
     required this.imageUrl,
+    required this.viewCount,
     required this.onTap,
     super.key,
   });
 
   final String imageUrl;
+  final int viewCount;
   final VoidCallback onTap;
 
   @override
@@ -46,6 +48,27 @@ class VendorVideoThumbnail extends StatelessWidget {
                   color: colorScheme.onSurface,
                   size: 18,
                 ),
+              ),
+            ),
+            Positioned(
+              left: 12,
+              bottom: 12,
+              child: Row(
+                children: [
+                  HugeIcon(
+                    icon: HugeIcons.strokeRoundedView,
+                    color: colorScheme.onPrimary,
+                    size: 18,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    '$viewCount',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onPrimary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
