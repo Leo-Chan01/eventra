@@ -12,6 +12,7 @@ class HomeCategoryChip extends StatelessWidget {
     this.onTap,
     this.hasIcon = false,
     this.iconPosition = IconPosition.right,
+    this.isRounded = false,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class HomeCategoryChip extends StatelessWidget {
   final VoidCallback? onTap;
   final IconPosition? iconPosition;
   final bool hasIcon;
+  final bool isRounded;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,13 @@ class HomeCategoryChip extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(999),
+      borderRadius: BorderRadius.circular(isRounded ? 999 : 10),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.primary : null,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(isRounded ? 999 : 10),
           border: Border.all(
             color: isSelected
                 ? colorScheme.primary

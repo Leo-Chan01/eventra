@@ -1,6 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/home_category_chip.dart';
+import 'package:eventra/features/home/presentation/widgets/home_filter_location_row.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
@@ -10,10 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeFilterOptionsSheet extends StatelessWidget {
   const HomeFilterOptionsSheet({
     required this.state,
+    required this.onOpenLocationLookup,
     super.key,
   });
 
   final HomeState state;
+  final VoidCallback onOpenLocationLookup;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +42,17 @@ class HomeFilterOptionsSheet extends StatelessWidget {
                 ),
               ),
               10.vertSpacing,
-              Center(
-                child: Text(
-                  l10n.homeFilterTitle,
-                  style: 20.w700.copyWith(color: colorScheme.onSurface),
+              // Center(
+              //   child: Text(
+              //     l10n.homeFilterTitle,
+              //     style: 20.w700.copyWith(color: colorScheme.onSurface),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 19),
+                child: HomeFilterLocationRow(
+                  location: _extractCity(state.selectedAddress),
+                  onOpenLocationLookup: onOpenLocationLookup,
                 ),
               ),
               12.vertSpacing,
@@ -167,6 +177,11 @@ class HomeFilterOptionsSheet extends StatelessWidget {
 
   String _buildCompactRangeLabel() {
     return '${_formatCompactPrice(state.minPrice)}-${_formatCompactPrice(state.maxPrice)}';
+  }
+
+  String _extractCity(String address) {
+    final parts = address.split(',');
+    return parts.isEmpty ? address : parts.last.trim();
   }
 
   String _formatCompactPrice(double value) {

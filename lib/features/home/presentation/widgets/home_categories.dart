@@ -30,6 +30,7 @@ class HomeCategories extends StatelessWidget {
           return HomeCategoryChip(
             label: category.name,
             icon: category.icon,
+            isRounded: true,
             isSelected: selectedCategory == category.name,
             onTap: () => onCategorySelected(category.name),
           );

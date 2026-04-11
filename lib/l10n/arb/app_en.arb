@@ -141,10 +141,19 @@
     "homeFilterRating": "Ratings",
     "homeFilterPriceRange": "Price Range",
     "homeFilterShowResult": "Show Result",
+    "homeFilterLocation": "Location: {location}",
+    "@homeFilterLocation": {
+      "placeholders": {
+        "location": {
+          "type": "String"
+        }
+      }
+    },
     "homeYourCurrentAddress": "Your current address",
     "homeLocationLookupTitle": "Location Lookup",
     "homeRecentLocations": "Recent locations",
     "homeSearchByLocation": "Search location",
+    "homeEnterAddress": "Enter address",
     "homeViewProfile": "View Profile",
     "navHome": "Home",
     "navEnquiries": "Enquiries",

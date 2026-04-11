@@ -6,6 +6,8 @@ class EventraVectors {
   static const String angleLeft = 'assets/svgs/angle-left.svg';
   static const String angleRight = 'assets/svgs/angle-right.svg';
   static const String appleIcon = 'assets/svgs/apple-icon.svg';
+  static const String cancelIconNoCircle =
+      'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
   static const String cautionSignOrange = 'assets/svgs/caution-sign-orange.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';

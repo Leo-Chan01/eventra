@@ -8,6 +8,7 @@ void main() {
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);
     expect(File(EventraVectors.angleRight).existsSync(), isTrue);
     expect(File(EventraVectors.appleIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
     expect(File(EventraVectors.cancelSearchIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cautionSignOrange).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessage).existsSync(), isTrue);

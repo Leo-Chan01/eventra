@@ -8,6 +8,7 @@ import 'package:eventra/features/home/presentation/widgets/home_explore_tab.dart
 import 'package:eventra/features/home/presentation/widgets/home_filter_options_sheet.dart';
 import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,6 +77,10 @@ class HomePage extends StatelessWidget {
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
+        clipBehavior: Clip.antiAlias,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
         backgroundColor: Theme.of(context).colorScheme.surface,
         builder: (sheetContext) {
           return BlocProvider.value(
@@ -84,7 +89,13 @@ class HomePage extends StatelessWidget {
               builder: (_, state) {
                 return FractionallySizedBox(
                   heightFactor: 0.69,
-                  child: HomeFilterOptionsSheet(state: state),
+                  child: HomeFilterOptionsSheet(
+                    state: state,
+                    onOpenLocationLookup: () {
+                      Navigator.of(sheetContext).pop();
+                      _openLocationLookupSheet(context);
+                    },
+                  ),
                 );
               },
             ),
@@ -98,18 +109,22 @@ class HomePage extends StatelessWidget {
     final homeBloc = context.read<HomeBloc>();
 
     unawaited(
-      showModalBottomSheet<void>(
+      showCupertinoSheet(
         context: context,
-        isScrollControlled: true,
-        useSafeArea: true,
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        // isScrollControlled: true,
+        // useSafeArea: true,
+        // clipBehavior: Clip.antiAlias,
+        // shape: const RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        // ),
+        // backgroundColor: Theme.of(context).colorScheme.surface,
         builder: (_) {
           return BlocProvider.value(
             value: homeBloc,
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 return FractionallySizedBox(
-                  heightFactor: 0.94,
+                  heightFactor: 0.98,
                   child: HomeLocationLookupView(
                     state: state,
                     showCloseAction: true,

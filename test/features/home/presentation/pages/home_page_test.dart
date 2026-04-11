@@ -38,9 +38,36 @@ void main() {
       await tester.tap(find.byKey(const Key('home_filter_button')));
       await tester.pumpAndSettle();
 
-      expect(find.text('Filter'), findsOneWidget);
+      expect(find.text('Location: Lagos'), findsOneWidget);
+      expect(
+        find.byKey(const Key('home_filter_location_button')),
+        findsOneWidget,
+      );
       expect(find.text('Categories'), findsOneWidget);
       expect(find.text('Price Range'), findsOneWidget);
+    });
+
+    testWidgets('location icon in filter sheet opens the address sheet', (
+      tester,
+    ) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('home_filter_button')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('home_filter_location_button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Your current address'), findsOneWidget);
+      expect(
+        find.byKey(const Key('home_location_search_input')),
+        findsOneWidget,
+      );
     });
 
     testWidgets('search field opens the location lookup view', (tester) async {
@@ -55,7 +82,11 @@ void main() {
       await tester.tap(find.byKey(const Key('home_search_field')));
       await tester.pumpAndSettle();
 
-      expect(find.text('Location Lookup'), findsOneWidget);
+      expect(find.text('Your current address'), findsOneWidget);
+      expect(
+        find.byKey(const Key('home_location_search_input')),
+        findsOneWidget,
+      );
     });
 
     testWidgets('switches tabs from the bottom navigation', (tester) async {
