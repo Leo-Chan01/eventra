@@ -20,8 +20,9 @@ class TransactionSummaryCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerLowest,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: colorScheme.surfaceContainerHighest),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,8 +34,8 @@ class TransactionSummaryCard extends StatelessWidget {
             8.vertSpacing,
             TransactionAmountText(
               amountLabel: amount,
-              style: 18.w700.copyWith(color: colorScheme.onSurface),
-              nairaSize: 12,
+              style: 18.w900.copyWith(color: colorScheme.onSurface),
+              nairaSize: 14,
             ),
           ],
         ),

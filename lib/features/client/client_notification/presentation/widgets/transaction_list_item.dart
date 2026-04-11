@@ -3,6 +3,7 @@ import 'package:eventra/features/client/client_notification/domain/models/transa
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_amount_text.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_status_badge.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,7 +23,7 @@ class TransactionListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final amountColor = transaction.isCredit
-        ? colorScheme.secondary
+        ? AppColorSchemes.successDark
         : colorScheme.onSurface;
 
     return InkWell(
@@ -31,7 +32,7 @@ class TransactionListItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 14),
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerLowest,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Column(

@@ -42,107 +42,125 @@ class TransactionHistoryPage extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TransactionSearchField(
-                  hintText: l10n.notificationsSearchTransactionsHint,
-                  onChanged: (value) {
-                    context.read<ClientNotificationBloc>().add(
-                      TransactionSearchChanged(value),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TransactionSearchField(
+                    hintText: l10n.notificationsSearchTransactionsHint,
+                    onChanged: (value) {
+                      context.read<ClientNotificationBloc>().add(
+                        TransactionSearchChanged(value),
+                      );
+                    },
+                  ),
                 ),
                 16.vertSpacing,
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TransactionFilterChip(
-                        label: l10n.notificationsFilterAll,
-                        isSelected:
-                            state.transactionFilter == TransactionFilter.all,
-                        onTap: () {
-                          context.read<ClientNotificationBloc>().add(
-                            const TransactionFilterChanged(
-                              TransactionFilter.all,
-                            ),
-                          );
-                        },
-                      ),
-                      8.horizSpacing,
-                      TransactionFilterChip(
-                        label: l10n.notificationsFilterCompleted,
-                        isSelected:
-                            state.transactionFilter ==
-                            TransactionFilter.completed,
-                        onTap: () {
-                          context.read<ClientNotificationBloc>().add(
-                            const TransactionFilterChanged(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TransactionFilterChip(
+                          label: l10n.notificationsFilterAll,
+                          isSelected:
+                              state.transactionFilter == TransactionFilter.all,
+                          onTap: () {
+                            context.read<ClientNotificationBloc>().add(
+                              const TransactionFilterChanged(
+                                TransactionFilter.all,
+                              ),
+                            );
+                          },
+                        ),
+                        8.horizSpacing,
+                        TransactionFilterChip(
+                          label: l10n.notificationsFilterCompleted,
+                          isSelected:
+                              state.transactionFilter ==
                               TransactionFilter.completed,
-                            ),
-                          );
-                        },
-                      ),
-                      8.horizSpacing,
-                      TransactionFilterChip(
-                        label: l10n.notificationsFilterPending,
-                        isSelected:
-                            state.transactionFilter ==
-                            TransactionFilter.pending,
-                        onTap: () {
-                          context.read<ClientNotificationBloc>().add(
-                            const TransactionFilterChanged(
+                          onTap: () {
+                            context.read<ClientNotificationBloc>().add(
+                              const TransactionFilterChanged(
+                                TransactionFilter.completed,
+                              ),
+                            );
+                          },
+                        ),
+                        8.horizSpacing,
+                        TransactionFilterChip(
+                          label: l10n.notificationsFilterPending,
+                          isSelected:
+                              state.transactionFilter ==
                               TransactionFilter.pending,
-                            ),
-                          );
-                        },
-                      ),
-                      8.horizSpacing,
-                      TransactionFilterChip(
-                        label: l10n.notificationsFilterFailed,
-                        isSelected:
-                            state.transactionFilter == TransactionFilter.failed,
-                        onTap: () {
-                          context.read<ClientNotificationBloc>().add(
-                            const TransactionFilterChanged(
+                          onTap: () {
+                            context.read<ClientNotificationBloc>().add(
+                              const TransactionFilterChanged(
+                                TransactionFilter.pending,
+                              ),
+                            );
+                          },
+                        ),
+                        8.horizSpacing,
+                        TransactionFilterChip(
+                          label: l10n.notificationsFilterFailed,
+                          isSelected:
+                              state.transactionFilter ==
                               TransactionFilter.failed,
-                            ),
-                          );
-                        },
+                          onTap: () {
+                            context.read<ClientNotificationBloc>().add(
+                              const TransactionFilterChanged(
+                                TransactionFilter.failed,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                34.vertSpacing,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TransactionMonthFilter(
+                    selectedMonth: state.selectedMonth,
+                    onSelected: (month) {
+                      context.read<ClientNotificationBloc>().add(
+                        TransactionMonthChanged(month),
+                      );
+                    },
+                  ),
+                ),
+                16.vertSpacing,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      TransactionSummaryCard(
+                        label: l10n.notificationsTotalSpent,
+                        amount: _formatCurrency(state.visibleTotalSpent),
+                      ),
+                      10.horizSpacing,
+                      TransactionSummaryCard(
+                        label: l10n.notificationsTotalRefunds,
+                        amount: _formatCurrency(state.visibleTotalRefunds),
                       ),
                     ],
                   ),
                 ),
-                34.vertSpacing,
-                TransactionMonthFilter(
-                  selectedMonth: state.selectedMonth,
-                  onSelected: (month) {
-                    context.read<ClientNotificationBloc>().add(
-                      TransactionMonthChanged(month),
-                    );
-                  },
-                ),
-                16.vertSpacing,
-                Row(
-                  children: [
-                    TransactionSummaryCard(
-                      label: l10n.notificationsTotalSpent,
-                      amount: _formatCurrency(state.visibleTotalSpent),
-                    ),
-                    10.horizSpacing,
-                    TransactionSummaryCard(
-                      label: l10n.notificationsTotalRefunds,
-                      amount: _formatCurrency(state.visibleTotalRefunds),
-                    ),
-                  ],
-                ),
                 20.vertSpacing,
-                Text(
-                  l10n.notificationsRecentTransactions.toUpperCase(),
-                  style: 12.w700.copyWith(color: colorScheme.onSurfaceVariant),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    l10n.notificationsRecentTransactions.toUpperCase(),
+                    style: 12.w700.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                 ),
                 10.vertSpacing,
                 Expanded(
@@ -158,20 +176,39 @@ class TransactionHistoryPage extends StatelessWidget {
                             final transaction =
                                 state.visibleTransactions[index];
 
-                            return TransactionListItem(
-                              transaction: transaction,
-                              statusLabel: _statusLabel(
-                                l10n,
-                                transaction.status,
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
                               ),
-                              onTap: () async {
-                                context.read<ClientNotificationBloc>().add(
-                                  TransactionSelected(transaction.id),
-                                );
-                                await context.pushNamed(
-                                  TransactionDetailsPage.name,
-                                );
-                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: colorScheme.surface,
+                                  borderRadius: BorderRadius.circular(18),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: colorScheme.outlineVariant
+                                          .withValues(alpha: 0.1),
+                                      blurRadius: 20,
+                                      offset: const Offset(0, 12),
+                                    ),
+                                  ],
+                                ),
+                                child: TransactionListItem(
+                                  transaction: transaction,
+                                  statusLabel: _statusLabel(
+                                    l10n,
+                                    transaction.status,
+                                  ),
+                                  onTap: () async {
+                                    context.read<ClientNotificationBloc>().add(
+                                      TransactionSelected(transaction.id),
+                                    );
+                                    await context.pushNamed(
+                                      TransactionDetailsPage.name,
+                                    );
+                                  },
+                                ),
+                              ),
                             );
                           },
                         ),

@@ -1,6 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_notification/domain/models/transaction_record.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,14 +19,14 @@ class TransactionStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final statusColor = switch (status) {
-      TransactionStatus.completed => colorScheme.secondary,
-      TransactionStatus.pending => colorScheme.tertiary,
-      TransactionStatus.failed => colorScheme.error,
+      TransactionStatus.completed => AppColorSchemes.successDark,
+      TransactionStatus.pending => AppColorSchemes.primary500,
+      TransactionStatus.failed => AppColorSchemes.error,
     };
     final statusIcon = switch (status) {
       TransactionStatus.completed => EventraVectors.goodCheckGreen,
       TransactionStatus.pending => EventraVectors.pendingIconOrgange,
-      TransactionStatus.failed => EventraVectors.outgoingRedIcon,
+      TransactionStatus.failed => EventraVectors.redCancelIcon,
     };
 
     return Row(

@@ -52,6 +52,7 @@ class EventraVectors {
       'assets/svgs/pending-icon-organge.svg';
   static const String playWhiteIconPlay =
       'assets/svgs/play-white-icon_play.svg';
+  static const String redCancelIcon = 'assets/svgs/red-cancel-icon.svg';
   static const String searchNormal = 'assets/svgs/search-normal.svg';
   static const String shareButtonVendorDeets =
       'assets/svgs/share-button-vendor-deets.svg';

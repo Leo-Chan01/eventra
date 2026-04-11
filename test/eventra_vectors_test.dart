@@ -44,6 +44,7 @@ void main() {
     expect(File(EventraVectors.outgoingRedIcon).existsSync(), isTrue);
     expect(File(EventraVectors.pendingIconOrgange).existsSync(), isTrue);
     expect(File(EventraVectors.playWhiteIconPlay).existsSync(), isTrue);
+    expect(File(EventraVectors.redCancelIcon).existsSync(), isTrue);
     expect(File(EventraVectors.searchNormal).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.shopIcon).existsSync(), isTrue);
