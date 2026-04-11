@@ -33,14 +33,20 @@ class HomeContent extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
-            child: HomeHeader(userName: 'Maria'),
+            child: HomeHeader(
+              userName: 'Maria',
+              hasMessages: true,
+              hasNotifications: true,
+            ),
           ),
           20.vertSpacing,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: HomeSearchBar(
               onTapFilter: onOpenFilter,
-              onTapSearch: onOpenLocationLookup,
+              onTapSearch: () {
+                //TODO(KINGRAYM): implement search page and navigation
+              },
             ),
           ),
           20.vertSpacing,

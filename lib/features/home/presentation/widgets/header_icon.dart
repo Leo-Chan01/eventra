@@ -21,6 +21,7 @@ class HeaderIcon extends StatelessWidget {
       child: Stack(
         children: [
           IconButton(
+            padding: EdgeInsets.zero,
             onPressed: onPressed,
             icon: icon,
           ),

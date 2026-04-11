@@ -10,6 +10,8 @@ class EventraVectors {
       'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
   static const String cautionSignOrange = 'assets/svgs/caution-sign-orange.svg';
+  static const String chatMessageRedbadge =
+      'assets/svgs/chat-message-redbadge.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';
   static const String clientVector = 'assets/svgs/client-vector.svg';
   static const String eventraBlackText = 'assets/svgs/eventra-black-text.svg';
@@ -33,6 +35,8 @@ class EventraVectors {
   static const String mailIcon = 'assets/svgs/mail-icon.svg';
   static const String messages = 'assets/svgs/messages.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
+  static const String notificationBellNobadge =
+      'assets/svgs/notification-bell-nobadge.svg';
   static const String notificationBell = 'assets/svgs/notification-bell.svg';
   static const String playWhiteIconPlay =
       'assets/svgs/play-white-icon_play.svg';

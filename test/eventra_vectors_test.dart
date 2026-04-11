@@ -11,6 +11,7 @@ void main() {
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
     expect(File(EventraVectors.cancelSearchIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cautionSignOrange).existsSync(), isTrue);
+    expect(File(EventraVectors.chatMessageRedbadge).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessage).existsSync(), isTrue);
     expect(File(EventraVectors.clientVector).existsSync(), isTrue);
     expect(File(EventraVectors.eventraBlackText).existsSync(), isTrue);
@@ -30,6 +31,7 @@ void main() {
     expect(File(EventraVectors.mailIcon).existsSync(), isTrue);
     expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);
+    expect(File(EventraVectors.notificationBellNobadge).existsSync(), isTrue);
     expect(File(EventraVectors.notificationBell).existsSync(), isTrue);
     expect(File(EventraVectors.playWhiteIconPlay).existsSync(), isTrue);
     expect(File(EventraVectors.searchNormal).existsSync(), isTrue);

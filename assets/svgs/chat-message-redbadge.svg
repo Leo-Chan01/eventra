@@ -6,4 +6,5 @@
 <path d="M26.4955 26.75H26.5045" stroke="#111827" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M22.9955 26.75H23.0045" stroke="#111827" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M19.4955 26.75H19.5045" stroke="#111827" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="34" cy="18" r="3.5" fill="#FF0000"/>
 </svg>

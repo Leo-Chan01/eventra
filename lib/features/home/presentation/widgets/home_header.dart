@@ -11,10 +11,14 @@ import 'package:go_router/go_router.dart';
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
     required this.userName,
+    this.hasNotifications = false,
+    this.hasMessages = false,
     super.key,
   });
 
   final String userName;
+  final bool hasNotifications;
+  final bool hasMessages;
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +55,19 @@ class HomeHeader extends StatelessWidget {
           ),
         ),
         Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8,
           children: [
             HeaderIcon(
-              icon: SvgPicture.asset(EventraVectors.chatMessage),
+              icon: hasMessages
+                  ? SvgPicture.asset(EventraVectors.chatMessageRedbadge)
+                  : SvgPicture.asset(EventraVectors.chatMessage),
               onPressed: () => context.pushNamed(TransactionHistoryPage.name),
             ),
             HeaderIcon(
-              icon: SvgPicture.asset(EventraVectors.notificationBell),
+              icon: hasNotifications
+                  ? SvgPicture.asset(EventraVectors.notificationBell)
+                  : SvgPicture.asset(EventraVectors.notificationBellNobadge),
               onPressed: () => context.pushNamed(ClientNotificationsPage.name),
             ),
           ],
