@@ -42,7 +42,12 @@ void main() {
     expect(File(EventraImages.photographyCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.profileDummy).existsSync(), isTrue);
     expect(File(EventraImages.rentalCategoryIcon).existsSync(), isTrue);
+    expect(File(EventraImages.searchResultNotFoundImage).existsSync(), isTrue);
     expect(File(EventraImages.smallChopsCategoryImage).existsSync(), isTrue);
+    expect(
+      File(EventraImages.transactionHistoryNotificationEmpty).existsSync(),
+      isTrue,
+    );
     expect(File(EventraImages.usherCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.videographerCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.weddingDressCategoryImage).existsSync(), isTrue);
@@ -53,5 +58,6 @@ void main() {
     );
     expect(File(EventraImages.womanWithfoodplate).existsSync(), isTrue);
     expect(File(EventraImages.womanWithweddinggown).existsSync(), isTrue);
+    expect(File(EventraImages.yourInboxIsEmptyImage).existsSync(), isTrue);
   });
 }

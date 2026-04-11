@@ -48,8 +48,12 @@ class EventraImages {
   static const String profileDummy = 'assets/images/profile-dummy.png';
   static const String rentalCategoryIcon =
       'assets/images/rental_category_icon.png';
+  static const String searchResultNotFoundImage =
+      'assets/images/search-result-not-found-image.png';
   static const String smallChopsCategoryImage =
       'assets/images/small-chops-category-image.png';
+  static const String transactionHistoryNotificationEmpty =
+      'assets/images/transaction-history-notification-empty.png';
   static const String usherCategoryImage =
       'assets/images/usher-category-image.png';
   static const String videographerCategoryImage =
@@ -63,4 +67,6 @@ class EventraImages {
       'assets/images/woman-withfoodplate.png';
   static const String womanWithweddinggown =
       'assets/images/woman-withweddinggown.png';
+  static const String yourInboxIsEmptyImage =
+      'assets/images/your-inbox-is-empty-image.png';
 }
