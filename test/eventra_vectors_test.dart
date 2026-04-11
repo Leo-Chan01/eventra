@@ -60,6 +60,7 @@ void main() {
     expect(File(EventraVectors.homeIconSearch).existsSync(), isTrue);
     expect(File(EventraVectors.infoIconOrange).existsSync(), isTrue);
     expect(File(EventraVectors.infoIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.locationPinLineIcon).existsSync(), isTrue);
     expect(File(EventraVectors.locationPin).existsSync(), isTrue);
     expect(File(EventraVectors.logoutIconProfileSettings).existsSync(), isTrue);
     expect(File(EventraVectors.loveButtonVendorDeets).existsSync(), isTrue);

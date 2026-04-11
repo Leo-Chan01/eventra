@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:eventra/features/home/domain/models/home_notification_preference.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -44,6 +45,30 @@ void main() {
           (state) => state.selectedAddress,
           'selectedAddress',
           'Lekki Phase 1, Lagos',
+        ),
+      ],
+    );
+
+    blocTest<HomeBloc, HomeState>(
+      'toggles notification preferences',
+      build: HomeBloc.new,
+      act: (bloc) => bloc.add(
+        const HomeNotificationPreferenceToggled(
+          type: HomeNotificationPreferenceType.smsNotifications,
+          isEnabled: true,
+        ),
+      ),
+      expect: () => [
+        isA<HomeState>().having(
+          (state) => state.notificationPreferences
+              .firstWhere(
+                (preference) =>
+                    preference.type ==
+                    HomeNotificationPreferenceType.smsNotifications,
+              )
+              .isEnabled,
+          'smsNotificationsEnabled',
+          true,
         ),
       ],
     );

@@ -1,5 +1,7 @@
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -119,6 +121,56 @@ void main() {
       expect(find.byKey(const Key('home_reels_feed')), findsOneWidget);
       expect(find.text('Kenny & Femi'), findsOneWidget);
       expect(find.text('283'), findsOneWidget);
+    });
+
+    testWidgets('profile tab shows the settings layout', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('nav_tab_4')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Settings'), findsOneWidget);
+      expect(find.text('Chioma Okafor'), findsOneWidget);
+      expect(find.text('Personal Information'), findsOneWidget);
+      expect(find.text('Log Out'), findsOneWidget);
+    });
+
+    testWidgets('personal information page renders profile details', (
+      tester,
+    ) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const ProfilePersonalInformationPage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Personal Information'), findsOneWidget);
+      expect(find.text('Phone number'), findsOneWidget);
+      expect(find.text('Date of Birth'), findsOneWidget);
+      expect(find.text('Address'), findsOneWidget);
+    });
+
+    testWidgets('notification settings page renders toggles', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const ProfileNotificationSettingsPage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Notification'), findsOneWidget);
+      expect(find.text('Push Notifications'), findsOneWidget);
+      expect(find.text('Booking Updates'), findsOneWidget);
+      expect(find.text('Promotions & Offers'), findsOneWidget);
     });
   });
 }

@@ -45,7 +45,7 @@ class HomeContent extends StatelessWidget {
             child: HomeSearchBar(
               onTapFilter: onOpenFilter,
               onTapSearch: () {
-                //TODO(KINGRAYM): implement search page and navigation
+                //TODO(KINGRAYM): DO NOT REMOVE THIS implement search page and navigation
               },
             ),
           ),

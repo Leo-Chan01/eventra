@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:eventra/features/home/domain/models/home_notification_preference.dart';
+import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/domain/models/home_reel.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/resources/resources.dart';
@@ -82,6 +84,19 @@ class HomeLocationSelected extends HomeEvent {
   List<Object?> get props => [address];
 }
 
+class HomeNotificationPreferenceToggled extends HomeEvent {
+  const HomeNotificationPreferenceToggled({
+    required this.type,
+    required this.isEnabled,
+  });
+
+  final HomeNotificationPreferenceType type;
+  final bool isEnabled;
+
+  @override
+  List<Object?> get props => [type, isEnabled];
+}
+
 class HomeState extends Equatable {
   const HomeState({
     this.currentIndex = 0,
@@ -90,6 +105,22 @@ class HomeState extends Equatable {
     this.vendors = const [],
     this.allVendors = const [],
     this.reels = const [],
+    this.profile = const HomeProfile(
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+      location: '',
+      memberSince: '',
+      avatarPath: '',
+      bookingsCount: 0,
+      reviewsCount: 0,
+      favoritesCount: 0,
+      legalName: '',
+      gender: '',
+      dateOfBirth: '',
+      address: '',
+    ),
+    this.notificationPreferences = const [],
     this.selectedCategory = 'All',
     this.selectedFilterCategories = const ['All'],
     this.selectedRating = 1,
@@ -107,6 +138,8 @@ class HomeState extends Equatable {
   final List<Vendor> vendors;
   final List<Vendor> allVendors;
   final List<HomeReel> reels;
+  final HomeProfile profile;
+  final List<HomeNotificationPreference> notificationPreferences;
   final String selectedCategory;
   final List<String> selectedFilterCategories;
   final int selectedRating;
@@ -124,6 +157,8 @@ class HomeState extends Equatable {
     List<Vendor>? vendors,
     List<Vendor>? allVendors,
     List<HomeReel>? reels,
+    HomeProfile? profile,
+    List<HomeNotificationPreference>? notificationPreferences,
     String? selectedCategory,
     List<String>? selectedFilterCategories,
     int? selectedRating,
@@ -141,6 +176,9 @@ class HomeState extends Equatable {
       vendors: vendors ?? this.vendors,
       allVendors: allVendors ?? this.allVendors,
       reels: reels ?? this.reels,
+      profile: profile ?? this.profile,
+      notificationPreferences:
+          notificationPreferences ?? this.notificationPreferences,
       selectedCategory: selectedCategory ?? this.selectedCategory,
       selectedFilterCategories:
           selectedFilterCategories ?? this.selectedFilterCategories,
@@ -162,6 +200,8 @@ class HomeState extends Equatable {
     vendors,
     allVendors,
     reels,
+    profile,
+    notificationPreferences,
     selectedCategory,
     selectedFilterCategories,
     selectedRating,
@@ -184,6 +224,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomePriceRangeChanged>(_onPriceRangeChanged);
     on<HomeLocationQueryChanged>(_onLocationQueryChanged);
     on<HomeLocationSelected>(_onLocationSelected);
+    on<HomeNotificationPreferenceToggled>(_onNotificationPreferenceToggled);
   }
 
   void _onTabChanged(HomeTabChanged event, Emitter<HomeState> emit) {
@@ -276,6 +317,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
   }
 
+  void _onNotificationPreferenceToggled(
+    HomeNotificationPreferenceToggled event,
+    Emitter<HomeState> emit,
+  ) {
+    final updatedPreferences = state.notificationPreferences
+        .map(
+          (preference) => preference.type == event.type
+              ? preference.copyWith(isEnabled: event.isEnabled)
+              : preference,
+        )
+        .toList();
+
+    emit(state.copyWith(notificationPreferences: updatedPreferences));
+  }
+
   static HomeState _buildInitialState() {
     const reels = [
       HomeReel(
@@ -307,6 +363,65 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         likeCount: 321,
         shareCount: 120,
         saveCount: 89,
+      ),
+    ];
+
+    const profile = HomeProfile(
+      fullName: 'Chioma Okafor',
+      email: 'name@gmail.com',
+      phoneNumber: '07064959727',
+      location: 'Lagos, Nigeria',
+      memberSince: 'January 2026',
+      avatarPath: EventraImages.profileDummy,
+      bookingsCount: 12,
+      reviewsCount: 8,
+      favoritesCount: 15,
+      legalName: 'Kebokwu Ogechukwu Paul',
+      gender: 'Male',
+      dateOfBirth: '01_****_90',
+      address: 'Lekki phase 1',
+    );
+
+    const notificationPreferences = [
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.pushNotifications,
+        section: HomeNotificationPreferenceSection.general,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.emailNotifications,
+        section: HomeNotificationPreferenceSection.general,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.smsNotifications,
+        section: HomeNotificationPreferenceSection.general,
+        isEnabled: false,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.bookingUpdates,
+        section: HomeNotificationPreferenceSection.activity,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.messages,
+        section: HomeNotificationPreferenceSection.activity,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.eventReminders,
+        section: HomeNotificationPreferenceSection.activity,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.promotionsAndOffers,
+        section: HomeNotificationPreferenceSection.marketing,
+        isEnabled: true,
+      ),
+      HomeNotificationPreference(
+        type: HomeNotificationPreferenceType.newVendors,
+        section: HomeNotificationPreferenceSection.marketing,
+        isEnabled: false,
       ),
     ];
 
@@ -446,6 +561,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       allVendors: allVendors,
       vendors: allVendors,
       reels: reels,
+      profile: profile,
+      notificationPreferences: notificationPreferences,
       recentLocations: recentLocations,
       locationSuggestions: recentLocations,
     );

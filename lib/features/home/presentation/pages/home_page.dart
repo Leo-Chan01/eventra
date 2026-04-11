@@ -1,15 +1,14 @@
 import 'dart:async';
 
-import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.dart';
 import 'package:eventra/features/home/presentation/widgets/home_content.dart';
 import 'package:eventra/features/home/presentation/widgets/home_explore_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_filter_options_sheet.dart';
 import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
+import 'package:eventra/features/home/presentation/widgets/home_profile_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_reels_tab.dart';
 import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
-import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
 
     return BlocBuilder<HomeBloc, HomeState>(
@@ -60,11 +58,11 @@ class HomePage extends StatelessWidget {
               ),
               SafeArea(
                 bottom: false,
-                child: Center(
-                  child: Text(
-                    l10n.navProfile,
-                    style: 18.w600.copyWith(color: colorScheme.onSurface),
-                  ),
+                child: HomeProfileTab(
+                  profile: state.profile,
+                  onBack: () {
+                    context.read<HomeBloc>().add(const HomeTabChanged(0));
+                  },
                 ),
               ),
             ],

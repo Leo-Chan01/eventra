@@ -51,6 +51,8 @@ class EventraVectors {
   static const String homeIconSearch = 'assets/svgs/home_icon_search.svg';
   static const String infoIconOrange = 'assets/svgs/info-icon-orange.svg';
   static const String infoIcon = 'assets/svgs/info-icon.svg';
+  static const String locationPinLineIcon =
+      'assets/svgs/location-pin-line-icon.svg';
   static const String locationPin = 'assets/svgs/location-pin.svg';
   static const String logoutIconProfileSettings =
       'assets/svgs/logout-icon-profile-settings.svg';
