@@ -1,5 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionHelpCard extends StatelessWidget {
   const TransactionHelpCard({
@@ -28,36 +30,45 @@ class TransactionHelpCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: colorScheme.primary.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: colorScheme.primary),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.info_outline_rounded,
-                  size: 16,
-                  color: colorScheme.primary,
-                ),
+                SvgPicture.asset(EventraVectors.infoIconOrange),
                 8.horizSpacing,
-                Text(
-                  title,
-                  style: 12.w700.copyWith(color: colorScheme.primary),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: 12.w700.copyWith(color: colorScheme.primary),
+                      ),
+                      8.vertSpacing,
+                      Text(
+                        message,
+                        style: 11.w400.copyWith(
+                          color: colorScheme.primary,
+                          height: 1.35,
+                        ),
+                      ),
+                      8.vertSpacing,
+                      Text(
+                        actionLabel,
+                        style: 11.w700.copyWith(
+                          color: colorScheme.primary,
+                          decoration: TextDecoration.underline,
+                          decorationColor: colorScheme.primary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-            8.vertSpacing,
-            Text(
-              message,
-              style: 11.w400.copyWith(
-                color: colorScheme.onSurfaceVariant,
-                height: 1.35,
-              ),
-            ),
-            8.vertSpacing,
-            Text(
-              actionLabel,
-              style: 11.w700.copyWith(color: colorScheme.primary),
             ),
           ],
         ),

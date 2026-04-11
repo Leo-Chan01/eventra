@@ -6,10 +6,13 @@ import 'package:eventra/features/client/client_notification/presentation/widgets
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_section_card.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_success_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionDetailsPage extends StatelessWidget {
   const TransactionDetailsPage({super.key});
@@ -75,12 +78,19 @@ class TransactionDetailsPage extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: colorScheme.primary.withValues(alpha: 0.1),
+                      color: AppColorSchemes.error.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(999),
                     ),
-                    child: Text(
-                      l10n.notificationsPaymentSent,
-                      style: 10.w700.copyWith(color: colorScheme.primary),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          EventraVectors.outgoingRedIcon,
+                        ),
+                        Text(
+                          l10n.notificationsPaymentSent,
+                          style: 10.w700.copyWith(color: AppColorSchemes.error),
+                        ),
+                      ],
                     ),
                   ),
                   child: Column(
@@ -97,8 +107,14 @@ class TransactionDetailsPage extends StatelessWidget {
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
+                      Divider(
+                        color: colorScheme.onSurfaceVariant.withValues(
+                          alpha: 0.2,
+                        ),
+                      ),
                       12.vertSpacing,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.email_outlined,
@@ -107,17 +123,29 @@ class TransactionDetailsPage extends StatelessWidget {
                           ),
                           8.horizSpacing,
                           Expanded(
-                            child: Text(
-                              transaction.vendorEmail,
-                              style: 11.w500.copyWith(
-                                color: colorScheme.onSurfaceVariant,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: 11.w500.copyWith(
+                                    color: colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                                Text(
+                                  transaction.vendorEmail,
+                                  style: 14.w500.copyWith(
+                                    color: colorScheme.onSurface,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                       8.vertSpacing,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.call_outlined,
@@ -126,17 +154,29 @@ class TransactionDetailsPage extends StatelessWidget {
                           ),
                           8.horizSpacing,
                           Expanded(
-                            child: Text(
-                              transaction.vendorPhone,
-                              style: 11.w500.copyWith(
-                                color: colorScheme.onSurfaceVariant,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Phone',
+                                  style: 11.w500.copyWith(
+                                    color: colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                                Text(
+                                  transaction.vendorPhone,
+                                  style: 14.w500.copyWith(
+                                    color: colorScheme.onSurface,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                       8.vertSpacing,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.location_on_outlined,
@@ -145,18 +185,31 @@ class TransactionDetailsPage extends StatelessWidget {
                           ),
                           8.horizSpacing,
                           Expanded(
-                            child: Text(
-                              transaction.vendorAddress,
-                              style: 11.w500.copyWith(
-                                color: colorScheme.onSurfaceVariant,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Address',
+                                  style: 11.w500.copyWith(
+                                    color: colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                                Text(
+                                  transaction.vendorAddress,
+                                  style: 14.w500.copyWith(
+                                    color: colorScheme.onSurface,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      14.vertSpacing,
+                      16.vertSpacing,
                       EventraButton(
                         buttonText: l10n.notificationsContactVendor,
+                        isWithIcon: true,
+                        icon: EventraVectors.chatBubbleIcon,
                         onPressed: () {
                           GlobalSnackBar.showInfo(
                             l10n.notificationsContactVendorFeedback,
@@ -170,6 +223,7 @@ class TransactionDetailsPage extends StatelessWidget {
                 TransactionSectionCard(
                   title: l10n.notificationsEventInformationTitle,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TransactionDetailValueRow(
                         label: l10n.notificationsEventType,
@@ -180,9 +234,16 @@ class TransactionDetailsPage extends StatelessWidget {
                         label: l10n.notificationsEventDate,
                         value: transaction.eventDate,
                       ),
-                      10.vertSpacing,
+                      5.vertSpacing,
+                      Divider(
+                        color: colorScheme.onSurfaceVariant.withValues(
+                          alpha: 0.2,
+                        ),
+                      ),
+                      5.vertSpacing,
                       TransactionDetailValueRow(
                         label: l10n.notificationsEventDescription,
+                        isVertical: true,
                         value: transaction.description,
                       ),
                     ],
@@ -207,12 +268,19 @@ class TransactionDetailsPage extends StatelessWidget {
                         label: l10n.notificationsTax,
                         value: _formatAmount(transaction.tax),
                       ),
-                      10.vertSpacing,
+                      5.vertSpacing,
+                      Divider(
+                        color: colorScheme.onSurfaceVariant.withValues(
+                          alpha: 0.2,
+                        ),
+                      ),
+                      5.vertSpacing,
                       TransactionDetailValueRow(
                         label: l10n.notificationsTotalAmount,
                         value: transaction.plainAmountLabel,
                         valueColor: colorScheme.primary,
                         isEmphasized: true,
+                        isBothEmphashized: true,
                       ),
                     ],
                   ),
@@ -222,16 +290,8 @@ class TransactionDetailsPage extends StatelessWidget {
                   title: l10n.notificationsPaymentMethodTitle,
                   child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: colorScheme.primary.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Icons.credit_card_rounded,
-                          color: colorScheme.primary,
-                        ),
+                      SvgPicture.asset(
+                        EventraVectors.creditCardBlueGbIcon,
                       ),
                       12.horizSpacing,
                       Column(
@@ -258,35 +318,50 @@ class TransactionDetailsPage extends StatelessWidget {
                 16.vertSpacing,
                 TransactionSectionCard(
                   title: l10n.notificationsTransactionReferenceTitle,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          transaction.reference,
-                          style: 12.w600.copyWith(color: colorScheme.onSurface),
-                        ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: colorScheme.onSurfaceVariant.withValues(
+                        alpha: 0.03,
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          await Clipboard.setData(
-                            ClipboardData(text: transaction.reference),
-                          );
-                          GlobalSnackBar.showSuccess(
-                            l10n.notificationsReferenceCopied,
-                          );
-                        },
-                        icon: Icon(
-                          Icons.copy_rounded,
-                          size: 18,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              transaction.reference,
+                              style: 12.w600.copyWith(
+                                color: colorScheme.onSurface,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () async {
+                              await Clipboard.setData(
+                                ClipboardData(text: transaction.reference),
+                              );
+                              GlobalSnackBar.showSuccess(
+                                l10n.notificationsReferenceCopied,
+                              );
+                            },
+                            icon: SvgPicture.asset(
+                              EventraVectors.copyIconWhiteBg,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 16.vertSpacing,
                 EventraButton.outlined(
                   buttonText: l10n.notificationsDownloadReceipt,
+                  isSmallBorderRadius: true,
+                  borderRadius: 14,
+                  borderColor: colorScheme.outline,
+                  textColor: colorScheme.onSurface,
                   onPressed: () {
                     GlobalSnackBar.showInfo(
                       l10n.notificationsReceiptComingSoon,

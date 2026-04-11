@@ -23,7 +23,9 @@ class NotificationTabButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected ? colorScheme.primary : colorScheme.surface,
+          color: isSelected
+              ? colorScheme.primary
+              : colorScheme.onSurface.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
         ),
         alignment: Alignment.center,

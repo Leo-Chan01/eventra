@@ -3,17 +3,24 @@ part of 'resources.dart';
 class EventraVectors {
   EventraVectors._();
 
+  static const String addressIcon = 'assets/svgs/address-icon.svg';
   static const String angleLeft = 'assets/svgs/angle-left.svg';
   static const String angleRight = 'assets/svgs/angle-right.svg';
   static const String appleIcon = 'assets/svgs/apple-icon.svg';
+  static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
+  static const String callIcon = 'assets/svgs/call-icon.svg';
   static const String cancelIconNoCircle =
       'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
   static const String cautionSignOrange = 'assets/svgs/caution-sign-orange.svg';
+  static const String chatBubbleIcon = 'assets/svgs/chat-bubble-icon.svg';
   static const String chatMessageRedbadge =
       'assets/svgs/chat-message-redbadge.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';
   static const String clientVector = 'assets/svgs/client-vector.svg';
+  static const String copyIconWhiteBg = 'assets/svgs/copy-icon-white-bg.svg';
+  static const String creditCardBlueGbIcon =
+      'assets/svgs/credit-card-blue-gb-icon.svg';
   static const String eventraBlackText = 'assets/svgs/eventra-black-text.svg';
   static const String eventraPrimaryText =
       'assets/svgs/eventra-primary-text.svg';
@@ -25,6 +32,7 @@ class EventraVectors {
       'assets/svgs/home-icon-search-new.svg';
   static const String homeIcon = 'assets/svgs/home-icon.svg';
   static const String homeIconSearch = 'assets/svgs/home_icon_search.svg';
+  static const String infoIconOrange = 'assets/svgs/info-icon-orange.svg';
   static const String infoIcon = 'assets/svgs/info-icon.svg';
   static const String locationPin = 'assets/svgs/location-pin.svg';
   static const String loveButtonVendorDeets =
@@ -33,11 +41,15 @@ class EventraVectors {
   static const String mageShareVideoIcon =
       'assets/svgs/mage_share_video_icon.svg';
   static const String mailIcon = 'assets/svgs/mail-icon.svg';
+  static const String messageMailIcon = 'assets/svgs/message-mail-icon.svg';
   static const String messages = 'assets/svgs/messages.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
   static const String notificationBellNobadge =
       'assets/svgs/notification-bell-nobadge.svg';
   static const String notificationBell = 'assets/svgs/notification-bell.svg';
+  static const String outgoingRedIcon = 'assets/svgs/outgoing-red-icon.svg';
+  static const String pendingIconOrgange =
+      'assets/svgs/pending-icon-organge.svg';
   static const String playWhiteIconPlay =
       'assets/svgs/play-white-icon_play.svg';
   static const String searchNormal = 'assets/svgs/search-normal.svg';

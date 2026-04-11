@@ -55,6 +55,7 @@ class AppColorSchemes {
 
   // Success
   static const Color success = Color(0xFF39C07A);
+  static const Color successDark = Color(0xFF009A1A);
   static const Color warning = Color(0xFFF5A622);
   static const Color error = Color(0xFFE8384A);
 

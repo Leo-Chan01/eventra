@@ -1,5 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionSuccessCard extends StatelessWidget {
   const TransactionSuccessCard({
@@ -23,20 +26,22 @@ class TransactionSuccessCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.18),
         borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: colorScheme.surfaceContainerHighest,
+        ),
       ),
       child: Column(
         children: [
-          Icon(
-            Icons.check_circle_rounded,
-            color: colorScheme.primary,
-            size: 28,
+          SvgPicture.asset(
+            EventraVectors.goodCheckGreen,
+            height: 48,
+            width: 48,
           ),
           8.vertSpacing,
           Text(
             title,
-            style: 16.w700.copyWith(color: colorScheme.primary),
+            style: 16.w700.copyWith(color: AppColorSchemes.successDark),
           ),
           6.vertSpacing,
           Text(

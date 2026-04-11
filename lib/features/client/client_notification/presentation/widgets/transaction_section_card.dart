@@ -7,11 +7,13 @@ class TransactionSectionCard extends StatelessWidget {
     required this.child,
     super.key,
     this.trailing,
+    this.leading,
   });
 
   final String title;
   final Widget child;
   final Widget? trailing;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +22,15 @@ class TransactionSectionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.18),
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: colorScheme.shadow.withValues(alpha: 0.1),
+            blurRadius: 40,
+            offset: const Offset(0, 25),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +40,7 @@ class TransactionSectionCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: 14.w700.copyWith(color: colorScheme.onSurface),
+                  style: 16.w700.copyWith(color: colorScheme.onSurface),
                 ),
               ),
               ?trailing,

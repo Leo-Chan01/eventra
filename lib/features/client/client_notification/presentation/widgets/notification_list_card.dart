@@ -22,29 +22,43 @@ class NotificationListCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.22),
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              color: colorScheme.onSurface.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Expanded(
-                  child: Text(
-                    notification.title,
-                    style: 13.w700.copyWith(color: colorScheme.onSurface),
+                  child: Row(
+                    spacing: 10,
+                    children: [
+                      Text(
+                        notification.title,
+                        style: 13.w700.copyWith(color: colorScheme.onSurface),
+                      ),
+                      if (notification.isUnread)
+                        Container(
+                          width: 6,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: colorScheme.primary,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-                if (notification.isUnread)
-                  Container(
-                    width: 6,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: colorScheme.primary,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
+
                 8.horizSpacing,
                 Icon(
                   Icons.close_rounded,

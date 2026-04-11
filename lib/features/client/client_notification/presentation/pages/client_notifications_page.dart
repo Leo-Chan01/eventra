@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_notification/presentation/bloc/client_notification_bloc.dart';

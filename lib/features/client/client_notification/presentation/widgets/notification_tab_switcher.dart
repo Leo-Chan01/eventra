@@ -19,30 +19,32 @@ class NotificationTabSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: NotificationTabButton(
-              label: allCountLabel,
-              isSelected: selectedTab == NotificationTab.all,
-              onTap: () => onChanged(NotificationTab.all),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: NotificationTabButton(
+                label: allCountLabel,
+                isSelected: selectedTab == NotificationTab.all,
+                onTap: () => onChanged(NotificationTab.all),
+              ),
             ),
-          ),
-          6.horizSpacing,
-          Expanded(
-            child: NotificationTabButton(
-              label: unreadCountLabel,
-              isSelected: selectedTab == NotificationTab.unread,
-              onTap: () => onChanged(NotificationTab.unread),
+            8.horizSpacing,
+            Expanded(
+              child: NotificationTabButton(
+                label: unreadCountLabel,
+                isSelected: selectedTab == NotificationTab.unread,
+                onTap: () => onChanged(NotificationTab.unread),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

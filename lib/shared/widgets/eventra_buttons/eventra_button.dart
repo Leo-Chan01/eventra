@@ -12,6 +12,8 @@ class EventraButton extends StatefulWidget {
     this.padding,
     this.onPressed,
     this.borderRadius,
+    this.textColor,
+    this.borderColor,
     this.isSmallBorderRadius = false,
     this.isOutlined = false,
     this.isLoading = false,
@@ -25,6 +27,8 @@ class EventraButton extends StatefulWidget {
     this.width,
     this.padding,
     this.onPressed,
+    this.textColor,
+    this.borderColor,
     this.height,
     this.isSmallBorderRadius = false,
     this.borderRadius,
@@ -41,6 +45,8 @@ class EventraButton extends StatefulWidget {
     this.padding,
     this.onPressed,
     this.height,
+    this.borderColor,
+    this.textColor,
     this.isSmallBorderRadius = true,
     this.borderRadius,
     this.isOutlined = false,
@@ -52,6 +58,8 @@ class EventraButton extends StatefulWidget {
     required this.buttonText,
     required this.icon,
     this.width,
+    this.borderColor,
+    this.textColor,
     this.height,
     this.padding,
     this.onPressed,
@@ -74,6 +82,8 @@ class EventraButton extends StatefulWidget {
   final double? borderRadius;
   final VoidCallback? onPressed;
   final String? icon;
+  final Color? textColor;
+  final Color? borderColor;
 
   @override
   State<EventraButton> createState() => _EventraButtonState();
@@ -90,7 +100,19 @@ class _EventraButtonState extends State<EventraButton> {
         height: widget.height ?? 53,
         child: OutlinedButton(
           onPressed: widget.onPressed,
-          style: theme.outlinedButtonTheme.style,
+          style: theme.outlinedButtonTheme.style?.copyWith(
+            padding: WidgetStateProperty.all(
+              widget.padding ?? const EdgeInsets.symmetric(horizontal: 24),
+            ),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 24),
+                side: BorderSide(
+                  color: widget.borderColor ?? theme.colorScheme.outline,
+                ),
+              ),
+            ),
+          ),
           child: widget.isLoading
               ? SizedBox(
                   height: 14,
@@ -104,7 +126,9 @@ class _EventraButtonState extends State<EventraButton> {
                 )
               : Text(
                   widget.buttonText,
-                  style: 14.w400,
+                  style: 14.w400.copyWith(
+                    color: widget.textColor ?? theme.colorScheme.onSurface,
+                  ),
                 ),
         ),
       );
