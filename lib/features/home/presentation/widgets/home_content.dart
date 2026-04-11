@@ -2,6 +2,7 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
+import 'package:eventra/features/home/presentation/widgets/all_vendors_single_flush_list.dart';
 import 'package:eventra/features/home/presentation/widgets/home_categories.dart';
 import 'package:eventra/features/home/presentation/widgets/home_header.dart';
 import 'package:eventra/features/home/presentation/widgets/home_join_as_vendor_cta.dart';
@@ -34,7 +35,7 @@ class HomeContent extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(0, 16, 0, 120),
+      padding: const EdgeInsets.fromLTRB(0, 16, 0, 35),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -63,51 +64,56 @@ class HomeContent extends StatelessWidget {
               context.read<HomeBloc>().add(HomeCategorySelected(category));
             },
           ),
-          24.vertSpacing,
-          SectionHeader(
-            title: l10n.homeFeaturedVendors,
-            onSeeAll: () {},
-          ),
-          12.vertSpacing,
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              itemCount: state.vendors.length,
-              separatorBuilder: (context, index) => 12.horizSpacing,
-              itemBuilder: (context, index) {
-                final vendor = state.vendors[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: VendorCardFeatured(
-                    vendor: vendor,
-                    onTap: () async {
-                      context.read<VendorDetailBloc>().add(
-                        VendorSelected(vendor.id),
-                      );
-                      await context.pushNamed(VendorDetailPage.name);
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-          24.vertSpacing,
-          SectionHeader(
-            title: l10n.homeTopRatedVendors,
-            onSeeAll: () {},
-          ),
-          12.vertSpacing,
-          HomeTopRatedCarousel(vendors: state.vendors),
-          24.vertSpacing,
-          SectionHeader(
-            title: l10n.homeVendorsOfTheWeek,
-            onSeeAll: () {},
-          ),
-          12.vertSpacing,
-          HomeVendorsWeekGrid(vendors: state.vendors),
-          24.vertSpacing,
+
+          //TODO(KINGRAYM): DO NOT DELETE THE COMMENTED UI CODE BELOW, bring back when the featured and top rated vendors are figured our by management
+
+          // 24.vertSpacing,
+          // SectionHeader(
+          //   title: l10n.homeFeaturedVendors,
+          //   onSeeAll: () {},
+          // ),
+          // 12.vertSpacing,
+          // AspectRatio(
+          //   aspectRatio: 16 / 9,
+          //   child: ListView.separated(
+          //     scrollDirection: Axis.horizontal,
+          //     padding: const EdgeInsets.symmetric(horizontal: 24),
+          //     itemCount: state.vendors.length,
+          //     separatorBuilder: (context, index) => 12.horizSpacing,
+          //     itemBuilder: (context, index) {
+          //       final vendor = state.vendors[index];
+          //       return Padding(
+          //         padding: const EdgeInsets.only(bottom: 8),
+          //         child: VendorCardFeatured(
+          //           vendor: vendor,
+          //           onTap: () async {
+          //             context.read<VendorDetailBloc>().add(
+          //               VendorSelected(vendor.id),
+          //             );
+          //             await context.pushNamed(VendorDetailPage.name);
+          //           },
+          //         ),
+          //       );
+          //     },
+          //   ),
+          // ),
+          // 24.vertSpacing,
+          // SectionHeader(
+          //   title: l10n.homeTopRatedVendors,
+          //   onSeeAll: () {},
+          // ),
+          // 12.vertSpacing,
+          // HomeTopRatedCarousel(vendors: state.vendors),
+          // 24.vertSpacing,
+          // SectionHeader(
+          //   title: l10n.homeVendorsOfTheWeek,
+          //   onSeeAll: () {},
+          // ),
+          // 12.vertSpacing,
+          // HomeVendorsWeekGrid(vendors: state.vendors),
+          26.vertSpacing,
+          AllVendorsSingleFlushList(vendors: state.allVendors),
+          54.vertSpacing,
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: HomeJoinAsVendorCTA(),
