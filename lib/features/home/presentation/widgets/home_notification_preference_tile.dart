@@ -49,7 +49,7 @@ class HomeNotificationPreferenceTile extends StatelessWidget {
             child: Switch.adaptive(
               value: value,
               onChanged: onChanged,
-              activeColor: colorScheme.onPrimary,
+              activeThumbColor: colorScheme.onPrimary,
               activeTrackColor: colorScheme.primary,
               inactiveThumbColor: colorScheme.surface,
               inactiveTrackColor: colorScheme.surfaceContainerHighest,

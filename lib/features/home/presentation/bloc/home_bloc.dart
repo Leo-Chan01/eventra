@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
 import 'package:eventra/features/home/domain/models/home_notification_preference.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/domain/models/home_reel.dart';
@@ -97,6 +98,46 @@ class HomeNotificationPreferenceToggled extends HomeEvent {
   List<Object?> get props => [type, isEnabled];
 }
 
+class HomeAppToggleChanged extends HomeEvent {
+  const HomeAppToggleChanged({
+    required this.type,
+    required this.isEnabled,
+  });
+
+  final HomeAppToggleType type;
+  final bool isEnabled;
+
+  @override
+  List<Object?> get props => [type, isEnabled];
+}
+
+class HomeAppFeedbackRated extends HomeEvent {
+  const HomeAppFeedbackRated(this.rating);
+
+  final int rating;
+
+  @override
+  List<Object?> get props => [rating];
+}
+
+class HomeFavoriteVendorSearchChanged extends HomeEvent {
+  const HomeFavoriteVendorSearchChanged(this.query);
+
+  final String query;
+
+  @override
+  List<Object?> get props => [query];
+}
+
+class HomeFavoriteVendorRemoved extends HomeEvent {
+  const HomeFavoriteVendorRemoved(this.vendorId);
+
+  final String vendorId;
+
+  @override
+  List<Object?> get props => [vendorId];
+}
+
 class HomeState extends Equatable {
   const HomeState({
     this.currentIndex = 0,
@@ -121,13 +162,23 @@ class HomeState extends Equatable {
       address: '',
     ),
     this.notificationPreferences = const [],
+    this.favoriteVendors = const [],
     this.selectedCategory = 'All',
     this.selectedFilterCategories = const ['All'],
     this.selectedRating = 1,
+    this.selectedLanguage = 'English',
+    this.darkModeEnabled = false,
+    this.autoDownloadImagesEnabled = true,
+    this.dataSaverModeEnabled = false,
+    this.offlineModeEnabled = false,
+    this.twoFactorAuthenticationEnabled = true,
+    this.biometricLoginEnabled = false,
+    this.appFeedbackRating = 0,
     this.minPrice = 10000,
     this.maxPrice = 500000,
     this.selectedAddress = 'Lekki Phase 1, Lagos',
     this.locationQuery = '',
+    this.favoriteVendorQuery = '',
     this.recentLocations = const [],
     this.locationSuggestions = const [],
   });
@@ -140,13 +191,23 @@ class HomeState extends Equatable {
   final List<HomeReel> reels;
   final HomeProfile profile;
   final List<HomeNotificationPreference> notificationPreferences;
+  final List<Vendor> favoriteVendors;
   final String selectedCategory;
   final List<String> selectedFilterCategories;
   final int selectedRating;
+  final String selectedLanguage;
+  final bool darkModeEnabled;
+  final bool autoDownloadImagesEnabled;
+  final bool dataSaverModeEnabled;
+  final bool offlineModeEnabled;
+  final bool twoFactorAuthenticationEnabled;
+  final bool biometricLoginEnabled;
+  final int appFeedbackRating;
   final double minPrice;
   final double maxPrice;
   final String selectedAddress;
   final String locationQuery;
+  final String favoriteVendorQuery;
   final List<String> recentLocations;
   final List<String> locationSuggestions;
 
@@ -159,13 +220,23 @@ class HomeState extends Equatable {
     List<HomeReel>? reels,
     HomeProfile? profile,
     List<HomeNotificationPreference>? notificationPreferences,
+    List<Vendor>? favoriteVendors,
     String? selectedCategory,
     List<String>? selectedFilterCategories,
     int? selectedRating,
+    String? selectedLanguage,
+    bool? darkModeEnabled,
+    bool? autoDownloadImagesEnabled,
+    bool? dataSaverModeEnabled,
+    bool? offlineModeEnabled,
+    bool? twoFactorAuthenticationEnabled,
+    bool? biometricLoginEnabled,
+    int? appFeedbackRating,
     double? minPrice,
     double? maxPrice,
     String? selectedAddress,
     String? locationQuery,
+    String? favoriteVendorQuery,
     List<String>? recentLocations,
     List<String>? locationSuggestions,
   }) {
@@ -179,14 +250,27 @@ class HomeState extends Equatable {
       profile: profile ?? this.profile,
       notificationPreferences:
           notificationPreferences ?? this.notificationPreferences,
+      favoriteVendors: favoriteVendors ?? this.favoriteVendors,
       selectedCategory: selectedCategory ?? this.selectedCategory,
       selectedFilterCategories:
           selectedFilterCategories ?? this.selectedFilterCategories,
       selectedRating: selectedRating ?? this.selectedRating,
+      selectedLanguage: selectedLanguage ?? this.selectedLanguage,
+      darkModeEnabled: darkModeEnabled ?? this.darkModeEnabled,
+      autoDownloadImagesEnabled:
+          autoDownloadImagesEnabled ?? this.autoDownloadImagesEnabled,
+      dataSaverModeEnabled: dataSaverModeEnabled ?? this.dataSaverModeEnabled,
+      offlineModeEnabled: offlineModeEnabled ?? this.offlineModeEnabled,
+      twoFactorAuthenticationEnabled:
+          twoFactorAuthenticationEnabled ?? this.twoFactorAuthenticationEnabled,
+      biometricLoginEnabled:
+          biometricLoginEnabled ?? this.biometricLoginEnabled,
+      appFeedbackRating: appFeedbackRating ?? this.appFeedbackRating,
       minPrice: minPrice ?? this.minPrice,
       maxPrice: maxPrice ?? this.maxPrice,
       selectedAddress: selectedAddress ?? this.selectedAddress,
       locationQuery: locationQuery ?? this.locationQuery,
+      favoriteVendorQuery: favoriteVendorQuery ?? this.favoriteVendorQuery,
       recentLocations: recentLocations ?? this.recentLocations,
       locationSuggestions: locationSuggestions ?? this.locationSuggestions,
     );
@@ -202,13 +286,23 @@ class HomeState extends Equatable {
     reels,
     profile,
     notificationPreferences,
+    favoriteVendors,
     selectedCategory,
     selectedFilterCategories,
     selectedRating,
+    selectedLanguage,
+    darkModeEnabled,
+    autoDownloadImagesEnabled,
+    dataSaverModeEnabled,
+    offlineModeEnabled,
+    twoFactorAuthenticationEnabled,
+    biometricLoginEnabled,
+    appFeedbackRating,
     minPrice,
     maxPrice,
     selectedAddress,
     locationQuery,
+    favoriteVendorQuery,
     recentLocations,
     locationSuggestions,
   ];
@@ -225,6 +319,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeLocationQueryChanged>(_onLocationQueryChanged);
     on<HomeLocationSelected>(_onLocationSelected);
     on<HomeNotificationPreferenceToggled>(_onNotificationPreferenceToggled);
+    on<HomeAppToggleChanged>(_onAppToggleChanged);
+    on<HomeAppFeedbackRated>(_onAppFeedbackRated);
+    on<HomeFavoriteVendorSearchChanged>(_onFavoriteVendorSearchChanged);
+    on<HomeFavoriteVendorRemoved>(_onFavoriteVendorRemoved);
   }
 
   void _onTabChanged(HomeTabChanged event, Emitter<HomeState> emit) {
@@ -332,6 +430,53 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(notificationPreferences: updatedPreferences));
   }
 
+  void _onAppToggleChanged(
+    HomeAppToggleChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    switch (event.type) {
+      case HomeAppToggleType.darkMode:
+        emit(state.copyWith(darkModeEnabled: event.isEnabled));
+      case HomeAppToggleType.autoDownloadImages:
+        emit(state.copyWith(autoDownloadImagesEnabled: event.isEnabled));
+      case HomeAppToggleType.dataSaverMode:
+        emit(state.copyWith(dataSaverModeEnabled: event.isEnabled));
+      case HomeAppToggleType.offlineMode:
+        emit(state.copyWith(offlineModeEnabled: event.isEnabled));
+      case HomeAppToggleType.twoFactorAuthentication:
+        emit(
+          state.copyWith(twoFactorAuthenticationEnabled: event.isEnabled),
+        );
+      case HomeAppToggleType.biometricLogin:
+        emit(state.copyWith(biometricLoginEnabled: event.isEnabled));
+    }
+  }
+
+  void _onAppFeedbackRated(
+    HomeAppFeedbackRated event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(appFeedbackRating: event.rating));
+  }
+
+  void _onFavoriteVendorSearchChanged(
+    HomeFavoriteVendorSearchChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(favoriteVendorQuery: event.query));
+  }
+
+  void _onFavoriteVendorRemoved(
+    HomeFavoriteVendorRemoved event,
+    Emitter<HomeState> emit,
+  ) {
+    final updatedFavorites = state.favoriteVendors
+        .where((vendor) => vendor.id != event.vendorId)
+        .toList();
+
+    emit(state.copyWith(favoriteVendors: updatedFavorites));
+  }
+
   static HomeState _buildInitialState() {
     const reels = [
       HomeReel(
@@ -422,6 +567,53 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         type: HomeNotificationPreferenceType.newVendors,
         section: HomeNotificationPreferenceSection.marketing,
         isEnabled: false,
+      ),
+    ];
+
+    const favoriteVendors = [
+      Vendor(
+        id: 'favorite-001',
+        name: '360 Events',
+        category: 'Decor.',
+        rating: 4.8,
+        reviewsCount: 253,
+        image: EventraImages.weddingImage,
+        location: 'Lekki, Lagos',
+        startingPrice: 180000,
+        isFavorite: true,
+      ),
+      Vendor(
+        id: 'favorite-002',
+        name: 'Dj Swanky',
+        category: 'DJs',
+        rating: 4.8,
+        reviewsCount: 253,
+        image: EventraImages.decoratorPerson,
+        location: 'Ikeja, Lagos',
+        startingPrice: 220000,
+        isFavorite: true,
+      ),
+      Vendor(
+        id: 'favorite-003',
+        name: 'Pozera Events',
+        category: 'Djs',
+        rating: 4.8,
+        reviewsCount: 253,
+        image: EventraImages.womanWithweddinggown,
+        location: 'Victoria Island, Lagos',
+        startingPrice: 160000,
+        isFavorite: true,
+      ),
+      Vendor(
+        id: 'favorite-004',
+        name: 'SZ Photos',
+        category: 'Photographer',
+        rating: 4.8,
+        reviewsCount: 253,
+        image: EventraImages.cameramanImage,
+        location: 'Surulere, Lagos',
+        startingPrice: 140000,
+        isFavorite: true,
       ),
     ];
 
@@ -563,6 +755,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       reels: reels,
       profile: profile,
       notificationPreferences: notificationPreferences,
+      favoriteVendors: favoriteVendors,
       recentLocations: recentLocations,
       locationSuggestions: recentLocations,
     );

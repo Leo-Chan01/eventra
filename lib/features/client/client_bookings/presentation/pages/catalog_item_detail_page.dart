@@ -8,10 +8,10 @@ import 'package:eventra/features/client/client_inbox/presentation/pages/client_i
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/circle_action_button.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 
 class CatalogItemDetailArgs {
   const CatalogItemDetailArgs({

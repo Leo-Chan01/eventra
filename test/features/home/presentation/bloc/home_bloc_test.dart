@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
 import 'package:eventra/features/home/domain/models/home_notification_preference.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -69,6 +70,39 @@ void main() {
               .isEnabled,
           'smsNotificationsEnabled',
           true,
+        ),
+      ],
+    );
+
+    blocTest<HomeBloc, HomeState>(
+      'toggles client app settings',
+      build: HomeBloc.new,
+      act: (bloc) => bloc.add(
+        const HomeAppToggleChanged(
+          type: HomeAppToggleType.offlineMode,
+          isEnabled: true,
+        ),
+      ),
+      expect: () => [
+        isA<HomeState>().having(
+          (state) => state.offlineModeEnabled,
+          'offlineModeEnabled',
+          true,
+        ),
+      ],
+    );
+
+    blocTest<HomeBloc, HomeState>(
+      'removes a vendor from favourites',
+      build: HomeBloc.new,
+      act: (bloc) => bloc.add(const HomeFavoriteVendorRemoved('favorite-001')),
+      expect: () => [
+        isA<HomeState>().having(
+          (state) => state.favoriteVendors.any(
+            (vendor) => vendor.id == 'favorite-001',
+          ),
+          'favoriteRemoved',
+          false,
         ),
       ],
     );

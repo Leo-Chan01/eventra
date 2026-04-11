@@ -2,7 +2,6 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class VendorServiceItem extends StatelessWidget {
   const VendorServiceItem({required this.label, super.key});

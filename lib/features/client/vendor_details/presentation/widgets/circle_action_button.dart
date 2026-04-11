@@ -13,7 +13,7 @@ class CircleActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    // final colorScheme = Theme.of(context).colorScheme;
 
     return GestureDetector(
       onTap: onPressed,

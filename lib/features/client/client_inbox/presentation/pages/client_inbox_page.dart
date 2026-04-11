@@ -77,11 +77,11 @@ class _ClientInboxPageState extends State<ClientInboxPage> {
                               children: [
                                 MessageThreadCard(
                                   thread: thread,
-                                  onTap: () {
+                                  onTap: ()async  {
                                     context.read<ClientInboxBloc>().add(
                                       InboxThreadSelected(thread.id),
                                     );
-                                    context.pushNamed(ChatPage.name);
+                                    await context.pushNamed(ChatPage.name);
                                   },
                                 ),
                                 if (index < state.visibleThreads.length - 1)

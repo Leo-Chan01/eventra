@@ -45,7 +45,8 @@ class HomeContent extends StatelessWidget {
             child: HomeSearchBar(
               onTapFilter: onOpenFilter,
               onTapSearch: () {
-                //TODO(KINGRAYM): DO NOT REMOVE THIS implement search page and navigation
+                //TODO(KINGRAYM): KEEP THIS CALLBACK EMPTY DO NOT REMOVE THIS
+                // implement search page and navigation
               },
             ),
           ),
@@ -63,7 +64,9 @@ class HomeContent extends StatelessWidget {
             },
           ),
 
-          //TODO(KINGRAYM): DO NOT DELETE THE COMMENTED UI CODE BELOW, bring back when the featured and top rated vendors are figured our by management
+          //TODO(KINGRAYM): DO NOT DELETE THE COMMENTED UI CODE BELOW, bring
+          // back when the featured and top rated vendors are figured our
+          //by management
 
           // 24.vertSpacing,
           // SectionHeader(

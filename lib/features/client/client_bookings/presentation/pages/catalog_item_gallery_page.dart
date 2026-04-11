@@ -35,15 +35,15 @@ class _CatalogItemGalleryPageState extends State<CatalogItemGalleryPage> {
     super.dispose();
   }
 
-  void _goToPrevious() {
-    _pageController.previousPage(
+  Future<void> _goToPrevious() async {
+    await _pageController.previousPage(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
 
-  void _goToNext() {
-    _pageController.nextPage(
+  Future<void> _goToNext() async {
+    await _pageController.nextPage(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );

@@ -103,7 +103,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         id: 'cat-001',
         title: 'Intimate Event Deco...',
         description:
-            'This is an intimate decoration and its comes with different styles.',
+            'This is an intimate decoration and its'
+            ' comes with different styles.',
         price: 10000,
         image: EventraImages.weddingImage,
         whatToExpect: [
@@ -116,7 +117,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         id: 'cat-002',
         title: 'Pre-wedding Photoshoot',
         description:
-            'This is an intimate decoration and its comes with different styles.',
+            'This is an intimate decoration and its comes'
+            ' with different styles.',
         price: 500000,
         image: EventraImages.weddingImage,
         whatToExpect: [
@@ -135,7 +137,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         id: 'cat-003',
         title: 'Intimate Event Deco...',
         description:
-            'This is an intimate decoration and its comes with different styles.',
+            'This is an intimate decoration and its comes'
+            ' with different styles.',
         price: 10000,
         image: EventraImages.weddingImage,
         whatToExpect: [
@@ -148,7 +151,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         id: 'cat-004',
         title: 'Intimate Event Deco...',
         description:
-            'This is an intimate decoration and its comes with different styles.',
+            'This is an intimate decoration and its comes with '
+            'different styles.',
         price: 10000,
         image: EventraImages.onboardingImage2,
         whatToExpect: [
@@ -167,7 +171,10 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         rating: 4.5,
         date: '20-06-2025',
         body:
-            'Pozera Event is a mobile and web-based platform that connects individuals and organizations planning events with trusted event service providers including event decorators, planners, venues, caterers, photographers and more.',
+            'Pozera Event is a mobile and web-based platform that connects'
+            ' individuals and organizations planning events with trusted event'
+            ' service providers including event decorators, planners, venues,'
+            ' caterers, photographers and more.',
       ),
       VendorReview(
         id: 'rev-002',
@@ -176,7 +183,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         rating: 4.0,
         date: '25-01-2025',
         body:
-            'Pozera Event is a mobile and web-based platform that connects individuals and organizations planning events with trusted event service providers.',
+            'Pozera Event is a mobile and web-based platform that connects'
+            ' individuals and organizations planning events with trusted event'
+            ' service providers.',
       ),
       VendorReview(
         id: 'rev-003',
@@ -185,7 +194,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         rating: 3.5,
         date: '25-01-2025',
         body:
-            'Pozera Event is a mobile and web-based platform that connects individuals and organizations planning events with trusted event service providers.',
+            'Pozera Event is a mobile and web-based platform that connects'
+            ' individuals and organizations planning events with trusted event'
+            ' service providers.',
       ),
     ];
 
@@ -212,7 +223,11 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       id: 'vendor-001',
       name: 'Pozera Events',
       bio:
-          'Pozera Events is a creative event planning and decoration company specializing in turning your special moments into unforgettable experiences. From weddings and birthdays to corporate events and more, we bring style, elegance, and precision to every celebration.',
+          'Pozera Events is a creative event planning and decoration company'
+          ' specializing in turning your special moments into unforgettable'
+          ' experiences. From weddings and birthdays to corporate events and'
+          ' more, we bring style, elegance, and precision to every '
+          'celebration.',
       tags: ['Decorator', 'Planner'],
       rating: 4.85,
       reviewsCount: 380,
@@ -250,7 +265,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       id: 'vendor-002',
       name: 'Swift Pixel',
       bio:
-          'Swift Pixel is a professional photography and videography studio capturing your most important events with cinematic precision and artistry.',
+          'Swift Pixel is a professional photography and videography'
+          ' studio capturing your most important events with'
+          ' cinematic precision and artistry.',
       tags: const ['Photographer', 'Videographer'],
       rating: 4.8,
       reviewsCount: 86,
@@ -313,7 +330,9 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       id: 'vendor-003',
       name: 'Wedding Grove',
       bio:
-          'Wedding Grove specialises in creating breathtaking wedding décor and floral arrangements that transform any venue into a magical setting.',
+          'Wedding Grove specialises in creating breathtaking wedding'
+          ' décor and floral arrangements that transform any venue'
+          ' into a magical setting.',
       tags: const ['Decorator', 'Florist'],
       rating: 4.7,
       reviewsCount: 114,
@@ -361,7 +380,8 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       id: 'vendor-004',
       name: 'Foodies Event',
       bio:
-          'Foodies Event provides top-tier catering services for all types of events. We bring gourmet flavours to every celebration.',
+          'Foodies Event provides top-tier catering services for all types'
+          ' of events. We bring gourmet flavours to every celebration.',
       tags: const ['Catering', 'Chef'],
       rating: 4.9,
       reviewsCount: 120,

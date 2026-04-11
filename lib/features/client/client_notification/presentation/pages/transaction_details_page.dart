@@ -43,8 +43,8 @@ class TransactionDetailsPage extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                onPressed: () {
-                  AppShareBottomSheet.show(
+                onPressed: () async {
+                  await AppShareBottomSheet.show(
                     context,
                     shareText: '${transaction.vendorName} on Eventra',
                   );

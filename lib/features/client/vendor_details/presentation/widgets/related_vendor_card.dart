@@ -1,6 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
-import 'package:eventra/main_development.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';

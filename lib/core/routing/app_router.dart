@@ -18,8 +18,16 @@ import 'package:eventra/features/client/client_notification/presentation/pages/t
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_app_reset_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_help_support_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_privacy_policy_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_privacy_security_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
@@ -68,6 +76,46 @@ class AppRouter {
         path: ProfileNotificationSettingsPage.path,
         name: ProfileNotificationSettingsPage.name,
         builder: (context, state) => const ProfileNotificationSettingsPage(),
+      ),
+      GoRoute(
+        path: ProfilePrivacySecurityPage.path,
+        name: ProfilePrivacySecurityPage.name,
+        builder: (context, state) => const ProfilePrivacySecurityPage(),
+      ),
+      GoRoute(
+        path: ProfileSavedVendorsPage.path,
+        name: ProfileSavedVendorsPage.name,
+        builder: (context, state) => const ProfileSavedVendorsPage(),
+      ),
+      GoRoute(
+        path: ProfileHelpSupportPage.path,
+        name: ProfileHelpSupportPage.name,
+        builder: (context, state) => const ProfileHelpSupportPage(),
+      ),
+      GoRoute(
+        path: ProfileAppSettingsPage.path,
+        name: ProfileAppSettingsPage.name,
+        builder: (context, state) => const ProfileAppSettingsPage(),
+      ),
+      GoRoute(
+        path: ProfileAppResetPage.path,
+        name: ProfileAppResetPage.name,
+        builder: (context, state) => const ProfileAppResetPage(),
+      ),
+      GoRoute(
+        path: ProfilePrivacyPolicyPage.path,
+        name: ProfilePrivacyPolicyPage.name,
+        builder: (context, state) => const ProfilePrivacyPolicyPage(),
+      ),
+      GoRoute(
+        path: ProfileRateUsPage.path,
+        name: ProfileRateUsPage.name,
+        builder: (context, state) => const ProfileRateUsPage(),
+      ),
+      GoRoute(
+        path: ProfileTermsAndConditionsPage.path,
+        name: ProfileTermsAndConditionsPage.name,
+        builder: (context, state) => const ProfileTermsAndConditionsPage(),
       ),
       GoRoute(
         path: TransactionHistoryPage.path,

@@ -8,7 +8,6 @@ import 'package:eventra/features/client/client_notification/presentation/widgets
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_search_field.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_summary_card.dart';
 import 'package:eventra/l10n/l10n.dart';
-import 'package:eventra/main_development.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

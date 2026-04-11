@@ -26,7 +26,7 @@ class TransactionAmountText extends StatelessWidget {
         ? '-'
         : '';
     final numericAmount = trimmedAmount
-        .replaceFirst(RegExp(r'^[+-]'), '')
+        .replaceFirst(RegExp('^[+-]'), '')
         .replaceAll('₦', '')
         .trim();
 

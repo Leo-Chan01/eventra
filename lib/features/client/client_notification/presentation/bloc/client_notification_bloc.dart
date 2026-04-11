@@ -474,7 +474,7 @@ class ClientNotificationBloc
       ),
     ];
 
-    return ClientNotificationState(
+    return const ClientNotificationState(
       notifications: notifications,
       transactions: transactions,
       selectedMonth: 2,

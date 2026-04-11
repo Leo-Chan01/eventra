@@ -17,7 +17,7 @@ class TransactionStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    // final colorScheme = Theme.of(context).colorScheme;
     final statusColor = switch (status) {
       TransactionStatus.completed => AppColorSchemes.successDark,
       TransactionStatus.pending => AppColorSchemes.primary500,

@@ -2,8 +2,12 @@ import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
+import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_help_support_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_privacy_security_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_header_card.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_logout_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_menu_tile.dart';
@@ -127,8 +131,8 @@ class HomeProfileTab extends StatelessWidget {
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.privacySecurityIconProfileSettings,
                   label: l10n.homeProfilePrivacySecurity,
-                  onTap: () {
-                    GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                  onTap: () async {
+                    await context.pushNamed(ProfilePrivacySecurityPage.name);
                   },
                 ),
               ],
@@ -148,8 +152,8 @@ class HomeProfileTab extends StatelessWidget {
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.savedVendorsIconProfileSettings,
                   label: l10n.homeProfileSavedVendors,
-                  onTap: () {
-                    GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                  onTap: () async {
+                    await context.pushNamed(ProfileSavedVendorsPage.name);
                   },
                 ),
                 standardDividerUtil(context),
@@ -177,16 +181,16 @@ class HomeProfileTab extends StatelessWidget {
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.helpSupportIconProfileSettings,
                   label: l10n.homeProfileHelpSupport,
-                  onTap: () {
-                    GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                  onTap: () async {
+                    await context.pushNamed(ProfileHelpSupportPage.name);
                   },
                 ),
                 standardDividerUtil(context),
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.appSettingsIconProfileSettings,
                   label: l10n.homeProfileAppSettings,
-                  onTap: () {
-                    GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                  onTap: () async {
+                    await context.pushNamed(ProfileAppSettingsPage.name);
                   },
                 ),
               ],
