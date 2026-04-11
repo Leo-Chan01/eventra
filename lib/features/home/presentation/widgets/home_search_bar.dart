@@ -22,59 +22,59 @@ class HomeSearchBar extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: InkWell(
-            onTap: onTapSearch,
-            borderRadius: BorderRadius.circular(16),
-            child: IgnorePointer(
-              child: Container(
-                height: 52,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+          child: Container(
+            height: 52,
+            decoration: BoxDecoration(
+              color: const Color(0xFFFAFAFA),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.3,
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    fillColor: const Color(0xFFFAFAFA),
-                    hintText: l10n.homeSearchPlaceholder,
-                    hintStyle: 14.regular.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: SvgPicture.asset(
-                        EventraVectors.searchNormal,
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                    border: InputBorder.none,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: colorScheme.surfaceContainerHighest.withValues(
-                          alpha: 0.3,
-                        ),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: colorScheme.surfaceContainerHighest.withValues(
-                          alpha: 0.3,
-                        ),
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: SizedBox(
-                        height: 52,
-                        width: 52,
-                        child: SvgPicture.asset(EventraVectors.filterIcon),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    key: const Key('home_search_field'),
+                    onTap: onTapSearch,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            EventraVectors.searchNormal,
+                            height: 20,
+                            width: 20,
+                          ),
+                          12.horizSpacing,
+                          Text(
+                            l10n.homeSearchPlaceholder,
+                            style: 14.regular.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-              ),
+                InkWell(
+                  key: const Key('home_filter_button'),
+                  onTap: onTapFilter,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: SvgPicture.asset(
+                      EventraVectors.filterIcon,
+                      height: 40,
+                      width: 40,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

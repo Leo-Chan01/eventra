@@ -1,6 +1,4 @@
 import 'package:eventra/core/utils/num_extensions.dart';
-import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
-import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/all_vendors_single_flush_list.dart';
 import 'package:eventra/features/home/presentation/widgets/home_categories.dart';
@@ -8,14 +6,8 @@ import 'package:eventra/features/home/presentation/widgets/home_header.dart';
 import 'package:eventra/features/home/presentation/widgets/home_join_as_vendor_cta.dart';
 import 'package:eventra/features/home/presentation/widgets/home_promo_banner.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_bar.dart';
-import 'package:eventra/features/home/presentation/widgets/home_top_rated_carousel.dart';
-import 'package:eventra/features/home/presentation/widgets/home_vendors_week_grid.dart';
-import 'package:eventra/features/home/presentation/widgets/section_header.dart';
-import 'package:eventra/features/home/presentation/widgets/vendor_card_featured.dart';
-import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({
@@ -31,8 +23,8 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final colorScheme = Theme.of(context).colorScheme;
+    // final l10n = context.l10n;
+    // final colorScheme = Theme.of(context).colorScheme;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(0, 16, 0, 35),

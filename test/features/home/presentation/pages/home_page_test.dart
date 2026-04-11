@@ -8,7 +8,7 @@ import '../../../../helpers/pump_app.dart';
 
 void main() {
   group('HomePage', () {
-    testWidgets('renders the discovery sections from the mockup', (
+    testWidgets('renders the current home discovery content', (
       tester,
     ) async {
       await tester.pumpApp(
@@ -20,13 +20,11 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Hello,'), findsOneWidget);
-      expect(find.text('Featured Vendors'), findsOneWidget);
-      expect(find.text('Top Rated Vendors'), findsOneWidget);
-      expect(find.text('Vendors of the week'), findsOneWidget);
-      expect(find.text('Add a Vendor'), findsOneWidget);
+      expect(find.byKey(const Key('home_search_field')), findsOneWidget);
+      expect(find.byKey(const Key('home_filter_button')), findsOneWidget);
     });
 
-    testWidgets('opens the filter sheet and location lookup flow', (
+    testWidgets('filter icon opens the new additive filter sheet', (
       tester,
     ) async {
       await tester.pumpApp(
@@ -41,9 +39,20 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Filter'), findsOneWidget);
-      expect(find.text('Your current address'), findsOneWidget);
+      expect(find.text('Categories'), findsOneWidget);
+      expect(find.text('Price Range'), findsOneWidget);
+    });
 
-      await tester.tap(find.byKey(const Key('home_location_field')));
+    testWidgets('search field opens the location lookup view', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('home_search_field')));
       await tester.pumpAndSettle();
 
       expect(find.text('Location Lookup'), findsOneWidget);

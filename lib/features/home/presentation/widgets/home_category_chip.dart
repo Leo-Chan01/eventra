@@ -1,5 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+enum IconPosition { left, right }
 
 class HomeCategoryChip extends StatelessWidget {
   const HomeCategoryChip({
@@ -7,6 +10,8 @@ class HomeCategoryChip extends StatelessWidget {
     this.icon = '',
     this.isSelected = false,
     this.onTap,
+    this.hasIcon = false,
+    this.iconPosition = IconPosition.right,
     super.key,
   });
 
@@ -14,6 +19,8 @@ class HomeCategoryChip extends StatelessWidget {
   final String icon;
   final bool isSelected;
   final VoidCallback? onTap;
+  final IconPosition? iconPosition;
+  final bool hasIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class HomeCategoryChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.primary : null,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected
                 ? colorScheme.primary
@@ -37,7 +44,11 @@ class HomeCategoryChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon.isNotEmpty) ...[
+            if (hasIcon && iconPosition == IconPosition.left) ...[
+              SvgPicture.asset(icon),
+              6.horizSpacing,
+            ],
+            if (!hasIcon && icon.isNotEmpty) ...[
               Image.asset(icon),
               6.horizSpacing,
             ],
@@ -49,6 +60,10 @@ class HomeCategoryChip extends StatelessWidget {
                     : colorScheme.onSurface,
               ),
             ),
+            if (hasIcon && iconPosition == IconPosition.right) ...[
+              6.horizSpacing,
+              SvgPicture.asset(icon),
+            ],
           ],
         ),
       ),

@@ -281,14 +281,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     ];
 
     const filterCategories = [
-      'Rental',
-      'Decorator',
-      'DJ',
-      'MC',
-      'Cakes',
-      'Catering',
-      'Photography',
+      'Djs',
       'Rentals',
+      'MCs',
+      'Caterers',
+      'Decorator',
+      'Hall',
+      'Planner',
+      '360 PhotoBooth',
+      'Photographer',
+      'Small Chops',
     ];
 
     const recentLocations = [
