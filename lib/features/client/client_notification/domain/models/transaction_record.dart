@@ -48,6 +48,17 @@ class TransactionRecord extends Equatable {
   final String statusNote;
   final String paymentBadge;
 
+  DateTime get transactionDate {
+    final rawDate = dateLabel.split(' at').first.trim();
+    return DateFormat('MMM d, y').parse(rawDate);
+  }
+
+  int get transactionMonth => transactionDate.month;
+
+  String get transactionMonthLabel {
+    return DateFormat('MMM').format(transactionDate);
+  }
+
   String get amountLabel {
     final formatter = NumberFormat.currency(symbol: '₦', decimalDigits: 0);
     final prefix = isCredit ? '+' : '-';

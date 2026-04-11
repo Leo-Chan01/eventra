@@ -2,6 +2,7 @@ import 'package:eventra/features/client/client_notification/presentation/bloc/cl
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -47,6 +48,32 @@ void main() {
       expect(find.text('Total Spent'), findsOneWidget);
       expect(find.text('Total Refunds'), findsOneWidget);
       expect(find.text('Elegant Decor Lagos'), findsOneWidget);
+      expect(
+        find.byKey(const Key('transaction_month_filter_button')),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('TransactionHistoryPage filters records by month', (
+      tester,
+    ) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => ClientNotificationBloc(),
+          child: const TransactionHistoryPage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(
+        find.byKey(const Key('transaction_month_filter_button')),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Mar').last);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Elegant Decor Lagos'), findsNothing);
+      expect(find.byKey(const Key('transaction_empty_state')), findsOneWidget);
     });
 
     testWidgets('TransactionDetailsPage renders the full payment breakdown', (

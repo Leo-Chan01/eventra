@@ -4,9 +4,11 @@ import 'package:eventra/features/client/client_notification/presentation/bloc/cl
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_filter_chip.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_list_item.dart';
+import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_month_filter.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_search_field.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_summary_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/main_development.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,13 +30,15 @@ class TransactionHistoryPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: colorScheme.surface,
           appBar: AppBar(
+            centerTitle: true,
+            backgroundColor: colorScheme.surface,
             leading: IconButton(
               onPressed: () => Navigator.of(context).maybePop(),
               icon: const Icon(Icons.arrow_back_ios_new_rounded),
             ),
             title: Text(
               l10n.notificationsTransactionHistoryTitle,
-              style: 16.w700.copyWith(color: colorScheme.onSurface),
+              style: 18.w700.copyWith(color: colorScheme.onSurface),
             ),
           ),
           body: Padding(
@@ -50,10 +54,11 @@ class TransactionHistoryPage extends StatelessWidget {
                     );
                   },
                 ),
-                12.vertSpacing,
+                16.vertSpacing,
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TransactionFilterChip(
                         label: l10n.notificationsFilterAll,
@@ -111,45 +116,65 @@ class TransactionHistoryPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                34.vertSpacing,
+                TransactionMonthFilter(
+                  selectedMonth: state.selectedMonth,
+                  onSelected: (month) {
+                    context.read<ClientNotificationBloc>().add(
+                      TransactionMonthChanged(month),
+                    );
+                  },
+                ),
                 16.vertSpacing,
                 Row(
                   children: [
                     TransactionSummaryCard(
                       label: l10n.notificationsTotalSpent,
-                      amount: _formatCurrency(state.totalSpent),
+                      amount: _formatCurrency(state.visibleTotalSpent),
                     ),
                     10.horizSpacing,
                     TransactionSummaryCard(
                       label: l10n.notificationsTotalRefunds,
-                      amount: _formatCurrency(state.totalRefunds),
+                      amount: _formatCurrency(state.visibleTotalRefunds),
                     ),
                   ],
                 ),
-                16.vertSpacing,
+                20.vertSpacing,
                 Text(
-                  l10n.notificationsRecentTransactions,
-                  style: 11.w700.copyWith(color: colorScheme.onSurfaceVariant),
+                  l10n.notificationsRecentTransactions.toUpperCase(),
+                  style: 12.w700.copyWith(color: colorScheme.onSurfaceVariant),
                 ),
-                8.vertSpacing,
+                10.vertSpacing,
                 Expanded(
-                  child: ListView.separated(
-                    itemCount: state.visibleTransactions.length,
-                    separatorBuilder: (_, _) => 12.vertSpacing,
-                    itemBuilder: (context, index) {
-                      final transaction = state.visibleTransactions[index];
+                  child: state.visibleTransactions.isEmpty
+                      ? const Center(
+                          key: Key('transaction_empty_state'),
+                          child: Icon(Icons.receipt_long_outlined),
+                        )
+                      : ListView.separated(
+                          itemCount: state.visibleTransactions.length,
+                          separatorBuilder: (_, _) => 14.vertSpacing,
+                          itemBuilder: (context, index) {
+                            final transaction =
+                                state.visibleTransactions[index];
 
-                      return TransactionListItem(
-                        transaction: transaction,
-                        statusLabel: _statusLabel(l10n, transaction.status),
-                        onTap: () async {
-                          context.read<ClientNotificationBloc>().add(
-                            TransactionSelected(transaction.id),
-                          );
-                          await context.pushNamed(TransactionDetailsPage.name);
-                        },
-                      );
-                    },
-                  ),
+                            return TransactionListItem(
+                              transaction: transaction,
+                              statusLabel: _statusLabel(
+                                l10n,
+                                transaction.status,
+                              ),
+                              onTap: () async {
+                                context.read<ClientNotificationBloc>().add(
+                                  TransactionSelected(transaction.id),
+                                );
+                                await context.pushNamed(
+                                  TransactionDetailsPage.name,
+                                );
+                              },
+                            );
+                          },
+                        ),
                 ),
               ],
             ),

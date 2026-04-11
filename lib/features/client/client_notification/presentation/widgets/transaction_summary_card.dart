@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_amount_text.dart';
 import 'package:flutter/material.dart';
 
 class TransactionSummaryCard extends StatelessWidget {
@@ -17,10 +18,10 @@ class TransactionSummaryCard extends StatelessWidget {
 
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.22),
-          borderRadius: BorderRadius.circular(18),
+          color: colorScheme.surfaceContainerLowest,
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,10 +30,11 @@ class TransactionSummaryCard extends StatelessWidget {
               label,
               style: 11.w500.copyWith(color: colorScheme.onSurfaceVariant),
             ),
-            const SizedBox(height: 8),
-            Text(
-              amount,
-              style: 20.w700.copyWith(color: colorScheme.onSurface),
+            8.vertSpacing,
+            TransactionAmountText(
+              amountLabel: amount,
+              style: 18.w700.copyWith(color: colorScheme.onSurface),
+              nairaSize: 12,
             ),
           ],
         ),

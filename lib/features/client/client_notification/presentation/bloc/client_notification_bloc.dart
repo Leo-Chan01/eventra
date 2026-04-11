@@ -41,6 +41,15 @@ class TransactionSearchChanged extends ClientNotificationEvent {
   List<Object?> get props => [query];
 }
 
+class TransactionMonthChanged extends ClientNotificationEvent {
+  const TransactionMonthChanged(this.month);
+
+  final int? month;
+
+  @override
+  List<Object?> get props => [month];
+}
+
 class TransactionSelected extends ClientNotificationEvent {
   const TransactionSelected(this.transactionId);
 
@@ -55,6 +64,7 @@ class ClientNotificationState extends Equatable {
     this.notificationTab = NotificationTab.all,
     this.transactionFilter = TransactionFilter.all,
     this.searchQuery = '',
+    this.selectedMonth,
     this.notifications = const [],
     this.transactions = const [],
     this.selectedTransactionId = '',
@@ -65,6 +75,7 @@ class ClientNotificationState extends Equatable {
   final NotificationTab notificationTab;
   final TransactionFilter transactionFilter;
   final String searchQuery;
+  final int? selectedMonth;
   final List<ClientNotificationItem> notifications;
   final List<TransactionRecord> transactions;
   final String selectedTransactionId;
@@ -100,8 +111,32 @@ class ClientNotificationState extends Equatable {
           transaction.category.toLowerCase().contains(query) ||
           transaction.reference.toLowerCase().contains(query);
 
-      return matchesFilter && matchesQuery;
+      final matchesMonth =
+          selectedMonth == null ||
+          transaction.transactionMonth == selectedMonth;
+
+      return matchesFilter && matchesQuery && matchesMonth;
     }).toList();
+  }
+
+  double get visibleTotalSpent {
+    return visibleTransactions
+        .where(
+          (transaction) =>
+              transaction.status == TransactionStatus.completed &&
+              !transaction.isCredit,
+        )
+        .fold<double>(0, (sum, transaction) => sum + transaction.amount.abs());
+  }
+
+  double get visibleTotalRefunds {
+    return visibleTransactions
+        .where(
+          (transaction) =>
+              transaction.status == TransactionStatus.completed &&
+              transaction.isCredit,
+        )
+        .fold<double>(0, (sum, transaction) => sum + transaction.amount.abs());
   }
 
   TransactionRecord get selectedTransaction {
@@ -115,6 +150,8 @@ class ClientNotificationState extends Equatable {
     NotificationTab? notificationTab,
     TransactionFilter? transactionFilter,
     String? searchQuery,
+    int? selectedMonth,
+    bool clearSelectedMonth = false,
     List<ClientNotificationItem>? notifications,
     List<TransactionRecord>? transactions,
     String? selectedTransactionId,
@@ -125,6 +162,9 @@ class ClientNotificationState extends Equatable {
       notificationTab: notificationTab ?? this.notificationTab,
       transactionFilter: transactionFilter ?? this.transactionFilter,
       searchQuery: searchQuery ?? this.searchQuery,
+      selectedMonth: clearSelectedMonth
+          ? null
+          : selectedMonth ?? this.selectedMonth,
       notifications: notifications ?? this.notifications,
       transactions: transactions ?? this.transactions,
       selectedTransactionId:
@@ -139,6 +179,7 @@ class ClientNotificationState extends Equatable {
     notificationTab,
     transactionFilter,
     searchQuery,
+    selectedMonth,
     notifications,
     transactions,
     selectedTransactionId,
@@ -153,6 +194,7 @@ class ClientNotificationBloc
     on<NotificationTabChanged>(_onNotificationTabChanged);
     on<TransactionFilterChanged>(_onTransactionFilterChanged);
     on<TransactionSearchChanged>(_onTransactionSearchChanged);
+    on<TransactionMonthChanged>(_onTransactionMonthChanged);
     on<TransactionSelected>(_onTransactionSelected);
   }
 
@@ -175,6 +217,18 @@ class ClientNotificationBloc
     Emitter<ClientNotificationState> emit,
   ) {
     emit(state.copyWith(searchQuery: event.query));
+  }
+
+  void _onTransactionMonthChanged(
+    TransactionMonthChanged event,
+    Emitter<ClientNotificationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        selectedMonth: event.month,
+        clearSelectedMonth: event.month == null,
+      ),
+    );
   }
 
   void _onTransactionSelected(
@@ -269,7 +323,7 @@ class ClientNotificationBloc
         category: 'Decoration',
         amount: 890000,
         status: TransactionStatus.completed,
-        dateLabel: 'Feb 18, 2026 at 2:30 PM',
+        dateLabel: 'Feb 18, 2026',
         reference: 'TXN-EVT-2026-001892',
         paymentSource: 'Card •••• 4532',
         vendorEmail: 'info@elegantdecorlagos.com',
@@ -381,13 +435,13 @@ class ClientNotificationBloc
         tax: 2000,
       ),
       TransactionRecord(
-        id: 'txn-evt-2026-001793',
+        id: 'txn-evt-2026-001789',
         vendorName: 'Sound & Lights Pro',
         category: 'Equipment',
-        amount: 50000,
+        amount: 95000,
         status: TransactionStatus.completed,
         dateLabel: 'Feb 12, 2026',
-        reference: 'TXN-EVT-2026-001793',
+        reference: 'TXN-EVT-2026-001789',
         paymentSource: 'Bank Transfer',
         vendorEmail: 'sales@soundandlightspro.com',
         vendorPhone: '+234 814 777 0112',
@@ -420,9 +474,10 @@ class ClientNotificationBloc
       ),
     ];
 
-    return const ClientNotificationState(
+    return ClientNotificationState(
       notifications: notifications,
       transactions: transactions,
+      selectedMonth: 2,
       selectedTransactionId: 'txn-evt-2026-001892',
       totalSpent: 1650250,
       totalRefunds: 50000,

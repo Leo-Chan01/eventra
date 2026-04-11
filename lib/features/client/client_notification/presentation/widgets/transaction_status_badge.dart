@@ -1,6 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_notification/domain/models/transaction_record.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionStatusBadge extends StatelessWidget {
   const TransactionStatusBadge({
@@ -20,22 +22,24 @@ class TransactionStatusBadge extends StatelessWidget {
       TransactionStatus.pending => colorScheme.tertiary,
       TransactionStatus.failed => colorScheme.error,
     };
+    final statusIcon = switch (status) {
+      TransactionStatus.completed => EventraVectors.goodCheckGreen,
+      TransactionStatus.pending => EventraVectors.pendingIconOrgange,
+      TransactionStatus.failed => EventraVectors.outgoingRedIcon,
+    };
 
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 7,
-          height: 7,
-          decoration: BoxDecoration(
-            color: statusColor,
-            shape: BoxShape.circle,
-          ),
+        SvgPicture.asset(
+          statusIcon,
+          width: 12,
+          height: 12,
         ),
         4.horizSpacing,
         Text(
           label,
-          style: 10.w600.copyWith(color: statusColor),
+          style: 11.w600.copyWith(color: statusColor),
         ),
       ],
     );

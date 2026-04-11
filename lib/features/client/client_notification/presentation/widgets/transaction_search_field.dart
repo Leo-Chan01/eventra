@@ -1,4 +1,7 @@
+import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionSearchField extends StatelessWidget {
   const TransactionSearchField({
@@ -15,20 +18,23 @@ class TransactionSearchField extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.32),
-        borderRadius: BorderRadius.circular(14),
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: TextField(
         onChanged: onChanged,
+        style: 14.w500.copyWith(color: colorScheme.onSurface),
         decoration: InputDecoration(
           hintText: hintText,
-          prefixIcon: Icon(
-            Icons.search_rounded,
-            color: colorScheme.onSurfaceVariant,
+          hintStyle: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset(EventraVectors.searchNormal),
           ),
+          prefixIconConstraints: const BoxConstraints(minWidth: 44),
           border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(vertical: 16),
         ),
       ),
     );

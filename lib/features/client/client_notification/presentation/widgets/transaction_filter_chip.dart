@@ -21,16 +21,16 @@ class TransactionFilterChip extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(999),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected
               ? colorScheme.primary
-              : colorScheme.surfaceContainerHighest.withValues(alpha: 0.28),
-          borderRadius: BorderRadius.circular(999),
+              : colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Text(
           label,
-          style: 11.w600.copyWith(
+          style: 12.w600.copyWith(
             color: isSelected ? colorScheme.onPrimary : colorScheme.onSurface,
           ),
         ),
