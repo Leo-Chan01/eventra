@@ -5,11 +5,11 @@ import 'package:intl/intl.dart' as intl;
 
 class MainReceiptWidgetNotImage extends StatelessWidget {
   const MainReceiptWidgetNotImage({
-    super.key,
     required this.colorScheme,
     required this.args,
     required this.localeTag,
     required this.amountLabel,
+    super.key,
   });
 
   final ColorScheme colorScheme;

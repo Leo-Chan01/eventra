@@ -4,7 +4,6 @@
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_detail_row.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_vendor_card.dart';
 import 'package:eventra/l10n/l10n.dart';

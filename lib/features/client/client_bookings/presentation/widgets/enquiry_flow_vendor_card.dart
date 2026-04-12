@@ -24,12 +24,12 @@ class EnquiryFlowVendorCard extends StatelessWidget {
   const EnquiryFlowVendorCard.minimal({
     required this.vendorImage,
     required this.vendorName,
-    this.invoiceIdLabel,
     required this.dateIssuedLabel,
     required this.statusLabel,
     required this.statusValue,
     required this.statusColor,
     required this.onMessageVendor,
+    this.invoiceIdLabel,
     this.subtitle,
     this.ratingLabel,
     this.isMinimal = true,

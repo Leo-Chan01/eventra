@@ -5,7 +5,6 @@ import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class EnquiryPaymentBottomSheet extends StatelessWidget {
   const EnquiryPaymentBottomSheet({
