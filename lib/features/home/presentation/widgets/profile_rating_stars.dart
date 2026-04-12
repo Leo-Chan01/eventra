@@ -28,13 +28,17 @@ class ProfileRatingStars extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: SvgPicture.asset(
-              EventraVectors.starUnfilledRatingIconProfileSettings,
+              isSelected
+                  ? EventraVectors.starVector
+                  : EventraVectors.starUnfilledRatingIconProfileSettings,
               width: 34,
               height: 34,
-              colorFilter: ColorFilter.mode(
-                isSelected ? colorScheme.primary : colorScheme.outlineVariant,
-                BlendMode.srcIn,
-              ),
+              colorFilter: isSelected
+                  ? ColorFilter.mode(
+                      colorScheme.primary,
+                      BlendMode.srcIn,
+                    )
+                  : null,
             ),
           ),
         );

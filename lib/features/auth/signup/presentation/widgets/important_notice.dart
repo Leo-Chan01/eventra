@@ -17,8 +17,10 @@ class ImportantNotice extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColorSchemes.importantNoticeBackgroundColor,
-        border: Border.all(color: colorScheme.primary.withValues(alpha: 0.1)),
+        color: colorScheme.onSurfaceVariant.withValues(alpha: 0.1),
+        border: Border.all(
+          color: colorScheme.onSurfaceVariant.withValues(alpha: 0.1),
+        ),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -30,11 +32,15 @@ class ImportantNotice extends StatelessWidget {
                 EventraVectors.cautionSignOrange,
                 width: 18,
                 height: 18,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
               ),
               8.horizSpacing,
               Text(
                 l10n.termsNoticeTitle,
-                style: 14.bold.copyWith(color: const Color(0xFFFF5F21)),
+                style: 14.bold.copyWith(color: colorScheme.onSurface),
               ),
             ],
           ),

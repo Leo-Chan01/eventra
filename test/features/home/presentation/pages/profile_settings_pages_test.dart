@@ -7,6 +7,7 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/shared/theme/theme_bloc.dart';
 import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
 import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,11 @@ void main() {
       tester,
     ) async {
       await tester.pumpApp(
-        BlocProvider(
-          create: (_) => HomeBloc(),
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => HomeBloc()),
+            BlocProvider(create: (_) => ThemeBloc()),
+          ],
           child: const ProfileAppSettingsPage(),
         ),
       );

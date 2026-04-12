@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,9 @@ class Section extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 12),
       decoration: BoxDecoration(
-        color: AppColorSchemes.termsAndConditionTitleBackgroundColor,
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
+        boxShadow: boxShadowLight,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,9 +47,9 @@ class Section extends StatelessWidget {
           if (content != null || items != null) ...[
             8.vertSpacing,
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               decoration: BoxDecoration(
-                color: AppColorSchemes.lightColorScheme.onPrimary,
+                color: colorScheme.surface,
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(12),
                   bottomRight: Radius.circular(12),
@@ -57,7 +59,6 @@ class Section extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (content != null) ...[
-                    12.vertSpacing,
                     Text(
                       content!,
                       style: 14.regular.copyWith(

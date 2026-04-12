@@ -17,14 +17,14 @@ class NoticeItem extends StatelessWidget {
         children: [
           Text(
             '•',
-            style: 14.bold.copyWith(color: colorScheme.primary),
+            style: 14.bold.copyWith(color: colorScheme.onSurface),
           ),
           8.horizSpacing,
           Expanded(
             child: Text(
               text,
               style: 13.w500.copyWith(
-                color: colorScheme.primary,
+                color: colorScheme.onSurface,
                 height: 1.4,
               ),
             ),

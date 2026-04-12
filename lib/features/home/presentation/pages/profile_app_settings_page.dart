@@ -14,6 +14,7 @@ import 'package:eventra/features/home/presentation/widgets/profile_settings_acti
 import 'package:eventra/features/home/presentation/widgets/profile_surface_card.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +33,11 @@ class ProfileAppSettingsPage extends StatelessWidget {
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
+        final themeMode = context.select<ThemeBloc, AppThemeMode>(
+          (bloc) => bloc.state,
+        );
+        final isDarkModeEnabled = themeMode == AppThemeMode.dark;
+
         return Scaffold(
           backgroundColor: colorScheme.surface,
           appBar: AppBar(
@@ -78,8 +84,13 @@ class ProfileAppSettingsPage extends StatelessWidget {
                       HomeNotificationPreferenceTile(
                         title: l10n.profileAppSettingsDarkModeTitle,
                         subtitle: l10n.profileAppSettingsDarkModeSubtitle,
-                        value: state.darkModeEnabled,
+                        value: isDarkModeEnabled,
                         onChanged: (value) {
+                          context.read<ThemeBloc>().add(
+                            ThemeChanged(
+                              value ? AppThemeMode.dark : AppThemeMode.light,
+                            ),
+                          );
                           context.read<HomeBloc>().add(
                             HomeAppToggleChanged(
                               type: HomeAppToggleType.darkMode,

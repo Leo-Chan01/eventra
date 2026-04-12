@@ -39,7 +39,7 @@ class HomeProfileMenuTile extends StatelessWidget {
               ),
             ),
             SvgPicture.asset(
-              EventraVectors.angleRight,
+              EventraVectors.angleLeft,
               width: 18,
               height: 18,
             ),

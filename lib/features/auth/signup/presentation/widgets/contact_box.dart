@@ -11,11 +11,12 @@ class ContactBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: const Color(0xFFFF5F21),
+        color: colorScheme.primary,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -24,17 +25,21 @@ class ContactBox extends StatelessWidget {
             EventraVectors.mailIcon,
             width: 24,
             height: 24,
+            colorFilter: ColorFilter.mode(
+              colorScheme.onPrimary,
+              BlendMode.srcIn,
+            ),
           ),
           12.vertSpacing,
           Text(
             l10n.contactInfoTitle,
-            style: 18.bold.copyWith(color: Colors.white),
+            style: 18.bold.copyWith(color: colorScheme.onPrimary),
           ),
           4.vertSpacing,
           Text(
             l10n.contactInfoSubtitle,
             style: 14.regular.copyWith(
-              color: Colors.white.withValues(alpha: 0.8),
+              color: colorScheme.onPrimary.withValues(alpha: 0.8),
             ),
           ),
           16.vertSpacing,
@@ -45,11 +50,15 @@ class ContactBox extends StatelessWidget {
                 EventraVectors.mailIcon,
                 width: 16,
                 height: 16,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.onPrimary,
+                  BlendMode.srcIn,
+                ),
               ),
               8.horizSpacing,
               Text(
                 l10n.contactEmail,
-                style: 14.w500.copyWith(color: Colors.white),
+                style: 14.w500.copyWith(color: colorScheme.onPrimary),
               ),
             ],
           ),
@@ -59,13 +68,17 @@ class ContactBox extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 EventraVectors.locationPin,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.onPrimary,
+                  BlendMode.srcIn,
+                ),
                 width: 16,
                 height: 16,
               ),
               8.horizSpacing,
               Text(
                 l10n.contactEntity,
-                style: 14.w500.copyWith(color: Colors.white),
+                style: 14.w500.copyWith(color: colorScheme.onPrimary),
               ),
             ],
           ),

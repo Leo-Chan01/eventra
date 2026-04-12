@@ -48,8 +48,14 @@ class App extends StatelessWidget {
                 ensureScreenSize: true,
                 rebuildFactor: (old, data) => true,
                 builder: (context, child) {
-                  return BlocBuilder<ThemeBloc, ThemeMode>(
-                    builder: (context, themeMode) {
+                  return BlocBuilder<ThemeBloc, AppThemeMode>(
+                    builder: (context, appThemeMode) {
+                      final themeMode = switch (appThemeMode) {
+                        AppThemeMode.light => ThemeMode.light,
+                        AppThemeMode.dark => ThemeMode.dark,
+                        AppThemeMode.system => ThemeMode.system,
+                      };
+
                       return MaterialApp.router(
                         title: AppConstants.appName,
                         debugShowCheckedModeBanner: false,

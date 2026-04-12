@@ -11,13 +11,14 @@ class LastUpdatedBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFEBF5FF),
+        color: colorScheme.primary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFF7CB9FF).withValues(alpha: 0.5),
+          color: colorScheme.primary.withValues(alpha: 0.5),
         ),
       ),
       child: Column(
@@ -29,22 +30,22 @@ class LastUpdatedBanner extends StatelessWidget {
                 EventraVectors.infoIcon,
                 width: 16,
                 height: 16,
-                colorFilter: const ColorFilter.mode(
-                  Color(0xFF0078FF),
+                colorFilter: ColorFilter.mode(
+                  colorScheme.primary,
                   BlendMode.srcIn,
                 ),
               ),
               8.horizSpacing,
               Text(
                 l10n.lastUpdated,
-                style: 12.bold.copyWith(color: const Color(0xFF0078FF)),
+                style: 12.bold.copyWith(color: colorScheme.primary),
               ),
             ],
           ),
           4.vertSpacing,
           Text(
             l10n.lastUpdatedDate,
-            style: 14.w500.copyWith(color: const Color(0xFF0078FF)),
+            style: 14.w500.copyWith(color: colorScheme.primary),
           ),
         ],
       ),

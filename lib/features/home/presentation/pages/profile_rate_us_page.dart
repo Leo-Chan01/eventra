@@ -31,7 +31,7 @@ class ProfileRateUsPage extends StatelessWidget {
             leading: IconButton(
               onPressed: () => Navigator.of(context).maybePop(),
               icon: SvgPicture.asset(
-                EventraVectors.angleLeft,
+                EventraVectors.angleRight,
                 width: 18,
                 height: 18,
                 colorFilter: ColorFilter.mode(
@@ -91,10 +91,8 @@ class ProfileRateUsPage extends StatelessWidget {
                   ),
                 ),
                 26.vertSpacing,
-                Icon(
-                  Icons.chat_bubble_outline_rounded,
-                  size: 42,
-                  color: colorScheme.onSurfaceVariant,
+                SvgPicture.asset(
+                  EventraVectors.feedbackChatBubbleIconProfileSettings,
                 ),
                 12.vertSpacing,
                 Text(
