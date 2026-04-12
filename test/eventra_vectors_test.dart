@@ -23,6 +23,10 @@ void main() {
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
     expect(File(EventraVectors.cancelSearchIcon).existsSync(), isTrue);
     expect(
+      File(EventraVectors.cautionBlackGreyIconProfileSettings).existsSync(),
+      isTrue,
+    );
+    expect(
       File(
         EventraVectors.cautionRedExclamationIconProfileSettings,
       ).existsSync(),

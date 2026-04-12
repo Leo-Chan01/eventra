@@ -1,7 +1,5 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
-import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
-import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
@@ -15,6 +13,8 @@ import 'package:eventra/features/home/presentation/widgets/profile_surface_card.
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

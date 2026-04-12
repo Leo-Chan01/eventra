@@ -59,7 +59,7 @@ class ProfileAppSettingsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProfileDetailHeaderCard(
+                ProfileDetailHeaderCard.withRows(
                   isImage: true,
                   iconPath: EventraImages.nigeriaFlagInCircle,
                   title: l10n.profileAppSettingsAppName,

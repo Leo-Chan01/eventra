@@ -45,7 +45,7 @@ class ProfileAppResetPage extends StatelessWidget {
         child: Column(
           children: [
             ProfileDetailHeaderCard(
-              iconPath: EventraVectors.cautionRedExclamationIconProfileSettings,
+              iconPath: EventraVectors.cautionBlackGreyIconProfileSettings,
               title: l10n.profileAppResetCautionTitle,
               subtitle: l10n.profileAppResetCautionSubtitle,
             ),

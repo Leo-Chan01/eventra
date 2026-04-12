@@ -243,7 +243,7 @@ class _EventraButtonState extends State<EventraButton> {
             borderRadius: BorderRadius.circular(
               widget.isSmallBorderRadius
                   ? (widget.borderRadius ?? 8)
-                  : (widget.borderRadius ?? 24),
+                  : (widget.borderRadius ?? 99),
             ),
           ),
         ),

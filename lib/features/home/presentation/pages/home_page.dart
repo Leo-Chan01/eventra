@@ -49,8 +49,8 @@ class HomePage extends StatelessWidget {
               HomeLocationLookupView(state: state),
               HomeReelsTab(
                 reels: state.reels,
-                onShareReel: (reel) {
-                  AppShareBottomSheet.show(
+                onShareReel: (reel) async {
+                  await AppShareBottomSheet.show(
                     context,
                     shareText: '${reel.title} on Eventra',
                   );

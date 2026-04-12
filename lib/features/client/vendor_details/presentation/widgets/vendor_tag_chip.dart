@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class VendorTagChip extends StatelessWidget {
   const VendorTagChip({
     required this.label,
-    super.key,
     required this.isLastItem,
+    super.key,
   });
 
   final String label;

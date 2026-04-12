@@ -18,6 +18,8 @@ class EventraVectors {
   static const String cancelIconNoCircle =
       'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
+  static const String cautionBlackGreyIconProfileSettings =
+      'assets/svgs/caution-black-grey-icon-profile-settings.svg';
   static const String cautionRedExclamationIconProfileSettings =
       'assets/svgs/caution-red-exclamation-icon-profile-settings.svg';
   static const String cautionSignOrange = 'assets/svgs/caution-sign-orange.svg';

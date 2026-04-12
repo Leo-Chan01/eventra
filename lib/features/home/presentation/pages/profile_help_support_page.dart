@@ -2,8 +2,8 @@ import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_section_title.dart';
+import 'package:eventra/features/home/presentation/widgets/profile_expandable_action_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/profile_search_bar.dart';
-import 'package:eventra/features/home/presentation/widgets/profile_settings_action_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/profile_support_option_card.dart';
 import 'package:eventra/features/home/presentation/widgets/profile_surface_card.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -50,7 +50,7 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
         leading: IconButton(
           onPressed: () => Navigator.of(context).maybePop(),
           icon: SvgPicture.asset(
-            EventraVectors.angleLeft,
+            EventraVectors.angleRight,
             width: 18,
             height: 18,
             colorFilter: ColorFilter.mode(
@@ -106,39 +106,38 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
               backgroundColor: colorScheme.primaryContainer.withValues(
                 alpha: 0.4,
               ),
-              child: Column(
+              child: Row(
                 children: [
-                  Text(
-                    l10n.profileHelpSupportHoursTitle,
-                    style: 16.w700.copyWith(color: colorScheme.primary),
+                  SvgPicture.asset(
+                    EventraVectors.pendingIconOrgange,
+                    height: 24,
+                    width: 24,
                   ),
-                  10.vertSpacing,
-                  Row(
+                  10.horizSpacing,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.access_time_rounded,
-                        color: colorScheme.primary,
-                        size: 18,
+                      Text(
+                        l10n.profileHelpSupportHoursTitle,
+                        style: 16.w700.copyWith(color: colorScheme.primary),
                       ),
-                      10.horizSpacing,
-                      Expanded(
-                        child: Text(
-                          l10n.profileHelpSupportHoursWeekdays,
-                          style: 14.w500.copyWith(
-                            color: colorScheme.primary,
-                            height: 1.4,
-                          ),
+                      10.vertSpacing,
+                      Text(
+                        l10n.profileHelpSupportHoursWeekdays,
+                        style: 14.w500.copyWith(
+                          color: colorScheme.primary,
+                          height: 1.4,
+                        ),
+                      ),
+                      4.vertSpacing,
+                      Text(
+                        l10n.profileHelpSupportHoursWeekends,
+                        style: 14.w500.copyWith(
+                          color: colorScheme.primary,
+                          height: 1.4,
                         ),
                       ),
                     ],
-                  ),
-                  4.vertSpacing,
-                  Text(
-                    l10n.profileHelpSupportHoursWeekends,
-                    style: 14.w500.copyWith(
-                      color: colorScheme.primary,
-                      height: 1.4,
-                    ),
                   ),
                 ],
               ),
@@ -155,28 +154,19 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
               padding: EdgeInsets.zero,
               child: Column(
                 children: [
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpBookingQuestion1,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpBookingAnswer1,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpBookingQuestion2,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpBookingAnswer2,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpBookingQuestion3,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpBookingAnswer3,
                   ),
                 ],
               ),
@@ -188,28 +178,19 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
               padding: EdgeInsets.zero,
               child: Column(
                 children: [
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpAccountQuestion1,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpAccountAnswer1,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpAccountQuestion2,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpAccountAnswer2,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpAccountQuestion3,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpAccountAnswer3,
                   ),
                 ],
               ),
@@ -221,28 +202,19 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
               padding: EdgeInsets.zero,
               child: Column(
                 children: [
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpPaymentsQuestion1,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpPaymentsAnswer1,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpPaymentsQuestion2,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpPaymentsAnswer2,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpPaymentsQuestion3,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpPaymentsAnswer3,
                   ),
                 ],
               ),
@@ -254,28 +226,19 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
               padding: EdgeInsets.zero,
               child: Column(
                 children: [
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpVendorsQuestion1,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpVendorsAnswer1,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpVendorsQuestion2,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpVendorsAnswer2,
                   ),
                   standardDividerUtil(context),
-                  ProfileSettingsActionTile(
+                  ProfileExpandableActionTile(
                     title: l10n.profileHelpVendorsQuestion3,
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                    ),
+                    content: l10n.profileHelpVendorsAnswer3,
                   ),
                 ],
               ),
@@ -284,6 +247,9 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
             ProfileSurfaceCard(
               backgroundColor: colorScheme.primaryContainer.withValues(
                 alpha: 0.2,
+              ),
+              borderColor: colorScheme.primary.withValues(
+                alpha: 0.8,
               ),
               child: Column(
                 children: [
@@ -301,7 +267,7 @@ class _ProfileHelpSupportPageState extends State<ProfileHelpSupportPage> {
                     ),
                   ),
                   18.vertSpacing,
-                  EventraButton.smallBorder(
+                  EventraButton(
                     buttonText: l10n.profileHelpContactSupportButton,
                     width: 176,
                     onPressed: () {

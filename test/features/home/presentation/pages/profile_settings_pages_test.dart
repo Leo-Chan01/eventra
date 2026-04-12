@@ -73,6 +73,18 @@ void main() {
       expect(find.text('Frequently Asked Questions'), findsOneWidget);
       expect(find.text('Support Hours'), findsOneWidget);
       expect(find.text('Contact Support'), findsOneWidget);
+
+      await tester.tap(find.text('How do I book a vendor?'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text(
+          'Browse vendor profiles, compare packages, pick your preferred date,'
+          ' and submit a booking request. You will receive a confirmation once'
+          ' the vendor accepts and payment is completed.',
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets('privacy security page renders password and danger zone', (

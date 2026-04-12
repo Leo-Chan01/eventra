@@ -176,7 +176,8 @@ class HomeFilterOptionsSheet extends StatelessWidget {
   }
 
   String _buildCompactRangeLabel() {
-    return '${_formatCompactPrice(state.minPrice)}-${_formatCompactPrice(state.maxPrice)}';
+    return '${_formatCompactPrice(state.minPrice)}-'
+        '${_formatCompactPrice(state.maxPrice)}';
   }
 
   String _extractCity(String address) {
