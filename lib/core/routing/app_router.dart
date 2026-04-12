@@ -10,8 +10,10 @@ import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/review_submitted_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
@@ -216,6 +218,16 @@ class AppRouter {
         path: EnquirySentPage.path,
         name: EnquirySentPage.name,
         builder: (context, state) => const EnquirySentPage(),
+      ),
+      GoRoute(
+        path: CompletedEnquiryDetailPage.path,
+        name: CompletedEnquiryDetailPage.name,
+        builder: (context, state) => const CompletedEnquiryDetailPage(),
+      ),
+      GoRoute(
+        path: ReviewSubmittedPage.path,
+        name: ReviewSubmittedPage.name,
+        builder: (context, state) => const ReviewSubmittedPage(),
       ),
       GoRoute(
         path: ClientInboxPage.path,

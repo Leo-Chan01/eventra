@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
 import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/home_enquiry_banner.dart';
@@ -10,6 +11,7 @@ import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' as intl;
 
 class HomeEnquiriesTab extends StatelessWidget {
@@ -97,6 +99,23 @@ class HomeEnquiriesTab extends StatelessWidget {
                       child: HomeEnquiryVendorCard(
                         vendor: vendor,
                         dateLabel: formattedDate,
+                        onTap:
+                            state.selectedEnquiryStatus ==
+                                HomeEnquiryStatus.completed
+                            ? () async {
+                                await context.pushNamed(
+                                  CompletedEnquiryDetailPage.name,
+                                  extra: CompletedEnquiryDetailPageArgs(
+                                    vendor: vendor,
+                                    invoiceId: '6354728',
+                                    bookingReferenceId: '737367483929210',
+                                    amountPaid: 10500000,
+                                    dateIssued: DateTime(2025, 4, 24),
+                                    eventDate: DateTime(2025, 7, 6),
+                                  ),
+                                );
+                              }
+                            : null,
                       ),
                     ),
                   )

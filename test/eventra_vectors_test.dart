@@ -61,6 +61,10 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.filterIcon).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.goodCheckGreenDottedCircle).existsSync(),
+      isTrue,
+    );
     expect(File(EventraVectors.goodCheckGreen).existsSync(), isTrue);
     expect(File(EventraVectors.googleIcon).existsSync(), isTrue);
     expect(
@@ -80,6 +84,7 @@ void main() {
     expect(File(EventraVectors.mageShareVideoIcon).existsSync(), isTrue);
     expect(File(EventraVectors.mailIcon).existsSync(), isTrue);
     expect(File(EventraVectors.messageMailIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.messagesChatBlackGrey).existsSync(), isTrue);
     expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.microphoneChatPageIcon).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);

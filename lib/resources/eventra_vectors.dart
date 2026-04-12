@@ -52,6 +52,8 @@ class EventraVectors {
   static const String feedbackChatBubbleIconProfileSettings =
       'assets/svgs/feedback-chat-bubble-icon-profile-settings.svg';
   static const String filterIcon = 'assets/svgs/filter_icon.svg';
+  static const String goodCheckGreenDottedCircle =
+      'assets/svgs/good-check-green-dotted-circle.svg';
   static const String goodCheckGreen = 'assets/svgs/good-check-green.svg';
   static const String googleIcon = 'assets/svgs/google-icon.svg';
   static const String helpSupportIconProfileSettings =
@@ -74,6 +76,8 @@ class EventraVectors {
       'assets/svgs/mage_share_video_icon.svg';
   static const String mailIcon = 'assets/svgs/mail-icon.svg';
   static const String messageMailIcon = 'assets/svgs/message-mail-icon.svg';
+  static const String messagesChatBlackGrey =
+      'assets/svgs/messages-chat-black-grey.svg';
   static const String messages = 'assets/svgs/messages.svg';
   static const String microphoneChatPageIcon =
       'assets/svgs/microphone-chat-page-icon.svg';

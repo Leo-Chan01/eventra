@@ -115,6 +115,24 @@ void main() {
       expect(find.byKey(const Key('home_enquiry_status_list')), findsOneWidget);
     });
 
+    testWidgets('completed enquiry tab shows enquiry cards', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc()..add(const HomeTabChanged(1)),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Completed').last);
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const Key('home_enquiry_vendor_card_vendor-004')),
+        findsOneWidget,
+      );
+    });
+
     testWidgets('reels tab shows a tiktok style feed', (tester) async {
       await tester.pumpApp(
         BlocProvider(
