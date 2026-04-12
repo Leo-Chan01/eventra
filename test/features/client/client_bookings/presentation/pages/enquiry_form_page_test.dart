@@ -1,5 +1,6 @@
 import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_review_page.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
@@ -181,7 +182,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Review your enquiry'), findsOneWidget);
+      expect(find.text('Review Enquiry'), findsOneWidget);
     });
 
     testWidgets('shows vendor name and catalog item from bloc state', (

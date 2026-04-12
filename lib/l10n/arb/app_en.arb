@@ -512,8 +512,8 @@
     "vendorDetailCopyLink": "Copy",
     "vendorDetailLinkCopied": "Link copied to clipboard.",
     "catalogItemWhatToExpect": "What to expect",
-    "enquirySentTitle": "Enquiry Sent!",
-    "enquirySentMessage": "You will get a notification once {vendorName} reviews your enquiry.",
+    "enquirySentTitle": "Enquiry Sent",
+    "enquirySentMessage": "Your enquiry has been sent to {vendorName}",
     "@enquirySentMessage": {
       "placeholders": {
         "vendorName": {
@@ -538,7 +538,7 @@
     "enquiryFormImages": "Upload inspirational image (optional)",
     "enquiryFormImagesHint": "Upload up to 3 images",
     "enquiryFormReviewButton": "Review & Continue",
-    "enquiryReviewTitle": "Review your enquiry",
+    "enquiryReviewTitle": "Review Enquiry",
     "enquiryReviewSendButton": "Send Enquiry",
     "enquiryReviewEventType": "Event Type",
     "enquiryReviewLocation": "Location",
