@@ -6,12 +6,14 @@ class ProfileSurfaceCard extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.all(16),
     this.backgroundColor,
+    this.borderColor,
     super.key,
   });
 
   final Widget child;
   final EdgeInsets padding;
   final Color? backgroundColor;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,9 @@ class ProfileSurfaceCard extends StatelessWidget {
         color: backgroundColor ?? colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
         boxShadow: boxShadowLight,
+        border: borderColor != null
+            ? Border.all(color: borderColor!, width: 1.5)
+            : null,
       ),
       child: Padding(
         padding: padding,

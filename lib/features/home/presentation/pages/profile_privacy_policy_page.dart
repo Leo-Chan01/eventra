@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/presentation/widgets/profile_bullet_row.dart';
@@ -28,7 +29,7 @@ class ProfilePrivacyPolicyPage extends StatelessWidget {
         leading: IconButton(
           onPressed: () => Navigator.of(context).maybePop(),
           icon: SvgPicture.asset(
-            EventraVectors.angleLeft,
+            EventraVectors.angleRight,
             width: 18,
             height: 18,
             colorFilter: ColorFilter.mode(
@@ -56,6 +57,7 @@ class ProfilePrivacyPolicyPage extends StatelessWidget {
               backgroundColor: colorScheme.primaryContainer.withValues(
                 alpha: 0.35,
               ),
+              borderColor: colorScheme.primary.withValues(alpha: 0.35),
               child: Text(
                 l10n.profilePrivacyPolicyIntro,
                 style: 15.w500.copyWith(
@@ -260,37 +262,33 @@ class ProfilePrivacyPolicyPage extends StatelessWidget {
                   14.vertSpacing,
                   ProfileBulletRow(
                     text: l10n.profilePrivacyPolicyRightsItem1,
-                    leading: Icon(
-                      Icons.check_circle_rounded,
-                      size: 18,
-                      color: colorScheme.tertiary,
+                    leading: SvgPicture.asset(
+                      EventraVectors
+                          .transparentGreenCheckIconIconProfileSettings,
                     ),
                   ),
                   10.vertSpacing,
                   ProfileBulletRow(
                     text: l10n.profilePrivacyPolicyRightsItem2,
-                    leading: Icon(
-                      Icons.check_circle_rounded,
-                      size: 18,
-                      color: colorScheme.tertiary,
+                    leading: SvgPicture.asset(
+                      EventraVectors
+                          .transparentGreenCheckIconIconProfileSettings,
                     ),
                   ),
                   10.vertSpacing,
                   ProfileBulletRow(
                     text: l10n.profilePrivacyPolicyRightsItem3,
-                    leading: Icon(
-                      Icons.check_circle_rounded,
-                      size: 18,
-                      color: colorScheme.tertiary,
+                    leading: SvgPicture.asset(
+                      EventraVectors
+                          .transparentGreenCheckIconIconProfileSettings,
                     ),
                   ),
                   10.vertSpacing,
                   ProfileBulletRow(
                     text: l10n.profilePrivacyPolicyRightsItem4,
-                    leading: Icon(
-                      Icons.check_circle_rounded,
-                      size: 18,
-                      color: colorScheme.tertiary,
+                    leading: SvgPicture.asset(
+                      EventraVectors
+                          .transparentGreenCheckIconIconProfileSettings,
                     ),
                   ),
                 ],
@@ -298,9 +296,10 @@ class ProfilePrivacyPolicyPage extends StatelessWidget {
             ),
             16.vertSpacing,
             ProfileSurfaceCard(
-              backgroundColor: colorScheme.tertiaryContainer.withValues(
+              backgroundColor: const Color(0xFFFFF0E9).withValues(
                 alpha: 0.45,
               ),
+              borderColor: const Color(0xFFE9D4FF),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -330,12 +329,19 @@ class ProfilePrivacyPolicyPage extends StatelessWidget {
               ),
             ),
             22.vertSpacing,
-            EventraButton.smallBorder(
-              buttonText: l10n.profilePrivacyPolicyButton,
-              onPressed: () {
-                Navigator.of(context).pop();
-                GlobalSnackBar.showInfo(l10n.profilePrivacyPolicyAcknowledged);
-              },
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: boxShadowLight,
+              ),
+              child: EventraButton(
+                buttonText: l10n.profilePrivacyPolicyButton,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  GlobalSnackBar.showInfo(
+                    l10n.profilePrivacyPolicyAcknowledged,
+                  );
+                },
+              ),
             ),
           ],
         ),

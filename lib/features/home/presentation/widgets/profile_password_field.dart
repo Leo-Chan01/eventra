@@ -33,6 +33,21 @@ class ProfilePasswordField extends StatelessWidget {
               Icons.visibility_outlined,
               color: colorScheme.onSurfaceVariant,
             ),
+            fillColor: colorScheme.surface,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.25),
+                width: 1.5,
+              ),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.25),
+                width: 1.5,
+              ),
+            ),
           ),
         ),
       ],

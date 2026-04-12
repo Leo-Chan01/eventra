@@ -10,6 +10,7 @@ class ProfileSettingsActionTile extends StatelessWidget {
     this.trailingText,
     this.trailing,
     this.showChevron = false,
+    this.chevronVariant = false,
     this.onTap,
     super.key,
   });
@@ -20,6 +21,7 @@ class ProfileSettingsActionTile extends StatelessWidget {
   final Widget? trailing;
   final bool showChevron;
   final VoidCallback? onTap;
+  final bool chevronVariant;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,9 @@ class ProfileSettingsActionTile extends StatelessWidget {
               trailing!
             else if (showChevron)
               SvgPicture.asset(
-                EventraVectors.angleLeft,
+                chevronVariant
+                    ? EventraVectors.nextPageArrowIcon
+                    : EventraVectors.angleLeft,
                 width: 18,
                 height: 18,
                 colorFilter: ColorFilter.mode(

@@ -25,6 +25,8 @@ class EventraVectors {
   static const String chatMessageRedbadge =
       'assets/svgs/chat-message-redbadge.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';
+  static const String checkmarkGreyBlackDark =
+      'assets/svgs/checkmark-grey-black-dark.svg';
   static const String checkmarkSolidGreenIconProfileSettings =
       'assets/svgs/checkmark-solid-green-icon-profile-settings.svg';
   static const String clientVector = 'assets/svgs/client-vector.svg';

@@ -60,13 +60,12 @@ class ProfilePrivacySecurityPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProfileDetailHeaderCard(
+                ProfileDetailHeaderCard.withRows(
                   iconPath: EventraVectors.accountSecuredIconProfileSettings,
                   title: l10n.profilePrivacySecuritySecuredTitle,
                   subtitle: l10n.profilePrivacySecuritySecuredSubtitle,
                   footerText: l10n.profilePrivacySecuritySecuredFooter,
-                  footerIconPath: EventraVectors
-                      .transparentGreenCheckIconIconProfileSettings,
+                  footerIconPath: EventraVectors.checkmarkGreyBlackDark,
                 ),
                 24.vertSpacing,
                 HomeProfileSectionTitle(
@@ -96,6 +95,8 @@ class ProfilePrivacySecurityPage extends StatelessWidget {
                       20.vertSpacing,
                       EventraButton.smallBorder(
                         buttonText: l10n.profilePrivacySecurityUpdatePassword,
+                        borderRadius: 14,
+                        height: 50,
                         onPressed: () {
                           GlobalSnackBar.showInfo(
                             l10n.profilePrivacySecurityPasswordFeedback,
@@ -166,6 +167,7 @@ class ProfilePrivacySecurityPage extends StatelessWidget {
                       ProfileSettingsActionTile(
                         title: l10n.privacyPolicyLink,
                         showChevron: true,
+                        chevronVariant: true,
                         onTap: () async {
                           await context.pushNamed(
                             ProfilePrivacyPolicyPage.name,

@@ -32,6 +32,7 @@ void main() {
     expect(File(EventraVectors.chatBubbleIcon).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessageRedbadge).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessage).existsSync(), isTrue);
+    expect(File(EventraVectors.checkmarkGreyBlackDark).existsSync(), isTrue);
     expect(
       File(EventraVectors.checkmarkSolidGreenIconProfileSettings).existsSync(),
       isTrue,
