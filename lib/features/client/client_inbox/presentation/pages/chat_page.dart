@@ -162,8 +162,8 @@ class _ChatAppBarTitle extends StatelessWidget {
             ),
             if (isOnline)
               Text(
-                'Online',
-                style: 11.w400.copyWith(color: const Color(0xFF39C07A)),
+                'Active',
+                style: 11.w400,
               ),
           ],
         ),

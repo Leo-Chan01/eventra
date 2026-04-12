@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
@@ -23,8 +24,9 @@ class VendorCatalogItemCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         decoration: BoxDecoration(
-          color: AppColorSchemes.neutrals0,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(5),
+          boxShadow: boxShadowLight,
         ),
         child: Row(
           children: [
@@ -35,13 +37,15 @@ class VendorCatalogItemCard extends StatelessWidget {
                 width: 64,
                 height: 64,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(
+                errorBuilder: (_, _, _) => Container(
                   width: 64,
                   height: 64,
-                  color: AppColorSchemes.neutrals0,
-                  child: const Icon(
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                  ),
+                  child: Icon(
                     Icons.image_not_supported_outlined,
-                    color: AppColorSchemes.neutrals500,
+                    color: colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),

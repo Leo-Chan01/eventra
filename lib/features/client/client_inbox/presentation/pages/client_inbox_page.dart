@@ -58,7 +58,7 @@ class _ClientInboxPageState extends State<ClientInboxPage> {
                     );
                   },
                 ),
-                16.vertSpacing,
+                34.vertSpacing,
                 Expanded(
                   child: state.visibleThreads.isEmpty
                       ? Center(
@@ -77,7 +77,7 @@ class _ClientInboxPageState extends State<ClientInboxPage> {
                               children: [
                                 MessageThreadCard(
                                   thread: thread,
-                                  onTap: ()async  {
+                                  onTap: () async {
                                     context.read<ClientInboxBloc>().add(
                                       InboxThreadSelected(thread.id),
                                     );
@@ -87,7 +87,7 @@ class _ClientInboxPageState extends State<ClientInboxPage> {
                                 if (index < state.visibleThreads.length - 1)
                                   Divider(
                                     color: colorScheme.outlineVariant
-                                        .withValues(alpha: 0.3),
+                                        .withValues(alpha: 0.1),
                                     height: 1,
                                   ),
                               ],

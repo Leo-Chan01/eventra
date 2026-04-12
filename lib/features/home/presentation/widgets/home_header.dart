@@ -1,4 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
+import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/home/presentation/widgets/header_icon.dart';
@@ -60,14 +62,38 @@ class HomeHeader extends StatelessWidget {
           children: [
             HeaderIcon(
               icon: hasMessages
-                  ? SvgPicture.asset(EventraVectors.chatMessageRedbadge)
-                  : SvgPicture.asset(EventraVectors.chatMessage),
-              onPressed: () => context.pushNamed(TransactionHistoryPage.name),
+                  ? SvgPicture.asset(
+                      EventraVectors.chatMessageRedbadge,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onSurface,
+                        BlendMode.srcIn,
+                      ),
+                    )
+                  : SvgPicture.asset(
+                      EventraVectors.chatMessage,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onSurface,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+              onPressed: () => context.pushNamed(ClientInboxPage.name),
             ),
             HeaderIcon(
               icon: hasNotifications
-                  ? SvgPicture.asset(EventraVectors.notificationBell)
-                  : SvgPicture.asset(EventraVectors.notificationBellNobadge),
+                  ? SvgPicture.asset(
+                      EventraVectors.notificationBell,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onSurface,
+                        BlendMode.srcIn,
+                      ),
+                    )
+                  : SvgPicture.asset(
+                      EventraVectors.notificationBellNobadge,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onSurface,
+                        BlendMode.srcIn,
+                      ),
+                    ),
               onPressed: () => context.pushNamed(ClientNotificationsPage.name),
             ),
           ],

@@ -9,6 +9,8 @@ void main() {
       File(EventraVectors.accountSecuredIconProfileSettings).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.addIconChatPage).existsSync(), isTrue);
+    expect(File(EventraVectors.addIconRightSideChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addressIcon).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);
     expect(File(EventraVectors.angleRight).existsSync(), isTrue);
@@ -17,6 +19,7 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.appleIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.attachFileChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.basilVideoOutlineClient).existsSync(), isTrue);
     expect(File(EventraVectors.calendarIcon).existsSync(), isTrue);
     expect(File(EventraVectors.callIcon).existsSync(), isTrue);
@@ -78,6 +81,7 @@ void main() {
     expect(File(EventraVectors.mailIcon).existsSync(), isTrue);
     expect(File(EventraVectors.messageMailIcon).existsSync(), isTrue);
     expect(File(EventraVectors.messages).existsSync(), isTrue);
+    expect(File(EventraVectors.microphoneChatPageIcon).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);
     expect(File(EventraVectors.nextPageArrowIcon).existsSync(), isTrue);
     expect(
@@ -103,6 +107,7 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.searchNormal).existsSync(), isTrue);
+    expect(File(EventraVectors.sendIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.shopIcon).existsSync(), isTrue);
     expect(File(EventraVectors.showcaseIcon).existsSync(), isTrue);

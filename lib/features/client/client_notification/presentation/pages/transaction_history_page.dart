@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_notification/domain/models/transaction_record.dart';
 import 'package:eventra/features/client/client_notification/presentation/bloc/client_notification_bloc.dart';
@@ -183,14 +184,7 @@ class TransactionHistoryPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: colorScheme.surface,
                                   borderRadius: BorderRadius.circular(18),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorScheme.outlineVariant
-                                          .withValues(alpha: 0.1),
-                                      blurRadius: 20,
-                                      offset: const Offset(0, 12),
-                                    ),
-                                  ],
+                                  boxShadow: boxShadowLight,
                                 ),
                                 child: TransactionListItem(
                                   transaction: transaction,

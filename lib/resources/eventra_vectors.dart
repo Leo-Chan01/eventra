@@ -5,12 +5,17 @@ class EventraVectors {
 
   static const String accountSecuredIconProfileSettings =
       'assets/svgs/account-secured-icon-profile-settings.svg';
+  static const String addIconChatPage = 'assets/svgs/add-icon-chat-page.svg';
+  static const String addIconRightSideChatPage =
+      'assets/svgs/add-icon-right-side-chat-page.svg';
   static const String addressIcon = 'assets/svgs/address-icon.svg';
   static const String angleLeft = 'assets/svgs/angle-left.svg';
   static const String angleRight = 'assets/svgs/angle-right.svg';
   static const String appSettingsIconProfileSettings =
       'assets/svgs/app-settings-icon-profile-settings.svg';
   static const String appleIcon = 'assets/svgs/apple-icon.svg';
+  static const String attachFileChatPage =
+      'assets/svgs/attach-file-chat-page.svg';
   static const String basilVideoOutlineClient =
       'assets/svgs/basil_video-outline-client.svg';
   static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
@@ -70,6 +75,8 @@ class EventraVectors {
   static const String mailIcon = 'assets/svgs/mail-icon.svg';
   static const String messageMailIcon = 'assets/svgs/message-mail-icon.svg';
   static const String messages = 'assets/svgs/messages.svg';
+  static const String microphoneChatPageIcon =
+      'assets/svgs/microphone-chat-page-icon.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
   static const String nextPageArrowIcon =
       'assets/svgs/next-page-arrow-icon.svg';
@@ -91,6 +98,7 @@ class EventraVectors {
   static const String savedVendorsIconProfileSettings =
       'assets/svgs/saved-vendors-icon-profile-settings.svg';
   static const String searchNormal = 'assets/svgs/search-normal.svg';
+  static const String sendIconChatPage = 'assets/svgs/send-icon-chat-page.svg';
   static const String shareButtonVendorDeets =
       'assets/svgs/share-button-vendor-deets.svg';
   static const String shopIcon = 'assets/svgs/shop-icon.svg';

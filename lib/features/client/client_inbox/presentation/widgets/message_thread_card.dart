@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_inbox/domain/models/message_thread.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class MessageThreadCard extends StatelessWidget {
@@ -65,8 +66,8 @@ class MessageThreadCard extends StatelessWidget {
                         Container(
                           width: 18,
                           height: 18,
-                          decoration: BoxDecoration(
-                            color: colorScheme.primary,
+                          decoration: const BoxDecoration(
+                            color: AppColorSchemes.goldStar,
                             shape: BoxShape.circle,
                           ),
                           child: Center(

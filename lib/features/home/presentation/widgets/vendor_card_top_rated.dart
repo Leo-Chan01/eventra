@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -23,8 +24,9 @@ class VendorCardTopRated extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColorSchemes.neutrals0,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(10),
+        boxShadow: boxShadowLight,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

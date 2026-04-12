@@ -25,7 +25,9 @@ class HomeSearchBar extends StatelessWidget {
           child: Container(
             height: 52,
             decoration: BoxDecoration(
-              color: const Color(0xFFFAFAFA),
+              color: colorScheme.surfaceContainerHighest.withValues(
+                alpha: 0.35,
+              ),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 color: colorScheme.surfaceContainerHighest.withValues(

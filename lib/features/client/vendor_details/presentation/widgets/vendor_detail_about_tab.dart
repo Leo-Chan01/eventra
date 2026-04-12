@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/related_vendors_section.dart';
@@ -28,75 +29,90 @@ class VendorDetailAboutTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Card(
-            color: AppColorSchemes.neutrals0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 16,
-              ),
-              child: Text(
-                vendor.bio,
-                style: 15.w500.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                  height: 1.5,
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: boxShadowLight,
+            ),
+            child: Card(
+              color: colorScheme.surface,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 16,
+                ),
+                child: Text(
+                  vendor.bio,
+                  style: 15.w500.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    height: 1.5,
+                  ),
                 ),
               ),
             ),
           ),
           20.vertSpacing,
-          Card(
-            color: AppColorSchemes.neutrals0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 16,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    l10n.vendorDetailServices,
-                    style: 14.w700.copyWith(color: colorScheme.onSurface),
-                  ),
-                  10.vertSpacing,
-                  ...vendor.services.map((s) => VendorServiceItem(label: s)),
-                ],
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: boxShadowLight,
+            ),
+            child: Card(
+              color: colorScheme.surface,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.vendorDetailServices,
+                      style: 14.w700.copyWith(color: colorScheme.onSurface),
+                    ),
+                    10.vertSpacing,
+                    ...vendor.services.map((s) => VendorServiceItem(label: s)),
+                  ],
+                ),
               ),
             ),
           ),
           20.vertSpacing,
-          Card(
-            color: AppColorSchemes.neutrals0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 16,
-              ),
-              child: VendorTrustSection(
-                title: l10n.vendorDetailVerificationAndTrust,
-                items: [
-                  if (vendor.isTopRated)
-                    (
-                      label: l10n.vendorDetailTopRated,
-                      icon: EventraVectors.goodCheckGreen,
-                    ),
-                  if (vendor.isIdVerified)
-                    (
-                      label: l10n.vendorDetailIdVerified,
-                      icon: EventraVectors.goodCheckGreen,
-                    ),
-                  if (vendor.isBackgroundChecked)
-                    (
-                      label: l10n.vendorDetailBackgroundChecked,
-                      icon: EventraVectors.goodCheckGreen,
-                    ),
-                  if (vendor.hasVerificationBadge)
-                    (
-                      label: l10n.vendorDetailVerificationBadge,
-                      icon: EventraVectors.goodCheckGreen,
-                    ),
-                ],
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: boxShadowLight,
+            ),
+            child: Card(
+              color: colorScheme.surface,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 16,
+                ),
+                child: VendorTrustSection(
+                  title: l10n.vendorDetailVerificationAndTrust,
+                  items: [
+                    if (vendor.isTopRated)
+                      (
+                        label: l10n.vendorDetailTopRated,
+                        icon: EventraVectors.goodCheckGreen,
+                      ),
+                    if (vendor.isIdVerified)
+                      (
+                        label: l10n.vendorDetailIdVerified,
+                        icon: EventraVectors.goodCheckGreen,
+                      ),
+                    if (vendor.isBackgroundChecked)
+                      (
+                        label: l10n.vendorDetailBackgroundChecked,
+                        icon: EventraVectors.goodCheckGreen,
+                      ),
+                    if (vendor.hasVerificationBadge)
+                      (
+                        label: l10n.vendorDetailVerificationBadge,
+                        icon: EventraVectors.goodCheckGreen,
+                      ),
+                  ],
+                ),
               ),
             ),
           ),

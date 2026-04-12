@@ -1,6 +1,8 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class InboxSearchBar extends StatelessWidget {
@@ -27,32 +29,28 @@ class InboxSearchBar extends StatelessWidget {
             style: 14.w400.copyWith(color: colorScheme.onSurface),
             decoration: InputDecoration(
               hintText: l10n.inboxSearchHint,
-              prefixIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedSearch01,
-                size: 20,
-                color: colorScheme.onSurfaceVariant,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(8),
+                child: SvgPicture.asset(
+                  EventraVectors.searchNormal,
+                  colorFilter: ColorFilter.mode(
+                    colorScheme.onSurfaceVariant,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 12,
               ),
+              suffixIcon: Padding(
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset(EventraVectors.filterIcon),
+              ),
             ),
           ),
         ),
         12.horizSpacing,
-        Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: HugeIcon(
-            icon: HugeIcons.strokeRoundedFilterHorizontal,
-            size: 20,
-            color: colorScheme.onSurfaceVariant,
-          ),
-        ),
       ],
     );
   }
