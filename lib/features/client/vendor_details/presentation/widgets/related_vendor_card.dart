@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
@@ -20,8 +21,13 @@ class RelatedVendorCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: SizedBox(
+      child: Container(
         width: MediaQuery.sizeOf(context).width * 0.6,
+        decoration: BoxDecoration(
+          color: colorScheme.surface,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: boxShadowLight,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

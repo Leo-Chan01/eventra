@@ -24,7 +24,7 @@ class VendorDetailAboutTab extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

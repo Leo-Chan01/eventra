@@ -75,6 +75,9 @@ class VendorDetailPage extends StatelessWidget {
         vendorName: vendor.name,
         vendorImage: vendor.profileImage,
         catalogItem: firstCatalogItem,
+        vendorCategory: vendor.services.isNotEmpty ? vendor.services.first : '',
+        vendorRating: vendor.rating,
+        vendorReviewsCount: vendor.reviewsCount,
       ),
     );
   }

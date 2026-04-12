@@ -1,7 +1,6 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/vendor_rating_stars.dart';
-import 'package:eventra/features/home/presentation/widgets/profile_rating_stars.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +24,7 @@ class EnquiryFlowVendorCard extends StatelessWidget {
   const EnquiryFlowVendorCard.minimal({
     required this.vendorImage,
     required this.vendorName,
-    required this.invoiceIdLabel,
+    this.invoiceIdLabel,
     required this.dateIssuedLabel,
     required this.statusLabel,
     required this.statusValue,
@@ -39,7 +38,7 @@ class EnquiryFlowVendorCard extends StatelessWidget {
 
   final String vendorImage;
   final String vendorName;
-  final String invoiceIdLabel;
+  final String? invoiceIdLabel;
   final String dateIssuedLabel;
   final String statusLabel;
   final String statusValue;
@@ -209,7 +208,7 @@ class EnquiryFlowVendorCard extends StatelessWidget {
                 ],
                 6.vertSpacing,
                 Text(
-                  invoiceIdLabel,
+                  invoiceIdLabel!,
                   style: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
                 ),
                 4.vertSpacing,
