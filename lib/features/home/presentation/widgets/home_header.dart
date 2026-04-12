@@ -1,8 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
-import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
-import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/home/presentation/widgets/header_icon.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';

@@ -155,6 +155,15 @@
     "homeSearchByLocation": "Search location",
     "homeEnterAddress": "Enter address",
     "homeViewProfile": "View Profile",
+    "categoryVendorsFeaturedCount": "{count} Featured Vendors",
+    "@categoryVendorsFeaturedCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "categoryVendorsEmptyState": "No vendors match your search yet.",
     "navHome": "Home",
     "navEnquiries": "Enquiries",
     "navSearch": "Search",

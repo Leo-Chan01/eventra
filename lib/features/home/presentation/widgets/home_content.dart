@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/featured_and_top_vendors/presentation/pages/category_vendors_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/all_vendors_single_flush_list.dart';
 import 'package:eventra/features/home/presentation/widgets/home_categories.dart';
@@ -8,6 +9,7 @@ import 'package:eventra/features/home/presentation/widgets/home_promo_banner.dar
 import 'package:eventra/features/home/presentation/widgets/home_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({
@@ -59,8 +61,12 @@ class HomeContent extends StatelessWidget {
           HomeCategories(
             categories: state.categories,
             selectedCategory: state.selectedCategory,
-            onCategorySelected: (category) {
+            onCategorySelected: (category) async {
               context.read<HomeBloc>().add(HomeCategorySelected(category));
+              await context.pushNamed(
+                CategoryVendorsPage.name,
+                extra: category,
+              );
             },
           ),
 

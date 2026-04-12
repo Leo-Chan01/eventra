@@ -3,7 +3,6 @@ import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class ChatInputBar extends StatefulWidget {
   const ChatInputBar({

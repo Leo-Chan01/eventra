@@ -6,7 +6,6 @@ import 'package:eventra/features/client/vendor_details/presentation/widgets/vend
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_trust_section.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
-import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class VendorDetailAboutTab extends StatelessWidget {

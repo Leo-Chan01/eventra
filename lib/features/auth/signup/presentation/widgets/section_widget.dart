@@ -1,6 +1,5 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
-import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class Section extends StatelessWidget {

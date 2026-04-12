@@ -23,6 +23,15 @@
     "homeRecentLocations": "Ubicaciones recientes",
     "homeSearchByLocation": "Buscar ubicación",
     "homeViewProfile": "Ver perfil",
+    "categoryVendorsFeaturedCount": "{count} proveedores destacados",
+    "@categoryVendorsFeaturedCount": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "categoryVendorsEmptyState": "Ningún proveedor coincide con tu búsqueda todavía.",
     "navHome": "Inicio",
     "navEnquiries": "Explorar",
     "navSearch": "Buscar",

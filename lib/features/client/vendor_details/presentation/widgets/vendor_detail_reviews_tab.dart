@@ -25,10 +25,9 @@ class VendorDetailReviewsTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            l10n.vendorDetailRatingReviews(reviewsCount),
+            'Vendor Rating & Review (${l10n.vendorDetailRatingReviews(reviewsCount)})',
             style: 14.w700.copyWith(color: colorScheme.onSurface),
           ),
           16.vertSpacing,
