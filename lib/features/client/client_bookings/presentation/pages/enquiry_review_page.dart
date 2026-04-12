@@ -36,17 +36,17 @@ class EnquiryReviewPage extends StatelessWidget {
         final enquiry = state.enquiry;
         final eventDate = enquiry?.eventDate;
         final eventType =
-            eventTypeLabels[enquiry?.eventType ?? ''] ??
-            (enquiry?.eventType ?? 'N/A');
+          eventTypeLabels[enquiry?.eventType ?? ''] ??
+          (enquiry?.eventType ?? l10n.enquiryFlowSampleEventType);
         final location = (enquiry?.location?.trim().isNotEmpty ?? false)
-            ? enquiry!.location!
-            : 'N/A';
+          ? enquiry!.location!
+          : l10n.enquiryFlowSampleLocation;
         final dateLabel = eventDate != null
-            ? intl.DateFormat('EEEE, MMMM d, yyyy').format(eventDate)
-            : 'N/A';
+          ? intl.DateFormat('EEEE, MMMM d, yyyy').format(eventDate)
+          : intl.DateFormat('EEEE, MMMM d, yyyy').format(DateTime.now());
         final timeLabel = eventDate != null
-            ? intl.DateFormat('h:mm a').format(eventDate)
-            : 'N/A';
+          ? intl.DateFormat('h:mm a').format(eventDate)
+          : l10n.enquiryFlowSampleTime;
 
         return Scaffold(
           backgroundColor: colorScheme.surface,

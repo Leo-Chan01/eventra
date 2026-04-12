@@ -3,7 +3,6 @@ import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_review_page.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_vendor_card.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_form_upload_tiles.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';

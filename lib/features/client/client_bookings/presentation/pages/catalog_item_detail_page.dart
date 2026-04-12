@@ -3,8 +3,7 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/enqui
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_action_bar.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_detail_header.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_expect_section.dart';
-import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
-import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
+import 'package:eventra/features/client/client_inbox/presentation/utils/vendor_chat_navigation.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/circle_action_button.dart';
 import 'package:eventra/resources/resources.dart';
@@ -126,14 +125,12 @@ class CatalogItemDetailPage extends StatelessWidget {
     BuildContext context,
     CatalogItemDetailArgs args,
   ) async {
-    context.read<ClientInboxBloc>().add(
-      InboxVendorStarted(
-        vendorId: args.vendorId,
-        vendorName: args.vendorName,
-        catalogItem: args.catalogItem,
-      ),
+    await openVendorChat(
+      context: context,
+      vendorId: args.vendorId,
+      vendorName: args.vendorName,
+      catalogItem: args.catalogItem,
     );
-    await context.pushNamed(ClientInboxPage.name);
   }
 
   Future<void> _onMakeEnquiry(
