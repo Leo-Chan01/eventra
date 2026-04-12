@@ -1,9 +1,11 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_like_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +24,7 @@ class CategoryVendorCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(14),
+        boxShadow: boxShadowLight,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,23 +49,8 @@ class CategoryVendorCard extends StatelessWidget {
                 Positioned(
                   top: 12,
                   right: 12,
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: colorScheme.surface,
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      vendor.isFavorite
-                          ? Icons.favorite_rounded
-                          : Icons.favorite_border_rounded,
-                      color: vendor.isFavorite
-                          ? colorScheme.primary
-                          : colorScheme.onSurfaceVariant,
-                      size: 24,
-                    ),
+                  child: EventraLikeButton.blurGlassVersion(
+                    isLiked: vendor.isFavorite,
                   ),
                 ),
               ],
@@ -115,6 +103,7 @@ class CategoryVendorCard extends StatelessWidget {
                 16.horizSpacing,
                 EventraButton.smallBorder(
                   width: 112,
+                  padding: EdgeInsets.zero,
                   buttonText: context.l10n.homeViewProfile,
                   onPressed: () async {
                     context.read<VendorDetailBloc>().add(
