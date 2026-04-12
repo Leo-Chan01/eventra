@@ -111,6 +111,8 @@ class EventraVectors {
   static const String stickynote = 'assets/svgs/stickynote.svg';
   static const String streamlineUltimateLikeBold =
       'assets/svgs/streamline-ultimate_like-bold.svg';
+  static const String supportIconEnquiries =
+      'assets/svgs/support-icon-enquiries.svg';
   static const String switchToVendorIconProfileSettings =
       'assets/svgs/switch-to-vendor-icon-profile-settings.svg';
   static const String transparentGreenCheckIconIconProfileSettings =

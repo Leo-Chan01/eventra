@@ -10,13 +10,14 @@ import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
-import 'package:eventra/features/client/featured_and_top_vendors/presentation/pages/category_vendors_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
+import 'package:eventra/features/client/featured_and_top_vendors/presentation/pages/category_vendors_page.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_reset_page.dart';
@@ -200,6 +201,16 @@ class AppRouter {
         path: CatalogItemDetailPage.path,
         name: CatalogItemDetailPage.name,
         builder: (context, state) => const CatalogItemDetailPage(),
+      ),
+      GoRoute(
+        path: EnquiryFormPage.path,
+        name: EnquiryFormPage.name,
+        builder: (context, state) => const EnquiryFormPage(),
+      ),
+      GoRoute(
+        path: EnquiryReviewPage.path,
+        name: EnquiryReviewPage.name,
+        builder: (context, state) => const EnquiryReviewPage(),
       ),
       GoRoute(
         path: EnquirySentPage.path,

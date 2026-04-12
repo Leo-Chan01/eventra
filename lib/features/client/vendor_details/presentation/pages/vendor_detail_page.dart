@@ -1,6 +1,7 @@
 import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
-import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
-import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
+import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_about_tab.dart';
@@ -53,10 +54,29 @@ class VendorDetailPage extends StatelessWidget {
   }
 
   Future<void> _onMakeEnquiry(BuildContext context, VendorDetail vendor) async {
-    context.read<ClientInboxBloc>().add(
-      InboxThreadSelected(vendor.id),
+    if (vendor.catalogItems.isEmpty) {
+      GlobalSnackBar.showInfo(context.l10n.notificationsActionComingSoon);
+      return;
+    }
+
+    final firstCatalogItem = vendor.catalogItems.first;
+    context.read<ClientBookingBloc>().add(
+      EnquiryFormInitiated(
+        vendorId: vendor.id,
+        vendorName: vendor.name,
+        catalogItem: firstCatalogItem,
+      ),
     );
-    await context.pushNamed(ClientInboxPage.name);
+
+    await context.pushNamed(
+      EnquiryFormPage.name,
+      extra: EnquiryFormPageArgs(
+        vendorId: vendor.id,
+        vendorName: vendor.name,
+        vendorImage: vendor.profileImage,
+        catalogItem: firstCatalogItem,
+      ),
+    );
   }
 }
 
@@ -128,6 +148,7 @@ class _TabContent extends StatelessWidget {
               catalogItem: item,
               vendorId: vendor.id,
               vendorName: vendor.name,
+              vendorImage: vendor.profileImage,
             ),
           );
         },

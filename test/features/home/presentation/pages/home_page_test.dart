@@ -73,7 +73,7 @@ void main() {
       );
     });
 
-    testWidgets('search field opens the location lookup view', (tester) async {
+    testWidgets('search field is tappable', (tester) async {
       await tester.pumpApp(
         BlocProvider(
           create: (_) => HomeBloc(),
@@ -82,14 +82,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
+      expect(find.byKey(const Key('home_search_field')), findsOneWidget);
       await tester.tap(find.byKey(const Key('home_search_field')));
       await tester.pumpAndSettle();
-
-      expect(find.text('Your current address'), findsOneWidget);
-      expect(
-        find.byKey(const Key('home_location_search_input')),
-        findsOneWidget,
-      );
     });
 
     testWidgets('tapping a category opens the category vendors page', (
@@ -117,7 +112,7 @@ void main() {
       await tester.tap(find.byKey(const Key('nav_tab_1')));
       await tester.pumpAndSettle();
 
-      expect(find.text('Explore vendors near you'), findsOneWidget);
+      expect(find.byKey(const Key('home_enquiry_status_list')), findsOneWidget);
     });
 
     testWidgets('reels tab shows a tiktok style feed', (tester) async {

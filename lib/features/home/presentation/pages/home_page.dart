@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.dart';
 import 'package:eventra/features/home/presentation/widgets/home_content.dart';
-import 'package:eventra/features/home/presentation/widgets/home_explore_tab.dart';
+import 'package:eventra/features/home/presentation/widgets/home_enquiries_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_filter_options_sheet.dart';
 import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_tab.dart';
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
               ),
               SafeArea(
                 bottom: false,
-                child: HomeExploreTab(
+                child: HomeEnquiriesTab(
                   state: state,
                   onOpenFilter: () => _openFilterSheet(context),
                   onOpenLocationLookup: () => _openLocationLookupSheet(context),

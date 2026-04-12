@@ -1,5 +1,5 @@
 import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_action_bar.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_detail_header.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_expect_section.dart';
@@ -18,11 +18,13 @@ class CatalogItemDetailArgs {
     required this.catalogItem,
     required this.vendorId,
     required this.vendorName,
+    required this.vendorImage,
   });
 
   final CatalogItem catalogItem;
   final String vendorId;
   final String vendorName;
+  final String vendorImage;
 }
 
 class CatalogItemDetailPage extends StatelessWidget {
@@ -139,12 +141,23 @@ class CatalogItemDetailPage extends StatelessWidget {
     CatalogItemDetailArgs args,
   ) async {
     context.read<ClientBookingBloc>().add(
-      EnquirySubmitted(
+      EnquiryFormInitiated(
         vendorId: args.vendorId,
         vendorName: args.vendorName,
         catalogItem: args.catalogItem,
       ),
     );
-    await context.pushNamed(EnquirySentPage.name);
+    final enquiryFormArgs = EnquiryFormPageArgs(
+      vendorId: args.vendorId,
+      vendorName: args.vendorName,
+      vendorImage: args.vendorImage,
+      catalogItem: args.catalogItem,
+    );
+    if (context.mounted) {
+      await context.pushNamed(
+        EnquiryFormPage.name,
+        extra: enquiryFormArgs,
+      );
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
+import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';
 import 'package:eventra/features/home/domain/models/home_notification_preference.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/domain/models/home_reel.dart';
@@ -25,6 +26,15 @@ class HomeTabChanged extends HomeEvent {
 
 class HomeDataRequested extends HomeEvent {
   const HomeDataRequested();
+}
+
+class HomeEnquiryStatusChanged extends HomeEvent {
+  const HomeEnquiryStatusChanged(this.status);
+
+  final HomeEnquiryStatus status;
+
+  @override
+  List<Object?> get props => [status];
 }
 
 class HomeCategorySelected extends HomeEvent {
@@ -179,6 +189,7 @@ class HomeState extends Equatable {
     this.selectedAddress = 'Lekki Phase 1, Lagos',
     this.locationQuery = '',
     this.favoriteVendorQuery = '',
+    this.selectedEnquiryStatus = HomeEnquiryStatus.pending,
     this.recentLocations = const [],
     this.locationSuggestions = const [],
   });
@@ -208,6 +219,7 @@ class HomeState extends Equatable {
   final String selectedAddress;
   final String locationQuery;
   final String favoriteVendorQuery;
+  final HomeEnquiryStatus selectedEnquiryStatus;
   final List<String> recentLocations;
   final List<String> locationSuggestions;
 
@@ -237,6 +249,7 @@ class HomeState extends Equatable {
     String? selectedAddress,
     String? locationQuery,
     String? favoriteVendorQuery,
+    HomeEnquiryStatus? selectedEnquiryStatus,
     List<String>? recentLocations,
     List<String>? locationSuggestions,
   }) {
@@ -271,6 +284,8 @@ class HomeState extends Equatable {
       selectedAddress: selectedAddress ?? this.selectedAddress,
       locationQuery: locationQuery ?? this.locationQuery,
       favoriteVendorQuery: favoriteVendorQuery ?? this.favoriteVendorQuery,
+      selectedEnquiryStatus:
+          selectedEnquiryStatus ?? this.selectedEnquiryStatus,
       recentLocations: recentLocations ?? this.recentLocations,
       locationSuggestions: locationSuggestions ?? this.locationSuggestions,
     );
@@ -303,6 +318,7 @@ class HomeState extends Equatable {
     selectedAddress,
     locationQuery,
     favoriteVendorQuery,
+    selectedEnquiryStatus,
     recentLocations,
     locationSuggestions,
   ];
@@ -312,6 +328,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(_buildInitialState()) {
     on<HomeTabChanged>(_onTabChanged);
     on<HomeDataRequested>(_onDataRequested);
+    on<HomeEnquiryStatusChanged>(_onEnquiryStatusChanged);
     on<HomeCategorySelected>(_onCategorySelected);
     on<HomeFilterCategoryToggled>(_onFilterCategoryToggled);
     on<HomeRatingChanged>(_onRatingChanged);
@@ -331,6 +348,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   void _onDataRequested(HomeDataRequested event, Emitter<HomeState> emit) {
     emit(_buildInitialState().copyWith(currentIndex: state.currentIndex));
+  }
+
+  void _onEnquiryStatusChanged(
+    HomeEnquiryStatusChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(selectedEnquiryStatus: event.status));
   }
 
   void _onCategorySelected(

@@ -125,6 +125,7 @@ void main() {
       File(EventraVectors.streamlineUltimateLikeBold).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.supportIconEnquiries).existsSync(), isTrue);
     expect(
       File(EventraVectors.switchToVendorIconProfileSettings).existsSync(),
       isTrue,
