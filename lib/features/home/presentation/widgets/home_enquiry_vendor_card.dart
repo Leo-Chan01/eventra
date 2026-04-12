@@ -35,8 +35,8 @@ class HomeEnquiryVendorCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 90,
-                height: 90,
+                width: 70,
+                height: 70,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -57,21 +57,21 @@ class HomeEnquiryVendorCard extends StatelessWidget {
                       vendor.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: 21.w700.copyWith(color: colorScheme.onSurface),
+                      style: 16.w700.copyWith(color: colorScheme.onSurface),
                     ),
                     6.vertSpacing,
                     Text(
                       vendor.category,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: 17.w400.copyWith(
+                      style: 14.w400.copyWith(
                         color: colorScheme.onSurfaceVariant,
                       ),
                     ),
                     10.vertSpacing,
                     Text(
                       dateLabel,
-                      style: 17.w400.copyWith(
+                      style: 14.w400.copyWith(
                         color: colorScheme.onSurfaceVariant,
                       ),
                     ),

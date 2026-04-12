@@ -30,6 +30,7 @@ void main() {
     expect(File(EventraImages.hairStylistCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.hallCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.headerCarouselImage).existsSync(), isTrue);
+    expect(File(EventraImages.invoiceImage).existsSync(), isTrue);
     expect(File(EventraImages.ligntningCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.liveBandCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.logoIconSmall).existsSync(), isTrue);

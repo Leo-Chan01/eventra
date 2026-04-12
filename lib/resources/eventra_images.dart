@@ -31,6 +31,7 @@ class EventraImages {
       'assets/images/hall-category-image.png';
   static const String headerCarouselImage =
       'assets/images/header-carousel-image.png';
+  static const String invoiceImage = 'assets/images/invoice-image.png';
   static const String ligntningCategoryImage =
       'assets/images/ligntning-category-image.png';
   static const String liveBandCategoryImage =

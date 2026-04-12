@@ -26,7 +26,7 @@ class EnquiryFlowDetailRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: 16.w400.copyWith(color: colorScheme.onSurfaceVariant),
+              style: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
             ),
           ),
           16.horizSpacing,
@@ -34,7 +34,7 @@ class EnquiryFlowDetailRow extends StatelessWidget {
             child: Text(
               value,
               textAlign: TextAlign.end,
-              style: 16.w400.copyWith(
+              style: 14.w400.copyWith(
                 fontWeight: valueWeight ?? FontWeight.w500,
                 color: valueColor ?? colorScheme.onSurface,
               ),

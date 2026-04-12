@@ -48,6 +48,7 @@ class EventraVectors {
       'assets/svgs/download-contract-icon.svg';
   static const String editPencilElevated =
       'assets/svgs/edit-pencil-elevated.svg';
+  static const String emptyImageIcon = 'assets/svgs/empty-image-icon.svg';
   static const String eventraBlackText = 'assets/svgs/eventra-black-text.svg';
   static const String eventraPrimaryText =
       'assets/svgs/eventra-primary-text.svg';

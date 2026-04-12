@@ -1,9 +1,11 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_detail_row.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_vendor_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -42,18 +44,21 @@ class ActiveEnquiryDetailPage extends StatelessWidget {
               Center(
                 child: Text(
                   l10n.enquiryFlowJobOngoingTitle,
-                  style: 40.w700.copyWith(color: colorScheme.onSurface),
+                  style: 24.w700.copyWith(color: colorScheme.onSurface),
                 ),
               ),
               10.vertSpacing,
               Center(
-                child: Text(
-                  l10n.enquiryFlowPaymentReceivedBody,
-                  style: 18.w400.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    height: 1.4,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 45),
+                  child: Text(
+                    l10n.enquiryFlowPaymentReceivedBody,
+                    style: 14.w400.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                      height: 1.4,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
               26.vertSpacing,
@@ -67,7 +72,7 @@ class ActiveEnquiryDetailPage extends StatelessWidget {
                     '${intl.DateFormat.yMMMMd(localeTag).format(args.dateIssued)}',
                 statusLabel: '${l10n.enquiryFlowStatus}: ',
                 statusValue: l10n.homeEnquiryStatusActive,
-                statusColor: colorScheme.tertiary,
+                statusColor: AppColorSchemes.success,
                 onMessageVendor: () {
                   GlobalSnackBar.showInfo(
                     l10n.notificationsContactVendorFeedback,
@@ -81,6 +86,7 @@ class ActiveEnquiryDetailPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: colorScheme.surface,
                   borderRadius: BorderRadius.circular(18),
+                  boxShadow: boxShadowLight,
                 ),
                 child: Column(
                   children: [
@@ -110,7 +116,7 @@ class ActiveEnquiryDetailPage extends StatelessWidget {
                   ],
                 ),
               ),
-              24.vertSpacing,
+              112.vertSpacing,
               EventraButton(
                 buttonText: l10n.enquiryFlowBack,
                 onPressed: () => Navigator.of(context).maybePop(),

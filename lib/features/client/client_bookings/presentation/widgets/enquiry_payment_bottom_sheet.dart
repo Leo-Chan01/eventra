@@ -1,8 +1,10 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_payment_detail_row.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class EnquiryPaymentBottomSheet extends StatelessWidget {
@@ -76,8 +78,10 @@ class EnquiryPaymentBottomSheet extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: onClose,
-                      icon: const HugeIcon(
-                        icon: HugeIcons.strokeRoundedCancel01,
+                      icon: SvgPicture.asset(
+                        EventraVectors.cancelSearchIcon,
+                        height: 40,
+                        width: 40,
                       ),
                     ),
                   ],
@@ -127,15 +131,16 @@ class EnquiryPaymentBottomSheet extends StatelessWidget {
                   width: 120,
                   height: 120,
                   decoration: BoxDecoration(
-                    color: colorScheme.surfaceContainerHighest.withValues(
-                      alpha: 0.6,
+                    color: colorScheme.onSurface.withValues(
+                      alpha: 0.03,
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: HugeIcon(
-                    icon: HugeIcons.strokeRoundedImageAdd01,
-                    color: colorScheme.onSurfaceVariant,
-                    size: 38,
+                  child: Padding(
+                    padding: const EdgeInsets.all(45),
+                    child: SvgPicture.asset(
+                      EventraVectors.emptyImageIcon,
+                    ),
                   ),
                 ),
                 26.vertSpacing,

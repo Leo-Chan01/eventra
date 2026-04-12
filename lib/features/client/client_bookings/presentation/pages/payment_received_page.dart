@@ -9,6 +9,7 @@ import 'package:eventra/features/client/client_bookings/presentation/widgets/enq
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_vendor_card.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -48,26 +49,29 @@ class PaymentReceivedPage extends StatelessWidget {
               Center(
                 child: SvgPicture.asset(
                   EventraVectors.goodCheckGreenDottedCircle,
-                  width: 132,
-                  height: 132,
+                  width: 114,
+                  height: 114,
                 ),
               ),
               30.vertSpacing,
               Center(
                 child: Text(
                   l10n.enquiryFlowPaymentReceivedTitle,
-                  style: 40.w700.copyWith(color: colorScheme.onSurface),
+                  style: 24.w700.copyWith(color: colorScheme.onSurface),
                   textAlign: TextAlign.center,
                 ),
               ),
               12.vertSpacing,
               Center(
-                child: Text(
-                  l10n.enquiryFlowPaymentReceivedBody,
-                  textAlign: TextAlign.center,
-                  style: 18.w400.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    height: 1.45,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    l10n.enquiryFlowPaymentReceivedBody,
+                    textAlign: TextAlign.center,
+                    style: 14.w400.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                      height: 1.45,
+                    ),
                   ),
                 ),
               ),
@@ -82,7 +86,7 @@ class PaymentReceivedPage extends StatelessWidget {
                     '${intl.DateFormat.yMMMMd(localeTag).format(args.dateIssued)}',
                 statusLabel: '${l10n.enquiryFlowStatus}: ',
                 statusValue: l10n.homeEnquiryStatusActive,
-                statusColor: colorScheme.tertiary,
+                statusColor: AppColorSchemes.success,
                 onMessageVendor: () {
                   GlobalSnackBar.showInfo(
                     l10n.notificationsContactVendorFeedback,
@@ -137,7 +141,9 @@ class PaymentReceivedPage extends StatelessWidget {
         child: EventraButton(
           buttonText: l10n.enquiryFlowBackToEnquiry,
           onPressed: () async {
-            await context.pushNamed(ActiveEnquiryDetailPage.name, extra: args);
+            context
+              ..pop()
+              ..pop();
           },
         ),
       ),

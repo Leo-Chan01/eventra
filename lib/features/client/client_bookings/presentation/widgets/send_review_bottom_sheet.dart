@@ -59,88 +59,116 @@ class _SendReviewBottomSheetState extends State<SendReviewBottomSheet> {
     final colorScheme = Theme.of(context).colorScheme;
     final viewInsets = MediaQuery.viewInsetsOf(context);
 
-    return Padding(
-      padding: EdgeInsets.only(bottom: viewInsets.bottom),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          12.vertSpacing,
-          Container(
-            width: 120,
-            height: 8,
-            decoration: BoxDecoration(
-              color: colorScheme.outline.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.circular(999),
-            ),
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: AnimatedPadding(
+        duration: const Duration(milliseconds: 220),
+        curve: Curves.easeOut,
+        padding: EdgeInsets.only(bottom: viewInsets.bottom),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(context).height * 0.92,
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
-            child: Row(
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                const Spacer(),
-                Text(
-                  l10n.completedEnquiryReviewSheetTitle,
-                  style: 22.w500.copyWith(color: colorScheme.onSurface),
+                12.vertSpacing,
+                Container(
+                  width: 120,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: colorScheme.outline.withValues(alpha: 0.3),
+                    borderRadius: BorderRadius.circular(999),
+                  ),
                 ),
-                const Spacer(),
-                InkWell(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: Icon(
-                    Icons.close_rounded,
-                    size: 36,
-                    color: colorScheme.onSurface,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
+                  child: Row(
+                    children: [
+                      const Spacer(),
+                      Text(
+                        l10n.completedEnquiryReviewSheetTitle,
+                        style: 22.w500.copyWith(color: colorScheme.onSurface),
+                      ),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Icon(
+                          Icons.close_rounded,
+                          size: 36,
+                          color: colorScheme.onSurface,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                20.vertSpacing,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(999),
+                  child: Image.asset(
+                    widget.vendorImage,
+                    width: 132,
+                    height: 132,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                26.vertSpacing,
+                Text(
+                  widget.vendorName,
+                  style: 18.w700.copyWith(color: colorScheme.onSurface),
+                ),
+                30.vertSpacing,
+                ReviewStarSelector(
+                  rating: _rating,
+                  onRatingChanged: (value) {
+                    setState(() {
+                      _rating = value;
+                    });
+                  },
+                ),
+                34.vertSpacing,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: TextField(
+                    controller: _reviewController,
+                    maxLines: 6,
+                    minLines: 6,
+                    keyboardType: TextInputType.multiline,
+                    scrollPadding: const EdgeInsets.fromLTRB(20, 20, 20, 180),
+                    decoration: InputDecoration(
+                      hintText: l10n.completedEnquiryWriteReviewHint,
+                      alignLabelWithHint: true,
+                      fillColor: colorScheme.surface,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide(
+                          color: colorScheme.outline,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide(
+                          color: colorScheme.outline,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                22.vertSpacing,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                  child: EventraButton(
+                    buttonText: l10n.completedEnquirySendReviewButton,
+                    onPressed: () => _onSendPressed(context),
                   ),
                 ),
               ],
             ),
           ),
-          20.vertSpacing,
-          ClipRRect(
-            borderRadius: BorderRadius.circular(999),
-            child: Image.asset(
-              widget.vendorImage,
-              width: 132,
-              height: 132,
-              fit: BoxFit.cover,
-            ),
-          ),
-          26.vertSpacing,
-          Text(
-            widget.vendorName,
-            style: 18.w700.copyWith(color: colorScheme.onSurface),
-          ),
-          30.vertSpacing,
-          ReviewStarSelector(
-            rating: _rating,
-            onRatingChanged: (value) {
-              setState(() {
-                _rating = value;
-              });
-            },
-          ),
-          34.vertSpacing,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: TextField(
-              controller: _reviewController,
-              maxLines: 6,
-              minLines: 6,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                hintText: l10n.completedEnquiryWriteReviewHint,
-                alignLabelWithHint: true,
-              ),
-            ),
-          ),
-          22.vertSpacing,
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-            child: EventraButton(
-              buttonText: l10n.completedEnquirySendReviewButton,
-              onPressed: () => _onSendPressed(context),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

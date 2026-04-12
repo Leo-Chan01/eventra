@@ -52,7 +52,7 @@ class PendingEnquiryDetailPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
               decoration: BoxDecoration(
-                color: colorScheme.errorContainer.withValues(alpha: 0.25),
+                color: colorScheme.primaryContainer.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(
@@ -62,7 +62,7 @@ class PendingEnquiryDetailPage extends StatelessWidget {
               ),
             ),
             18.vertSpacing,
-            EnquiryFlowVendorCard(
+            EnquiryFlowVendorCard.minimal(
               vendorImage: args.vendor.image,
               vendorName: args.vendor.name,
               subtitle: args.vendor.category,
@@ -133,31 +133,6 @@ class PendingEnquiryDetailPage extends StatelessWidget {
                   );
                 },
               ),
-            ),
-            24.vertSpacing,
-            Text(
-              l10n.enquiryFlowDeliverables,
-              style: 18.w700.copyWith(color: colorScheme.onSurface),
-            ),
-            8.vertSpacing,
-            Text(
-              args.deliverables,
-              style: 16.w400.copyWith(color: colorScheme.onSurfaceVariant),
-            ),
-            18.vertSpacing,
-            Divider(
-              color: colorScheme.onSurface.withValues(alpha: 0.9),
-              height: 1,
-            ),
-            18.vertSpacing,
-            Text(
-              l10n.enquiryFlowTerms,
-              style: 18.w700.copyWith(color: colorScheme.onSurface),
-            ),
-            8.vertSpacing,
-            Text(
-              args.termsAndConditions,
-              style: 16.w400.copyWith(color: colorScheme.onSurfaceVariant),
             ),
           ],
         ),

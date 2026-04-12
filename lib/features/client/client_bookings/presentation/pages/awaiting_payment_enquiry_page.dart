@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
@@ -7,9 +8,9 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/enqui
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/payment_received_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_flow_vendor_card.dart';
-import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_invoice_preview_table.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_payment_bottom_sheet.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class AwaitingPaymentEnquiryPage extends StatelessWidget {
                     '${l10n.enquiryFlowInvoiceId}: ${args.invoiceId}',
                 dateIssuedLabel: '${l10n.enquiryFlowDateIssued}: $issuedDate',
                 statusLabel: '${l10n.enquiryFlowStatus}: ',
-                statusValue: l10n.homeEnquiryStatusAwaitingPayment,
+                statusValue: l10n.notificationsFilterPending,
                 statusColor: colorScheme.primary,
                 onMessageVendor: () {
                   GlobalSnackBar.showInfo(
@@ -76,53 +77,39 @@ class AwaitingPaymentEnquiryPage extends StatelessWidget {
               ),
             ),
             16.vertSpacing,
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.fromLTRB(14, 16, 14, 16),
-              decoration: BoxDecoration(
-                color: colorScheme.surface,
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Stack(
                 children: [
-                  Text(
-                    l10n.enquiryFlowInvoicePreviewTitle,
-                    style: 20.w700.copyWith(color: colorScheme.onSurface),
-                  ),
-                  10.vertSpacing,
-                  Text(
-                    l10n.enquiryFlowInvoicePreviewNumber(args.invoiceId),
-                    style: 16.w400.copyWith(
-                      color: colorScheme.onSurfaceVariant,
+                  // MainReceiptWidgetNotImage(
+                  //   colorScheme: colorScheme,
+                  //   args: args,
+                  //   localeTag: localeTag,
+                  //   amountLabel: amountLabel,
+                  // ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: Image.asset(EventraImages.invoiceImage),
                     ),
                   ),
-                  6.vertSpacing,
-                  Text(
-                    l10n.enquiryFlowInvoicePreviewDate(issuedDate),
-                    style: 16.w400.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                  12.vertSpacing,
-                  Divider(color: colorScheme.outline.withValues(alpha: 0.35)),
-                  12.vertSpacing,
-                  EnquiryInvoicePreviewTable(
-                    args: args,
-                    amountLabel: amountLabel,
-                  ),
-                  14.vertSpacing,
-                  Center(
-                    child: EventraButton.smallBorder(
-                      width: 170,
-                      buttonText: l10n.enquiryFlowViewInvoice,
+                  Positioned(
+                    bottom: 16,
+                    right: MediaQuery.sizeOf(context).width * 0.5 - 80,
+                    child: MaterialButton(
                       onPressed: () async {
                         await context.pushNamed(
                           EnquiryInvoicePage.name,
                           extra: args,
                         );
                       },
+                      color: colorScheme.surface,
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: const Text('View Invoice'),
                     ),
                   ),
                 ],
