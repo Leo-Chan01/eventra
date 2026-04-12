@@ -69,7 +69,7 @@ class _ProfileSavedVendorsPageState extends State<ProfileSavedVendorsPage> {
             leading: IconButton(
               onPressed: () => Navigator.of(context).maybePop(),
               icon: SvgPicture.asset(
-                EventraVectors.angleLeft,
+                EventraVectors.angleRight,
                 width: 18,
                 height: 18,
                 colorFilter: ColorFilter.mode(

@@ -1,5 +1,7 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
@@ -39,7 +41,7 @@ class ProfilePrivacySecurityPage extends StatelessWidget {
             leading: IconButton(
               onPressed: () => Navigator.of(context).maybePop(),
               icon: SvgPicture.asset(
-                EventraVectors.angleLeft,
+                EventraVectors.angleRight,
                 width: 18,
                 height: 18,
                 colorFilter: ColorFilter.mode(
@@ -184,10 +186,20 @@ class ProfilePrivacySecurityPage extends StatelessWidget {
                     vertical: 18,
                   ),
                   child: InkWell(
-                    onTap: () {
-                      GlobalSnackBar.showInfo(
-                        l10n.profilePrivacySecurityDeleteAccountFeedback,
-                      );
+                    onTap: () async {
+                      final confirmed =
+                          await DeleteAccountConfirmationDialog.show(context);
+                      if (confirmed == true && context.mounted) {
+                        await DeleteAccountPasswordDialog.show(
+                          context,
+                          onDeleteConfirmed: (_) {
+                            Navigator.of(context).pop();
+                            GlobalSnackBar.showInfo(
+                              l10n.profilePrivacySecurityDeleteAccountFeedback,
+                            );
+                          },
+                        );
+                      }
                     },
                     child: Row(
                       children: [

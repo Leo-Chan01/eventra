@@ -18,17 +18,27 @@ class HomeNotificationNoteCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: colorScheme.primary.withValues(alpha: 0.06),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: colorScheme.primary,
-          width: 1.2,
         ),
       ),
-      child: Text(
-        message,
-        style: 15.w400.copyWith(
-          color: colorScheme.primary,
-          height: 1.45,
+      child: RichText(
+        text: TextSpan(
+          text: 'Note: ',
+          style: 15.w600.copyWith(
+            color: colorScheme.primary,
+            height: 1.45,
+          ),
+          children: [
+            TextSpan(
+              text: message,
+              style: 15.w400.copyWith(
+                color: colorScheme.primary,
+                height: 1.45,
+              ),
+            ),
+          ],
         ),
       ),
     );

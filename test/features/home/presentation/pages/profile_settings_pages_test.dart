@@ -7,6 +7,8 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -88,6 +90,71 @@ void main() {
       expect(find.text('Current Password'), findsOneWidget);
       expect(find.text('Two-Factor Authentication'), findsOneWidget);
       expect(find.text('Delete Account'), findsOneWidget);
+
+      await tester.scrollUntilVisible(
+        find.text('Delete Account'),
+        240,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('Delete Account'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Delete Account?'), findsOneWidget);
+      expect(find.text('Continue'), findsOneWidget);
+    });
+
+    testWidgets('confirmation dialog returns continue result', (tester) async {
+      bool? result;
+
+      await tester.pumpApp(
+        Builder(
+          builder: (context) {
+            return Scaffold(
+              body: Center(
+                child: TextButton(
+                  onPressed: () async {
+                    result = await DeleteAccountConfirmationDialog.show(
+                      context,
+                    );
+                  },
+                  child: const Text('Open'),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+
+      await tester.tap(find.text('Open'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+
+      expect(result, isTrue);
+    });
+
+    testWidgets('password dialog passes typed password to callback', (
+      tester,
+    ) async {
+      String? capturedPassword;
+
+      await tester.pumpApp(
+        Scaffold(
+          body: DeleteAccountPasswordDialog(
+            onDeleteConfirmed: (password) {
+              capturedPassword = password;
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), 'secret-pass');
+      await tester.tap(find.text('Delete Account'));
+      await tester.pumpAndSettle();
+
+      expect(capturedPassword, 'secret-pass');
     });
 
     testWidgets('privacy policy page renders privacy information', (

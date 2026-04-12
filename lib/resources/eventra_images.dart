@@ -40,6 +40,8 @@ class EventraImages {
   static const String makeUpCategoryImage =
       'assets/images/make-up-category-image.png';
   static const String mcCategoryImage = 'assets/images/mc-category-image.png';
+  static const String nigeriaFlagInCircle =
+      'assets/images/nigeria-flag-in-circle.png';
   static const String onboardingImage1 = 'assets/images/onboarding_image_1.png';
   static const String onboardingImage2 = 'assets/images/onboarding_image_2.png';
   static const String onboardingImgae3 = 'assets/images/onboarding_imgae_3.png';

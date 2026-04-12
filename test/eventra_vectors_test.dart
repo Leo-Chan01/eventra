@@ -40,6 +40,10 @@ void main() {
     expect(File(EventraVectors.copyBlackIcon).existsSync(), isTrue);
     expect(File(EventraVectors.copyIconWhiteBg).existsSync(), isTrue);
     expect(File(EventraVectors.creditCardBlueGbIcon).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.deleteAccountIconProfileSettings).existsSync(),
+      isTrue,
+    );
     expect(File(EventraVectors.editPencilElevated).existsSync(), isTrue);
     expect(File(EventraVectors.eventraBlackText).existsSync(), isTrue);
     expect(File(EventraVectors.eventraPrimaryText).existsSync(), isTrue);
@@ -70,6 +74,7 @@ void main() {
     expect(File(EventraVectors.messageMailIcon).existsSync(), isTrue);
     expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);
+    expect(File(EventraVectors.nextPageArrowIcon).existsSync(), isTrue);
     expect(
       File(EventraVectors.notificaionBellIconProfileSettings).existsSync(),
       isTrue,

@@ -40,7 +40,7 @@ class ProfileAppSettingsPage extends StatelessWidget {
             leading: IconButton(
               onPressed: () => Navigator.of(context).maybePop(),
               icon: SvgPicture.asset(
-                EventraVectors.angleLeft,
+                EventraVectors.angleRight,
                 width: 18,
                 height: 18,
                 colorFilter: ColorFilter.mode(
@@ -60,7 +60,8 @@ class ProfileAppSettingsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProfileDetailHeaderCard(
-                  iconPath: EventraVectors.appSettingsIconProfileSettings,
+                  isImage: true,
+                  iconPath: EventraImages.nigeriaFlagInCircle,
                   title: l10n.profileAppSettingsAppName,
                   subtitle: l10n.profileAppSettingsVersionValue,
                   footerText: l10n.profileAppSettingsMadeInNigeria,

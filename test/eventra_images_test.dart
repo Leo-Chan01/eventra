@@ -36,6 +36,7 @@ void main() {
     expect(File(EventraImages.logoText).existsSync(), isTrue);
     expect(File(EventraImages.makeUpCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.mcCategoryImage).existsSync(), isTrue);
+    expect(File(EventraImages.nigeriaFlagInCircle).existsSync(), isTrue);
     expect(File(EventraImages.onboardingImage1).existsSync(), isTrue);
     expect(File(EventraImages.onboardingImage2).existsSync(), isTrue);
     expect(File(EventraImages.onboardingImgae3).existsSync(), isTrue);

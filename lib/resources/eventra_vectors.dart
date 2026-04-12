@@ -32,6 +32,8 @@ class EventraVectors {
   static const String copyIconWhiteBg = 'assets/svgs/copy-icon-white-bg.svg';
   static const String creditCardBlueGbIcon =
       'assets/svgs/credit-card-blue-gb-icon.svg';
+  static const String deleteAccountIconProfileSettings =
+      'assets/svgs/delete-account-icon-profile-settings.svg';
   static const String editPencilElevated =
       'assets/svgs/edit-pencil-elevated.svg';
   static const String eventraBlackText = 'assets/svgs/eventra-black-text.svg';
@@ -65,6 +67,8 @@ class EventraVectors {
   static const String messageMailIcon = 'assets/svgs/message-mail-icon.svg';
   static const String messages = 'assets/svgs/messages.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
+  static const String nextPageArrowIcon =
+      'assets/svgs/next-page-arrow-icon.svg';
   static const String notificaionBellIconProfileSettings =
       'assets/svgs/notificaion-bell-icon-profile-settings.svg';
   static const String notificationBellNobadge =

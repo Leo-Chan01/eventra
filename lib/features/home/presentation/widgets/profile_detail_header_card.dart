@@ -11,6 +11,7 @@ class ProfileDetailHeaderCard extends StatelessWidget {
     this.footerText,
     this.footerIconPath,
     this.backgroundColor,
+    this.isImage = false,
     super.key,
   });
 
@@ -20,6 +21,7 @@ class ProfileDetailHeaderCard extends StatelessWidget {
   final String? footerText;
   final String? footerIconPath;
   final Color? backgroundColor;
+  final bool isImage;
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +41,21 @@ class ProfileDetailHeaderCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(28),
             ),
             child: Center(
-              child: SvgPicture.asset(
-                iconPath,
-                width: 28,
-                height: 28,
-                colorFilter: ColorFilter.mode(
-                  colorScheme.onSurface,
-                  BlendMode.srcIn,
-                ),
-              ),
+              child: isImage
+                  ? Image.asset(
+                      iconPath,
+                      width: 50,
+                      height: 50,
+                    )
+                  : SvgPicture.asset(
+                      iconPath,
+                      width: 28,
+                      height: 28,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onSurface,
+                        BlendMode.srcIn,
+                      ),
+                    ),
             ),
           ),
           14.horizSpacing,
