@@ -4,8 +4,10 @@ import 'package:eventra/features/client/client_bookings/presentation/models/enqu
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_invoice_line_item.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_invoice_summary_row.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -53,6 +55,9 @@ class EnquiryInvoicePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: colorScheme.outline,
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +78,12 @@ class EnquiryInvoicePage extends StatelessWidget {
                           l10n.enquiryFlowInvoiceLabel,
                           style: 28.w700.copyWith(color: colorScheme.onPrimary),
                         ),
-                        12.vertSpacing,
+                        6.vertSpacing,
+                        Divider(
+                          color: colorScheme.onPrimary.withValues(alpha: 0.2),
+                          thickness: 1,
+                        ),
+                        6.vertSpacing,
                         Text(
                           l10n.enquiryFlowInvoiceNumberLabel,
                           style: 17.w400.copyWith(color: colorScheme.onPrimary),
@@ -83,7 +93,12 @@ class EnquiryInvoicePage extends StatelessWidget {
                           args.invoiceId,
                           style: 17.w500.copyWith(color: colorScheme.onPrimary),
                         ),
-                        12.vertSpacing,
+                        6.vertSpacing,
+                        Divider(
+                          color: colorScheme.onPrimary.withValues(alpha: 0.2),
+                          thickness: 1,
+                        ),
+                        6.vertSpacing,
                         Text(
                           l10n.enquiryFlowDate,
                           style: 17.w400.copyWith(color: colorScheme.onPrimary),
@@ -136,6 +151,19 @@ class EnquiryInvoicePage extends StatelessWidget {
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: colorScheme.primary),
+                                shape: BoxShape.circle,
+                              ),
+                              child: SvgPicture.asset(
+                                EventraVectors.chatMessage,
+                                colorFilter: ColorFilter.mode(
+                                  colorScheme.primary,
+                                  BlendMode.srcIn,
+                                ),
                               ),
                             ),
                           ],
@@ -200,8 +228,8 @@ class EnquiryInvoicePage extends StatelessWidget {
                           amount: '1,000,000',
                         ),
                         Divider(
-                          color: colorScheme.outline.withValues(alpha: 0.35),
-                          thickness: 1,
+                          color: colorScheme.onSurface,
+                          thickness: 2,
                           height: 28,
                         ),
                         EnquiryInvoiceSummaryRow(
@@ -259,8 +287,8 @@ class EnquiryInvoicePage extends StatelessWidget {
             ),
             18.vertSpacing,
             Divider(
-              color: colorScheme.outline.withValues(alpha: 0.35),
-              thickness: 1,
+              color: colorScheme.onSurface,
+              thickness: 2,
             ),
             16.vertSpacing,
             Text(
@@ -281,12 +309,6 @@ class EnquiryInvoicePage extends StatelessWidget {
           buttonText: l10n.enquiryFlowBack,
           onPressed: () => Navigator.of(context).maybePop(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            GlobalSnackBar.showInfo(l10n.notificationsActionComingSoon),
-        backgroundColor: colorScheme.surface,
-        child: Icon(Icons.download_outlined, color: colorScheme.onSurface),
       ),
     );
   }

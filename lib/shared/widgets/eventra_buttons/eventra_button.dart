@@ -210,8 +210,8 @@ class _EventraButtonState extends State<EventraButton> {
                 )
               : SvgPicture.asset(
                   widget.icon!,
-                  height: 20,
-                  width: 20,
+                  height: 14,
+                  width: 14,
                 ),
           label: Text(
             widget.buttonText,

@@ -32,6 +32,7 @@ class EventraVectors {
   static const String chatMessageRedbadge =
       'assets/svgs/chat-message-redbadge.svg';
   static const String chatMessage = 'assets/svgs/chat-message.svg';
+  static const String checkSingleWhite = 'assets/svgs/check-single-white.svg';
   static const String checkmarkGreyBlackDark =
       'assets/svgs/checkmark-grey-black-dark.svg';
   static const String checkmarkSolidGreenIconProfileSettings =
@@ -43,6 +44,8 @@ class EventraVectors {
       'assets/svgs/credit-card-blue-gb-icon.svg';
   static const String deleteAccountIconProfileSettings =
       'assets/svgs/delete-account-icon-profile-settings.svg';
+  static const String downloadContractIcon =
+      'assets/svgs/download-contract-icon.svg';
   static const String editPencilElevated =
       'assets/svgs/edit-pencil-elevated.svg';
   static const String eventraBlackText = 'assets/svgs/eventra-black-text.svg';
@@ -102,9 +105,12 @@ class EventraVectors {
   static const String savedVendorsIconProfileSettings =
       'assets/svgs/saved-vendors-icon-profile-settings.svg';
   static const String searchNormal = 'assets/svgs/search-normal.svg';
+  static const String secureHalfOrgangeIconContract =
+      'assets/svgs/secure-half-organge-icon-contract.svg';
   static const String sendIconChatPage = 'assets/svgs/send-icon-chat-page.svg';
   static const String shareButtonVendorDeets =
       'assets/svgs/share-button-vendor-deets.svg';
+  static const String shareContractIcon = 'assets/svgs/share-contract-icon.svg';
   static const String shopIcon = 'assets/svgs/shop-icon.svg';
   static const String showcaseIcon = 'assets/svgs/showcase_icon.svg';
   static const String solarLikeBrokenSaveVideoIcon =

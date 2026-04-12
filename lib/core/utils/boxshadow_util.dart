@@ -12,7 +12,7 @@ Widget standardDividerUtil(BuildContext context) {
   final colorScheme = Theme.of(context).colorScheme;
 
   return Divider(
-    color: colorScheme.outlineVariant.withValues(alpha: 0.08),
+    color: colorScheme.outlineVariant.withValues(alpha: 0.06),
     height: 1,
   );
 }

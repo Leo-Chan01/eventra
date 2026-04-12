@@ -10,6 +10,7 @@ import 'package:eventra/features/client/client_bookings/presentation/widgets/enq
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_invoice_preview_table.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/enquiry_payment_bottom_sheet.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -53,7 +54,7 @@ class AwaitingPaymentEnquiryPage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(0, 12, 0, 20),
+        padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
         child: Column(
           children: [
             Padding(
@@ -134,8 +135,11 @@ class AwaitingPaymentEnquiryPage extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: colorScheme.primaryContainer.withValues(alpha: 0.25),
-                  borderRadius: BorderRadius.circular(18),
+                  color: AppColorSchemes.goldStar.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: AppColorSchemes.goldStar.withValues(alpha: 0.3),
+                  ),
                 ),
                 child: RichText(
                   text: TextSpan(
@@ -151,7 +155,7 @@ class AwaitingPaymentEnquiryPage extends StatelessWidget {
                 ),
               ),
             ),
-            14.vertSpacing,
+            20.vertSpacing,
             TextButton(
               onPressed: () async {
                 await context.pushNamed(

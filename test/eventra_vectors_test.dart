@@ -39,6 +39,7 @@ void main() {
     expect(File(EventraVectors.chatBubbleIcon).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessageRedbadge).existsSync(), isTrue);
     expect(File(EventraVectors.chatMessage).existsSync(), isTrue);
+    expect(File(EventraVectors.checkSingleWhite).existsSync(), isTrue);
     expect(File(EventraVectors.checkmarkGreyBlackDark).existsSync(), isTrue);
     expect(
       File(EventraVectors.checkmarkSolidGreenIconProfileSettings).existsSync(),
@@ -52,6 +53,7 @@ void main() {
       File(EventraVectors.deleteAccountIconProfileSettings).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.downloadContractIcon).existsSync(), isTrue);
     expect(File(EventraVectors.editPencilElevated).existsSync(), isTrue);
     expect(File(EventraVectors.eventraBlackText).existsSync(), isTrue);
     expect(File(EventraVectors.eventraPrimaryText).existsSync(), isTrue);
@@ -112,8 +114,13 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.searchNormal).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.secureHalfOrgangeIconContract).existsSync(),
+      isTrue,
+    );
     expect(File(EventraVectors.sendIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);
+    expect(File(EventraVectors.shareContractIcon).existsSync(), isTrue);
     expect(File(EventraVectors.shopIcon).existsSync(), isTrue);
     expect(File(EventraVectors.showcaseIcon).existsSync(), isTrue);
     expect(
