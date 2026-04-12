@@ -52,9 +52,9 @@ void main() {
     blocTest<ClientBookingBloc, ClientBookingState>(
       'EnquiryFormFieldChanged updates enquiry fields',
       build: ClientBookingBloc.new,
-      seed: () => ClientBookingState(
+      seed: () => const ClientBookingState(
         status: BookingStatus.formSubmitted,
-        enquiry: const Enquiry(
+        enquiry: Enquiry(
           id: 'enq-001',
           vendorId: 'vendor-001',
           vendorName: 'Pozera Events',

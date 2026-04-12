@@ -3,9 +3,9 @@ import 'package:eventra/features/client/vendor_details/domain/models/vendor_deta
 import 'package:eventra/features/client/vendor_details/presentation/widgets/circle_action_button.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_tag_chip.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class VendorDetailHeader extends StatelessWidget {

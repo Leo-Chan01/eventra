@@ -27,13 +27,13 @@ class _CatalogItemDetailHeaderState extends State<CatalogItemDetailHeader> {
     return [widget.item.image];
   }
 
-  void _onThumbnailTapped(int index) {
+  Future<void> _onThumbnailTapped(int index) async {
     setState(() => _selectedIndex = index);
-    _openGallery(index);
+    await _openGallery(index);
   }
 
-  void _openGallery(int index) {
-    Navigator.of(context).push(
+  Future<void> _openGallery(int index) async {
+    await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => CatalogItemGalleryPage(
           images: _images,

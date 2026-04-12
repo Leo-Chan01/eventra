@@ -54,7 +54,7 @@ class OnboardingLoadingBloc
   ) async {
     emit(OnboardingLoadingInProgress());
 
-    // TODO(eventra): Add actual initialization logic here
+    // TODO(KINGRAYM): Add actual initialization logic here
     // For now, we'll simulate a small delay to mimic async work
     await Future<void>.delayed(const Duration(milliseconds: 1500));
 

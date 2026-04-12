@@ -1,3 +1,6 @@
+//
+// ignore_for_file: discarded_futures
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';

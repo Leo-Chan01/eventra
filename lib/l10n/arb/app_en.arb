@@ -549,6 +549,142 @@
     "enquiryReviewInspiration": "Inspiration Gallery",
     "enquirySentViewEnquiry": "View Enquiry",
     "enquirySentMessageVendor": "Message Vendor",
+    "enquiryFlowPendingTitle": "Enquiry",
+    "enquiryFlowPendingBanner": "Your enquiry is still pending",
+    "enquiryFlowPendingRating": "{rating} ({reviews} Reviews)",
+    "@enquiryFlowPendingRating": {
+      "placeholders": {
+        "rating": {
+          "type": "String"
+        },
+        "reviews": {
+          "type": "int"
+        }
+      }
+    },
+    "enquiryFlowInvoiceId": "Invoice ID",
+    "enquiryFlowDateIssued": "Date issued",
+    "enquiryFlowStatus": "Status",
+    "enquiryFlowEventDetailsHeader": "Event Details",
+    "enquiryFlowEventType": "Event Type",
+    "enquiryFlowLocation": "Location",
+    "enquiryFlowDate": "Date",
+    "enquiryFlowTime": "Time",
+    "enquiryFlowInspirationHeader": "Upload inspirational image (optional)",
+    "enquiryFlowDeliverables": "Deliverables",
+    "enquiryFlowTerms": "Teams & Condition",
+    "enquiryFlowAwaitingTitle": "Invoice/Quotation",
+    "enquiryFlowInvoicePreviewTitle": "Invoice",
+    "enquiryFlowInvoicePreviewNumber": "Invoice ID: {invoiceId}",
+    "@enquiryFlowInvoicePreviewNumber": {
+      "placeholders": {
+        "invoiceId": {
+          "type": "String"
+        }
+      }
+    },
+    "enquiryFlowInvoicePreviewDate": "Date issued: {date}",
+    "@enquiryFlowInvoicePreviewDate": {
+      "placeholders": {
+        "date": {
+          "type": "String"
+        }
+      }
+    },
+    "enquiryFlowViewInvoice": "View Invoice",
+    "enquiryFlowWhatHappensNext": "What happens next? ",
+    "enquiryFlowWhatHappensNextBody": "Pay attention to the deliverables in the invoice before making payment. Also read the contract below before you proceed to payment.",
+    "enquiryFlowViewContract": "View Contract",
+    "enquiryFlowMakePayment": "Make Payment",
+    "enquiryFlowPaymentSheetTitle": "Make Payment",
+    "enquiryFlowPaymentSheetHeader": "Pay to the vendor using the account details below",
+    "enquiryFlowPaymentSheetBody": "Eventra uses secured virtual accounts to protect your money. Your booking will be confirmed after vendor verifies payment.",
+    "enquiryFlowPaymentBank": "Bank:",
+    "enquiryFlowPaymentBankValue": "Wema Bank",
+    "enquiryFlowPaymentAccountNo": "Account No:",
+    "enquiryFlowPaymentAccountNoValue": "1243435366",
+    "enquiryFlowPaymentAccountName": "Account Name:",
+    "enquiryFlowPaymentAccountNameValue": "Eventra - Pozera Events",
+    "enquiryFlowPaymentAmountLabel": "Amount (70%)",
+    "enquiryFlowPaymentUploadSlip": "Upload Payment slip",
+    "enquiryFlowContinue": "Continue",
+    "enquiryFlowInvoiceScreenTitle": "Invoice",
+    "enquiryFlowInvoiceLabel": "Invoice",
+    "enquiryFlowInvoiceNumberLabel": "Invoice Number",
+    "enquiryFlowVendorLabel": "Vendor: {vendor}",
+    "@enquiryFlowVendorLabel": {
+      "placeholders": {
+        "vendor": {
+          "type": "String"
+        }
+      }
+    },
+    "enquiryFlowLocationLabel": "Location: {location}",
+    "@enquiryFlowLocationLabel": {
+      "placeholders": {
+        "location": {
+          "type": "String"
+        }
+      }
+    },
+    "enquiryFlowInvoiceItemName": "Item Name",
+    "enquiryFlowInvoiceQty": "Qty",
+    "enquiryFlowInvoiceRate": "Rate",
+    "enquiryFlowInvoiceAmount": "Amount",
+    "enquiryFlowInvoiceSampleItem": "Chairs",
+    "enquiryFlowInvoiceSubtotal": "Subtotal",
+    "enquiryFlowInvoiceDiscount": "Discount",
+    "enquiryFlowInvoiceVat": "Vat",
+    "enquiryFlowInvoiceTotal": "Total",
+    "enquiryFlowBack": "Back",
+    "enquiryFlowContractTitle": "Service Agreement",
+    "enquiryFlowContractHeader": "EVENTRA",
+    "enquiryFlowContractSubheader": "VENDOR-CLIENT SERVICE AGREEMENT",
+    "enquiryFlowContractSubtitle": "(Auto-Generated Contract)",
+    "enquiryFlowContractNotice": "This agreement is automatically generated upon invoice confirmation via the Eventra Platform",
+    "enquiryFlowContractParties": "1  PARTIES",
+    "enquiryFlowContractVendorLabel": "Vendor:",
+    "enquiryFlowContractVendorName": "Name: {vendorName}",
+    "@enquiryFlowContractVendorName": {
+      "placeholders": {
+        "vendorName": {
+          "type": "String"
+        }
+      }
+    },
+    "enquiryFlowContractVendorBusiness": "Business: S.J Studios Ltd",
+    "enquiryFlowContractVendorContact": "Contact: sarah@sjstudios.com",
+    "enquiryFlowContractAnd": "AND",
+    "enquiryFlowContractClientLabel": "Client:",
+    "enquiryFlowContractClientName": "Name: Michael & Emma Thompson",
+    "enquiryFlowContractClientContact": "Contact: michael.thompson@email.com",
+    "enquiryFlowContractEventDetails": "2  EVENT DETAILS",
+    "enquiryFlowContractServiceDescriptionLabel": "Service Description",
+    "enquiryFlowContractTotalAmount": "Total Amount",
+    "enquiryFlowContractTotalAmountValue": "₦350,000",
+    "enquiryFlowContractPaymentTerms": "3  PAYMENT TERMS",
+    "enquiryFlowContractPaymentTermsBody": "Client agrees to pay the total contract amount via Eventra. Payment structures may include booking confirmation and completion milestones.",
+    "enquiryFlowContractVendorObligations": "4  VENDOR OBLIGATIONS",
+    "enquiryFlowContractVendorObligationsBody": "Vendor agrees to deliver services as described in invoice, arrive on time, and maintain professional conduct throughout service execution.",
+    "enquiryFlowContractClientObligations": "5  CLIENT OBLIGATIONS",
+    "enquiryFlowContractClientObligationsBody": "Client agrees to provide accurate details, grant timely venue access, make payments through Eventra, and confirm service completion honestly.",
+    "enquiryFlowContractCancellationPolicy": "6  CANCELLATION POLICY",
+    "enquiryFlowContractCancellationPolicyBody": "Cancellation and refund timelines are subject to vendor policy and Eventra dispute mediation terms.",
+    "enquiryFlowContractDisputeResolution": "7  DISPUTE RESOLUTION",
+    "enquiryFlowContractDisputeResolutionBody": "Both parties must submit evidence within the review period. Eventra's resolution process applies to disputes raised on-platform.",
+    "enquiryFlowContractAcceptance": "8  CONFIRMATION & ACCEPTANCE",
+    "enquiryFlowContractAcceptanceBody": "By proceeding with invoice confirmation, both parties agree to be legally bound by this agreement.",
+    "enquiryFlowContractAccept": "Accept Agreement",
+    "enquiryFlowContractAcceptedFeedback": "Agreement accepted.",
+    "enquiryFlowPaymentReceivedTitle": "Payment Received",
+    "enquiryFlowPaymentReceivedBody": "Your payment has been received and booking confirmed by vendor",
+    "enquiryFlowBackToEnquiry": "Back to Enquiry",
+    "enquiryFlowJobOngoingTitle": "Job Ongoing",
+    "enquiryFlowSampleEventType": "Wedding Ceremony",
+    "enquiryFlowSampleLocation": "22 Bamidele street, Ikeja",
+    "enquiryFlowSampleTime": "12:00 PM",
+    "enquiryFlowSampleDeliverables": "10 photography with 5 outfit",
+    "enquiryFlowSampleTerms": "Only 10 edited pictures",
     "eventTypeWeddings": "Weddings",
     "eventTypeBirthday": "Birthday",
     "eventTypeAnniversary": "Anniversary",

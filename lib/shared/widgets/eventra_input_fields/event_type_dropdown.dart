@@ -26,36 +26,36 @@ class _EventTypeDropdownState extends State<EventTypeDropdown> {
     _selectedValue = widget.initialValue ?? '';
   }
 
-  List<_EventType> get _eventTypes => [
-    _EventType(
+  List<EventType> get _eventTypes => [
+    EventType(
       key: 'weddings',
       label: context.l10n.eventTypeWeddings,
     ),
-    _EventType(
+    EventType(
       key: 'birthday',
       label: context.l10n.eventTypeBirthday,
     ),
-    _EventType(
+    EventType(
       key: 'anniversary',
       label: context.l10n.eventTypeAnniversary,
     ),
-    _EventType(
+    EventType(
       key: 'engagement',
       label: context.l10n.eventTypeEngagement,
     ),
-    _EventType(
+    EventType(
       key: 'corporate',
       label: context.l10n.eventTypeCorporate,
     ),
-    _EventType(
+    EventType(
       key: 'conference',
       label: context.l10n.eventTypeConference,
     ),
-    _EventType(
+    EventType(
       key: 'walkathon',
       label: context.l10n.eventTypeWalkathon,
     ),
-    _EventType(
+    EventType(
       key: 'other',
       label: context.l10n.eventTypeOther,
     ),
@@ -92,7 +92,7 @@ class _EventTypeDropdownState extends State<EventTypeDropdown> {
     final selectedLabel = _eventTypes
         .firstWhere(
           (e) => e.key == _selectedValue,
-          orElse: () => _EventType(key: '', label: ''),
+          orElse: () => EventType(key: '', label: ''),
         )
         .label;
 
@@ -111,7 +111,6 @@ class _EventTypeDropdownState extends State<EventTypeDropdown> {
             decoration: BoxDecoration(
               border: Border.all(
                 color: colorScheme.outline,
-                width: 1,
               ),
               borderRadius: BorderRadius.circular(8),
             ),
@@ -142,8 +141,8 @@ class _EventTypeDropdownState extends State<EventTypeDropdown> {
   }
 }
 
-class _EventType {
-  _EventType({
+class EventType {
+  EventType({
     required this.key,
     required this.label,
   });
@@ -159,7 +158,7 @@ class EventTypeBottomSheet extends StatelessWidget {
     super.key,
   });
 
-  final List<_EventType> eventTypes;
+  final List<EventType> eventTypes;
   final String selectedValue;
 
   @override

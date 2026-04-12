@@ -36,7 +36,7 @@ class CatalogItemDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final args = GoRouterState.of(context).extra as CatalogItemDetailArgs;
+    final args = GoRouterState.of(context).extra! as CatalogItemDetailArgs;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,

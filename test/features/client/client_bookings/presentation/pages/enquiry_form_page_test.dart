@@ -61,7 +61,7 @@ Widget _buildApp({required ClientBookingBloc bloc, GoRouter? router}) {
   return ScreenUtilInit(
     designSize: const Size(375, 812),
     minTextAdapt: true,
-    builder: (_, __) => MaterialApp.router(
+    builder: (_, _) => MaterialApp.router(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router ?? _buildRouter(bloc: bloc),

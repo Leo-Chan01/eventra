@@ -1,8 +1,8 @@
+import 'package:eventra/app/view/app.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
-import 'package:eventra/app/view/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';

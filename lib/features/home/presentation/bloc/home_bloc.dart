@@ -1,3 +1,6 @@
+//
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:equatable/equatable.dart';
 import 'package:eventra/features/home/domain/models/home_app_toggle_type.dart';
 import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';

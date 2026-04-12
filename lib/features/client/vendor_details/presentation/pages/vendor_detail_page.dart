@@ -1,7 +1,7 @@
-import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
-import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
+import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_about_tab.dart';
@@ -135,14 +135,14 @@ class _TabContent extends StatelessWidget {
       0 => VendorDetailAboutTab(
         vendor: vendor,
         onRelatedVendorTap: (related) {
-          final bloc = context.read<VendorDetailBloc>();
-          bloc.add(VendorSelected(related.id));
+          final _ = context.read<VendorDetailBloc>()
+            ..add(VendorSelected(related.id));
         },
       ),
       1 => VendorDetailCatalogTab(
         items: vendor.catalogItems,
-        onItemTap: (item) {
-          context.pushNamed(
+        onItemTap: (item) async {
+          await context.pushNamed(
             CatalogItemDetailPage.name,
             extra: CatalogItemDetailArgs(
               catalogItem: item,

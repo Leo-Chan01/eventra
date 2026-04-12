@@ -1,5 +1,9 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/awaiting_payment_enquiry_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/home_enquiry_banner.dart';
@@ -99,23 +103,56 @@ class HomeEnquiriesTab extends StatelessWidget {
                       child: HomeEnquiryVendorCard(
                         vendor: vendor,
                         dateLabel: formattedDate,
-                        onTap:
-                            state.selectedEnquiryStatus ==
-                                HomeEnquiryStatus.completed
-                            ? () async {
-                                await context.pushNamed(
-                                  CompletedEnquiryDetailPage.name,
-                                  extra: CompletedEnquiryDetailPageArgs(
-                                    vendor: vendor,
-                                    invoiceId: '6354728',
-                                    bookingReferenceId: '737367483929210',
-                                    amountPaid: 10500000,
-                                    dateIssued: DateTime(2025, 4, 24),
-                                    eventDate: DateTime(2025, 7, 6),
-                                  ),
-                                );
-                              }
-                            : null,
+                        onTap: () async {
+                          final flowArgs = EnquiryFlowDetailsArgs(
+                            vendor: vendor,
+                            invoiceId: '6354728',
+                            bookingReferenceId: '737367483929210',
+                            amount: 10500000,
+                            dateIssued: DateTime(2025, 4, 24),
+                            eventDate: DateTime(2025, 7, 6),
+                            eventType: l10n.enquiryFlowSampleEventType,
+                            location: l10n.enquiryFlowSampleLocation,
+                            eventTime: l10n.enquiryFlowSampleTime,
+                            inspirationImages: const [
+                              EventraImages.weddingImage,
+                              EventraImages.womanWithweddinggown,
+                              EventraImages.decoratorPerson,
+                            ],
+                            deliverables: l10n.enquiryFlowSampleDeliverables,
+                            termsAndConditions: l10n.enquiryFlowSampleTerms,
+                          );
+
+                          switch (state.selectedEnquiryStatus) {
+                            case HomeEnquiryStatus.pending:
+                              await context.pushNamed(
+                                PendingEnquiryDetailPage.name,
+                                extra: flowArgs,
+                              );
+                            case HomeEnquiryStatus.awaitingPayment:
+                              await context.pushNamed(
+                                AwaitingPaymentEnquiryPage.name,
+                                extra: flowArgs,
+                              );
+                            case HomeEnquiryStatus.active:
+                              await context.pushNamed(
+                                ActiveEnquiryDetailPage.name,
+                                extra: flowArgs,
+                              );
+                            case HomeEnquiryStatus.completed:
+                              await context.pushNamed(
+                                CompletedEnquiryDetailPage.name,
+                                extra: CompletedEnquiryDetailPageArgs(
+                                  vendor: vendor,
+                                  invoiceId: '6354728',
+                                  bookingReferenceId: '737367483929210',
+                                  amountPaid: 10500000,
+                                  dateIssued: DateTime(2025, 4, 24),
+                                  eventDate: DateTime(2025, 7, 6),
+                                ),
+                              );
+                          }
+                        },
                       ),
                     ),
                   )

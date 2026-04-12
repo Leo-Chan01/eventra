@@ -9,10 +9,16 @@ import 'package:eventra/features/auth/signup/presentation/pages/personal_details
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/awaiting_payment_enquiry_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/catalog_item_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_contract_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/payment_received_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/review_submitted_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
@@ -223,6 +229,36 @@ class AppRouter {
         path: CompletedEnquiryDetailPage.path,
         name: CompletedEnquiryDetailPage.name,
         builder: (context, state) => const CompletedEnquiryDetailPage(),
+      ),
+      GoRoute(
+        path: PendingEnquiryDetailPage.path,
+        name: PendingEnquiryDetailPage.name,
+        builder: (context, state) => const PendingEnquiryDetailPage(),
+      ),
+      GoRoute(
+        path: AwaitingPaymentEnquiryPage.path,
+        name: AwaitingPaymentEnquiryPage.name,
+        builder: (context, state) => const AwaitingPaymentEnquiryPage(),
+      ),
+      GoRoute(
+        path: EnquiryInvoicePage.path,
+        name: EnquiryInvoicePage.name,
+        builder: (context, state) => const EnquiryInvoicePage(),
+      ),
+      GoRoute(
+        path: EnquiryContractPage.path,
+        name: EnquiryContractPage.name,
+        builder: (context, state) => const EnquiryContractPage(),
+      ),
+      GoRoute(
+        path: PaymentReceivedPage.path,
+        name: PaymentReceivedPage.name,
+        builder: (context, state) => const PaymentReceivedPage(),
+      ),
+      GoRoute(
+        path: ActiveEnquiryDetailPage.path,
+        name: ActiveEnquiryDetailPage.name,
+        builder: (context, state) => const ActiveEnquiryDetailPage(),
       ),
       GoRoute(
         path: ReviewSubmittedPage.path,

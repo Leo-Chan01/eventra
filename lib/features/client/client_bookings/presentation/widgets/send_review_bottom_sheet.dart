@@ -145,7 +145,7 @@ class _SendReviewBottomSheetState extends State<SendReviewBottomSheet> {
     );
   }
 
-  void _onSendPressed(BuildContext context) {
+  Future<void> _onSendPressed(BuildContext context) async {
     final l10n = context.l10n;
     if (_rating == 0 || _reviewController.text.trim().isEmpty) {
       GlobalSnackBar.showInfo(l10n.completedEnquiryReviewValidation);
@@ -153,6 +153,6 @@ class _SendReviewBottomSheetState extends State<SendReviewBottomSheet> {
     }
 
     Navigator.of(context).pop();
-    context.pushNamed(ReviewSubmittedPage.name);
+    await context.pushNamed(ReviewSubmittedPage.name);
   }
 }

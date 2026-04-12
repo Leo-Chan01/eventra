@@ -27,7 +27,7 @@ class TransactionMonthFilter extends StatelessWidget {
       itemBuilder: (context) {
         return [
           PopupMenuItem<int?>(
-            value: null,
+            // value: null,
             child: Text(l10n.notificationsFilterAll),
           ),
           ...List.generate(

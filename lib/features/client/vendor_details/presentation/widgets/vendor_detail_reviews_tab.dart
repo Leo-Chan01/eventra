@@ -27,7 +27,8 @@ class VendorDetailReviewsTab extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Vendor Rating & Review (${l10n.vendorDetailRatingReviews(reviewsCount)})',
+            'Vendor Rating & Review'
+            ' (${l10n.vendorDetailRatingReviews(reviewsCount)})',
             style: 14.w700.copyWith(color: colorScheme.onSurface),
           ),
           16.vertSpacing,

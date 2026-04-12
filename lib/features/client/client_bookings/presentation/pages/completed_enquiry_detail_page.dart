@@ -41,7 +41,7 @@ class CompletedEnquiryDetailPage extends StatelessWidget {
     final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
     final args =
-        GoRouterState.of(context).extra as CompletedEnquiryDetailPageArgs;
+        GoRouterState.of(context).extra! as CompletedEnquiryDetailPageArgs;
     final localeTag = Localizations.localeOf(context).toLanguageTag();
     final issuedDate = intl.DateFormat.yMMMMd(
       localeTag,

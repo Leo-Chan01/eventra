@@ -178,6 +178,6 @@ class _CategoryVendorsPageState extends State<CategoryVendorsPage> {
   }
 
   String _normalizeValue(String value) {
-    return value.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
+    return value.toLowerCase().replaceAll(RegExp('[^a-z0-9]'), '');
   }
 }

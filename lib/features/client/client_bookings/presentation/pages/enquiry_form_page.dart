@@ -55,10 +55,9 @@ class _EnquiryFormPageState extends State<EnquiryFormPage> {
       return;
     }
 
-    _args = GoRouterState.of(context).extra as EnquiryFormPageArgs;
+    _args = GoRouterState.of(context).extra! as EnquiryFormPageArgs;
     _didInitArgs = true;
 
-    // Initialize form state once for this page instance.
     context.read<ClientBookingBloc>().add(
       EnquiryFormInitiated(
         vendorId: _args.vendorId,
@@ -68,7 +67,7 @@ class _EnquiryFormPageState extends State<EnquiryFormPage> {
     );
   }
 
-  void _onReviewPressed() {
+  Future<void> _onReviewPressed() async {
     kLogs('Event Type: $_selectedEventType');
     kLogs('Location: $_location');
     kLogs('Guest Count: $_guestCount');
@@ -102,7 +101,7 @@ class _EnquiryFormPageState extends State<EnquiryFormPage> {
     );
 
     if (mounted) {
-      context.pushNamed(EnquiryReviewPage.name);
+      await context.pushNamed(EnquiryReviewPage.name);
     }
   }
 
@@ -338,7 +337,7 @@ class _EnquiryFormPageState extends State<EnquiryFormPage> {
       decoration: BoxDecoration(
         border: Border.all(
           color: colorScheme.outline,
-          style: BorderStyle.solid,
+          // style: BorderStyle.solid,
           width: 2,
           strokeAlign: BorderSide.strokeAlignCenter,
         ),

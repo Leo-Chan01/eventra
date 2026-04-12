@@ -180,7 +180,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
         id: 'rev-002',
         reviewerName: 'Moses Simon',
         reviewerAvatar: EventraImages.weddingImage,
-        rating: 4.0,
+        rating: 4,
         date: '25-01-2025',
         body:
             'Pozera Event is a mobile and web-based platform that connects'
@@ -318,10 +318,10 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       reviews: pozera.reviews,
       relatedVendors: pozera.relatedVendors,
       isVerified: true,
-      isTopRated: false,
+      // isTopRated: false,
       isIdVerified: true,
       isBackgroundChecked: true,
-      hasVerificationBadge: false,
+      // hasVerificationBadge: false,
     );
   }
 
@@ -370,7 +370,7 @@ class VendorDetailBloc extends Bloc<VendorDetailEvent, VendorDetailState> {
       isVerified: true,
       isTopRated: true,
       isIdVerified: true,
-      isBackgroundChecked: false,
+      // isBackgroundChecked: false,
       hasVerificationBadge: true,
     );
   }
