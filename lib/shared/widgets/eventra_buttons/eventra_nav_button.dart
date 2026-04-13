@@ -4,30 +4,42 @@ import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-enum EventraNavButtonVariant { regular, blurGlass }
+enum EventraNavButtonVariant { regular, blurGlass, clear }
 
 class EventraNavButton extends StatelessWidget {
   const EventraNavButton.regular({
-    required this.isLiked,
+    required this.isNext,
     this.onTap,
     this.size = 40,
     this.iconSize = 24,
+    this.hasBorder = true,
     super.key,
   }) : variant = EventraNavButtonVariant.regular;
 
   const EventraNavButton.blurGlassVersion({
-    required this.isLiked,
+    required this.isNext,
     this.onTap,
     this.size = 40,
     this.iconSize = 24,
+    this.hasBorder = true,
     super.key,
   }) : variant = EventraNavButtonVariant.blurGlass;
 
-  final bool isLiked;
+  const EventraNavButton.clearType({
+    required this.isNext,
+    this.onTap,
+    this.size = 40,
+    this.iconSize = 24,
+    this.hasBorder = true,
+    super.key,
+  }) : variant = EventraNavButtonVariant.clear;
+
+  final bool isNext;
   final VoidCallback? onTap;
   final double size;
   final double iconSize;
   final EventraNavButtonVariant variant;
+  final bool hasBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -41,49 +53,80 @@ class EventraNavButton extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           customBorder: const CircleBorder(),
-          child: variant == EventraNavButtonVariant.blurGlass
-              ? ClipOval(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: colorScheme.surface.withValues(alpha: 0.35),
-                        border: Border.all(
-                          color: colorScheme.surface.withValues(alpha: 0.75),
-                        ),
-                      ),
-                      alignment: Alignment.center,
-                      child: SvgPicture.asset(
-                        isLiked
-                            ? EventraVectors.nextPageArrowIcon
-                            : EventraVectors.nextPageArrowIcon,
-                        color: isLiked
-                            ? colorScheme.primary
-                            : colorScheme.onSurface,
-                        height: iconSize,
-                        width: iconSize,
-                      ),
-                    ),
-                  ),
-                )
-              : Container(
+          child: switch (variant) {
+            EventraNavButtonVariant.blurGlass => ClipOval(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                child: Container(
                   decoration: BoxDecoration(
-                    color: colorScheme.surface,
                     shape: BoxShape.circle,
+                    color: colorScheme.surface.withValues(alpha: 0.10),
+                    border: hasBorder
+                        ? Border.all(
+                            color: colorScheme.surface.withValues(alpha: 0.75),
+                          )
+                        : null,
                   ),
                   alignment: Alignment.center,
-                  child: SvgPicture.asset(
-                    isLiked
-                        ? EventraVectors.nextPageArrowIcon
-                        : EventraVectors.nextPageArrowIcon,
-                    color: isLiked
-                        ? colorScheme.primary
-                        : colorScheme.onSurfaceVariant,
-                    width: iconSize,
-                    height: iconSize,
+                  child: RotatedBox(
+                    quarterTurns: isNext ? 0 : 2,
+                    child: SvgPicture.asset(
+                      EventraVectors.angleLeft,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.onPrimary,
+                        BlendMode.srcIn,
+                      ),
+                      height: iconSize,
+                      width: iconSize,
+                    ),
                   ),
                 ),
+              ),
+            ),
+            EventraNavButtonVariant.regular => Container(
+              decoration: BoxDecoration(
+                color: colorScheme.primary,
+                shape: BoxShape.circle,
+                border: hasBorder
+                    ? Border.all(color: colorScheme.onPrimary)
+                    : null,
+              ),
+              alignment: Alignment.center,
+              child: RotatedBox(
+                quarterTurns: isNext ? 0 : 2,
+                child: SvgPicture.asset(
+                  EventraVectors.angleLeft,
+                  colorFilter: ColorFilter.mode(
+                    colorScheme.onPrimary,
+                    BlendMode.srcIn,
+                  ),
+                  width: iconSize,
+                  height: iconSize,
+                ),
+              ),
+            ),
+            EventraNavButtonVariant.clear => Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: hasBorder
+                    ? Border.all(color: colorScheme.onPrimary)
+                    : null,
+              ),
+              alignment: Alignment.center,
+              child: RotatedBox(
+                quarterTurns: isNext ? 0 : 2,
+                child: SvgPicture.asset(
+                  EventraVectors.angleLeft,
+                  colorFilter: ColorFilter.mode(
+                    colorScheme.onPrimary,
+                    BlendMode.srcIn,
+                  ),
+                  width: iconSize,
+                  height: iconSize,
+                ),
+              ),
+            ),
+          },
         ),
       ),
     );

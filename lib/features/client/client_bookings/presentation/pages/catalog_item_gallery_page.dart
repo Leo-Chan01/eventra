@@ -1,6 +1,5 @@
-import 'package:eventra/features/client/client_bookings/presentation/widgets/catalog_item_gallery_nav_button.dart';
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_nav_button.dart';
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class CatalogItemGalleryPage extends StatefulWidget {
   const CatalogItemGalleryPage({
@@ -85,10 +84,10 @@ class _CatalogItemGalleryPageState extends State<CatalogItemGalleryPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  CatalogItemGalleryNavButton(
-                    icon: HugeIcons.strokeRoundedArrowLeft01,
-                    onPressed: () => Navigator.of(context).maybePop(),
-                    isPrimary: false,
+                  EventraNavButton.blurGlassVersion(
+                    isNext: false,
+                    hasBorder: false,
+                    onTap: () => Navigator.of(context).maybePop(),
                   ),
                   Expanded(
                     child: Text(
@@ -111,10 +110,13 @@ class _CatalogItemGalleryPageState extends State<CatalogItemGalleryPage> {
             top: 0,
             bottom: 0,
             child: Center(
-              child: CatalogItemGalleryNavButton(
-                icon: HugeIcons.strokeRoundedArrowLeft02,
-                onPressed: isFirst ? null : _goToPrevious,
-                isPrimary: false,
+              child: AnimatedOpacity(
+                opacity: isFirst ? 0.3 : 1.0,
+                duration: const Duration(milliseconds: 200),
+                child: EventraNavButton.clearType(
+                  isNext: false,
+                  onTap: isFirst ? null : _goToPrevious,
+                ),
               ),
             ),
           ),
@@ -123,10 +125,19 @@ class _CatalogItemGalleryPageState extends State<CatalogItemGalleryPage> {
             top: 0,
             bottom: 0,
             child: Center(
-              child: CatalogItemGalleryNavButton(
-                icon: HugeIcons.strokeRoundedArrowRight02,
-                onPressed: isLast ? null : _goToNext,
-                isPrimary: true,
+              child: AnimatedOpacity(
+                opacity: isLast ? 0.3 : 1.0,
+                duration: const Duration(milliseconds: 200),
+                child: isLast
+                    ? const EventraNavButton.clearType(
+                        isNext: true,
+                        onTap: null,
+                      )
+                    : EventraNavButton.regular(
+                        isNext: true,
+                        hasBorder: false,
+                        onTap: _goToNext,
+                      ),
               ),
             ),
           ),
