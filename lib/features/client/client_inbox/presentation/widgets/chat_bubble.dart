@@ -1,9 +1,12 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/enquiry_attachment_card.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/invoice_attachment_card.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({required this.message, super.key});
@@ -87,7 +90,16 @@ class ChatBubble extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: InvoiceAttachmentCard(onTap: () {}),
+                child: InvoiceAttachmentCard(
+                  onTap: () async {
+                    if (message.enquiryFlowArgs != null) {
+                      await context.pushNamed(
+                        EnquiryInvoicePage.name,
+                        extra: message.enquiryFlowArgs,
+                      );
+                    }
+                  },
+                ),
               ),
               4.vertSpacing,
               timeLabel,
@@ -126,7 +138,14 @@ class ChatBubble extends StatelessWidget {
                           ? l10n.chatEnquiry
                           : null,
                       showThumbnail: message.enquiryAttachment != null,
-                      onTap: () {},
+                      onTap: () async {
+                        if (message.enquiryFlowArgs != null) {
+                          await context.pushNamed(
+                            PendingEnquiryDetailPage.name,
+                            extra: message.enquiryFlowArgs,
+                          );
+                        }
+                      },
                     ),
                     8.vertSpacing,
                     Text(

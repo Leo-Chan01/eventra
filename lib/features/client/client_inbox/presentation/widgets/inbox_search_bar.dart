@@ -22,29 +22,53 @@ class InboxSearchBar extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: TextField(
-            controller: controller,
-            onChanged: onChanged,
-            style: 14.w400.copyWith(color: colorScheme.onSurface),
-            decoration: InputDecoration(
-              hintText: l10n.inboxSearchHint,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset(
-                  EventraVectors.searchNormal,
-                  colorFilter: ColorFilter.mode(
-                    colorScheme.onSurfaceVariant,
-                    BlendMode.srcIn,
+          child: SizedBox(
+            height: 52,
+            child: TextField(
+              controller: controller,
+              onChanged: onChanged,
+              style: 14.w400.copyWith(color: colorScheme.onSurface),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: 0.3,
+                    ),
                   ),
                 ),
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-              suffixIcon: Padding(
-                padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset(EventraVectors.filterIcon),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: 0.3,
+                    ),
+                  ),
+                ),
+                fillColor: colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.35,
+                ),
+                hintText: l10n.inboxSearchHint,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    EventraVectors.searchNormal,
+                    height: 20,
+                    width: 20,
+                  ),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: SvgPicture.asset(
+                    EventraVectors.filterIcon,
+                    height: 20,
+                    width: 20,
+                  ),
+                ),
               ),
             ),
           ),

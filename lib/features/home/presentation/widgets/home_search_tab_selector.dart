@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class HomeSearchTabSelector extends StatelessWidget {
@@ -19,7 +20,6 @@ class HomeSearchTabSelector extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(
@@ -27,6 +27,8 @@ class HomeSearchTabSelector extends StatelessWidget {
           Expanded(
             child: InkWell(
               key: const Key('home_search_tab_vendors'),
+              splashColor: AppColorSchemes.transparent,
+              highlightColor: AppColorSchemes.transparent,
               onTap: () => onSelectTab(0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -55,6 +57,8 @@ class HomeSearchTabSelector extends StatelessWidget {
           Expanded(
             child: InkWell(
               key: const Key('home_search_tab_events'),
+              splashColor: AppColorSchemes.transparent,
+              highlightColor: AppColorSchemes.transparent,
               onTap: () => onSelectTab(1),
               child: Column(
                 mainAxisSize: MainAxisSize.min,

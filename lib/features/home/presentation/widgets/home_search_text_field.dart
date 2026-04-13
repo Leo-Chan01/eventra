@@ -22,49 +22,52 @@ class HomeSearchTextField extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: TextField(
-            key: const Key('home_search_input'),
-            focusNode: focusNode,
-            onChanged: onChanged,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: colorScheme.surfaceContainerHighest.withValues(
-                    alpha: 0.3,
+          child: SizedBox(
+            height: 52,
+            child: TextField(
+              key: const Key('home_search_input'),
+              focusNode: focusNode,
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: 0.3,
+                    ),
                   ),
                 ),
-              ),
-              hintText: l10n.homeSearchPlaceholder,
-              hintStyle: 14.w400.copyWith(
-                color: colorScheme.onSurfaceVariant,
-              ),
-              fillColor: colorScheme.surfaceContainerHighest.withValues(
-                alpha: 0.35,
-              ),
+                hintText: l10n.homeSearchPlaceholder,
+                hintStyle: 14.w400.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
+                fillColor: colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.35,
+                ),
 
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: colorScheme.surfaceContainerHighest.withValues(
-                    alpha: 0.3,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: 0.3,
+                    ),
                   ),
                 ),
-              ),
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset(
-                  EventraVectors.searchNormal,
-                  height: 20,
-                  width: 20,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    EventraVectors.searchNormal,
+                    height: 20,
+                    width: 20,
+                  ),
                 ),
-              ),
-              suffixIcon: Padding(
-                padding: const EdgeInsets.all(8),
-                child: SvgPicture.asset(
-                  EventraVectors.filterIcon,
-                  // width: 24,
-                  // height: 24,
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: SvgPicture.asset(
+                    EventraVectors.filterIcon,
+                    // width: 24,
+                    // height: 24,
+                  ),
                 ),
               ),
             ),

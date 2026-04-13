@@ -6,6 +6,7 @@ import 'package:eventra/features/home/presentation/widgets/home_search_tab_selec
 import 'package:eventra/features/home/presentation/widgets/home_search_text_field.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_vendors_list.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,7 +63,7 @@ class _HomeSearchPageState extends State<HomeSearchPage> {
     final events = HomeSearchEventSeed.fromL10n(l10n);
 
     return Material(
-      color: colorScheme.surface,
+      color: AppColorSchemes.transparent,
       child: SafeArea(
         bottom: false,
         child: Column(

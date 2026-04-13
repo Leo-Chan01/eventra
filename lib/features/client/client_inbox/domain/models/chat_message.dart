@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 
 enum ChatMessageType {
@@ -16,6 +17,7 @@ class ChatMessage extends Equatable {
     required this.isFromClient,
     required this.time,
     this.enquiryAttachment,
+    this.enquiryFlowArgs,
     this.type = ChatMessageType.text,
     this.showStatusAction = false,
   });
@@ -25,6 +27,7 @@ class ChatMessage extends Equatable {
   final bool isFromClient;
   final String time;
   final CatalogItem? enquiryAttachment;
+  final EnquiryFlowDetailsArgs? enquiryFlowArgs;
   final ChatMessageType type;
   final bool showStatusAction;
 
@@ -35,6 +38,7 @@ class ChatMessage extends Equatable {
     isFromClient,
     time,
     enquiryAttachment,
+    enquiryFlowArgs,
     type,
     showStatusAction,
   ];

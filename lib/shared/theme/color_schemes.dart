@@ -118,4 +118,6 @@ class AppColorSchemes {
     outline: neutrals500,
     shadow: Color(0xFF000000),
   );
+
+  static const Color transparent = Color(0x00000000);
 }

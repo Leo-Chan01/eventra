@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
 import 'package:eventra/features/client/client_inbox/domain/models/message_thread.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
+import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -326,14 +328,41 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
       ),
     ];
 
-    const pozeraMessages = [
+    const pozeraVendor = Vendor(
+      id: 'vendor-001',
+      name: 'Pozera Events',
+      category: 'Photography',
+      rating: 4.8,
+      reviewsCount: 120,
+      image: EventraImages.onboardingImage1,
+      location: 'Lagos, Nigeria',
+      startingPrice: 450000,
+    );
+
+    final enquiryArgs = EnquiryFlowDetailsArgs(
+      vendor: pozeraVendor,
+      invoiceId: 'INV-2025-001',
+      bookingReferenceId: 'BKG-2025-001',
+      amount: 450000,
+      dateIssued: DateTime(2025, 6, 1),
+      eventDate: DateTime(2025, 8, 15),
+      eventType: 'Wedding',
+      location: 'Lagos, Nigeria',
+      eventTime: '2:00 PM',
+      inspirationImages: [EventraImages.weddingImage],
+      deliverables: 'Full-day coverage, 200+ edited photos, same-day previews.',
+      termsAndConditions:
+          '50% deposit required on booking. Balance due 7 days before event.',
+    );
+
+    final pozeraMessages = [
       ChatMessage(
         id: 'msg-001',
         text: 'I want to make enquiry on this package',
         isFromClient: true,
         time: '1:20 PM',
         type: ChatMessageType.enquiry,
-        enquiryAttachment: CatalogItem(
+        enquiryAttachment: const CatalogItem(
           id: 'catalog-001',
           title: 'Pre-wedding Photoshoot',
           description: 'Capture your story with timeless pre-wedding moments.',
@@ -341,8 +370,9 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
           image: EventraImages.weddingImage,
           whatToExpect: ['Edited photos', 'Same-day previews'],
         ),
+        enquiryFlowArgs: enquiryArgs,
       ),
-      ChatMessage(
+      const ChatMessage(
         id: 'msg-002',
         text:
             'You will get a notification once Pozera Event review your'
@@ -352,7 +382,7 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
         type: ChatMessageType.statusInReview,
         showStatusAction: true,
       ),
-      ChatMessage(
+      const ChatMessage(
         id: 'msg-003',
         text:
             'Pozera Events has confirmed your enquiry, you can now chat with'
@@ -361,13 +391,13 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
         time: '1:23 PM',
         type: ChatMessageType.statusConfirmed,
       ),
-      ChatMessage(
+      const ChatMessage(
         id: 'msg-004',
         text: 'Hello, Can i get more information on what you want to achieve',
         isFromClient: false,
         time: '1:27 PM',
       ),
-      ChatMessage(
+      const ChatMessage(
         id: 'msg-005',
         text: 'Can i get an invoice',
         isFromClient: true,
@@ -379,10 +409,11 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
         isFromClient: false,
         time: '1:32 PM',
         type: ChatMessageType.invoice,
+        enquiryFlowArgs: enquiryArgs,
       ),
     ];
 
-    return const ClientInboxState(
+    return ClientInboxState(
       threads: threads,
       selectedThreadId: 'vendor-001',
       allMessages: {'vendor-001': pozeraMessages},
