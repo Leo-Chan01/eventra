@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -19,28 +20,35 @@ class TicketCardInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return TextField(
-      controller: controller,
-      keyboardType: keyboardType,
-      maxLength: maxLength,
-      style: 20.w400.copyWith(color: colorScheme.onSurface),
-      decoration: InputDecoration(
-        counterText: '',
-        hintText: hint,
-        hintStyle: 20.w400.copyWith(color: colorScheme.onSurfaceVariant),
-        filled: true,
-        fillColor: colorScheme.surface,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 18,
+    return Container(
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: boxShadowLight,
+      ),
+      child: TextField(
+        controller: controller,
+        keyboardType: keyboardType,
+        maxLength: maxLength,
+        style: 16.w400.copyWith(color: colorScheme.onSurface),
+        decoration: InputDecoration(
+          counterText: '',
+          hintText: hint,
+          hintStyle: 16.w400.copyWith(color: colorScheme.onSurfaceVariant),
+          filled: true,
+          fillColor: colorScheme.surface,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 18,
+            vertical: 18,
+          ),
         ),
       ),
     );

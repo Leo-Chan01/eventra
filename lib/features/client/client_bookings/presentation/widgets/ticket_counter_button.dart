@@ -22,8 +22,8 @@ class TicketCounterButton extends StatelessWidget {
         customBorder: const CircleBorder(),
         onTap: onTap,
         child: SizedBox(
-          width: 46,
-          height: 46,
+          width: 28,
+          height: 28,
           child: SvgPicture.asset(
             icon,
             width: 28,

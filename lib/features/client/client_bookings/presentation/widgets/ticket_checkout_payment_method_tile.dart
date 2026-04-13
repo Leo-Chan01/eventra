@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TicketCheckoutPaymentMethodTile extends StatelessWidget {
   const TicketCheckoutPaymentMethodTile({
@@ -11,7 +12,7 @@ class TicketCheckoutPaymentMethodTile extends StatelessWidget {
   });
 
   final String label;
-  final IconData icon;
+  final String icon;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -33,17 +34,21 @@ class TicketCheckoutPaymentMethodTile extends StatelessWidget {
                 color: colorScheme.primary,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(
+              child: SvgPicture.asset(
                 icon,
-                color: colorScheme.onPrimary,
-                size: 24,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.onPrimary,
+                  BlendMode.srcIn,
+                ),
+                width: 24,
+                height: 24,
               ),
             ),
             14.horizSpacing,
             Expanded(
               child: Text(
                 label,
-                style: 20.w500.copyWith(color: colorScheme.onSurface),
+                style: 16.w500.copyWith(color: colorScheme.onSurface),
               ),
             ),
             Icon(

@@ -41,17 +41,17 @@ class TicketCheckoutEventSummary extends StatelessWidget {
         16.vertSpacing,
         Text(
           args.eventTitle,
-          style: 20.w600.copyWith(color: colorScheme.onSurface),
+          style: 24.w600.copyWith(color: colorScheme.onSurface),
         ),
         10.vertSpacing,
         Text(
           args.location,
-          style: 15.w400.copyWith(color: colorScheme.onSurfaceVariant),
+          style: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
         ),
         10.vertSpacing,
         Text(
           l10n.ticketCheckoutDateTime(dateLabel, timeLabel),
-          style: 15.w400.copyWith(color: colorScheme.onSurfaceVariant),
+          style: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
         ),
       ],
     );

@@ -18,6 +18,7 @@ class EventraVectors {
   static const String appleIcon = 'assets/svgs/apple-icon.svg';
   static const String attachFileChatPage =
       'assets/svgs/attach-file-chat-page.svg';
+  static const String bankIconIsolated = 'assets/svgs/bank-icon-isolated.svg';
   static const String basilVideoOutlineClient =
       'assets/svgs/basil_video-outline-client.svg';
   static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
@@ -25,6 +26,7 @@ class EventraVectors {
   static const String cancelIconNoCircle =
       'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
+  static const String cardIconIsolated = 'assets/svgs/card-icon-isolated.svg';
   static const String cautionBlackGreyIconProfileSettings =
       'assets/svgs/caution-black-grey-icon-profile-settings.svg';
   static const String cautionRedExclamationIconProfileSettings =
@@ -97,6 +99,8 @@ class EventraVectors {
   static const String notificationBellNobadge =
       'assets/svgs/notification-bell-nobadge.svg';
   static const String notificationBell = 'assets/svgs/notification-bell.svg';
+  static const String numberHashIsolated =
+      'assets/svgs/number-hash-isolated.svg';
   static const String outgoingRedIcon = 'assets/svgs/outgoing-red-icon.svg';
   static const String pendingIconOrgange =
       'assets/svgs/pending-icon-organge.svg';

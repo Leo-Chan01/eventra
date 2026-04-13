@@ -62,12 +62,12 @@ class TicketEventTicketOptionRow extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
-                color: colorScheme.onSurface.withValues(alpha: 0.1),
+                color: colorScheme.onSurface.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(28),
               ),
               child: Text(
                 soldOutLabel,
-                style: 14.w500.copyWith(color: colorScheme.onSurfaceVariant),
+                style: 10.w500.copyWith(color: colorScheme.onSurface),
               ),
             )
           else

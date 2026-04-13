@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/ticket_checkout_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/ticket_success_detail_row.dart';
@@ -33,6 +34,7 @@ class TicketPaymentSuccessDetailCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
+        boxShadow: boxShadowLight,
       ),
       padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
       child: Column(

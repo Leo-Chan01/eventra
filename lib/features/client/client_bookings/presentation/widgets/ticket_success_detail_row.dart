@@ -26,7 +26,7 @@ class TicketSuccessDetailRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: 16.w400.copyWith(color: colorScheme.onSurfaceVariant),
+              style: 14.w400.copyWith(color: colorScheme.onSurfaceVariant),
             ),
           ),
           const SizedBox(width: 12),
@@ -36,7 +36,7 @@ class TicketSuccessDetailRow extends StatelessWidget {
                 valueStyle?.copyWith(
                   color: valueColor ?? colorScheme.onSurface,
                 ) ??
-                16.w500.copyWith(color: valueColor ?? colorScheme.onSurface),
+                14.w500.copyWith(color: valueColor ?? colorScheme.onSurface),
           ),
         ],
       ),

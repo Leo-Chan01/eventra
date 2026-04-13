@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/ticket_checkout_args.dart';
@@ -5,6 +6,8 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/ticke
 import 'package:eventra/features/client/client_bookings/presentation/widgets/ticket_checkout_event_summary.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/ticket_checkout_payment_method_tile.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -69,12 +72,12 @@ class TicketCheckoutPageState extends State<TicketCheckoutPage> {
                       args.ticketType,
                       args.ticketQuantity,
                     ),
-                    style: 18.w500.copyWith(color: colorScheme.onSurface),
+                    style: 14.w500.copyWith(color: colorScheme.onSurface),
                   ),
                 ),
                 Text(
                   totalAmountLabel,
-                  style: 20.w700.copyWith(color: colorScheme.onSurface),
+                  style: 14.w600.copyWith(color: colorScheme.onSurface),
                 ),
               ],
             ),
@@ -84,17 +87,18 @@ class TicketCheckoutPageState extends State<TicketCheckoutPage> {
               decoration: BoxDecoration(
                 color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: boxShadowLight,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
               child: Text(
                 l10n.ticketCheckoutEmailLine(args.attendeeEmail),
-                style: 18.w400.copyWith(color: colorScheme.primary),
+                style: 14.w400.copyWith(color: AppColorSchemes.goldStar),
               ),
             ),
             18.vertSpacing,
             TicketCheckoutPaymentMethodTile(
               label: l10n.ticketPaymentMethodCard,
-              icon: Icons.credit_card_rounded,
+              icon: EventraVectors.cardIconIsolated,
               isSelected: selectedMethod == TicketPaymentMethod.card,
               onTap: () => setState(() {
                 selectedMethod = TicketPaymentMethod.card;
@@ -102,7 +106,7 @@ class TicketCheckoutPageState extends State<TicketCheckoutPage> {
             ),
             TicketCheckoutPaymentMethodTile(
               label: l10n.ticketPaymentMethodTransfer,
-              icon: Icons.account_balance_rounded,
+              icon: EventraVectors.bankIconIsolated,
               isSelected: selectedMethod == TicketPaymentMethod.transfer,
               onTap: () => setState(() {
                 selectedMethod = TicketPaymentMethod.transfer;
@@ -110,7 +114,7 @@ class TicketCheckoutPageState extends State<TicketCheckoutPage> {
             ),
             TicketCheckoutPaymentMethodTile(
               label: l10n.ticketPaymentMethodUssd,
-              icon: Icons.grid_4x4_rounded,
+              icon: EventraVectors.numberHashIsolated,
               isSelected: selectedMethod == TicketPaymentMethod.ussd,
               onTap: () => setState(() {
                 selectedMethod = TicketPaymentMethod.ussd;

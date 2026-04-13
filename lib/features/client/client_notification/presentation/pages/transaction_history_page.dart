@@ -9,6 +9,7 @@ import 'package:eventra/features/client/client_notification/presentation/widgets
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_search_field.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/transaction_summary_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -165,9 +166,13 @@ class TransactionHistoryPage extends StatelessWidget {
                 10.vertSpacing,
                 Expanded(
                   child: state.visibleTransactions.isEmpty
-                      ? const Center(
-                          key: Key('transaction_empty_state'),
-                          child: Icon(Icons.receipt_long_outlined),
+                      ? Center(
+                          key: const Key('transaction_empty_state'),
+                          child: Image.asset(
+                            EventraImages.transactionHistoryNotificationEmpty,
+                            width: 240,
+                            fit: BoxFit.contain,
+                          ),
                         )
                       : ListView.separated(
                           itemCount: state.visibleTransactions.length,

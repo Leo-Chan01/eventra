@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/ticket_checkout_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_payment_success_page.dart';
@@ -44,6 +46,7 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
       return const SizedBox.shrink();
     }
     final args = extra;
+    final keyboardInset = MediaQuery.viewInsetsOf(context).bottom;
     final localeTag = Localizations.localeOf(context).toLanguageTag();
     final totalAmountLabel = intl.NumberFormat.currency(
       locale: localeTag,
@@ -71,7 +74,7 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
           children: [
             Text(
               l10n.ticketCardName,
-              style: 18.w500.copyWith(color: colorScheme.onSurface),
+              style: 14.w500.copyWith(color: colorScheme.onSurface),
             ),
             12.vertSpacing,
             TicketCardInputField(
@@ -82,7 +85,7 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
             18.vertSpacing,
             Text(
               l10n.ticketCardNumber,
-              style: 18.w500.copyWith(color: colorScheme.onSurface),
+              style: 14.w500.copyWith(color: colorScheme.onSurface),
             ),
             12.vertSpacing,
             TicketCardInputField(
@@ -100,7 +103,7 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
                     children: [
                       Text(
                         l10n.ticketCardDate,
-                        style: 18.w500.copyWith(color: colorScheme.onSurface),
+                        style: 14.w500.copyWith(color: colorScheme.onSurface),
                       ),
                       12.vertSpacing,
                       TicketCardInputField(
@@ -119,7 +122,7 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
                     children: [
                       Text(
                         l10n.ticketCardCvv,
-                        style: 18.w500.copyWith(color: colorScheme.onSurface),
+                        style: 14.w500.copyWith(color: colorScheme.onSurface),
                       ),
                       12.vertSpacing,
                       TicketCardInputField(
@@ -136,16 +139,26 @@ class TicketCardPaymentPageState extends State<TicketCardPaymentPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
-        child: EventraButton(
-          buttonText: l10n.ticketPaymentPayButton(totalAmountLabel),
-          onPressed: () async {
-            await context.pushNamed(
-              TicketPaymentSuccessPage.name,
-              extra: args,
-            );
-          },
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: AnimatedPadding(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+          padding: EdgeInsets.fromLTRB(
+            16,
+            0,
+            16,
+            math.max(20, keyboardInset + 12),
+          ),
+          child: EventraButton(
+            buttonText: l10n.ticketPaymentPayButton(totalAmountLabel),
+            onPressed: () async {
+              await context.pushNamed(
+                TicketPaymentSuccessPage.name,
+                extra: args,
+              );
+            },
+          ),
         ),
       ),
     );

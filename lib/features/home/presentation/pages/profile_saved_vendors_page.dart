@@ -102,16 +102,28 @@ class _ProfileSavedVendorsPageState extends State<ProfileSavedVendorsPage> {
                 16.vertSpacing,
                 if (filteredVendors.isEmpty)
                   ProfileSurfaceCard(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          l10n.profileSavedVendorsEmptyState,
-                          textAlign: TextAlign.center,
-                          style: 15.w500.copyWith(
-                            color: colorScheme.onSurfaceVariant,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 12,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            EventraImages.searchResultNotFoundImage,
+                            width: 220,
+                            fit: BoxFit.contain,
                           ),
-                        ),
+                          14.vertSpacing,
+                          Text(
+                            l10n.profileSavedVendorsEmptyState,
+                            textAlign: TextAlign.center,
+                            style: 15.w500.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   )

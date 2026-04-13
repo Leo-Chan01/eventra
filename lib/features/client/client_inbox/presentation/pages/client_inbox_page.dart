@@ -4,6 +4,7 @@ import 'package:eventra/features/client/client_inbox/presentation/pages/chat_pag
 import 'package:eventra/features/client/client_inbox/presentation/widgets/inbox_search_bar.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/message_thread_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -62,11 +63,22 @@ class _ClientInboxPageState extends State<ClientInboxPage> {
                 Expanded(
                   child: state.visibleThreads.isEmpty
                       ? Center(
-                          child: Text(
-                            l10n.inboxNoMessages,
-                            style: 14.w400.copyWith(
-                              color: colorScheme.onSurfaceVariant,
-                            ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                EventraImages.yourInboxIsEmptyImage,
+                                width: 220,
+                                fit: BoxFit.contain,
+                              ),
+                              16.vertSpacing,
+                              Text(
+                                l10n.inboxNoMessages,
+                                style: 14.w400.copyWith(
+                                  color: colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                            ],
                           ),
                         )
                       : ListView.builder(

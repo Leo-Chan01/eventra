@@ -3,8 +3,10 @@ import 'package:eventra/features/client/client_bookings/presentation/models/tick
 import 'package:eventra/features/client/client_bookings/presentation/widgets/ticket_payment_success_detail_card.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class TicketPaymentSuccessPage extends StatelessWidget {
@@ -31,33 +33,30 @@ class TicketPaymentSuccessPage extends StatelessWidget {
           child: Column(
             children: [
               54.vertSpacing,
-              Text(
-                l10n.ticketPaymentSuccessTitle,
-                textAlign: TextAlign.center,
-                style: 48.w500.copyWith(
-                  color: colorScheme.onSurface,
-                  height: 1.18,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  l10n.ticketPaymentSuccessTitle,
+                  textAlign: TextAlign.center,
+                  style: 20.w500.copyWith(
+                    color: colorScheme.onSurface,
+                    height: 1.18,
+                  ),
                 ),
               ),
               28.vertSpacing,
-              Container(
+              SizedBox(
                 width: 112,
                 height: 112,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: colorScheme.secondary,
-                ),
-                child: Icon(
-                  Icons.check_rounded,
-                  size: 52,
-                  color: colorScheme.onSecondary,
+                child: SvgPicture.asset(
+                  EventraVectors.goodCheckGreenDottedCircle,
                 ),
               ),
               34.vertSpacing,
               Text(
                 l10n.ticketPaymentSuccessBody,
                 textAlign: TextAlign.center,
-                style: 20.w400.copyWith(
+                style: 14.w400.copyWith(
                   color: colorScheme.onSurfaceVariant,
                   height: 1.25,
                 ),

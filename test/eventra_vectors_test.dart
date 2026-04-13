@@ -22,11 +22,13 @@ void main() {
     );
     expect(File(EventraVectors.appleIcon).existsSync(), isTrue);
     expect(File(EventraVectors.attachFileChatPage).existsSync(), isTrue);
+    expect(File(EventraVectors.bankIconIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.basilVideoOutlineClient).existsSync(), isTrue);
     expect(File(EventraVectors.calendarIcon).existsSync(), isTrue);
     expect(File(EventraVectors.callIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
     expect(File(EventraVectors.cancelSearchIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.cardIconIsolated).existsSync(), isTrue);
     expect(
       File(EventraVectors.cautionBlackGreyIconProfileSettings).existsSync(),
       isTrue,
@@ -102,6 +104,7 @@ void main() {
     );
     expect(File(EventraVectors.notificationBellNobadge).existsSync(), isTrue);
     expect(File(EventraVectors.notificationBell).existsSync(), isTrue);
+    expect(File(EventraVectors.numberHashIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.outgoingRedIcon).existsSync(), isTrue);
     expect(File(EventraVectors.pendingIconOrgange).existsSync(), isTrue);
     expect(

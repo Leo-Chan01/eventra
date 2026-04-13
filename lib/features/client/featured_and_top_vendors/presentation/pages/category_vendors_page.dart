@@ -100,13 +100,27 @@ class _CategoryVendorsPageState extends State<CategoryVendorsPage> {
                 if (filteredVendors.isEmpty)
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 48),
-                      child: Text(
-                        l10n.categoryVendorsEmptyState,
-                        textAlign: TextAlign.center,
-                        style: 15.w500.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 32,
+                        horizontal: 12,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            EventraImages.searchResultNotFoundImage,
+                            width: 220,
+                            fit: BoxFit.contain,
+                          ),
+                          14.vertSpacing,
+                          Text(
+                            l10n.categoryVendorsEmptyState,
+                            textAlign: TextAlign.center,
+                            style: 15.w500.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   )

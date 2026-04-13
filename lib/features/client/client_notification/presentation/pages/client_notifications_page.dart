@@ -6,6 +6,7 @@ import 'package:eventra/features/client/client_notification/presentation/pages/t
 import 'package:eventra/features/client/client_notification/presentation/widgets/notification_list_card.dart';
 import 'package:eventra/features/client/client_notification/presentation/widgets/notification_tab_switcher.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -63,32 +64,43 @@ class ClientNotificationsPage extends StatelessWidget {
                 ),
                 16.vertSpacing,
                 Expanded(
-                  child: ListView.separated(
-                    itemCount: state.visibleNotifications.length,
-                    separatorBuilder: (_, _) => 10.vertSpacing,
-                    itemBuilder: (context, index) {
-                      final notification = state.visibleNotifications[index];
+                  child: state.visibleNotifications.isEmpty
+                      ? Center(
+                          child: Image.asset(
+                            EventraImages.transactionHistoryNotificationEmpty,
+                            width: 240,
+                            fit: BoxFit.contain,
+                          ),
+                        )
+                      : ListView.separated(
+                          itemCount: state.visibleNotifications.length,
+                          separatorBuilder: (_, _) => 10.vertSpacing,
+                          itemBuilder: (context, index) {
+                            final notification =
+                                state.visibleNotifications[index];
 
-                      return NotificationListCard(
-                        notification: notification,
-                        onPressed: () async {
-                          if (notification.opensTransaction) {
-                            context.read<ClientNotificationBloc>().add(
-                              TransactionSelected(notification.transactionId!),
-                            );
-                            await context.pushNamed(
-                              TransactionDetailsPage.name,
-                            );
-                            return;
-                          }
+                            return NotificationListCard(
+                              notification: notification,
+                              onPressed: () async {
+                                if (notification.opensTransaction) {
+                                  context.read<ClientNotificationBloc>().add(
+                                    TransactionSelected(
+                                      notification.transactionId!,
+                                    ),
+                                  );
+                                  await context.pushNamed(
+                                    TransactionDetailsPage.name,
+                                  );
+                                  return;
+                                }
 
-                          GlobalSnackBar.showInfo(
-                            l10n.notificationsActionComingSoon,
-                          );
-                        },
-                      );
-                    },
-                  ),
+                                GlobalSnackBar.showInfo(
+                                  l10n.notificationsActionComingSoon,
+                                );
+                              },
+                            );
+                          },
+                        ),
                 ),
               ],
             ),

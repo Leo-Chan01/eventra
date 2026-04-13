@@ -25,28 +25,14 @@ class TicketEventHeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-
     return SizedBox(
-      height: 470,
+      height: MediaQuery.sizeOf(context).height,
       child: Stack(
         fit: StackFit.expand,
         children: [
           Image.asset(
             event.imagePath,
             fit: BoxFit.cover,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              // gradient: LinearGradient(
-              //   begin: Alignment.topCenter,
-              //   end: Alignment.bottomCenter,
-              //   colors: [
-              //     colorScheme.surface.withValues(alpha: 0.08),
-              //     colorScheme.surface.withValues(alpha: 0.1),
-              //     colorScheme.surface.withValues(alpha: 0.6),
-              //   ],
-              // ),
-            ),
           ),
           Positioned(
             top: 0,
@@ -83,7 +69,7 @@ class TicketEventHeroSection extends StatelessWidget {
           Positioned(
             left: 16,
             right: 16,
-            bottom: 24,
+            top: MediaQuery.sizeOf(context).height * 0.32,
             child: SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.75,
               child: Column(
@@ -99,7 +85,7 @@ class TicketEventHeroSection extends StatelessWidget {
                   16.vertSpacing,
                   Text(
                     event.title,
-                    style: 16.w700.copyWith(color: colorScheme.onPrimary),
+                    style: 16.w500.copyWith(color: colorScheme.onPrimary),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -116,19 +102,19 @@ class TicketEventHeroSection extends StatelessWidget {
                         ),
                       ),
                       6.horizSpacing,
-                      Text(
-                        event.dateTime,
-                        style: 10.w500.copyWith(
-                          color: colorScheme.onPrimary,
+                      Flexible(
+                        child: Text(
+                          event.dateTime,
+                          style: 10.w500.copyWith(
+                            color: colorScheme.onPrimary,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ],
-                  ),
-                  6.vertSpacing,
-                  Row(
-                    children: [
+                      12.horizSpacing,
                       SvgPicture.asset(
-                        EventraVectors.locationPin,
+                        EventraVectors.locationPinLineIcon,
                         width: 16,
                         height: 16,
                         colorFilter: ColorFilter.mode(
