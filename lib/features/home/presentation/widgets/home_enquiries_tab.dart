@@ -22,13 +22,13 @@ class HomeEnquiriesTab extends StatelessWidget {
   const HomeEnquiriesTab({
     required this.state,
     required this.onOpenFilter,
-    required this.onOpenLocationLookup,
+    required this.onOpenSearch,
     super.key,
   });
 
   final HomeState state;
   final VoidCallback onOpenFilter;
-  final VoidCallback onOpenLocationLookup;
+  final VoidCallback onOpenSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class HomeEnquiriesTab extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: HomeSearchBar(
               onTapFilter: onOpenFilter,
-              onTapSearch: onOpenLocationLookup,
+              onTapSearch: onOpenSearch,
             ),
           ),
           16.vertSpacing,

@@ -8,6 +8,7 @@ import 'package:eventra/features/home/presentation/widgets/home_filter_options_s
 import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_reels_tab.dart';
+import 'package:eventra/features/home/presentation/widgets/home_search_page.dart';
 import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
                 child: HomeContent(
                   state: state,
                   onOpenFilter: () => _openFilterSheet(context),
-                  onOpenLocationLookup: () => _openLocationLookupSheet(context),
+                  onOpenSearch: () => _openSearchTab(context),
                 ),
               ),
               SafeArea(
@@ -43,10 +44,10 @@ class HomePage extends StatelessWidget {
                 child: HomeEnquiriesTab(
                   state: state,
                   onOpenFilter: () => _openFilterSheet(context),
-                  onOpenLocationLookup: () => _openLocationLookupSheet(context),
+                  onOpenSearch: () => _openSearchTab(context),
                 ),
               ),
-              HomeLocationLookupView(state: state),
+              HomeSearchPage(state: state),
               HomeReelsTab(
                 reels: state.reels,
                 onShareReel: (reel) async {
@@ -146,5 +147,9 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _openSearchTab(BuildContext context) {
+    context.read<HomeBloc>().add(const HomeTabChanged(2));
   }
 }

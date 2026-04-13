@@ -98,6 +98,24 @@ class HomeLocationSelected extends HomeEvent {
   List<Object?> get props => [address];
 }
 
+class HomeSearchQueryChanged extends HomeEvent {
+  const HomeSearchQueryChanged(this.query);
+
+  final String query;
+
+  @override
+  List<Object?> get props => [query];
+}
+
+class HomeSearchTabChanged extends HomeEvent {
+  const HomeSearchTabChanged(this.tab);
+
+  final int tab;
+
+  @override
+  List<Object?> get props => [tab];
+}
+
 class HomeNotificationPreferenceToggled extends HomeEvent {
   const HomeNotificationPreferenceToggled({
     required this.type,
@@ -195,6 +213,8 @@ class HomeState extends Equatable {
     this.selectedEnquiryStatus = HomeEnquiryStatus.pending,
     this.recentLocations = const [],
     this.locationSuggestions = const [],
+    this.searchQuery = '',
+    this.selectedSearchTab = 1,
   });
 
   final int currentIndex;
@@ -225,6 +245,8 @@ class HomeState extends Equatable {
   final HomeEnquiryStatus selectedEnquiryStatus;
   final List<String> recentLocations;
   final List<String> locationSuggestions;
+  final String searchQuery;
+  final int selectedSearchTab;
 
   HomeState copyWith({
     int? currentIndex,
@@ -255,6 +277,8 @@ class HomeState extends Equatable {
     HomeEnquiryStatus? selectedEnquiryStatus,
     List<String>? recentLocations,
     List<String>? locationSuggestions,
+    String? searchQuery,
+    int? selectedSearchTab,
   }) {
     return HomeState(
       currentIndex: currentIndex ?? this.currentIndex,
@@ -291,6 +315,8 @@ class HomeState extends Equatable {
           selectedEnquiryStatus ?? this.selectedEnquiryStatus,
       recentLocations: recentLocations ?? this.recentLocations,
       locationSuggestions: locationSuggestions ?? this.locationSuggestions,
+      searchQuery: searchQuery ?? this.searchQuery,
+      selectedSearchTab: selectedSearchTab ?? this.selectedSearchTab,
     );
   }
 
@@ -324,6 +350,8 @@ class HomeState extends Equatable {
     selectedEnquiryStatus,
     recentLocations,
     locationSuggestions,
+    searchQuery,
+    selectedSearchTab,
   ];
 }
 
@@ -338,6 +366,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomePriceRangeChanged>(_onPriceRangeChanged);
     on<HomeLocationQueryChanged>(_onLocationQueryChanged);
     on<HomeLocationSelected>(_onLocationSelected);
+    on<HomeSearchQueryChanged>(_onSearchQueryChanged);
+    on<HomeSearchTabChanged>(_onSearchTabChanged);
     on<HomeNotificationPreferenceToggled>(_onNotificationPreferenceToggled);
     on<HomeAppToggleChanged>(_onAppToggleChanged);
     on<HomeAppFeedbackRated>(_onAppFeedbackRated);
@@ -440,6 +470,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         locationSuggestions: state.recentLocations,
       ),
     );
+  }
+
+  void _onSearchQueryChanged(
+    HomeSearchQueryChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(searchQuery: event.query));
+  }
+
+  void _onSearchTabChanged(
+    HomeSearchTabChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(selectedSearchTab: event.tab));
   }
 
   void _onNotificationPreferenceToggled(

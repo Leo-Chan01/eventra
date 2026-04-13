@@ -12,6 +12,7 @@ class HomeBottomSearchAction extends StatelessWidget {
     // final colorScheme = Theme.of(context).colorScheme;
 
     return GestureDetector(
+      key: const Key('nav_tab_2'),
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),

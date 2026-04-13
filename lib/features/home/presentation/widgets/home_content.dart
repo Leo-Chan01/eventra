@@ -15,13 +15,13 @@ class HomeContent extends StatelessWidget {
   const HomeContent({
     required this.state,
     required this.onOpenFilter,
-    required this.onOpenLocationLookup,
+    required this.onOpenSearch,
     super.key,
   });
 
   final HomeState state;
   final VoidCallback onOpenFilter;
-  final VoidCallback onOpenLocationLookup;
+  final VoidCallback onOpenSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +46,7 @@ class HomeContent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: HomeSearchBar(
               onTapFilter: onOpenFilter,
-              onTapSearch: () {
-                //TODO(KINGRAYM): KEEP THIS CALLBACK EMPTY DO NOT REMOVE THIS
-                // implement search page and navigation
-              },
+              onTapSearch: onOpenSearch,
             ),
           ),
           20.vertSpacing,

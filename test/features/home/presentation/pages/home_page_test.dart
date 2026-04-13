@@ -73,7 +73,7 @@ void main() {
       );
     });
 
-    testWidgets('search field is tappable', (tester) async {
+    testWidgets('search field opens search page', (tester) async {
       await tester.pumpApp(
         BlocProvider(
           create: (_) => HomeBloc(),
@@ -85,6 +85,25 @@ void main() {
       expect(find.byKey(const Key('home_search_field')), findsOneWidget);
       await tester.tap(find.byKey(const Key('home_search_field')));
       await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('home_search_page')), findsOneWidget);
+      expect(find.byKey(const Key('home_search_tab_events')), findsOneWidget);
+      expect(find.text('Summer Music Festival'), findsOneWidget);
+    });
+
+    testWidgets('bottom search action opens search page', (tester) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const HomePage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('nav_tab_2')));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('home_search_page')), findsOneWidget);
     });
 
     testWidgets('tapping a category opens the category vendors page', (
