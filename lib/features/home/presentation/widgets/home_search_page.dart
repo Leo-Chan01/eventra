@@ -9,10 +9,51 @@ import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeSearchPage extends StatelessWidget {
+class HomeSearchPage extends StatefulWidget {
   const HomeSearchPage({required this.state, super.key});
 
   final HomeState state;
+
+  @override
+  State<HomeSearchPage> createState() => _HomeSearchPageState();
+}
+
+class _HomeSearchPageState extends State<HomeSearchPage> {
+  late final FocusNode _searchFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchFocusNode = FocusNode();
+    _requestFocusIfActive();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeSearchPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.state.currentIndex != widget.state.currentIndex) {
+      _requestFocusIfActive();
+    }
+  }
+
+  @override
+  void dispose() {
+    _searchFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _requestFocusIfActive() {
+    if (widget.state.currentIndex != 2) {
+      return;
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) {
+        return;
+      }
+      _searchFocusNode.requestFocus();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +80,7 @@ class HomeSearchPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: HomeSearchTextField(
+                focusNode: _searchFocusNode,
                 onChanged: (value) {
                   context.read<HomeBloc>().add(HomeSearchQueryChanged(value));
                 },
@@ -48,15 +90,15 @@ class HomeSearchPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: HomeSearchTabSelector(
-                selectedTab: state.selectedSearchTab,
+                selectedTab: widget.state.selectedSearchTab,
                 onSelectTab: (tabIndex) {
                   context.read<HomeBloc>().add(HomeSearchTabChanged(tabIndex));
                 },
               ),
             ),
             Expanded(
-              child: state.selectedSearchTab == 0
-                  ? HomeSearchVendorsList(vendors: state.allVendors)
+              child: widget.state.selectedSearchTab == 0
+                  ? HomeSearchVendorsList(vendors: widget.state.allVendors)
                   : HomeSearchEventsList(events: events),
             ),
           ],

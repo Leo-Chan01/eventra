@@ -6,10 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeSearchTextField extends StatelessWidget {
   const HomeSearchTextField({
+    required this.focusNode,
     required this.onChanged,
     super.key,
   });
 
+  final FocusNode focusNode;
   final ValueChanged<String> onChanged;
 
   @override
@@ -22,12 +24,32 @@ class HomeSearchTextField extends StatelessWidget {
         Expanded(
           child: TextField(
             key: const Key('home_search_input'),
+            focusNode: focusNode,
             onChanged: onChanged,
             decoration: InputDecoration(
-              border: InputBorder.none,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: colorScheme.surfaceContainerHighest.withValues(
+                    alpha: 0.3,
+                  ),
+                ),
+              ),
               hintText: l10n.homeSearchPlaceholder,
               hintStyle: 14.w400.copyWith(
                 color: colorScheme.onSurfaceVariant,
+              ),
+              fillColor: colorScheme.surfaceContainerHighest.withValues(
+                alpha: 0.35,
+              ),
+
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: colorScheme.surfaceContainerHighest.withValues(
+                    alpha: 0.3,
+                  ),
+                ),
               ),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(12),
@@ -38,7 +60,7 @@ class HomeSearchTextField extends StatelessWidget {
                 ),
               ),
               suffixIcon: Padding(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(8),
                 child: SvgPicture.asset(
                   EventraVectors.filterIcon,
                   // width: 24,
