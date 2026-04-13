@@ -29,8 +29,8 @@ flutter_native_splash:
   # remain optional. NOTE that if you specify the [required] color, then you cant 
   # use the [required] background_image in the next section. the reverse is true.
   # select one, they cant work together.
-  color: "#42a5f5"  ##====================================[REQUIRED]==========
-  #color_dark: "#042a49"
+  color: "#ffffff"  ##====================================[REQUIRED]==========
+  color_dark: "#121212"
   # platform-specific color. will override general color if active:
   #color_android: "#42a5f5"
   #color_dark_android: "#042a49"
@@ -56,7 +56,7 @@ flutter_native_splash:
   # allows you to specify an image used in the splash screen. It must be a
   # png file and should be sized for 4x pixel density.
   image:                assets/images/app-icon.png
-  #image_dark:          assets/splash-invert.png
+  image_dark:           assets/images/app-icon.png
   # platform-specific image. will override general image if active:
   #image_android:       assets/splash-android.png
   #image_dark_android:  assets/splash-invert-android.png
@@ -125,8 +125,8 @@ flutter_native_splash:
   #! ANDROID 12+ configuration:
   android_12:
     # background color
-    color: "#42a5f5"
-    # color_dark: "#042a49"
+    color: "#ffffff"
+    color_dark: "#121212"
 
     # center-logo
     # If this parameter is not specified, the app's launcher icon will be used instead. 
@@ -134,12 +134,12 @@ flutter_native_splash:
     # with background: 960×960 px (fit within circle 640px in diameter)    
     # without background: 1152×1152 px (fit within circle 768px in diameter)
     # ensure that the most important design elements of your image are placed within a circular area 
-    image: assets/images/logo/blank.png    
-    # image_dark: assets/images/logo/logo-splash2.png  
+    image: assets/images/app-icon.png
+    image_dark: assets/images/app-icon.png
 
     # center-logo background color
-    icon_background_color: "#111111"
-    # icon_background_color_dark: "#eeeeee"
+    icon_background_color: "#ffffff"
+    icon_background_color_dark: "#121212"
 
     # branding:
     # The branding image dimensions must be 800x320 px.
