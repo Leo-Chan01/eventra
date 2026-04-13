@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,7 +18,7 @@ class ThemeChanged extends ThemeEvent {
 
 typedef SharedPreferencesProvider = Future<SharedPreferences> Function();
 
-/// [ThemeBloc] to manage the application's [ThemeMode].
+/// [ThemeBloc] to manage the application's selected theme mode.
 class ThemeBloc extends Bloc<ThemeEvent, AppThemeMode> {
   ThemeBloc({
     SharedPreferencesProvider preferencesProvider =

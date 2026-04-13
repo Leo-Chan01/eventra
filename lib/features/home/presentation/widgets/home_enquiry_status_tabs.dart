@@ -22,8 +22,6 @@ class HomeEnquiryStatusTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.05,
       child: ListView(

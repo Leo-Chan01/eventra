@@ -9,9 +9,11 @@ void main() {
       File(EventraVectors.accountSecuredIconProfileSettings).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.addButtonTicket).existsSync(), isTrue);
     expect(File(EventraVectors.addIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addIconRightSideChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addressIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.angleLeftIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);
     expect(File(EventraVectors.angleRight).existsSync(), isTrue);
     expect(
@@ -70,6 +72,7 @@ void main() {
     );
     expect(File(EventraVectors.goodCheckGreen).existsSync(), isTrue);
     expect(File(EventraVectors.googleIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.heartIsolated).existsSync(), isTrue);
     expect(
       File(EventraVectors.helpSupportIconProfileSettings).existsSync(),
       isTrue,
@@ -90,6 +93,7 @@ void main() {
     expect(File(EventraVectors.messagesChatBlackGrey).existsSync(), isTrue);
     expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.microphoneChatPageIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.minusButtonTicket).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);
     expect(File(EventraVectors.nextPageArrowIcon).existsSync(), isTrue);
     expect(
@@ -122,6 +126,7 @@ void main() {
     expect(File(EventraVectors.sendIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.shareContractIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.shareIconIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.shopIcon).existsSync(), isTrue);
     expect(File(EventraVectors.showcaseIcon).existsSync(), isTrue);
     expect(
@@ -143,6 +148,7 @@ void main() {
       File(EventraVectors.switchToVendorIconProfileSettings).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.ticketIconEvents).existsSync(), isTrue);
     expect(
       File(
         EventraVectors.transparentGreenCheckIconIconProfileSettings,

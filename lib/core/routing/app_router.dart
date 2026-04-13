@@ -21,6 +21,10 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/enqui
 import 'package:eventra/features/client/client_bookings/presentation/pages/payment_received_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/review_submitted_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_card_payment_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_checkout_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_event_detail_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_payment_success_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/chat_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/pages/client_inbox_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/client_notifications_page.dart';
@@ -265,6 +269,26 @@ class AppRouter {
         path: ReviewSubmittedPage.path,
         name: ReviewSubmittedPage.name,
         builder: (context, state) => const ReviewSubmittedPage(),
+      ),
+      GoRoute(
+        path: TicketCheckoutPage.path,
+        name: TicketCheckoutPage.name,
+        builder: (context, state) => const TicketCheckoutPage(),
+      ),
+      GoRoute(
+        path: TicketEventDetailPage.path,
+        name: TicketEventDetailPage.name,
+        builder: (context, state) => const TicketEventDetailPage(),
+      ),
+      GoRoute(
+        path: TicketCardPaymentPage.path,
+        name: TicketCardPaymentPage.name,
+        builder: (context, state) => const TicketCardPaymentPage(),
+      ),
+      GoRoute(
+        path: TicketPaymentSuccessPage.path,
+        name: TicketPaymentSuccessPage.name,
+        builder: (context, state) => const TicketPaymentSuccessPage(),
       ),
       GoRoute(
         path: ClientInboxPage.path,

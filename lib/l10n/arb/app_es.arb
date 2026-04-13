@@ -461,5 +461,79 @@
           "type": "String"
         }
       }
-    }
+    },
+    "ticketDetailBuyTicket": "Comprar boleto",
+    "ticketDetailRegular": "Regular",
+    "ticketDetailSampleLocation": "Eko Hotel, Lagos, Nigeria",
+    "ticketDetailSampleEmail": "Pozerang2gmail.com",
+    "ticketCheckoutTitle": "Pago",
+    "ticketCheckoutDateTime": "{date}  •  {time}",
+    "@ticketCheckoutDateTime": {
+      "placeholders": {
+        "date": {
+          "type": "String"
+        },
+        "time": {
+          "type": "String"
+        }
+      }
+    },
+    "ticketCheckoutTicketLine": "{ticketType} ({count} boletos)",
+    "@ticketCheckoutTicketLine": {
+      "placeholders": {
+        "ticketType": {
+          "type": "String"
+        },
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "ticketCheckoutEmailLine": "Correo: {email}",
+    "@ticketCheckoutEmailLine": {
+      "placeholders": {
+        "email": {
+          "type": "String"
+        }
+      }
+    },
+    "ticketPaymentMethodCard": "Pagar con tarjeta",
+    "ticketPaymentMethodTransfer": "Pagar por transferencia",
+    "ticketPaymentMethodUssd": "Pagar con USSD",
+    "ticketPaymentPayButton": "Pagar {amount}",
+    "@ticketPaymentPayButton": {
+      "placeholders": {
+        "amount": {
+          "type": "String"
+        }
+      }
+    },
+    "ticketPayWithCardTitle": "Pagar con tarjeta",
+    "ticketCardName": "Nombre en la tarjeta",
+    "ticketCardNameHint": "Paul Ogechukwu",
+    "ticketCardNumber": "Número de tarjeta",
+    "ticketCardNumberHint": "0000 0000 0000 0000",
+    "ticketCardDate": "Fecha",
+    "ticketCardDateHint": "MM/YY",
+    "ticketCardCvv": "CVV",
+    "ticketCardCvvHint": "123",
+    "ticketPaymentSuccessTitle": "Gracias por realizar tu pago",
+    "ticketPaymentSuccessBody": "Tu boleto ha sido enviado a tu correo\nPor favor revisa tu email.",
+    "ticketPaymentEventName": "Nombre del evento",
+    "ticketPaymentTicketType": "Tipo de boleto",
+    "ticketPaymentDate": "Fecha:",
+    "ticketPaymentAmountPaid": "Monto pagado:",
+    "ticketPaymentBookingReference": "ID de referencia de reserva:",
+    "ticketPaymentGoHome": "Ir al inicio",
+    "ticketEventTag": "Eventos",
+    "ticketEventAbout": "Acerca del evento",
+    "ticketEventAboutBody": "Pozera Events es una empresa creativa de planificación y decoración de eventos especializada en convertir tus momentos especiales en experiencias inolvidables. Desde bodas y cumpleaños hasta eventos corporativos y más, aportamos estilo, elegancia y precisión a cada celebración.",
+    "ticketEventGoing": "+50 asistentes",
+    "ticketEventAvailableTicket": "Boletos disponibles",
+    "ticketEventVip": "VIP",
+    "ticketEventVvvip": "VVVIP",
+    "ticketEventRegularPrice": "₦5,000",
+    "ticketEventVipPrice": "₦15,000",
+    "ticketEventVvvipPrice": "₦20,000",
+    "ticketEventSoldOut": "Agotado"
 }

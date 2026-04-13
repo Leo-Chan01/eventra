@@ -5,10 +5,12 @@ class EventraVectors {
 
   static const String accountSecuredIconProfileSettings =
       'assets/svgs/account-secured-icon-profile-settings.svg';
+  static const String addButtonTicket = 'assets/svgs/add-button-ticket.svg';
   static const String addIconChatPage = 'assets/svgs/add-icon-chat-page.svg';
   static const String addIconRightSideChatPage =
       'assets/svgs/add-icon-right-side-chat-page.svg';
   static const String addressIcon = 'assets/svgs/address-icon.svg';
+  static const String angleLeftIsolated = 'assets/svgs/angle-left-isolated.svg';
   static const String angleLeft = 'assets/svgs/angle-left.svg';
   static const String angleRight = 'assets/svgs/angle-right.svg';
   static const String appSettingsIconProfileSettings =
@@ -60,6 +62,7 @@ class EventraVectors {
       'assets/svgs/good-check-green-dotted-circle.svg';
   static const String goodCheckGreen = 'assets/svgs/good-check-green.svg';
   static const String googleIcon = 'assets/svgs/google-icon.svg';
+  static const String heartIsolated = 'assets/svgs/heart-isolated.svg';
   static const String helpSupportIconProfileSettings =
       'assets/svgs/help-support-icon-profile-settings.svg';
   static const String homeIconSearchNew =
@@ -85,6 +88,7 @@ class EventraVectors {
   static const String messages = 'assets/svgs/messages.svg';
   static const String microphoneChatPageIcon =
       'assets/svgs/microphone-chat-page-icon.svg';
+  static const String minusButtonTicket = 'assets/svgs/minus-button-ticket.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
   static const String nextPageArrowIcon =
       'assets/svgs/next-page-arrow-icon.svg';
@@ -112,6 +116,7 @@ class EventraVectors {
   static const String shareButtonVendorDeets =
       'assets/svgs/share-button-vendor-deets.svg';
   static const String shareContractIcon = 'assets/svgs/share-contract-icon.svg';
+  static const String shareIconIsolated = 'assets/svgs/share-icon-isolated.svg';
   static const String shopIcon = 'assets/svgs/shop-icon.svg';
   static const String showcaseIcon = 'assets/svgs/showcase_icon.svg';
   static const String solarLikeBrokenSaveVideoIcon =
@@ -126,6 +131,7 @@ class EventraVectors {
       'assets/svgs/support-icon-enquiries.svg';
   static const String switchToVendorIconProfileSettings =
       'assets/svgs/switch-to-vendor-icon-profile-settings.svg';
+  static const String ticketIconEvents = 'assets/svgs/ticket-icon-events.svg';
   static const String transparentGreenCheckIconIconProfileSettings =
       'assets/svgs/transparent-green-check-icon-icon-profile-settings.svg';
   static const String vendorVector = 'assets/svgs/vendor-vector.svg';

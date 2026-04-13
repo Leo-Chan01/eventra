@@ -38,6 +38,10 @@ class ShareCopyActionTile extends StatelessWidget {
             ),
             SvgPicture.asset(
               EventraVectors.copyBlackIcon,
+              colorFilter: ColorFilter.mode(
+                colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
             ),
           ],
         ),

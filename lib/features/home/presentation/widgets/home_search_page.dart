@@ -1,4 +1,6 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_bookings/presentation/models/ticket_event_detail_args.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/ticket_event_detail_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_event_seed.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_events_list.dart';
@@ -9,6 +11,7 @@ import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeSearchPage extends StatefulWidget {
   const HomeSearchPage({required this.state, super.key});
@@ -100,7 +103,15 @@ class _HomeSearchPageState extends State<HomeSearchPage> {
             Expanded(
               child: widget.state.selectedSearchTab == 0
                   ? HomeSearchVendorsList(vendors: widget.state.allVendors)
-                  : HomeSearchEventsList(events: events),
+                  : HomeSearchEventsList(
+                      events: events,
+                      onEventTap: (event) async {
+                        await context.pushNamed(
+                          TicketEventDetailPage.name,
+                          extra: TicketEventDetailArgs(event: event),
+                        );
+                      },
+                    ),
             ),
           ],
         ),
