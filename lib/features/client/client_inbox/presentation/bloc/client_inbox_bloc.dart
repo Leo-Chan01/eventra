@@ -166,10 +166,11 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
       final initialMessages = [
         ChatMessage(
           id: 'msg-init-1',
-          text: event.catalogItem.title,
+          text: 'I want to make enquiry on this package',
           isFromClient: true,
           time: '1:20 PM',
           enquiryAttachment: event.catalogItem,
+          type: ChatMessageType.enquiry,
         ),
       ];
 
@@ -328,9 +329,18 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
     const pozeraMessages = [
       ChatMessage(
         id: 'msg-001',
-        text: 'Hello, I want to make an enquiry',
+        text: 'I want to make enquiry on this package',
         isFromClient: true,
         time: '1:20 PM',
+        type: ChatMessageType.enquiry,
+        enquiryAttachment: CatalogItem(
+          id: 'catalog-001',
+          title: 'Pre-wedding Photoshoot',
+          description: 'Capture your story with timeless pre-wedding moments.',
+          price: 450000,
+          image: EventraImages.weddingImage,
+          whatToExpect: ['Edited photos', 'Same-day previews'],
+        ),
       ),
       ChatMessage(
         id: 'msg-002',
@@ -339,8 +349,8 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
             ' enquiry.',
         isFromClient: false,
         time: '1:22 PM',
-        isEnquiryConfirmation: true,
-        // hasInvoice: false,
+        type: ChatMessageType.statusInReview,
+        showStatusAction: true,
       ),
       ChatMessage(
         id: 'msg-003',
@@ -349,7 +359,7 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
             ' pozera for more details on booking',
         isFromClient: false,
         time: '1:23 PM',
-        isEnquiryConfirmation: true,
+        type: ChatMessageType.statusConfirmed,
       ),
       ChatMessage(
         id: 'msg-004',
@@ -368,7 +378,7 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
         text: 'Booking Invoice',
         isFromClient: false,
         time: '1:32 PM',
-        hasInvoice: true,
+        type: ChatMessageType.invoice,
       ),
     ];
 

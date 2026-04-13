@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 class VendorDetailRatingSummary extends StatelessWidget {
@@ -30,7 +31,7 @@ class VendorDetailRatingSummary extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: colorScheme.surface,
+              color: colorScheme.onSurface.withValues(alpha: 0.03),
               borderRadius: BorderRadius.circular(12),
               boxShadow: boxShadowLight,
             ),
@@ -40,7 +41,7 @@ class VendorDetailRatingSummary extends StatelessWidget {
                 children: [
                   Text(
                     rating.toStringAsFixed(1),
-                    style: 36.w700.copyWith(color: colorScheme.onSurface),
+                    style: 36.w700.copyWith(color: AppColorSchemes.accent500),
                   ),
                   Row(
                     children: List.generate(5, (i) {
@@ -49,7 +50,7 @@ class VendorDetailRatingSummary extends StatelessWidget {
                             ? Icons.star_rounded
                             : Icons.star_border_rounded,
                         size: 14,
-                        color: colorScheme.tertiary,
+                        color: AppColorSchemes.accent500,
                       );
                     }),
                   ),
@@ -57,7 +58,7 @@ class VendorDetailRatingSummary extends StatelessWidget {
                   Text(
                     '$reviewsCount ratings',
                     style: 10.w400.copyWith(
-                      color: colorScheme.onSurfaceVariant,
+                      color: colorScheme.onSurface,
                     ),
                   ),
                 ],
@@ -75,7 +76,7 @@ class VendorDetailRatingSummary extends StatelessWidget {
                       Text(
                         '${dist.stars}',
                         style: 10.w400.copyWith(
-                          color: colorScheme.onSurfaceVariant,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                       6.horizSpacing,
@@ -86,8 +87,8 @@ class VendorDetailRatingSummary extends StatelessWidget {
                             value: dist.fraction,
                             backgroundColor:
                                 colorScheme.surfaceContainerHighest,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              colorScheme.primary,
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                              AppColorSchemes.accent500,
                             ),
                             minHeight: 6,
                           ),

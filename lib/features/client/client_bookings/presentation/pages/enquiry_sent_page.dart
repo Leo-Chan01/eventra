@@ -81,6 +81,7 @@ class EnquirySentPage extends StatelessWidget {
                       GlobalSnackBar.showInfo(
                         l10n.notificationsContactVendorFeedback,
                       );
+                      context.pop();
                     },
                     borderRadius: BorderRadius.circular(999),
                     child: Row(

@@ -71,6 +71,8 @@ class EventraImages {
   static const String weddingDressCategoryImage =
       'assets/images/wedding-dress-category-image.png';
   static const String weddingImage = 'assets/images/wedding-image.png';
+  static const String weddingPozeraImage =
+      'assets/images/wedding-pozera-image.png';
   static const String weddingStylistCategoryImage =
       'assets/images/wedding-stylist-category-image.png';
   static const String whatsappLogo = 'assets/images/whatsapp-logo.png';

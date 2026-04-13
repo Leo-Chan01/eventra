@@ -1,5 +1,7 @@
+import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class VendorVideoThumbnail extends StatelessWidget {
   const VendorVideoThumbnail({
@@ -20,7 +22,7 @@ class VendorVideoThumbnail extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(5),
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -35,19 +37,9 @@ class VendorVideoThumbnail extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
+            Positioned.fill(
               child: Container(
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                  color: colorScheme.surface.withValues(alpha: 0.75),
-                  shape: BoxShape.circle,
-                ),
-                child: HugeIcon(
-                  icon: HugeIcons.strokeRoundedPlay,
-                  color: colorScheme.onSurface,
-                  size: 18,
-                ),
+                color: Colors.black.withValues(alpha: 0.25),
               ),
             ),
             Positioned(
@@ -55,17 +47,12 @@ class VendorVideoThumbnail extends StatelessWidget {
               bottom: 12,
               child: Row(
                 children: [
-                  HugeIcon(
-                    icon: HugeIcons.strokeRoundedView,
-                    color: colorScheme.onPrimary,
-                    size: 18,
-                  ),
+                  SvgPicture.asset(EventraVectors.eyeViewsIcon),
                   const SizedBox(width: 4),
                   Text(
                     '$viewCount',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onPrimary,
-                      fontWeight: FontWeight.w500,
+                    style: 10.w400.copyWith(
+                      color: colorScheme.onInverseSurface,
                     ),
                   ),
                 ],

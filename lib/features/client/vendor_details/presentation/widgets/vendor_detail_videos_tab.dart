@@ -13,20 +13,19 @@ class VendorDetailVideosTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
       child: GridView.builder(
         shrinkWrap: true,
+        padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
-          childAspectRatio: 0.78,
         ),
         itemCount: videos.length,
         itemBuilder: (context, index) {
           final video = videos[index];
-
           return VendorVideoThumbnail(
             imageUrl: video.thumbnailUrl,
             viewCount: video.viewCount,

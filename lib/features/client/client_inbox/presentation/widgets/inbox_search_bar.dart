@@ -29,7 +29,7 @@ class InboxSearchBar extends StatelessWidget {
             decoration: InputDecoration(
               hintText: l10n.inboxSearchHint,
               prefixIcon: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(12),
                 child: SvgPicture.asset(
                   EventraVectors.searchNormal,
                   colorFilter: ColorFilter.mode(

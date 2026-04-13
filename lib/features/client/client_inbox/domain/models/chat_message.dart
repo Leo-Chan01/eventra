@@ -1,6 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 
+enum ChatMessageType {
+  text,
+  enquiry,
+  invoice,
+  statusInReview,
+  statusConfirmed,
+}
+
 class ChatMessage extends Equatable {
   const ChatMessage({
     required this.id,
@@ -8,8 +16,8 @@ class ChatMessage extends Equatable {
     required this.isFromClient,
     required this.time,
     this.enquiryAttachment,
-    this.isEnquiryConfirmation = false,
-    this.hasInvoice = false,
+    this.type = ChatMessageType.text,
+    this.showStatusAction = false,
   });
 
   final String id;
@@ -17,8 +25,8 @@ class ChatMessage extends Equatable {
   final bool isFromClient;
   final String time;
   final CatalogItem? enquiryAttachment;
-  final bool isEnquiryConfirmation;
-  final bool hasInvoice;
+  final ChatMessageType type;
+  final bool showStatusAction;
 
   @override
   List<Object?> get props => [
@@ -27,7 +35,7 @@ class ChatMessage extends Equatable {
     isFromClient,
     time,
     enquiryAttachment,
-    isEnquiryConfirmation,
-    hasInvoice,
+    type,
+    showStatusAction,
   ];
 }

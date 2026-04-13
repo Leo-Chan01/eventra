@@ -61,6 +61,7 @@ void main() {
     expect(File(EventraImages.videographerCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.weddingDressCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.weddingImage).existsSync(), isTrue);
+    expect(File(EventraImages.weddingPozeraImage).existsSync(), isTrue);
     expect(
       File(EventraImages.weddingStylistCategoryImage).existsSync(),
       isTrue,
