@@ -1,12 +1,9 @@
-import 'package:eventra/core/utils/lottie_decorder.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/bloc/onboarding_loading_bloc.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/widgets/onboarding_loading_logo.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
-import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
 
 class OnboardingLoadingPage extends StatelessWidget {
   const OnboardingLoadingPage({super.key});
