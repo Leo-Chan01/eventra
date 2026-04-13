@@ -19,17 +19,18 @@ class HomeEnquiryBanner extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
-        color: colorScheme.primaryContainer.withValues(alpha: 0.2),
+        color: colorScheme.primary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: colorScheme.primary),
       ),
       child: Row(
         children: [
           SvgPicture.asset(
             EventraVectors.infoIconOrange,
-            height: 36,
-            width: 36,
+            height: 20,
+            width: 20,
           ),
-          14.horizSpacing,
+          12.horizSpacing,
           Expanded(
             child: Text(
               message,

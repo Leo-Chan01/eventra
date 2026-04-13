@@ -104,7 +104,7 @@ class CatalogItemDetailPage extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 20, 16, 160),
+                  padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                   child: CatalogItemExpectSection(
                     points: args.catalogItem.whatToExpect,
                   ),

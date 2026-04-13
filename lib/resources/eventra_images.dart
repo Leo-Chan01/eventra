@@ -31,9 +31,15 @@ class EventraImages {
       'assets/images/hall-category-image.png';
   static const String headerCarouselImage =
       'assets/images/header-carousel-image.png';
+  static const String instagramLogo = 'assets/images/instagram-logo.png';
   static const String invoiceImage = 'assets/images/invoice-image.png';
+  static const String janeDoe = 'assets/images/jane-doe.png';
+  static const String johnDoeFour = 'assets/images/john-doe-four.png';
+  static const String johndoesecond = 'assets/images/johndoesecond.png';
+  static const String johndoethree = 'assets/images/johndoethree.png';
   static const String ligntningCategoryImage =
       'assets/images/ligntning-category-image.png';
+  static const String linkedinLogo = 'assets/images/linkedin-logo.png';
   static const String liveBandCategoryImage =
       'assets/images/live-band-category-image.png';
   static const String logoIconSmall = 'assets/images/logo-icon-small.png';
@@ -57,6 +63,7 @@ class EventraImages {
       'assets/images/small-chops-category-image.png';
   static const String transactionHistoryNotificationEmpty =
       'assets/images/transaction-history-notification-empty.png';
+  static const String twitterLogo = 'assets/images/twitter-logo.png';
   static const String usherCategoryImage =
       'assets/images/usher-category-image.png';
   static const String videographerCategoryImage =
@@ -66,6 +73,7 @@ class EventraImages {
   static const String weddingImage = 'assets/images/wedding-image.png';
   static const String weddingStylistCategoryImage =
       'assets/images/wedding-stylist-category-image.png';
+  static const String whatsappLogo = 'assets/images/whatsapp-logo.png';
   static const String womanWithfoodplate =
       'assets/images/woman-withfoodplate.png';
   static const String womanWithweddinggown =

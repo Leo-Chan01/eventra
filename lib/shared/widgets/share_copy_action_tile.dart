@@ -23,7 +23,7 @@ class ShareCopyActionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(14),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
+        padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11),
         decoration: BoxDecoration(
           color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
           borderRadius: BorderRadius.circular(14),
@@ -33,7 +33,7 @@ class ShareCopyActionTile extends StatelessWidget {
             Expanded(
               child: Text(
                 label,
-                style: 20.w400.copyWith(color: colorScheme.onSurface),
+                style: 16.w400.copyWith(color: colorScheme.onSurface),
               ),
             ),
             SvgPicture.asset(

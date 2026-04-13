@@ -30,8 +30,14 @@ void main() {
     expect(File(EventraImages.hairStylistCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.hallCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.headerCarouselImage).existsSync(), isTrue);
+    expect(File(EventraImages.instagramLogo).existsSync(), isTrue);
     expect(File(EventraImages.invoiceImage).existsSync(), isTrue);
+    expect(File(EventraImages.janeDoe).existsSync(), isTrue);
+    expect(File(EventraImages.johnDoeFour).existsSync(), isTrue);
+    expect(File(EventraImages.johndoesecond).existsSync(), isTrue);
+    expect(File(EventraImages.johndoethree).existsSync(), isTrue);
     expect(File(EventraImages.ligntningCategoryImage).existsSync(), isTrue);
+    expect(File(EventraImages.linkedinLogo).existsSync(), isTrue);
     expect(File(EventraImages.liveBandCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.logoIconSmall).existsSync(), isTrue);
     expect(File(EventraImages.logoText).existsSync(), isTrue);
@@ -50,6 +56,7 @@ void main() {
       File(EventraImages.transactionHistoryNotificationEmpty).existsSync(),
       isTrue,
     );
+    expect(File(EventraImages.twitterLogo).existsSync(), isTrue);
     expect(File(EventraImages.usherCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.videographerCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.weddingDressCategoryImage).existsSync(), isTrue);
@@ -58,6 +65,7 @@ void main() {
       File(EventraImages.weddingStylistCategoryImage).existsSync(),
       isTrue,
     );
+    expect(File(EventraImages.whatsappLogo).existsSync(), isTrue);
     expect(File(EventraImages.womanWithfoodplate).existsSync(), isTrue);
     expect(File(EventraImages.womanWithweddinggown).existsSync(), isTrue);
     expect(File(EventraImages.yourInboxIsEmptyImage).existsSync(), isTrue);

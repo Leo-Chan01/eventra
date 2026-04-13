@@ -27,8 +27,8 @@ class ShareOptionItem extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 72,
-              height: 72,
+              width: 52,
+              height: 52,
               decoration: BoxDecoration(
                 color: backgroundColor,
                 shape: BoxShape.circle,
@@ -41,7 +41,7 @@ class ShareOptionItem extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: 13.w500.copyWith(color: colorScheme.onSurface),
+              style: 12.w400.copyWith(color: colorScheme.onSurface),
             ),
           ],
         ),

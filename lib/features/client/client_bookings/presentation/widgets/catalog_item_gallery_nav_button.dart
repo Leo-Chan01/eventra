@@ -1,5 +1,5 @@
+import 'package:eventra/shared/widgets/eventra_buttons/eventra_nav_button.dart';
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class CatalogItemGalleryNavButton extends StatelessWidget {
   const CatalogItemGalleryNavButton({
@@ -32,11 +32,7 @@ class CatalogItemGalleryNavButton extends StatelessWidget {
                 : Colors.white.withValues(alpha: 0.2),
             shape: BoxShape.circle,
           ),
-          child: HugeIcon(
-            icon: icon,
-            color: Colors.white,
-            size: 20,
-          ),
+          child: EventraNavButton.blurGlassVersion(isLiked: false),
         ),
       ),
     );

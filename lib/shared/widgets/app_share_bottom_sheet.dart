@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -63,7 +64,7 @@ class AppShareBottomSheet extends StatelessWidget {
             28.vertSpacing,
             Text(
               l10n.vendorDetailShareTitle,
-              style: 24.w500.copyWith(color: colorScheme.onSurface),
+              style: 18.w600.copyWith(color: colorScheme.onSurface),
             ),
             20.vertSpacing,
             SingleChildScrollView(
@@ -72,13 +73,13 @@ class AppShareBottomSheet extends StatelessWidget {
                 children: [
                   ShareOptionItem(
                     label: 'John Doe Eze',
-                    backgroundColor: const Color(0xFFEFC992),
+                    backgroundColor: Colors.transparent,
                     onTap: () => _share(context),
                     child: ClipOval(
                       child: Image.asset(
-                        EventraImages.profileDummy,
-                        width: 68,
-                        height: 68,
+                        EventraImages.johndoesecond,
+                        width: 52,
+                        height: 52,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -86,13 +87,13 @@ class AppShareBottomSheet extends StatelessWidget {
                   const SizedBox(width: 16),
                   ShareOptionItem(
                     label: 'John Doe Eze',
-                    backgroundColor: const Color(0xFFD7CCFF),
+                    backgroundColor: Colors.transparent,
                     onTap: () => _share(context),
                     child: ClipOval(
                       child: Image.asset(
-                        EventraImages.profileDummy,
-                        width: 68,
-                        height: 68,
+                        EventraImages.janeDoe,
+                        width: 52,
+                        height: 52,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -100,13 +101,13 @@ class AppShareBottomSheet extends StatelessWidget {
                   const SizedBox(width: 16),
                   ShareOptionItem(
                     label: 'John Doe Eze',
-                    backgroundColor: const Color(0xFFBFE6FF),
+                    backgroundColor: Colors.transparent,
                     onTap: () => _share(context),
                     child: ClipOval(
                       child: Image.asset(
-                        EventraImages.profileDummy,
-                        width: 68,
-                        height: 68,
+                        EventraImages.johndoethree,
+                        width: 52,
+                        height: 52,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -114,13 +115,13 @@ class AppShareBottomSheet extends StatelessWidget {
                   const SizedBox(width: 16),
                   ShareOptionItem(
                     label: 'John Doe Eze',
-                    backgroundColor: const Color(0xFFF6B8B8),
+                    backgroundColor: Colors.transparent,
                     onTap: () => _share(context),
                     child: ClipOval(
                       child: Image.asset(
-                        EventraImages.profileDummy,
-                        width: 68,
-                        height: 68,
+                        EventraImages.johnDoeFour,
+                        width: 52,
+                        height: 52,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -129,11 +130,11 @@ class AppShareBottomSheet extends StatelessWidget {
               ),
             ),
             24.vertSpacing,
-            Divider(color: colorScheme.outlineVariant.withValues(alpha: 0.3)),
+            standardDividerUtil(context),
             24.vertSpacing,
             Text(
               l10n.vendorDetailShareTo,
-              style: 24.w500.copyWith(color: colorScheme.onSurface),
+              style: 18.w600.copyWith(color: colorScheme.onSurface),
             ),
             20.vertSpacing,
             SingleChildScrollView(
@@ -144,10 +145,10 @@ class AppShareBottomSheet extends StatelessWidget {
                     label: 'WhatsApp',
                     backgroundColor: const Color(0xFF25D366),
                     onTap: () => _share(context),
-                    child: Icon(
-                      Icons.call_rounded,
-                      color: colorScheme.onPrimary,
-                      size: 34,
+                    child: Image.asset(
+                      EventraImages.whatsappLogo,
+                      width: 40,
+                      height: 40,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -155,10 +156,10 @@ class AppShareBottomSheet extends StatelessWidget {
                     label: 'Twitter',
                     backgroundColor: const Color(0xFF1D9BF0),
                     onTap: () => _share(context),
-                    child: Icon(
-                      Icons.flutter_dash_rounded,
-                      color: colorScheme.onPrimary,
-                      size: 36,
+                    child: Image.asset(
+                      EventraImages.twitterLogo,
+                      width: 52,
+                      height: 52,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -166,10 +167,10 @@ class AppShareBottomSheet extends StatelessWidget {
                     label: 'Instagram',
                     backgroundColor: const Color(0xFFE91E63),
                     onTap: () => _share(context),
-                    child: Icon(
-                      Icons.camera_alt_outlined,
-                      color: colorScheme.onPrimary,
-                      size: 32,
+                    child: Image.asset(
+                      EventraImages.instagramLogo,
+                      width: 52,
+                      height: 52,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -177,20 +178,10 @@ class AppShareBottomSheet extends StatelessWidget {
                     label: 'LinkedIn',
                     backgroundColor: const Color(0xFF0A66C2),
                     onTap: () => _share(context),
-                    child: Text(
-                      'in',
-                      style: 32.w700.copyWith(color: colorScheme.onPrimary),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  ShareOptionItem(
-                    label: 'Instagram',
-                    backgroundColor: const Color(0xFFE91E63),
-                    onTap: () => _share(context),
-                    child: Icon(
-                      Icons.camera_alt_outlined,
-                      color: colorScheme.onPrimary,
-                      size: 32,
+                    child: Image.asset(
+                      EventraImages.linkedinLogo,
+                      width: 52,
+                      height: 52,
                     ),
                   ),
                 ],

@@ -25,7 +25,7 @@ class HomeEnquiryStatusTabs extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.06,
+      height: MediaQuery.sizeOf(context).height * 0.05,
       child: ListView(
         key: const Key('home_enquiry_status_list'),
         scrollDirection: Axis.horizontal,
@@ -53,12 +53,6 @@ class HomeEnquiryStatusTabs extends StatelessWidget {
             isSelected: selectedStatus == HomeEnquiryStatus.completed,
             onTap: () => onStatusSelected(HomeEnquiryStatus.completed),
           ),
-          8.horizSpacing,
-          Icon(
-            Icons.circle,
-            color: colorScheme.surface,
-            size: 1,
-          ),
         ],
       ),
     );
@@ -81,7 +75,7 @@ class _StatusPill extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return InkWell(
-      borderRadius: BorderRadius.circular(28),
+      borderRadius: BorderRadius.circular(16),
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 170),
@@ -90,12 +84,12 @@ class _StatusPill extends StatelessWidget {
           color: isSelected
               ? colorScheme.primary
               : colorScheme.onSurfaceVariant.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(16),
           // boxShadow: boxShadowLight,
         ),
         child: Text(
           label,
-          style: 18.w500.copyWith(
+          style: 14.w500.copyWith(
             color: isSelected
                 ? colorScheme.onPrimary
                 : colorScheme.onSurfaceVariant,
