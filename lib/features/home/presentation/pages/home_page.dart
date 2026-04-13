@@ -15,18 +15,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    this.isGuestMode = false,
+    super.key,
+  });
 
   static const String path = '/home';
   static const String name = 'home';
 
+  final bool isGuestMode;
+
   @override
   Widget build(BuildContext context) {
+    final homeKey = ValueKey('home_guest_mode_$isGuestMode');
     final colorScheme = Theme.of(context).colorScheme;
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return Scaffold(
+          key: homeKey,
           backgroundColor: colorScheme.surface,
           body: IndexedStack(
             index: state.currentIndex,

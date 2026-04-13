@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
+import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/widgets/account_type_card.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -99,7 +100,12 @@ class _AccountSelectionBottomSheetState
           ),
           32.vertSpacing,
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed(
+                HomePage.name,
+                queryParameters: {'guest': 'true'},
+              );
+            },
             child: Text(
               l10n.continueWithoutSignup,
               style: 16.w600.copyWith(

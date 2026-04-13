@@ -22,11 +22,17 @@ class HomeEnquiryStatusTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final calculatedHeight = MediaQuery.sizeOf(context).height * 0.05;
+    final tabBarHeight = calculatedHeight < 48
+        ? 48.0
+        : (calculatedHeight > 56 ? 56.0 : calculatedHeight);
+
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.05,
+      height: tabBarHeight,
       child: ListView(
         key: const Key('home_enquiry_status_list'),
         scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(vertical: 2),
         children: [
           _StatusPill(
             label: pendingLabel,
@@ -77,7 +83,7 @@ class _StatusPill extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 170),
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
               ? colorScheme.primary

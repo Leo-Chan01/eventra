@@ -7,5 +7,6 @@ void main() {
   test('eventra_anims assets test', () {
     expect(File(EventraAnims.confettiEmoji).existsSync(), isTrue);
     expect(File(EventraAnims.success).existsSync(), isTrue);
+    expect(File(EventraAnims.splash).existsSync(), isTrue);
   });
 }

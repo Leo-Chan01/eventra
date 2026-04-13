@@ -87,6 +87,7 @@ class VendorCardTopRated extends StatelessWidget {
                 Flexible(
                   flex: 2,
                   child: EventraButton.smallBorder(
+                    padding: EdgeInsets.zero,
                     buttonText: context.l10n.homeViewProfile,
                     onPressed: onViewProfile,
                   ),

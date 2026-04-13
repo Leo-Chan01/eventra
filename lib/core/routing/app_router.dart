@@ -58,8 +58,8 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    // initialLocation: OnboardingLoadingPage.path,
-    initialLocation: HomePage.path,
+    initialLocation: OnboardingLoadingPage.path,
+    // initialLocation: HomePage.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
@@ -75,7 +75,10 @@ class AppRouter {
       GoRoute(
         path: HomePage.path,
         name: HomePage.name,
-        builder: (context, state) => const HomePage(),
+        builder: (context, state) {
+          final isGuestMode = state.uri.queryParameters['guest'] == 'true';
+          return HomePage(isGuestMode: isGuestMode);
+        },
       ),
       GoRoute(
         path: ClientNotificationsPage.path,

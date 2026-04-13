@@ -1,6 +1,7 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_help_support_page.dart';
@@ -200,7 +201,7 @@ class HomeProfileTab extends StatelessWidget {
           HomeProfileLogoutTile(
             label: l10n.homeProfileLogout,
             onTap: () {
-              GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+              context.goNamed(LoginPage.name);
             },
           ),
         ],
