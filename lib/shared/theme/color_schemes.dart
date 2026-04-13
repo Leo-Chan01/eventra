@@ -95,7 +95,7 @@ class AppColorSchemes {
   /// Default dark color scheme.
   static const ColorScheme darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: darkSurface,
+    primary: primary500,
     onPrimary: primary950,
     primaryContainer: primary700,
     onPrimaryContainer: primary50,

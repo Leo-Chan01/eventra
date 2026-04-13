@@ -34,14 +34,17 @@ class TicketCheckoutPaymentMethodTile extends StatelessWidget {
                 color: colorScheme.primary,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(
-                icon,
-                colorFilter: ColorFilter.mode(
-                  colorScheme.onPrimary,
-                  BlendMode.srcIn,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset(
+                  icon,
+                  colorFilter: ColorFilter.mode(
+                    colorScheme.onPrimary,
+                    BlendMode.srcIn,
+                  ),
+                  width: 24,
+                  height: 24,
                 ),
-                width: 24,
-                height: 24,
               ),
             ),
             14.horizSpacing,
