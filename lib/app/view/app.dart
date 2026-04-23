@@ -2,6 +2,7 @@ import 'package:eventra/core/constants/app_constants.dart';
 import 'package:eventra/core/internet/connectivity_bloc.dart';
 import 'package:eventra/core/routing/app_router.dart';
 import 'package:eventra/core/utils/global_snackbar.dart';
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/auth/forgot_password/presentation/bloc/forgot_password_bloc.dart';
 import 'package:eventra/features/auth/login/presentation/bloc/login_bloc.dart';
 import 'package:eventra/features/auth/setup_pin/presentation/bloc/setup_pin_bloc.dart';
@@ -28,6 +29,10 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ConnectivityBloc()),
         BlocProvider(create: (_) => ThemeBloc()),
+        BlocProvider(
+          create: (_) =>
+              AccountTypeTrackerBloc()..add(const AccountTypeTrackerStarted()),
+        ),
         BlocProvider(create: (_) => SignupBloc()),
         BlocProvider(create: (_) => LoginBloc()),
         BlocProvider(create: (_) => ForgotPasswordBloc()),
