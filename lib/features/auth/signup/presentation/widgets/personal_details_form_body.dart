@@ -5,6 +5,7 @@ import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart'
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_selection_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -41,7 +42,9 @@ class PersonalDetailsFormBody extends StatelessWidget {
                     children: [
                       20.vertSpacing,
                       Text(
-                        l10n.personalDetailsTitle,
+                        isVendor
+                            ? l10n.personalDetailsVendorTitle
+                            : l10n.personalDetailsTitle,
                         style: 32.bold.copyWith(color: colorScheme.onSurface),
                       ),
                       8.vertSpacing,
@@ -89,7 +92,9 @@ class PersonalDetailsFormBody extends StatelessWidget {
                               final month = int.parse(parts[1]);
                               final year = int.parse(parts[2]);
                               context.read<SignupBloc>().add(
-                                SignupBirthdayChanged(DateTime(year, month, day)),
+                                SignupBirthdayChanged(
+                                  DateTime(year, month, day),
+                                ),
                               );
                             }
                           } on Exception catch (_) {}
@@ -150,7 +155,9 @@ class PersonalDetailsFormBody extends StatelessWidget {
                             TextSpan(text: l10n.termsAcceptancePrefix),
                             TextSpan(
                               text: l10n.termsLink,
-                              style: 14.bold.copyWith(color: colorScheme.primary),
+                              style: 14.bold.copyWith(
+                                color: colorScheme.primary,
+                              ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => context.pushNamed(
                                   TermsAndConditionsPage.name,
@@ -159,7 +166,9 @@ class PersonalDetailsFormBody extends StatelessWidget {
                             TextSpan(text: l10n.termsAcceptanceAnd),
                             TextSpan(
                               text: l10n.privacyPolicyLink,
-                              style: 14.bold.copyWith(color: colorScheme.primary),
+                              style: 14.bold.copyWith(
+                                color: colorScheme.primary,
+                              ),
                               recognizer: TapGestureRecognizer()..onTap = () {},
                             ),
                           ],
@@ -173,7 +182,9 @@ class PersonalDetailsFormBody extends StatelessWidget {
                         onPressed: () {
                           if (isVendor) {
                             unawaited(
-                              context.pushNamed(TermsAndConditionsPage.name),
+                              context.pushNamed(
+                                VendorCategorySelectionPage.name,
+                              ),
                             );
                             return;
                           }

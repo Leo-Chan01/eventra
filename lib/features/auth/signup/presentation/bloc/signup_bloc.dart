@@ -15,6 +15,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     on<SignupPasswordChanged>(_onPasswordChanged);
     on<SignupConfirmPasswordChanged>(_onConfirmPasswordChanged);
     on<SignupReferralCodeChanged>(_onReferralCodeChanged);
+    on<SignupVendorCategoryChanged>(_onVendorCategoryChanged);
     on<SignupSubmitted>(_onSubmitted);
   }
 
@@ -87,6 +88,13 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     Emitter<SignupState> emit,
   ) {
     emit(state.copyWith(referralCode: event.referralCode));
+  }
+
+  void _onVendorCategoryChanged(
+    SignupVendorCategoryChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(selectedVendorCategory: event.category));
   }
 
   void _onSubmitted(SignupSubmitted event, Emitter<SignupState> emit) {

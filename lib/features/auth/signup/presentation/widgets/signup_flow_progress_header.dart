@@ -23,6 +23,7 @@ class SignupFlowProgressHeader extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress.clamp(0.0, 1.0),
               minHeight: 6,
+              borderRadius: BorderRadius.circular(100),
               backgroundColor: colorScheme.outline.withValues(alpha: 0.3),
               valueColor: AlwaysStoppedAnimation<Color>(colorScheme.primary),
             ),

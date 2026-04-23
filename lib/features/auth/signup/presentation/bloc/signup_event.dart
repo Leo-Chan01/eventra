@@ -60,6 +60,11 @@ class SignupReferralCodeChanged extends SignupEvent {
   final String referralCode;
 }
 
+class SignupVendorCategoryChanged extends SignupEvent {
+  const SignupVendorCategoryChanged(this.category);
+  final String category;
+}
+
 class SignupSubmitted extends SignupEvent {
   const SignupSubmitted();
 }
