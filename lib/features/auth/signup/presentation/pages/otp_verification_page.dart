@@ -5,7 +5,9 @@ import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart'
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/personal_details_page.dart';
+import 'package:eventra/features/auth/signup/presentation/widgets/signup_flow_app_bar.dart';
 import 'package:eventra/features/home/presentation/widgets/otp_input_box.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
@@ -54,16 +56,16 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final isVendorFlow = context.select(
+      (SignupBloc bloc) => bloc.state.accountType == AccountType.vendor,
+    );
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () => context.pop(),
-        ),
+      appBar: SignupFlowAppBar(
+        showProgress: isVendorFlow,
+        currentStep: 1,
+        totalSteps: 4,
       ),
       body: SafeArea(
         child: Padding(

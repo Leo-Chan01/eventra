@@ -15,6 +15,7 @@ class SignupState {
     this.otp = '',
     this.password = '',
     this.confirmPassword = '',
+    this.referralCode = '',
   });
 
   factory SignupState.initial() => const SignupState(
@@ -32,6 +33,7 @@ class SignupState {
   final String otp;
   final String password;
   final String confirmPassword;
+  final String referralCode;
 
   SignupState copyWith({
     AccountType? accountType,
@@ -45,6 +47,7 @@ class SignupState {
     String? otp,
     String? password,
     String? confirmPassword,
+    String? referralCode,
   }) {
     return SignupState(
       accountType: accountType ?? this.accountType,
@@ -58,6 +61,7 @@ class SignupState {
       otp: otp ?? this.otp,
       password: password ?? this.password,
       confirmPassword: confirmPassword ?? this.confirmPassword,
+      referralCode: referralCode ?? this.referralCode,
     );
   }
 }

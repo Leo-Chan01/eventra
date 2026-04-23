@@ -55,6 +55,11 @@ class SignupConfirmPasswordChanged extends SignupEvent {
   final String confirmPassword;
 }
 
+class SignupReferralCodeChanged extends SignupEvent {
+  const SignupReferralCodeChanged(this.referralCode);
+  final String referralCode;
+}
+
 class SignupSubmitted extends SignupEvent {
   const SignupSubmitted();
 }
