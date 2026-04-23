@@ -344,7 +344,7 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
       invoiceId: 'INV-2025-001',
       bookingReferenceId: 'BKG-2025-001',
       amount: 450000,
-      dateIssued: DateTime(2025, 6, 1),
+      dateIssued: DateTime(2025, 6),
       eventDate: DateTime(2025, 8, 15),
       eventType: 'Wedding',
       location: 'Lagos, Nigeria',

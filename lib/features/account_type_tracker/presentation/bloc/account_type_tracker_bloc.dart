@@ -8,8 +8,8 @@ enum AccountTypeTrackerStatus { initial, loading, ready, failure }
 class AccountTypeTrackerState {
   const AccountTypeTrackerState({
     required this.status,
-    this.selectedAccountType,
     required this.isGuestMode,
+    this.selectedAccountType,
     this.errorMessage,
   });
 

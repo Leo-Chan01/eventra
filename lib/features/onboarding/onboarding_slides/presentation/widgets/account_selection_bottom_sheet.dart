@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -8,6 +9,7 @@ import 'package:eventra/features/onboarding/onboarding_slides/presentation/widge
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AccountSelectionBottomSheet extends StatefulWidget {
@@ -24,6 +26,7 @@ class _AccountSelectionBottomSheetState
 
   void _onTypeSelected(AccountType type) {
     setState(() => _selectedType = type);
+    context.read<AccountTypeTrackerBloc>().add(AccountTypeSelected(type));
 
     unawaited(
       Future.delayed(const Duration(milliseconds: 400), () {
@@ -101,6 +104,7 @@ class _AccountSelectionBottomSheetState
           32.vertSpacing,
           TextButton(
             onPressed: () {
+              context.read<AccountTypeTrackerBloc>().add(const GuestModeEnabled());
               context.goNamed(
                 HomePage.name,
                 queryParameters: {'guest': 'true'},
