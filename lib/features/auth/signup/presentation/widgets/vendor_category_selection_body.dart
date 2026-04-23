@@ -4,7 +4,7 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_state.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_business_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_category_option_chip.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
@@ -106,7 +106,7 @@ class VendorCategorySelectionBody extends StatelessWidget {
                     ? null
                     : () {
                         unawaited(
-                          context.pushNamed(TermsAndConditionsPage.name),
+                          context.pushNamed(VendorBusinessDetailsPage.name),
                         );
                       },
               ),

@@ -11,12 +11,14 @@ class HomeLocationLookupView extends StatefulWidget {
     required this.state,
     this.showCloseAction = false,
     this.closeOnSelect = false,
+    this.onLocationSelected,
     super.key,
   });
 
   final HomeState state;
   final bool showCloseAction;
   final bool closeOnSelect;
+  final ValueChanged<String>? onLocationSelected;
 
   @override
   State<HomeLocationLookupView> createState() => _HomeLocationLookupViewState();
@@ -191,6 +193,7 @@ class _HomeLocationLookupViewState extends State<HomeLocationLookupView> {
                     return InkWell(
                       key: ValueKey('home_location_suggestion_$index'),
                       onTap: () {
+                        widget.onLocationSelected?.call(location);
                         context.read<HomeBloc>().add(
                           HomeLocationSelected(location),
                         );

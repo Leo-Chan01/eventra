@@ -158,6 +158,8 @@ void main() {
       ).existsSync(),
       isTrue,
     );
+    expect(File(EventraVectors.uploadBusinessLogo).existsSync(), isTrue);
+    expect(File(EventraVectors.uploadCoverPhoto).existsSync(), isTrue);
     expect(File(EventraVectors.vendorVector).existsSync(), isTrue);
     expect(File(EventraVectors.verify).existsSync(), isTrue);
     expect(

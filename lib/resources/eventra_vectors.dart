@@ -138,6 +138,9 @@ class EventraVectors {
   static const String ticketIconEvents = 'assets/svgs/ticket-icon-events.svg';
   static const String transparentGreenCheckIconIconProfileSettings =
       'assets/svgs/transparent-green-check-icon-icon-profile-settings.svg';
+  static const String uploadBusinessLogo =
+      'assets/svgs/upload-business-logo.svg';
+  static const String uploadCoverPhoto = 'assets/svgs/upload-cover-photo.svg';
   static const String vendorVector = 'assets/svgs/vendor-vector.svg';
   static const String verify = 'assets/svgs/verify.svg';
   static const String weLoveYourFeedbackIconProfileSettings =

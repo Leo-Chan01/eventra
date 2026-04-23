@@ -14,6 +14,11 @@ class EventraGeneralTextfield extends StatefulWidget {
     this.isPin = false,
     this.obscureText = false,
     this.suffixIcon,
+    this.initialValue,
+    this.maxLines = 1,
+    this.minLines,
+    this.readOnly = false,
+    this.onTap,
     super.key,
   });
 
@@ -26,6 +31,11 @@ class EventraGeneralTextfield extends StatefulWidget {
     this.isPin = true,
     this.obscureText = false,
     this.suffixIcon,
+    this.initialValue,
+    this.maxLines = 1,
+    this.minLines,
+    this.readOnly = false,
+    this.onTap,
     super.key,
   });
 
@@ -37,6 +47,11 @@ class EventraGeneralTextfield extends StatefulWidget {
   final bool isPin;
   final bool obscureText;
   final Widget? suffixIcon;
+  final String? initialValue;
+  final int maxLines;
+  final int? minLines;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   @override
   State<EventraGeneralTextfield> createState() =>
@@ -67,8 +82,13 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
           style: 14.w500.copyWith(color: directColorScheme),
         ),
         TextFormField(
+          initialValue: widget.initialValue,
           obscureText: widget.obscureText,
+          readOnly: widget.readOnly,
+          onTap: widget.onTap,
           keyboardType: widget.keyboardType,
+          maxLines: widget.maxLines,
+          minLines: widget.minLines,
           autofillHints: widget.autoFillHints,
           onChanged: widget.onChanged,
           decoration: InputDecoration(

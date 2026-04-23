@@ -1,9 +1,8 @@
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_business_details_page.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_selection_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/signup_flow_app_bar.dart';
-import 'package:eventra/features/auth/signup/presentation/widgets/vendor_category_option_chip.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -17,17 +16,17 @@ Widget _buildApp({required SignupBloc bloc, required String initialLocation}) {
     initialLocation: initialLocation,
     routes: [
       GoRoute(
-        path: VendorCategorySelectionPage.path,
-        name: VendorCategorySelectionPage.name,
+        path: VendorBusinessDetailsPage.path,
+        name: VendorBusinessDetailsPage.name,
         builder: (_, _) => BlocProvider.value(
           value: bloc,
-          child: const VendorCategorySelectionPage(),
+          child: const VendorBusinessDetailsPage(),
         ),
       ),
       GoRoute(
-        path: VendorBusinessDetailsPage.path,
-        name: VendorBusinessDetailsPage.name,
-        builder: (_, _) => const Scaffold(body: Text('business-page')),
+        path: WelcomeSuccessPage.path,
+        name: WelcomeSuccessPage.name,
+        builder: (_, _) => const Scaffold(body: Text('welcome-page')),
       ),
     ],
   );
@@ -44,25 +43,49 @@ Widget _buildApp({required SignupBloc bloc, required String initialLocation}) {
 }
 
 void main() {
-  group('VendorCategorySelectionPage', () {
-    testWidgets('shows 3/4 progress for vendor flow', (tester) async {
+  group('VendorBusinessDetailsPage', () {
+    testWidgets('shows 4/4 progress and business form fields', (tester) async {
       final bloc = SignupBloc()..add(const SignupStarted(AccountType.vendor));
       addTearDown(bloc.close);
 
       await tester.pumpWidget(
         _buildApp(
           bloc: bloc,
-          initialLocation: VendorCategorySelectionPage.path,
+          initialLocation: VendorBusinessDetailsPage.path,
         ),
       );
       await tester.pumpAndSettle();
 
       expect(find.byType(SignupFlowAppBar), findsOneWidget);
-      expect(find.text('3/4'), findsOneWidget);
-      expect(find.text('Select your Category'), findsOneWidget);
+      expect(find.text('4/4'), findsOneWidget);
+      expect(find.text('Tell us about your Business'), findsOneWidget);
+      expect(find.text('Business Name'), findsOneWidget);
+      expect(find.text('Business Address'), findsOneWidget);
+      expect(find.text('Business Description'), findsOneWidget);
+      expect(find.text('Upload Business Logo (Optional)'), findsOneWidget);
+      expect(find.text('Upload cover photo (Optional)'), findsOneWidget);
     });
 
-    testWidgets('selected category chip toggles selected state and continues', (
+    testWidgets('continue routes to welcome page', (tester) async {
+      final bloc = SignupBloc()..add(const SignupStarted(AccountType.vendor));
+      addTearDown(bloc.close);
+
+      await tester.pumpWidget(
+        _buildApp(
+          bloc: bloc,
+          initialLocation: VendorBusinessDetailsPage.path,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(find.text('Continue'));
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('welcome-page'), findsOneWidget);
+    });
+
+    testWidgets('tapping address field opens location lookup sheet', (
       tester,
     ) async {
       final bloc = SignupBloc()..add(const SignupStarted(AccountType.vendor));
@@ -71,30 +94,20 @@ void main() {
       await tester.pumpWidget(
         _buildApp(
           bloc: bloc,
-          initialLocation: VendorCategorySelectionPage.path,
+          initialLocation: VendorBusinessDetailsPage.path,
         ),
       );
       await tester.pumpAndSettle();
 
-      final eventPlannerChip = find.widgetWithText(
-        VendorCategoryOptionChip,
-        'Event Planner',
-      );
-      expect(eventPlannerChip, findsOneWidget);
-
-      await tester.tap(eventPlannerChip);
+      await tester.ensureVisible(find.text('Enter Address'));
+      await tester.tap(find.text('Enter Address'));
       await tester.pumpAndSettle();
 
+      expect(find.text('Your current address'), findsOneWidget);
       expect(
-        tester.widget<VendorCategoryOptionChip>(eventPlannerChip).isSelected,
-        isTrue,
+        find.byKey(const Key('home_location_search_input')),
+        findsOneWidget,
       );
-
-      await tester.ensureVisible(find.text('Continue'));
-      await tester.tap(find.text('Continue'));
-      await tester.pumpAndSettle();
-
-      expect(find.text('business-page'), findsOneWidget);
     });
   });
 }

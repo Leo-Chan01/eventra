@@ -65,6 +65,31 @@ class SignupVendorCategoryChanged extends SignupEvent {
   final String category;
 }
 
+class SignupBusinessNameChanged extends SignupEvent {
+  const SignupBusinessNameChanged(this.businessName);
+  final String businessName;
+}
+
+class SignupBusinessAddressChanged extends SignupEvent {
+  const SignupBusinessAddressChanged(this.businessAddress);
+  final String businessAddress;
+}
+
+class SignupBusinessPhoneChanged extends SignupEvent {
+  const SignupBusinessPhoneChanged(this.businessPhoneNumber);
+  final String businessPhoneNumber;
+}
+
+class SignupBusinessServicesChanged extends SignupEvent {
+  const SignupBusinessServicesChanged(this.businessServices);
+  final String businessServices;
+}
+
+class SignupBusinessDescriptionChanged extends SignupEvent {
+  const SignupBusinessDescriptionChanged(this.businessDescription);
+  final String businessDescription;
+}
+
 class SignupSubmitted extends SignupEvent {
   const SignupSubmitted();
 }

@@ -16,6 +16,11 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     on<SignupConfirmPasswordChanged>(_onConfirmPasswordChanged);
     on<SignupReferralCodeChanged>(_onReferralCodeChanged);
     on<SignupVendorCategoryChanged>(_onVendorCategoryChanged);
+    on<SignupBusinessNameChanged>(_onBusinessNameChanged);
+    on<SignupBusinessAddressChanged>(_onBusinessAddressChanged);
+    on<SignupBusinessPhoneChanged>(_onBusinessPhoneChanged);
+    on<SignupBusinessServicesChanged>(_onBusinessServicesChanged);
+    on<SignupBusinessDescriptionChanged>(_onBusinessDescriptionChanged);
     on<SignupSubmitted>(_onSubmitted);
   }
 
@@ -95,6 +100,41 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     Emitter<SignupState> emit,
   ) {
     emit(state.copyWith(selectedVendorCategory: event.category));
+  }
+
+  void _onBusinessNameChanged(
+    SignupBusinessNameChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(businessName: event.businessName));
+  }
+
+  void _onBusinessAddressChanged(
+    SignupBusinessAddressChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(businessAddress: event.businessAddress));
+  }
+
+  void _onBusinessPhoneChanged(
+    SignupBusinessPhoneChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(businessPhoneNumber: event.businessPhoneNumber));
+  }
+
+  void _onBusinessServicesChanged(
+    SignupBusinessServicesChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(businessServices: event.businessServices));
+  }
+
+  void _onBusinessDescriptionChanged(
+    SignupBusinessDescriptionChanged event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(businessDescription: event.businessDescription));
   }
 
   void _onSubmitted(SignupSubmitted event, Emitter<SignupState> emit) {
