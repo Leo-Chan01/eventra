@@ -1,3 +1,4 @@
+import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_oval_overlay_painter.dart';
 import 'package:flutter/material.dart';
 
@@ -45,10 +46,8 @@ class SelfieOvalOverlay extends StatelessWidget {
                 child: Text(
                   moveCloserLabel,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: 16.w500.copyWith(
                     color: labelColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

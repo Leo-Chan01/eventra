@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:camera/camera.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_confirmation_dialog.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_oval_overlay.dart';
+import 'package:eventra/features/auth/signup/presentation/widgets/selfie_success_dialog.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,11 +28,25 @@ class VendorKycSelfiePageState extends State<VendorKycSelfiePage> {
   CameraController? _controller;
   bool _isInitialized = false;
   bool _hasError = false;
+  Timer? _autoCapTimer;
 
   @override
   void initState() {
     super.initState();
     unawaited(_initCamera());
+    _autoCapTimer = Timer(const Duration(seconds: 3), _autoCapture);
+  }
+
+  Future<void> _autoCapture() async {
+    if (!mounted) return;
+    XFile? photo;
+    if (_isInitialized && _controller != null) {
+      try {
+        photo = await _controller!.takePicture();
+      } catch (_) {}
+    }
+    if (!mounted) return;
+    await _showConfirmationThenSuccess(photo);
   }
 
   Future<void> _initCamera() async {
@@ -62,16 +78,28 @@ class VendorKycSelfiePageState extends State<VendorKycSelfiePage> {
   }
 
   Future<void> _onTapCapture() async {
-    if (_controller == null || !_isInitialized) return;
-    try {
-      final photo = await _controller!.takePicture();
-      if (!mounted) return;
-      await SelfieConfirmationDialog.show(context, photo);
-    } catch (_) {}
+    _autoCapTimer?.cancel();
+    XFile? photo;
+    if (_isInitialized && _controller != null) {
+      try {
+        photo = await _controller!.takePicture();
+      } catch (_) {}
+    }
+    if (!mounted) return;
+    await _showConfirmationThenSuccess(photo);
+  }
+
+  Future<void> _showConfirmationThenSuccess(XFile? photo) async {
+    final confirmed = await SelfieConfirmationDialog.show(context, photo);
+    if (confirmed != true || !mounted) return;
+    await SelfieSuccessDialog.show(context);
+    if (!mounted) return;
+    context.goNamed(VendorKycPage.name);
   }
 
   @override
   void dispose() {
+    _autoCapTimer?.cancel();
     _controller?.dispose();
     super.dispose();
   }
@@ -96,14 +124,17 @@ class VendorKycSelfiePageState extends State<VendorKycSelfiePage> {
           SelfieOvalOverlay(
             onTap: _onTapCapture,
             moveCloserLabel: l10n.selfieMoveCloser,
-            overlayColor: colorScheme.scrim.withValues(alpha: 0.62),
-            labelColor: colorScheme.surface,
+            overlayColor: colorScheme.surface.withValues(alpha: 0.7),
+            labelColor: colorScheme.onSurface,
           ),
           Positioned(
             top: MediaQuery.of(context).padding.top + 8,
             left: 8,
             child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new, color: colorScheme.surface),
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: colorScheme.onSurface,
+              ),
               onPressed: () => context.pop(),
             ),
           ),

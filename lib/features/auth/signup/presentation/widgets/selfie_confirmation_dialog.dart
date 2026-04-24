@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/widgets/selfie_preview.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +11,9 @@ class SelfieConfirmationDialog extends StatelessWidget {
     super.key,
   });
 
-  final XFile photo;
+  final XFile? photo;
 
-  static Future<bool?> show(BuildContext context, XFile photo) {
+  static Future<bool?> show(BuildContext context, XFile? photo) {
     return showDialog<bool>(
       context: context,
       barrierDismissible: false,
@@ -31,10 +30,9 @@ class SelfieConfirmationDialog extends StatelessWidget {
       backgroundColor: colorScheme.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+        padding: const EdgeInsets.fromLTRB(24, 20, 24, 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               l10n.selfieQualityTitle,
@@ -46,16 +44,7 @@ class SelfieConfirmationDialog extends StatelessWidget {
               ),
             ),
             24.vertSpacing,
-            Center(
-              child: ClipOval(
-                child: Image.file(
-                  File(photo.path),
-                  width: 200,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            Center(child: SelfiePreview(photo: photo)),
             24.vertSpacing,
             EventraButton(
               buttonText: l10n.selfieUseThis,

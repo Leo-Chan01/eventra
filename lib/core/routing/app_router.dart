@@ -10,6 +10,8 @@ import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_business_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_selection_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_facial_verification_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_selfie_page.dart';
@@ -213,6 +215,16 @@ class AppRouter {
         path: VendorKycSelfiePage.path,
         name: VendorKycSelfiePage.name,
         builder: (context, state) => const VendorKycSelfiePage(),
+      ),
+      GoRoute(
+        path: VendorKycCacPage.path,
+        name: VendorKycCacPage.name,
+        builder: (context, state) => const VendorKycCacPage(),
+      ),
+      GoRoute(
+        path: VendorKycBusinessAddressPage.path,
+        name: VendorKycBusinessAddressPage.name,
+        builder: (context, state) => const VendorKycBusinessAddressPage(),
       ),
       GoRoute(
         path: TermsAndConditionsPage.path,

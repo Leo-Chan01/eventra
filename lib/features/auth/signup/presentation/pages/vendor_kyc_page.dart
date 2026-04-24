@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_facial_verification_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_requirement_tile.dart';
@@ -108,7 +110,14 @@ class VendorKycPageState extends State<VendorKycPage> {
                         leadingIcon: EventraVectors.cacCertificateIcon,
                         isLoading: loadingTile == l10n.vendorKycCacCertificate,
                         onTap: () => unawaited(
-                          simulateKycLoad(tile: l10n.vendorKycCacCertificate),
+                          simulateKycLoad(
+                            tile: l10n.vendorKycCacCertificate,
+                            onCompleted: () {
+                              unawaited(
+                                context.pushNamed(VendorKycCacPage.name),
+                              );
+                            },
+                          ),
                         ),
                       ),
                       12.vertSpacing,
@@ -120,6 +129,13 @@ class VendorKycPageState extends State<VendorKycPage> {
                         onTap: () => unawaited(
                           simulateKycLoad(
                             tile: l10n.vendorKycBusinessAddressProof,
+                            onCompleted: () {
+                              unawaited(
+                                context.pushNamed(
+                                  VendorKycBusinessAddressPage.name,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),

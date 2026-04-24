@@ -37,6 +37,8 @@ class EventraImages {
   static const String johnDoeFour = 'assets/images/john-doe-four.png';
   static const String johndoesecond = 'assets/images/johndoesecond.png';
   static const String johndoethree = 'assets/images/johndoethree.png';
+  static const String kycDummyImagePreview =
+      'assets/images/kyc-dummy-image-preview.jpg';
   static const String ligntningCategoryImage =
       'assets/images/ligntning-category-image.png';
   static const String linkedinLogo = 'assets/images/linkedin-logo.png';

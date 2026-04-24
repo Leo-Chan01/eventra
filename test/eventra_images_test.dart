@@ -36,6 +36,7 @@ void main() {
     expect(File(EventraImages.johnDoeFour).existsSync(), isTrue);
     expect(File(EventraImages.johndoesecond).existsSync(), isTrue);
     expect(File(EventraImages.johndoethree).existsSync(), isTrue);
+    expect(File(EventraImages.kycDummyImagePreview).existsSync(), isTrue);
     expect(File(EventraImages.ligntningCategoryImage).existsSync(), isTrue);
     expect(File(EventraImages.linkedinLogo).existsSync(), isTrue);
     expect(File(EventraImages.liveBandCategoryImage).existsSync(), isTrue);
