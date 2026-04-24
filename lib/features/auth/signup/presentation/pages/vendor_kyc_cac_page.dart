@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_bank_details_page.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:eventra/shared/widgets/eventra_input_fields/eventra_general_textfield.dart';
@@ -73,7 +74,9 @@ class VendorKycCacPageState extends State<VendorKycCacPage> {
               const Spacer(),
               EventraButton(
                 buttonText: l10n.continueButton,
-                onPressed: businessNumber.trim().isEmpty ? null : () {},
+                onPressed: businessNumber.trim().isEmpty
+                    ? null
+                    : () => context.pushNamed(VendorKycBankDetailsPage.name),
               ),
               24.vertSpacing,
             ],

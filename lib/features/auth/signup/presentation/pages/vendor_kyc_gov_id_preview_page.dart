@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_bank_details_page.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
@@ -44,7 +45,7 @@ class VendorKycGovIdPreviewPage extends StatelessWidget {
               const Spacer(flex: 5),
               EventraButton(
                 buttonText: l10n.continueButton,
-                onPressed: () {},
+                onPressed: () => context.pushNamed(VendorKycBankDetailsPage.name),
               ),
               24.vertSpacing,
             ],

@@ -10,8 +10,10 @@ import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_business_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_selection_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_bank_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_congratulations_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_facial_verification_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_preview_page.dart';
@@ -19,6 +21,8 @@ import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_i
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_selfie_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_transaction_pin_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_under_review_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/awaiting_payment_enquiry_page.dart';
@@ -228,6 +232,26 @@ class AppRouter {
         path: VendorKycBusinessAddressPage.path,
         name: VendorKycBusinessAddressPage.name,
         builder: (context, state) => const VendorKycBusinessAddressPage(),
+      ),
+      GoRoute(
+        path: VendorKycBankDetailsPage.path,
+        name: VendorKycBankDetailsPage.name,
+        builder: (context, state) => const VendorKycBankDetailsPage(),
+      ),
+      GoRoute(
+        path: VendorKycTransactionPinPage.path,
+        name: VendorKycTransactionPinPage.name,
+        builder: (context, state) => const VendorKycTransactionPinPage(),
+      ),
+      GoRoute(
+        path: VendorKycUnderReviewPage.path,
+        name: VendorKycUnderReviewPage.name,
+        builder: (context, state) => const VendorKycUnderReviewPage(),
+      ),
+      GoRoute(
+        path: VendorKycCongratulationsPage.path,
+        name: VendorKycCongratulationsPage.name,
+        builder: (context, state) => const VendorKycCongratulationsPage(),
       ),
       GoRoute(
         path: VendorKycGovIdPage.path,

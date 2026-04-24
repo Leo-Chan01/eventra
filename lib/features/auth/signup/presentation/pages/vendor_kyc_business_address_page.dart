@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_bank_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_upload_field.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
@@ -27,6 +28,10 @@ class VendorKycBusinessAddressPageState
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
+    final canContinue =
+        businessAddress.trim().isNotEmpty &&
+        landmark.trim().isNotEmpty &&
+        city.trim().isNotEmpty;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
@@ -144,7 +149,10 @@ class VendorKycBusinessAddressPageState
                         const Spacer(),
                         EventraButton(
                           buttonText: l10n.continueButton,
-                          onPressed: null,
+                          onPressed: canContinue
+                              ? () =>
+                                  context.pushNamed(VendorKycBankDetailsPage.name)
+                              : null,
                         ),
                         24.vertSpacing,
                       ],

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:camera/camera.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_bank_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_confirmation_dialog.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_oval_overlay.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/selfie_success_dialog.dart';
@@ -94,7 +94,7 @@ class VendorKycSelfiePageState extends State<VendorKycSelfiePage> {
     if (confirmed != true || !mounted) return;
     await SelfieSuccessDialog.show(context);
     if (!mounted) return;
-    context.goNamed(VendorKycPage.name);
+    context.goNamed(VendorKycBankDetailsPage.name);
   }
 
   @override
