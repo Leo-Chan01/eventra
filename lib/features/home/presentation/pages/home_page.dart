@@ -5,12 +5,12 @@ import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.da
 import 'package:eventra/features/home/presentation/widgets/home_content.dart';
 import 'package:eventra/features/home/presentation/widgets/home_enquiries_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_filter_options_sheet.dart';
-import 'package:eventra/features/home/presentation/widgets/home_location_lookup_view.dart';
+import 'package:eventra/features/home/presentation/widgets/home_location_lookup_sheet.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_reels_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_page.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_home_content.dart';
 import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,11 +43,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     SafeArea(
                       bottom: false,
-                      child: HomeContent(
-                        state: state,
-                        onOpenFilter: () => _openFilterSheet(context),
-                        onOpenSearch: () => _openSearchTab(context),
-                      ),
+                      child: VendorHomeContent(state: state),
                     ),
                     SafeArea(
                       bottom: false,
@@ -174,37 +170,7 @@ class HomePage extends StatelessWidget {
   }
 
   void _openLocationLookupSheet(BuildContext context) {
-    final homeBloc = context.read<HomeBloc>();
-
-    unawaited(
-      showCupertinoSheet(
-        context: context,
-        // isScrollControlled: true,
-        // useSafeArea: true,
-        // clipBehavior: Clip.antiAlias,
-        // shape: const RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        // ),
-        // backgroundColor: Theme.of(context).colorScheme.surface,
-        builder: (_) {
-          return BlocProvider.value(
-            value: homeBloc,
-            child: BlocBuilder<HomeBloc, HomeState>(
-              builder: (context, state) {
-                return FractionallySizedBox(
-                  heightFactor: 0.98,
-                  child: HomeLocationLookupView(
-                    state: state,
-                    showCloseAction: true,
-                    closeOnSelect: true,
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
-    );
+    unawaited(HomeLocationLookupSheet.show(context));
   }
 
   void _openSearchTab(BuildContext context) {

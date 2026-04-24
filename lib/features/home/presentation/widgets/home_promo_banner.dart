@@ -14,14 +14,23 @@ class HomePromoBanner extends StatefulWidget {
 
 class _HomePromoBannerState extends State<HomePromoBanner> {
   final PageController _pageController = PageController();
+  final List<String> _bannerImages = [
+    EventraImages.headerCarouselImage,
+    EventraImages.weddingPozeraImage,
+    EventraImages.weddingImage,
+  ];
   int _currentPage = 0;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
+    if (_bannerImages.length <= 1) {
+      return;
+    }
+
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      if (_currentPage < 2) {
+      if (_currentPage < _bannerImages.length - 1) {
         _currentPage++;
       } else {
         _currentPage = 0;
@@ -59,18 +68,18 @@ class _HomePromoBannerState extends State<HomePromoBanner> {
                 _currentPage = index;
               });
             },
-            itemCount: 3,
+            itemCount: _bannerImages.length,
             itemBuilder: (context, index) {
               return HomePromoBannerImage(
-                imagePath: index == 1
-                    ? EventraImages.headerCarouselImage
-                    : EventraImages.headerCarouselImage,
+                imagePath: _bannerImages[index],
               );
             },
           ),
         ),
-        const SizedBox(height: 12),
-        HomePromoBannerIndicator(activeIndex: _currentPage),
+        if (_bannerImages.length > 1) ...[
+          const SizedBox(height: 12),
+          HomePromoBannerIndicator(activeIndex: _currentPage),
+        ],
       ],
     );
   }
