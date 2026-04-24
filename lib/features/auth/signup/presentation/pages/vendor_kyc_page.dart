@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_facial_verification_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_requirement_tile.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -91,6 +92,13 @@ class VendorKycPageState extends State<VendorKycPage> {
                         onTap: () => unawaited(
                           simulateKycLoad(
                             tile: l10n.vendorKycFacialVerification,
+                            onCompleted: () {
+                              unawaited(
+                                context.pushNamed(
+                                  VendorKycFacialVerificationPage.name,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
