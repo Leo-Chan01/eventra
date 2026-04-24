@@ -66,7 +66,10 @@ class VendorKycCongratulationsPage extends StatelessWidget {
               const Spacer(),
               EventraButton(
                 buttonText: l10n.homeButton,
-                onPressed: () => context.go(HomePage.path),
+                onPressed: () => context.goNamed(
+                  HomePage.name,
+                  queryParameters: const {'vendor': 'true'},
+                ),
               ),
               24.vertSpacing,
             ],

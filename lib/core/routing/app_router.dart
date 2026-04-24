@@ -1,3 +1,4 @@
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/auth/forgot_password/presentation/pages/forgot_password_otp_page.dart';
 import 'package:eventra/features/auth/forgot_password/presentation/pages/forgot_password_page.dart';
 import 'package:eventra/features/auth/forgot_password/presentation/pages/password_reset_success_page.dart';
@@ -63,6 +64,7 @@ import 'package:eventra/features/onboarding/onboarding_slides/domain/models/acco
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
 import 'package:eventra/playground/widget_canvas.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -92,7 +94,21 @@ class AppRouter {
         name: HomePage.name,
         builder: (context, state) {
           final isGuestMode = state.uri.queryParameters['guest'] == 'true';
-          return HomePage(isGuestMode: isGuestMode);
+          final isVendorByQuery = state.uri.queryParameters['vendor'] == 'true';
+          AccountTypeTrackerState? trackerState;
+          try {
+            trackerState = context.read<AccountTypeTrackerBloc>().state;
+          } catch (_) {
+            trackerState = null;
+          }
+          final isVendorByTracker =
+              trackerState?.isGuestMode == false &&
+              trackerState?.selectedAccountType == AccountType.vendor;
+
+          return HomePage(
+            isGuestMode: isGuestMode,
+            isVendorMode: isVendorByQuery || isVendorByTracker,
+          );
         },
       ),
       GoRoute(

@@ -17,6 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     this.isGuestMode = false,
+    this.isVendorMode = false,
     super.key,
   });
 
@@ -24,10 +25,11 @@ class HomePage extends StatelessWidget {
   static const String name = 'home';
 
   final bool isGuestMode;
+  final bool isVendorMode;
 
   @override
   Widget build(BuildContext context) {
-    final homeKey = ValueKey('home_guest_mode_$isGuestMode');
+    final homeKey = ValueKey('home_${isGuestMode}_$isVendorMode');
     final colorScheme = Theme.of(context).colorScheme;
 
     return BlocBuilder<HomeBloc, HomeState>(
@@ -35,48 +37,97 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           key: homeKey,
           backgroundColor: colorScheme.surface,
-          body: IndexedStack(
-            index: state.currentIndex,
-            children: [
-              SafeArea(
-                bottom: false,
-                child: HomeContent(
-                  state: state,
-                  onOpenFilter: () => _openFilterSheet(context),
-                  onOpenSearch: () => _openSearchTab(context),
+          body: isVendorMode
+              ? IndexedStack(
+                  index: state.currentIndex,
+                  children: [
+                    SafeArea(
+                      bottom: false,
+                      child: HomeContent(
+                        state: state,
+                        onOpenFilter: () => _openFilterSheet(context),
+                        onOpenSearch: () => _openSearchTab(context),
+                      ),
+                    ),
+                    SafeArea(
+                      bottom: false,
+                      child: HomeEnquiriesTab(
+                        state: state,
+                        onOpenFilter: () => _openFilterSheet(context),
+                        onOpenSearch: () => _openSearchTab(context),
+                      ),
+                    ),
+                    SafeArea(
+                      bottom: false,
+                      child: HomeEnquiriesTab(
+                        state: state,
+                        onOpenFilter: () => _openFilterSheet(context),
+                        onOpenSearch: () => _openSearchTab(context),
+                      ),
+                    ),
+                    HomeReelsTab(
+                      reels: state.reels,
+                      onShareReel: (reel) async {
+                        await AppShareBottomSheet.show(
+                          context,
+                          shareText: '${reel.title} on Eventra',
+                        );
+                      },
+                    ),
+                    SafeArea(
+                      bottom: false,
+                      child: HomeProfileTab(
+                        profile: state.profile,
+                        onBack: () {
+                          context.read<HomeBloc>().add(const HomeTabChanged(0));
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              : IndexedStack(
+                  index: state.currentIndex,
+                  children: [
+                    SafeArea(
+                      bottom: false,
+                      child: HomeContent(
+                        state: state,
+                        onOpenFilter: () => _openFilterSheet(context),
+                        onOpenSearch: () => _openSearchTab(context),
+                      ),
+                    ),
+                    SafeArea(
+                      bottom: false,
+                      child: HomeEnquiriesTab(
+                        state: state,
+                        onOpenFilter: () => _openFilterSheet(context),
+                        onOpenSearch: () => _openSearchTab(context),
+                      ),
+                    ),
+                    HomeSearchPage(state: state),
+                    HomeReelsTab(
+                      reels: state.reels,
+                      onShareReel: (reel) async {
+                        await AppShareBottomSheet.show(
+                          context,
+                          shareText: '${reel.title} on Eventra',
+                        );
+                      },
+                    ),
+                    SafeArea(
+                      bottom: false,
+                      child: HomeProfileTab(
+                        profile: state.profile,
+                        onBack: () {
+                          context.read<HomeBloc>().add(const HomeTabChanged(0));
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              SafeArea(
-                bottom: false,
-                child: HomeEnquiriesTab(
-                  state: state,
-                  onOpenFilter: () => _openFilterSheet(context),
-                  onOpenSearch: () => _openSearchTab(context),
-                ),
-              ),
-              HomeSearchPage(state: state),
-              HomeReelsTab(
-                reels: state.reels,
-                onShareReel: (reel) async {
-                  await AppShareBottomSheet.show(
-                    context,
-                    shareText: '${reel.title} on Eventra',
-                  );
-                },
-              ),
-              SafeArea(
-                bottom: false,
-                child: HomeProfileTab(
-                  profile: state.profile,
-                  onBack: () {
-                    context.read<HomeBloc>().add(const HomeTabChanged(0));
-                  },
-                ),
-              ),
-            ],
-          ),
           bottomNavigationBar: EventraBottomNav(
             currentIndex: state.currentIndex,
+            isVendorMode: isVendorMode,
             onTap: (index) {
               context.read<HomeBloc>().add(HomeTabChanged(index));
             },

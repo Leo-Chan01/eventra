@@ -23,9 +23,9 @@ class WelcomeSuccessPage extends StatelessWidget {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final isVendor = context.select(
-      (SignupBloc bloc) => bloc.state.accountType == AccountType.vendor,
-    );
+    final isVendor =
+      context.select<SignupBloc, AccountType>((bloc) => bloc.state.accountType) ==
+      AccountType.vendor;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
@@ -83,7 +83,14 @@ class WelcomeSuccessPage extends StatelessWidget {
               const Spacer(),
               EventraButton(
                 buttonText: l10n.homeButton,
-                onPressed: () => context.go(HomePage.path),
+                onPressed: () {
+                  context.goNamed(
+                    HomePage.name,
+                    queryParameters: isVendor
+                        ? {'vendor': 'true'}
+                        : const {},
+                  );
+                },
               ),
               if (isVendor) ...[
                 12.vertSpacing,
