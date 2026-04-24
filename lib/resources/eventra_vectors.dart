@@ -21,6 +21,8 @@ class EventraVectors {
   static const String bankIconIsolated = 'assets/svgs/bank-icon-isolated.svg';
   static const String basilVideoOutlineClient =
       'assets/svgs/basil_video-outline-client.svg';
+  static const String cacCertificateIcon =
+      'assets/svgs/cac-certificate-icon.svg';
   static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
   static const String callIcon = 'assets/svgs/call-icon.svg';
   static const String cancelIconNoCircle =
@@ -48,6 +50,8 @@ class EventraVectors {
       'assets/svgs/credit-card-blue-gb-icon.svg';
   static const String deleteAccountIconProfileSettings =
       'assets/svgs/delete-account-icon-profile-settings.svg';
+  static const String detailsUnderReviewIllustration =
+      'assets/svgs/details-under-review-illustration.svg';
   static const String downloadContractIcon =
       'assets/svgs/download-contract-icon.svg';
   static const String editPencilElevated =
@@ -57,12 +61,16 @@ class EventraVectors {
   static const String eventraPrimaryText =
       'assets/svgs/eventra-primary-text.svg';
   static const String eyeViewsIcon = 'assets/svgs/eye-views-icon.svg';
+  static const String facialVerification =
+      'assets/svgs/facial-verification.svg';
   static const String feedbackChatBubbleIconProfileSettings =
       'assets/svgs/feedback-chat-bubble-icon-profile-settings.svg';
   static const String filterIcon = 'assets/svgs/filter_icon.svg';
   static const String goodCheckGreenDottedCircle =
       'assets/svgs/good-check-green-dotted-circle.svg';
   static const String goodCheckGreen = 'assets/svgs/good-check-green.svg';
+  static const String goodLighteningIcon =
+      'assets/svgs/good-lightening-icon.svg';
   static const String googleIcon = 'assets/svgs/google-icon.svg';
   static const String heartIsolated = 'assets/svgs/heart-isolated.svg';
   static const String helpSupportIconProfileSettings =
@@ -94,6 +102,8 @@ class EventraVectors {
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';
   static const String nextPageArrowIcon =
       'assets/svgs/next-page-arrow-icon.svg';
+  static const String ninGovIssuedCertIcon =
+      'assets/svgs/nin-gov-issued-cert-icon.svg';
   static const String notificaionBellIconProfileSettings =
       'assets/svgs/notificaion-bell-icon-profile-settings.svg';
   static const String notificationBellNobadge =
@@ -108,6 +118,7 @@ class EventraVectors {
       'assets/svgs/personal-information-icon-profile-settings.svg';
   static const String playWhiteIconPlay =
       'assets/svgs/play-white-icon_play.svg';
+  static const String primeUploadIcon = 'assets/svgs/prime-upload-icon.svg';
   static const String privacySecurityIconProfileSettings =
       'assets/svgs/privacy-security-icon-profile-settings.svg';
   static const String redCancelIcon = 'assets/svgs/red-cancel-icon.svg';
@@ -116,6 +127,8 @@ class EventraVectors {
   static const String searchNormal = 'assets/svgs/search-normal.svg';
   static const String secureHalfOrgangeIconContract =
       'assets/svgs/secure-half-organge-icon-contract.svg';
+  static const String selfieIllustration =
+      'assets/svgs/selfie-illustration.svg';
   static const String sendIconChatPage = 'assets/svgs/send-icon-chat-page.svg';
   static const String shareButtonVendorDeets =
       'assets/svgs/share-button-vendor-deets.svg';
@@ -138,6 +151,7 @@ class EventraVectors {
   static const String ticketIconEvents = 'assets/svgs/ticket-icon-events.svg';
   static const String transparentGreenCheckIconIconProfileSettings =
       'assets/svgs/transparent-green-check-icon-icon-profile-settings.svg';
+  static const String uncoveredFaceIcon = 'assets/svgs/uncovered-face-icon.svg';
   static const String uploadBusinessLogo =
       'assets/svgs/upload-business-logo.svg';
   static const String uploadCoverPhoto = 'assets/svgs/upload-cover-photo.svg';

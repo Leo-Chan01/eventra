@@ -1,7 +1,7 @@
 import 'package:eventra/core/utils/lottie_decorder.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -91,7 +91,7 @@ class WelcomeSuccessPage extends StatelessWidget {
                   buttonText: l10n.continueKycButton,
                   textColor: colorScheme.primary,
                   borderColor: colorScheme.outline.withValues(alpha: 0.2),
-                  onPressed: () => context.pushNamed(TermsAndConditionsPage.name),
+                  onPressed: () => context.pushNamed(VendorKycPage.name),
                 ),
               ],
               24.vertSpacing,

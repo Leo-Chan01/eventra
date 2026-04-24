@@ -1,6 +1,6 @@
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/bloc/signup_event.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -29,9 +29,9 @@ Widget _buildApp({required SignupBloc bloc, required String initialLocation}) {
         builder: (_, _) => const Scaffold(body: Text('home-page')),
       ),
       GoRoute(
-        path: TermsAndConditionsPage.path,
-        name: TermsAndConditionsPage.name,
-        builder: (_, _) => const Scaffold(body: Text('terms-page')),
+        path: VendorKycPage.path,
+        name: VendorKycPage.name,
+        builder: (_, _) => const Scaffold(body: Text('vendor-kyc-page')),
       ),
     ],
   );
@@ -70,7 +70,9 @@ void main() {
       expect(find.text('Continue KYC'), findsOneWidget);
     });
 
-    testWidgets('continue kyc routes to terms page for vendor', (tester) async {
+    testWidgets('continue kyc routes to vendor kyc page for vendor', (
+      tester,
+    ) async {
       tester.view.physicalSize = const Size(1170, 2532);
       tester.view.devicePixelRatio = 3;
       addTearDown(tester.view.reset);
@@ -91,7 +93,7 @@ void main() {
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 500));
 
-      expect(find.text('terms-page'), findsOneWidget);
+      expect(find.text('vendor-kyc-page'), findsOneWidget);
     });
 
     testWidgets('hides continue kyc button for client account type', (

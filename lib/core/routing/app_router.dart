@@ -10,6 +10,7 @@ import 'package:eventra/features/auth/signup/presentation/pages/signup_page.dart
 import 'package:eventra/features/auth/signup/presentation/pages/terms_and_conditions_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_business_details_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_selection_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/awaiting_payment_enquiry_page.dart';
@@ -189,6 +190,11 @@ class AppRouter {
         path: WelcomeSuccessPage.path,
         name: WelcomeSuccessPage.name,
         builder: (context, state) => const WelcomeSuccessPage(),
+      ),
+      GoRoute(
+        path: VendorKycPage.path,
+        name: VendorKycPage.name,
+        builder: (context, state) => const VendorKycPage(),
       ),
       GoRoute(
         path: TermsAndConditionsPage.path,
