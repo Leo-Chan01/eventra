@@ -33,7 +33,8 @@ class OnboardingLoadingView extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        // backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: Colors.white,
         body: Center(
           // child: Lottie.asset(
           //   EventraAnims.splash,

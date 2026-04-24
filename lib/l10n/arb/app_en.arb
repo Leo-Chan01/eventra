@@ -310,6 +310,8 @@
     "navSearch": "Search",
     "navShowcase": "Reels",
     "navProfile": "Profile",
+    "navInbox": "Inbox",
+    "navBookings": "Bookings",
     "homeProfileSettingsTitle": "Settings",
     "homeProfileMemberSince": "Member since {monthYear}",
     "@homeProfileMemberSince": {

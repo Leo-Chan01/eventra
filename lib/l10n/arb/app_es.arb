@@ -178,6 +178,8 @@
     "navSearch": "Buscar",
     "navShowcase": "Favoritos",
     "navProfile": "Perfil",
+    "navInbox": "Bandeja",
+    "navBookings": "Reservas",
     "homeProfileSettingsTitle": "Configuración",
     "homeProfileMemberSince": "Miembro desde {monthYear}",
     "@homeProfileMemberSince": {
