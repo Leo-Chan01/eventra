@@ -100,7 +100,7 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.ensureVisible(find.text('Enter Address'));
-      await tester.tap(find.text('Enter Address'));
+      await tester.tap(find.text('Enter Address'), warnIfMissed: false);
       await tester.pumpAndSettle();
 
       expect(find.text('Your current address'), findsOneWidget);

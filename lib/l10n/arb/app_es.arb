@@ -49,6 +49,7 @@
     "vendorKycTitle": "Completa tu kyc",
     "vendorKycSubtitle": "Completa el formulario a continuacion para que sea mas facil conocerte.",
     "vendorKycNin": "NIN",
+    "vendorKycNinHint": "Ingresa tu NIN",
     "vendorKycFacialVerification": "Verificacion facial",
     "vendorKycCacCertificate": "Certificado C.A.C",
     "vendorKycBusinessAddressProof": "Comprobante de direccion del negocio",

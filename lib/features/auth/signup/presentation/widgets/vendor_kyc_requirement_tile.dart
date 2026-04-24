@@ -1,4 +1,5 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_loading_indicator.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,12 +8,14 @@ class VendorKycRequirementTile extends StatelessWidget {
   const VendorKycRequirementTile({
     required this.title,
     required this.leadingIcon,
+    this.isLoading = false,
     this.onTap,
     super.key,
   });
 
   final String title;
   final String leadingIcon;
+  final bool isLoading;
   final VoidCallback? onTap;
 
   @override
@@ -59,15 +62,18 @@ class VendorKycRequirementTile extends StatelessWidget {
               ),
             ),
             12.horizSpacing,
-            SvgPicture.asset(
-              EventraVectors.angleLeft,
-              width: 20,
-              height: 20,
-              colorFilter: ColorFilter.mode(
-                colorScheme.primary,
-                BlendMode.srcIn,
+            if (isLoading)
+              const VendorKycLoadingIndicator()
+            else
+              SvgPicture.asset(
+                EventraVectors.angleLeft,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.primary,
+                  BlendMode.srcIn,
+                ),
               ),
-            ),
           ],
         ),
       ),

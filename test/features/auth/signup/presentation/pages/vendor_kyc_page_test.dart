@@ -1,17 +1,36 @@
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
+import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_loading_indicator.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 
 Widget _buildApp() {
+  final router = GoRouter(
+    initialLocation: VendorKycPage.path,
+    routes: [
+      GoRoute(
+        path: VendorKycPage.path,
+        name: VendorKycPage.name,
+        builder: (_, _) => const VendorKycPage(),
+      ),
+      GoRoute(
+        path: VendorKycNinPage.path,
+        name: VendorKycNinPage.name,
+        builder: (_, _) => const Scaffold(body: Text('vendor-kyc-nin-page')),
+      ),
+    ],
+  );
+
   return ScreenUtilInit(
     designSize: const Size(375, 812),
     minTextAdapt: true,
-    builder: (_, _) => MaterialApp(
+    builder: (_, _) => MaterialApp.router(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const VendorKycPage(),
+      routerConfig: router,
     ),
   );
 }
@@ -21,6 +40,10 @@ void main() {
     testWidgets('shows kyc title, requirements, and disabled continue button', (
       tester,
     ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
       await tester.pumpWidget(_buildApp());
       await tester.pumpAndSettle();
 
@@ -46,6 +69,50 @@ void main() {
             .first,
       );
       expect(continueButton.onPressed, isNull);
+    });
+
+    testWidgets('shows custom loader on tile tap while waiting', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
+      await tester.pumpWidget(_buildApp());
+      await tester.pumpAndSettle();
+
+      expect(find.byType(VendorKycLoadingIndicator), findsNothing);
+
+      await tester.tap(find.text('NIN'));
+      await tester.pump();
+
+      expect(find.byType(VendorKycLoadingIndicator), findsOneWidget);
+
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(find.byType(VendorKycLoadingIndicator), findsOneWidget);
+
+      await tester.pump(const Duration(milliseconds: 1000));
+      await tester.pumpAndSettle();
+      expect(find.byType(VendorKycLoadingIndicator), findsNothing);
+    });
+
+    testWidgets('navigates to nin page after loading simulation', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
+      await tester.pumpWidget(_buildApp());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('NIN'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 1500));
+      await tester.pumpAndSettle();
+
+      expect(find.text('vendor-kyc-nin-page'), findsOneWidget);
+      expect(find.byType(VendorKycLoadingIndicator), findsNothing);
     });
   });
 }

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_requirement_tile.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
@@ -6,11 +9,18 @@ import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class VendorKycPage extends StatelessWidget {
+class VendorKycPage extends StatefulWidget {
   const VendorKycPage({super.key});
 
   static const String path = '/vendor-kyc';
   static const String name = 'vendor-kyc';
+
+  @override
+  State<VendorKycPage> createState() => VendorKycPageState();
+}
+
+class VendorKycPageState extends State<VendorKycPage> {
+  String? loadingTile;
 
   @override
   Widget build(BuildContext context) {
@@ -60,26 +70,59 @@ class VendorKycPage extends StatelessWidget {
                       VendorKycRequirementTile(
                         title: l10n.vendorKycNin,
                         leadingIcon: EventraVectors.ninGovIssuedCertIcon,
+                        isLoading: loadingTile == l10n.vendorKycNin,
+                        onTap: () => unawaited(
+                          simulateKycLoad(
+                            tile: l10n.vendorKycNin,
+                            onCompleted: () {
+                              unawaited(
+                                context.pushNamed(VendorKycNinPage.name),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                       12.vertSpacing,
                       VendorKycRequirementTile(
                         title: l10n.vendorKycFacialVerification,
                         leadingIcon: EventraVectors.facialVerification,
+                        isLoading:
+                            loadingTile == l10n.vendorKycFacialVerification,
+                        onTap: () => unawaited(
+                          simulateKycLoad(
+                            tile: l10n.vendorKycFacialVerification,
+                          ),
+                        ),
                       ),
                       12.vertSpacing,
                       VendorKycRequirementTile(
                         title: l10n.vendorKycCacCertificate,
                         leadingIcon: EventraVectors.cacCertificateIcon,
+                        isLoading: loadingTile == l10n.vendorKycCacCertificate,
+                        onTap: () => unawaited(
+                          simulateKycLoad(tile: l10n.vendorKycCacCertificate),
+                        ),
                       ),
                       12.vertSpacing,
                       VendorKycRequirementTile(
                         title: l10n.vendorKycBusinessAddressProof,
                         leadingIcon: EventraVectors.addressIcon,
+                        isLoading:
+                            loadingTile == l10n.vendorKycBusinessAddressProof,
+                        onTap: () => unawaited(
+                          simulateKycLoad(
+                            tile: l10n.vendorKycBusinessAddressProof,
+                          ),
+                        ),
                       ),
                       12.vertSpacing,
                       VendorKycRequirementTile(
                         title: l10n.vendorKycGovernmentId,
                         leadingIcon: EventraVectors.ninGovIssuedCertIcon,
+                        isLoading: loadingTile == l10n.vendorKycGovernmentId,
+                        onTap: () => unawaited(
+                          simulateKycLoad(tile: l10n.vendorKycGovernmentId),
+                        ),
                       ),
                       16.vertSpacing,
                     ],
@@ -96,5 +139,30 @@ class VendorKycPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> simulateKycLoad({
+    required String tile,
+    VoidCallback? onCompleted,
+  }) async {
+    if (loadingTile != null) {
+      return;
+    }
+
+    setState(() {
+      loadingTile = tile;
+    });
+
+    await Future<void>.delayed(const Duration(milliseconds: 1400));
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      loadingTile = null;
+    });
+
+    onCompleted?.call();
   }
 }
