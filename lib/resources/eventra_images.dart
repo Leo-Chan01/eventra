@@ -31,6 +31,7 @@ class EventraImages {
       'assets/images/hall-category-image.png';
   static const String headerCarouselImage =
       'assets/images/header-carousel-image.png';
+  static const String idCardDummy = 'assets/images/id-card-dummy.png';
   static const String instagramLogo = 'assets/images/instagram-logo.png';
   static const String invoiceImage = 'assets/images/invoice-image.png';
   static const String janeDoe = 'assets/images/jane-doe.png';

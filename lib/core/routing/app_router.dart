@@ -13,9 +13,12 @@ import 'package:eventra/features/auth/signup/presentation/pages/vendor_category_
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_facial_verification_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_preview_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_scan_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
-import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_selfie_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_selfie_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/welcome_success_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/awaiting_payment_enquiry_page.dart';
@@ -225,6 +228,21 @@ class AppRouter {
         path: VendorKycBusinessAddressPage.path,
         name: VendorKycBusinessAddressPage.name,
         builder: (context, state) => const VendorKycBusinessAddressPage(),
+      ),
+      GoRoute(
+        path: VendorKycGovIdPage.path,
+        name: VendorKycGovIdPage.name,
+        builder: (context, state) => const VendorKycGovIdPage(),
+      ),
+      GoRoute(
+        path: VendorKycGovIdScanPage.path,
+        name: VendorKycGovIdScanPage.name,
+        builder: (context, state) => const VendorKycGovIdScanPage(),
+      ),
+      GoRoute(
+        path: VendorKycGovIdPreviewPage.path,
+        name: VendorKycGovIdPreviewPage.name,
+        builder: (context, state) => const VendorKycGovIdPreviewPage(),
       ),
       GoRoute(
         path: TermsAndConditionsPage.path,

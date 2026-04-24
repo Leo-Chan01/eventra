@@ -9,6 +9,7 @@ class VendorKycRequirementTile extends StatelessWidget {
     required this.title,
     required this.leadingIcon,
     this.isLoading = false,
+    this.isSelected = false,
     this.onTap,
     super.key,
   });
@@ -16,6 +17,7 @@ class VendorKycRequirementTile extends StatelessWidget {
   final String title;
   final String leadingIcon;
   final bool isLoading;
+  final bool isSelected;
   final VoidCallback? onTap;
 
   @override
@@ -31,7 +33,9 @@ class VendorKycRequirementTile extends StatelessWidget {
           color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: colorScheme.outline.withValues(alpha: 0.2),
+            color: isSelected
+                ? colorScheme.primary
+                : colorScheme.outline.withValues(alpha: 0.2),
           ),
         ),
         child: Row(

@@ -1,6 +1,7 @@
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_loading_indicator.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -33,6 +34,11 @@ Widget _buildApp() {
         name: VendorKycBusinessAddressPage.name,
         builder: (_, _) =>
             const Scaffold(body: Text('vendor-kyc-business-address-page')),
+      ),
+      GoRoute(
+        path: VendorKycGovIdPage.path,
+        name: VendorKycGovIdPage.name,
+        builder: (_, _) => const Scaffold(body: Text('vendor-kyc-gov-id-page')),
       ),
     ],
   );
@@ -99,6 +105,11 @@ void main() {
       await tester.tap(find.text('NIN'));
       await tester.pump();
 
+      expect(find.byType(VendorKycLoadingIndicator), findsNothing);
+
+      await tester.tap(find.text('Continue'));
+      await tester.pump();
+
       expect(find.byType(VendorKycLoadingIndicator), findsOneWidget);
 
       await tester.pump(const Duration(milliseconds: 500));
@@ -121,6 +132,8 @@ void main() {
 
       await tester.tap(find.text('NIN'));
       await tester.pump();
+      await tester.tap(find.text('Continue'));
+      await tester.pump();
       await tester.pump(const Duration(milliseconds: 1500));
       await tester.pumpAndSettle();
 
@@ -139,6 +152,8 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.tap(find.text('C.A.C Certificate'));
+      await tester.pump();
+      await tester.tap(find.text('Continue'));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 1500));
       await tester.pumpAndSettle();
@@ -159,6 +174,8 @@ void main() {
 
         await tester.tap(find.text('Prof of Business Address'));
         await tester.pump();
+        await tester.tap(find.text('Continue'));
+        await tester.pump();
         await tester.pump(const Duration(milliseconds: 1500));
         await tester.pumpAndSettle();
 
@@ -166,5 +183,60 @@ void main() {
         expect(find.byType(VendorKycLoadingIndicator), findsNothing);
       },
     );
+
+    testWidgets('navigates to gov id page after loading simulation', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
+      await tester.pumpWidget(_buildApp());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Gov. issued ID'));
+      await tester.pump();
+      await tester.tap(find.text('Continue'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 1500));
+      await tester.pumpAndSettle();
+
+      expect(find.text('vendor-kyc-gov-id-page'), findsOneWidget);
+      expect(find.byType(VendorKycLoadingIndicator), findsNothing);
+    });
+
+    testWidgets('continue remains disabled until tile selection', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+
+      await tester.pumpWidget(_buildApp());
+      await tester.pumpAndSettle();
+
+      ElevatedButton continueButton = tester.widget<ElevatedButton>(
+        find
+            .descendant(
+              of: find.byType(VendorKycPage),
+              matching: find.byType(ElevatedButton),
+            )
+            .first,
+      );
+      expect(continueButton.onPressed, isNull);
+
+      await tester.tap(find.text('NIN'));
+      await tester.pumpAndSettle();
+
+      continueButton = tester.widget<ElevatedButton>(
+        find
+            .descendant(
+              of: find.byType(VendorKycPage),
+              matching: find.byType(ElevatedButton),
+            )
+            .first,
+      );
+      expect(continueButton.onPressed, isNotNull);
+    });
   });
 }
