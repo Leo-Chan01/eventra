@@ -59,6 +59,7 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/features/home/presentation/pages/vendor_transfer_success_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
@@ -109,6 +110,14 @@ class AppRouter {
             isGuestMode: isGuestMode,
             isVendorMode: isVendorByQuery || isVendorByTracker,
           );
+        },
+      ),
+      GoRoute(
+        path: VendorTransferSuccessPage.path,
+        name: VendorTransferSuccessPage.name,
+        builder: (context, state) {
+          final amount = state.extra as String? ?? '';
+          return VendorTransferSuccessPage(amount: amount);
         },
       ),
       GoRoute(

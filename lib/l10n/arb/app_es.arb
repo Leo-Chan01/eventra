@@ -194,6 +194,27 @@
     "vendorHomeThisMonthEarnings": "Ganancias de este mes",
     "vendorHomeReviews": "Reseñas",
     "vendorHomeMenuListings": "Listados de menú",
+    "vendorTransferTitle": "Transferencia",
+    "vendorTransferEnterAmountLabel": "Ingresar monto",
+    "vendorTransferAmountHint": "0:00",
+    "vendorTransferSendButton": "Enviar",
+    "vendorTransferBankBadge": "GTCO",
+    "vendorTransferAccountName": "Kebokwu Ogechukwu Paul",
+    "vendorTransferAccountNumber": "0245942236",
+    "vendorTransferBankName": "Gtbank",
+    "vendorTransferPinTitle": "Ingresar PIN de transacción",
+    "vendorTransferForgotPin": "¿Olvidaste el PIN?",
+    "vendorTransferSuccessTitle": "Transferencia exitosa",
+    "vendorTransferSuccessMessage": "La transferencia de {amount} ha sido enviada a tu cuenta de Gtbank",
+    "@vendorTransferSuccessMessage": {
+      "placeholders": {
+        "amount": {
+          "type": "String"
+        }
+      }
+    },
+    "vendorTransferSuccessWaitMessage": "Espera 5 minutos para que el dinero se refleje en tu cuenta",
+    "vendorTransferSuccessRef": "N. de ref.: 64783hfu83949",
     "homeProfileSettingsTitle": "Configuración",
     "homeProfileMemberSince": "Miembro desde {monthYear}",
     "@homeProfileMemberSince": {
