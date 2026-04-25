@@ -189,6 +189,29 @@
     "vendorBookingsPendingBanner": "El cliente quiere tus servicios. Haz clic para aprobar o rechazar",
     "vendorPendingBookingConfirm": "Confirmar",
     "vendorPendingBookingReject": "Rechazar",
+    "vendorBookingConfirmedTitle": "Confirmación exitosa",
+    "vendorBookingConfirmedSubtitle": "Acabas de confirmar la solicitud de {clientName}. Puedes chatear con {clientName} para obtener más información",
+    "@vendorBookingConfirmedSubtitle": {
+      "placeholders": {
+        "clientName": { "type": "String" }
+      }
+    },
+    "vendorBookingJobCompletedTitle": "Trabajo completado",
+    "vendorBookingJobCompletedSubtitle": "Se ha enviado un mensaje a {clientName} para confirmar si el trabajo ha sido completado",
+    "@vendorBookingJobCompletedSubtitle": {
+      "placeholders": {
+        "clientName": { "type": "String" }
+      }
+    },
+    "vendorBookingRejectedTitle": "Rechazado",
+    "vendorBookingRejectedSubtitle": "Acabas de rechazar la solicitud de {clientName}.",
+    "@vendorBookingRejectedSubtitle": {
+      "placeholders": {
+        "clientName": { "type": "String" }
+      }
+    },
+    "vendorBookingDialogOkay": "Listo",
+    "vendorBookingDialogBackToEnquiry": "Volver a la solicitud",
     "vendorHomeBookings": "RESERVAS",
     "vendorHomeTodaysEnquiries": "Consultas de hoy",
     "vendorHomeUpcomingEvents": "Próximos eventos",

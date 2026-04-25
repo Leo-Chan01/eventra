@@ -1,7 +1,8 @@
-import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_booking_action_dialog.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/shared/theme/color_schemes.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -167,10 +168,17 @@ class VendorPendingBookingBottomSheet extends StatelessWidget {
                   Expanded(
                     child: EventraButton(
                       buttonText: l10n.vendorPendingBookingConfirm,
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.of(context).pop();
-                        GlobalSnackBar.showInfo(
-                          l10n.notificationsActionComingSoon,
+                        await VendorBookingActionDialog.show(
+                          context,
+                          iconData: Icons.check_rounded,
+                          iconColor: AppColorSchemes.success,
+                          title: l10n.vendorBookingConfirmedTitle,
+                          subtitle: l10n.vendorBookingConfirmedSubtitle(
+                            args.vendor.name,
+                          ),
+                          buttonLabel: l10n.vendorBookingDialogOkay,
                         );
                       },
                     ),
@@ -181,10 +189,17 @@ class VendorPendingBookingBottomSheet extends StatelessWidget {
                       buttonText: l10n.vendorPendingBookingReject,
                       textColor: colorScheme.error,
                       borderColor: colorScheme.error,
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.of(context).pop();
-                        GlobalSnackBar.showInfo(
-                          l10n.notificationsActionComingSoon,
+                        await VendorBookingActionDialog.show(
+                          context,
+                          iconData: Icons.close_rounded,
+                          iconColor: colorScheme.error,
+                          title: l10n.vendorBookingRejectedTitle,
+                          subtitle: l10n.vendorBookingRejectedSubtitle(
+                            args.vendor.name,
+                          ),
+                          buttonLabel: l10n.vendorBookingDialogBackToEnquiry,
                         );
                       },
                     ),
