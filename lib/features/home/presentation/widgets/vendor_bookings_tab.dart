@@ -1,9 +1,9 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
 import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/models/vendor_booking_filter_type.dart';
+import 'package:eventra/features/home/presentation/pages/vendor_completed_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_ongoing_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/widgets/home_enquiry_banner.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_bar.dart';
@@ -157,15 +157,8 @@ class VendorBookingsTabState extends State<VendorBookingsTab> {
 
                       if (item.status == HomeEnquiryStatus.completed) {
                         await context.pushNamed(
-                          CompletedEnquiryDetailPage.name,
-                          extra: CompletedEnquiryDetailPageArgs(
-                            vendor: item.vendor,
-                            invoiceId: '6354728',
-                            bookingReferenceId: '737367483929210',
-                            amountPaid: 10500000,
-                            dateIssued: DateTime(2025, 4, 24),
-                            eventDate: DateTime(2025, 7, 6),
-                          ),
+                          VendorCompletedJobDetailPage.name,
+                          extra: flowArgs,
                         );
                         return;
                       }

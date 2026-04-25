@@ -59,6 +59,7 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/features/home/presentation/pages/vendor_completed_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_ongoing_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_transfer_success_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
@@ -388,6 +389,11 @@ class AppRouter {
         path: VendorOngoingJobDetailPage.path,
         name: VendorOngoingJobDetailPage.name,
         builder: (context, state) => const VendorOngoingJobDetailPage(),
+      ),
+      GoRoute(
+        path: VendorCompletedJobDetailPage.path,
+        name: VendorCompletedJobDetailPage.name,
+        builder: (context, state) => const VendorCompletedJobDetailPage(),
       ),
       GoRoute(
         path: ReviewSubmittedPage.path,
