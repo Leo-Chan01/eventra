@@ -2,6 +2,7 @@ import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_contract_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_booking_action_dialog.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_ongoing_job_actions.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_ongoing_job_details_card.dart';
@@ -51,8 +52,11 @@ class VendorOngoingJobDetailPage extends StatelessWidget {
               VendorOngoingJobHeader(
                 viewReceiptLabel: l10n.vendorOngoingJobViewReceipt,
                 onBack: () => Navigator.of(context).maybePop(),
-                onViewReceipt: () {
-                  GlobalSnackBar.showInfo(l10n.notificationsReceiptComingSoon);
+                onViewReceipt: () async {
+                  await context.pushNamed(
+                    EnquiryInvoicePage.name,
+                    extra: args,
+                  );
                 },
               ),
               14.vertSpacing,

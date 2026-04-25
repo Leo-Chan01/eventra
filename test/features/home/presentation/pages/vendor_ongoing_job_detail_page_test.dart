@@ -1,5 +1,6 @@
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_contract_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/home/domain/models/vendor.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_ongoing_job_detail_page.dart';
 import 'package:eventra/l10n/l10n.dart';
@@ -57,6 +58,11 @@ void main() {
             name: EnquiryContractPage.name,
             builder: (context, state) => const EnquiryContractPage(),
           ),
+          GoRoute(
+            path: EnquiryInvoicePage.path,
+            name: EnquiryInvoicePage.name,
+            builder: (context, state) => const EnquiryInvoicePage(),
+          ),
         ],
       );
 
@@ -78,6 +84,14 @@ void main() {
       expect(find.text('Additional Note'), findsOneWidget);
       expect(find.text('View Contract'), findsOneWidget);
       expect(find.text('I have completed the Job'), findsOneWidget);
+
+      await tester.tap(find.text('View Receipt'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Deliverables'), findsOneWidget);
+
+      await tester.tap(find.byType(IconButton).first);
+      await tester.pumpAndSettle();
 
       await tester.ensureVisible(find.text('View Contract'));
       await tester.tap(find.text('View Contract'));
