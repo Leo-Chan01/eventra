@@ -27,6 +27,7 @@ void main() {
     expect(File(EventraVectors.bankIconIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.basilVideoOutlineClient).existsSync(), isTrue);
     expect(File(EventraVectors.cacCertificateIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.calendarGreenLineIcon).existsSync(), isTrue);
     expect(File(EventraVectors.calendarIcon).existsSync(), isTrue);
     expect(File(EventraVectors.callIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
@@ -53,6 +54,7 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.clientVector).existsSync(), isTrue);
+    expect(File(EventraVectors.clockOrangeLineIcon).existsSync(), isTrue);
     expect(File(EventraVectors.copyBlackIcon).existsSync(), isTrue);
     expect(File(EventraVectors.copyIconWhiteBg).existsSync(), isTrue);
     expect(File(EventraVectors.creditCardBlueGbIcon).existsSync(), isTrue);
@@ -95,6 +97,7 @@ void main() {
     expect(File(EventraVectors.homeIconSearch).existsSync(), isTrue);
     expect(File(EventraVectors.infoIconOrange).existsSync(), isTrue);
     expect(File(EventraVectors.infoIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.locationPinLineIconBlue).existsSync(), isTrue);
     expect(File(EventraVectors.locationPinLineIcon).existsSync(), isTrue);
     expect(File(EventraVectors.locationPin).existsSync(), isTrue);
     expect(File(EventraVectors.logoutIconProfileSettings).existsSync(), isTrue);
@@ -150,6 +153,10 @@ void main() {
     expect(File(EventraVectors.shareIconIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.shopIcon).existsSync(), isTrue);
     expect(File(EventraVectors.showcaseIcon).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.simpleLineIconsCalenderOrange).existsSync(),
+      isTrue,
+    );
     expect(
       File(EventraVectors.solarLikeBrokenSaveVideoIcon).existsSync(),
       isTrue,

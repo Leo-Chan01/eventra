@@ -26,6 +26,8 @@ class EventraVectors {
       'assets/svgs/basil_video-outline-client.svg';
   static const String cacCertificateIcon =
       'assets/svgs/cac-certificate-icon.svg';
+  static const String calendarGreenLineIcon =
+      'assets/svgs/calendar-green-line-icon.svg';
   static const String calendarIcon = 'assets/svgs/calendar-icon.svg';
   static const String callIcon = 'assets/svgs/call-icon.svg';
   static const String cancelIconNoCircle =
@@ -47,6 +49,8 @@ class EventraVectors {
   static const String checkmarkSolidGreenIconProfileSettings =
       'assets/svgs/checkmark-solid-green-icon-profile-settings.svg';
   static const String clientVector = 'assets/svgs/client-vector.svg';
+  static const String clockOrangeLineIcon =
+      'assets/svgs/clock-orange-line-icon.svg';
   static const String copyBlackIcon = 'assets/svgs/copy-black-icon.svg';
   static const String copyIconWhiteBg = 'assets/svgs/copy-icon-white-bg.svg';
   static const String creditCardBlueGbIcon =
@@ -87,6 +91,8 @@ class EventraVectors {
   static const String homeIconSearch = 'assets/svgs/home_icon_search.svg';
   static const String infoIconOrange = 'assets/svgs/info-icon-orange.svg';
   static const String infoIcon = 'assets/svgs/info-icon.svg';
+  static const String locationPinLineIconBlue =
+      'assets/svgs/location-pin-line-icon-blue.svg';
   static const String locationPinLineIcon =
       'assets/svgs/location-pin-line-icon.svg';
   static const String locationPin = 'assets/svgs/location-pin.svg';
@@ -150,6 +156,8 @@ class EventraVectors {
   static const String shareIconIsolated = 'assets/svgs/share-icon-isolated.svg';
   static const String shopIcon = 'assets/svgs/shop-icon.svg';
   static const String showcaseIcon = 'assets/svgs/showcase_icon.svg';
+  static const String simpleLineIconsCalenderOrange =
+      'assets/svgs/simple-line-icons-calender-orange.svg';
   static const String solarLikeBrokenSaveVideoIcon =
       'assets/svgs/solar_like-broken_save_video_icon.svg';
   static const String starUnfilledRatingIconProfileSettings =
