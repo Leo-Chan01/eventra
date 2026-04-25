@@ -187,6 +187,8 @@
     "vendorHomeTransfer": "Transferir",
     "vendorBookingsFilterAll": "Todo",
     "vendorBookingsPendingBanner": "El cliente quiere tus servicios. Haz clic para aprobar o rechazar",
+    "vendorPendingBookingConfirm": "Confirmar",
+    "vendorPendingBookingReject": "Rechazar",
     "vendorHomeBookings": "RESERVAS",
     "vendorHomeTodaysEnquiries": "Consultas de hoy",
     "vendorHomeUpcomingEvents": "Próximos eventos",

@@ -319,6 +319,8 @@
     "vendorHomeTransfer": "Transfer",
     "vendorBookingsFilterAll": "All",
     "vendorBookingsPendingBanner": "The client wants your services. Click to approve or reject",
+    "vendorPendingBookingConfirm": "Confirm",
+    "vendorPendingBookingReject": "Reject",
     "vendorHomeBookings": "BOOKINGS",
     "vendorHomeTodaysEnquiries": "Today's Enquiries",
     "vendorHomeUpcomingEvents": "Upcoming Events",

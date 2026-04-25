@@ -2,7 +2,6 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/active_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/completed_enquiry_detail_page.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/home/domain/models/home_enquiry_status.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/models/vendor_booking_filter_type.dart';
@@ -10,6 +9,7 @@ import 'package:eventra/features/home/presentation/widgets/home_enquiry_banner.d
 import 'package:eventra/features/home/presentation/widgets/home_search_bar.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_booking_status_tabs.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_booking_vendor_card.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_pending_booking_bottom_sheet.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
@@ -178,9 +178,9 @@ class VendorBookingsTabState extends State<VendorBookingsTab> {
                         return;
                       }
 
-                      await context.pushNamed(
-                        PendingEnquiryDetailPage.name,
-                        extra: flowArgs,
+                      await VendorPendingBookingBottomSheet.show(
+                        context,
+                        args: flowArgs,
                       );
                     },
                   ),
