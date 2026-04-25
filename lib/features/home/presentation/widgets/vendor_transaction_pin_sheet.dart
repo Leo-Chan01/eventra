@@ -65,7 +65,7 @@ class VendorTransactionPinSheetState extends State<VendorTransactionPinSheet> {
                     width: 56,
                     height: 6,
                     decoration: BoxDecoration(
-                      color: colorScheme.outlineVariant.withValues(alpha: 0.45),
+                      color: colorScheme.outlineVariant.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(999),
                     ),
                   ),
@@ -88,7 +88,7 @@ class VendorTransactionPinSheetState extends State<VendorTransactionPinSheet> {
                       ),
                       Text(
                         widget.l10n.vendorTransferPinTitle,
-                        style: 22.w600.copyWith(color: colorScheme.onSurface),
+                        style: 20.w600.copyWith(color: colorScheme.onSurface),
                       ),
                     ],
                   ),

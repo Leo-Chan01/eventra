@@ -24,6 +24,12 @@ class VendorTransactionPinBoxes extends StatelessWidget {
           decoration: BoxDecoration(
             color: colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isFilled
+                  ? colorScheme.primary
+                  : colorScheme.outline.withValues(alpha: 0.2),
+              width: isFilled ? 1.6 : 1,
+            ),
           ),
           child: isFilled
               ? Container(
