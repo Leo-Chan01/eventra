@@ -16,18 +16,26 @@ class MessageThreadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final nameColor = thread.hasUnread
+        ? colorScheme.onSurface
+        : colorScheme.onSurfaceVariant;
+    final messageColor = thread.hasUnread
+        ? colorScheme.onSurface
+        : colorScheme.onSurfaceVariant;
+    final nameWeight = thread.hasUnread ? FontWeight.w700 : FontWeight.w500;
+    final messageWeight = thread.hasUnread ? FontWeight.w500 : FontWeight.w400;
 
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 14),
         child: Row(
           children: [
             _ThreadAvatar(
               imageUrl: thread.vendorAvatar,
               isOnline: thread.isOnline,
             ),
-            14.horizSpacing,
+            16.horizSpacing,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,12 +45,15 @@ class MessageThreadCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           thread.vendorName,
-                          style: 14.w600.copyWith(color: colorScheme.onSurface),
+                          style: 16.w600.copyWith(
+                            color: nameColor,
+                            fontWeight: nameWeight,
+                          ),
                         ),
                       ),
                       Text(
                         thread.lastMessageTime,
-                        style: 11.w400.copyWith(
+                        style: 14.w400.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
@@ -54,26 +65,27 @@ class MessageThreadCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           thread.lastMessage,
-                          style: 12.w400.copyWith(
-                            color: colorScheme.onSurfaceVariant,
+                          style: 14.w400.copyWith(
+                            color: messageColor,
+                            fontWeight: messageWeight,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       if (thread.hasUnread) ...[
-                        8.horizSpacing,
+                        // 10.horizSpacing,
                         Container(
-                          width: 18,
-                          height: 18,
-                          decoration: const BoxDecoration(
-                            color: AppColorSchemes.goldStar,
+                          width: 15,
+                          height: 15,
+                          decoration: BoxDecoration(
+                            color: colorScheme.primary,
                             shape: BoxShape.circle,
                           ),
                           child: Center(
                             child: Text(
                               '${thread.unreadCount}',
-                              style: 9.w700.copyWith(
+                              style: 10.w600.copyWith(
                                 color: colorScheme.onPrimary,
                               ),
                             ),
@@ -107,12 +119,12 @@ class _ThreadAvatar extends StatelessWidget {
         ClipOval(
           child: Image.asset(
             imageUrl,
-            width: 48,
-            height: 48,
+            width: 54,
+            height: 54,
             fit: BoxFit.cover,
             errorBuilder: (_, _, _) => Container(
-              width: 48,
-              height: 48,
+              width: 54,
+              height: 54,
               color: colorScheme.primaryContainer,
               child: Icon(Icons.person, color: colorScheme.primary),
             ),
@@ -120,15 +132,15 @@ class _ThreadAvatar extends StatelessWidget {
         ),
         if (isOnline)
           Positioned(
-            bottom: 2,
-            right: 2,
+            bottom: 1,
+            right: 1,
             child: Container(
-              width: 10,
-              height: 10,
+              width: 14,
+              height: 14,
               decoration: BoxDecoration(
-                color: const Color(0xFF39C07A),
+                color: AppColorSchemes.success,
                 shape: BoxShape.circle,
-                border: Border.all(color: colorScheme.surface, width: 1.5),
+                border: Border.all(color: colorScheme.surface, width: 2),
               ),
             ),
           ),

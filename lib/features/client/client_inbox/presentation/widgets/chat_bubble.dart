@@ -4,20 +4,30 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/pendi
 import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/enquiry_attachment_card.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/invoice_attachment_card.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_pending_booking_bottom_sheet.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({required this.message, super.key});
+  const ChatBubble({
+    required this.message,
+    this.isVendorMode = false,
+    super.key,
+  });
 
   final ChatMessage message;
+  final bool isVendorMode;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
-    final isFromClient = message.isFromClient;
+
+    final isFromClient = isVendorMode
+        ? !message.isFromClient
+        : message.isFromClient;
+
     final timeLabel = Text(
       message.time,
       style: 10.w400.copyWith(color: colorScheme.onSurfaceVariant),
@@ -26,6 +36,9 @@ class ChatBubble extends StatelessWidget {
     switch (message.type) {
       case ChatMessageType.statusInReview:
       case ChatMessageType.statusConfirmed:
+        if (isVendorMode) {
+          return const SizedBox.shrink();
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Center(
@@ -85,9 +98,7 @@ class ChatBubble extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerHighest.withValues(
-                    alpha: 0.55,
-                  ),
+                  color: colorScheme.primary,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: InvoiceAttachmentCard(
@@ -140,10 +151,17 @@ class ChatBubble extends StatelessWidget {
                       showThumbnail: message.enquiryAttachment != null,
                       onTap: () async {
                         if (message.enquiryFlowArgs != null) {
-                          await context.pushNamed(
-                            PendingEnquiryDetailPage.name,
-                            extra: message.enquiryFlowArgs,
-                          );
+                          if (isVendorMode) {
+                            await VendorPendingBookingBottomSheet.show(
+                              context,
+                              args: message.enquiryFlowArgs!,
+                            );
+                          } else {
+                            await context.pushNamed(
+                              PendingEnquiryDetailPage.name,
+                              extra: message.enquiryFlowArgs,
+                            );
+                          }
                         }
                       },
                     ),

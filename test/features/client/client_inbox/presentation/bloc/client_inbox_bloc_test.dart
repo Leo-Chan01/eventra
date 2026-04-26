@@ -14,16 +14,16 @@ void main() {
   );
 
   group('ClientInboxBloc', () {
-    test('initial state seeds 8 threads', () {
+    test('initial state seeds 7 threads', () {
       final bloc = ClientInboxBloc();
       addTearDown(bloc.close);
 
-      expect(bloc.state.threads, hasLength(8));
+      expect(bloc.state.threads, hasLength(7));
       expect(bloc.state.searchQuery, '');
       expect(bloc.state.currentInput, '');
     });
 
-    test('seeded thread vendor-001 (Pozera Events) has messages', () {
+    test('seeded thread vendor-001 (Jenny) has messages', () {
       final bloc = ClientInboxBloc();
       addTearDown(bloc.close);
 
@@ -48,15 +48,15 @@ void main() {
     blocTest<ClientInboxBloc, ClientInboxState>(
       'InboxSearchChanged filters visible threads',
       build: ClientInboxBloc.new,
-      act: (bloc) => bloc.add(const InboxSearchChanged('Pozera')),
+      act: (bloc) => bloc.add(const InboxSearchChanged('Jenny')),
       expect: () => [
         isA<ClientInboxState>()
-            .having((s) => s.searchQuery, 'searchQuery', 'Pozera')
+            .having((s) => s.searchQuery, 'searchQuery', 'Jenny')
             .having((s) => s.visibleThreads.length, 'visibleThreads', 1)
             .having(
               (s) => s.visibleThreads.first.vendorName,
               'vendorName',
-              'Pozera Events',
+              'Jenny',
             ),
       ],
     );
@@ -65,10 +65,10 @@ void main() {
       'InboxSearchChanged with empty query returns all threads',
       build: ClientInboxBloc.new,
       act: (bloc) => bloc
-        ..add(const InboxSearchChanged('Pozera'))
+        ..add(const InboxSearchChanged('Jenny'))
         ..add(const InboxSearchChanged('')),
       verify: (bloc) {
-        expect(bloc.state.visibleThreads, hasLength(8));
+        expect(bloc.state.visibleThreads, hasLength(7));
       },
     );
 

@@ -11,6 +11,7 @@ import 'package:eventra/features/home/presentation/widgets/home_reels_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/home_search_page.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_bookings_tab.dart';
 import 'package:eventra/features/home/presentation/widgets/vendor_home_content.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_inbox_tab.dart';
 import 'package:eventra/shared/widgets/app_share_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,11 +49,7 @@ class HomePage extends StatelessWidget {
                     ),
                     SafeArea(
                       bottom: false,
-                      child: HomeEnquiriesTab(
-                        state: state,
-                        onOpenFilter: () => _openFilterSheet(context),
-                        onOpenSearch: () => _openSearchTab(context),
-                      ),
+                      child: const VendorInboxTab(),
                     ),
                     SafeArea(
                       bottom: false,

@@ -1,7 +1,9 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_bubble.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_input_bar.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +43,8 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final accountType = context.read<AccountTypeTrackerBloc>().state.selectedAccountType;
+    final isVendorMode = accountType == AccountType.vendor;
 
     return BlocBuilder<ClientInboxBloc, ClientInboxState>(
       builder: (context, state) {
@@ -59,6 +63,31 @@ class _ChatPageState extends State<ChatPage> {
               vendorAvatar: thread.vendorAvatar,
               isOnline: thread.isOnline,
             ),
+            actions: isVendorMode
+                ? [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: colorScheme.primary,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            'Send Invoice',
+                            style: 14.w500.copyWith(
+                              color: colorScheme.onPrimary,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+                : null,
           ),
           body: Column(
             children: [
@@ -71,7 +100,10 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
-                    return ChatBubble(message: messages[index]);
+                    return ChatBubble(
+                      message: messages[index],
+                      isVendorMode: isVendorMode,
+                    );
                   },
                 ),
               ),
