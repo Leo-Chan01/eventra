@@ -229,7 +229,10 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
       _isGeneratingInvoice = false;
     });
 
-    await context.pushNamed(InvoiceReadyPage.name);
+    final didSend = await context.pushNamed<bool>(InvoiceReadyPage.name);
+    if (didSend == true && mounted) {
+      context.pop(true);
+    }
   }
 
   @override

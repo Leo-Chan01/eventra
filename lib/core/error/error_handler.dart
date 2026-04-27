@@ -308,5 +308,5 @@ class ErrorHandler {
     //     ...?additionalData,
     //   }),
     // );
-  }
+  } 
 }

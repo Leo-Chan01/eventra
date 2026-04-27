@@ -78,18 +78,29 @@ class _ChatPageState extends State<ChatPage> {
                       child: Center(
                         child: GestureDetector(
                           onTap: () async {
-                            await context.pushNamed(
-                              NewInvoicePage.name,
-                              extra: NewInvoicePageArgs(
-                                bookingId: thread.id,
-                                clientName: thread.vendorName,
-                                clientAvatarPath: thread.vendorAvatar,
-                                eventType: latestEnquiryArgs?.eventType ?? '',
-                                eventDate:
-                                    latestEnquiryArgs?.eventDate ??
-                                    DateTime.now(),
-                              ),
-                            );
+                            final didSendInvoice = await context
+                                .pushNamed<bool>(
+                                  NewInvoicePage.name,
+                                  extra: NewInvoicePageArgs(
+                                    bookingId: thread.id,
+                                    clientName: thread.vendorName,
+                                    clientAvatarPath: thread.vendorAvatar,
+                                    eventType:
+                                        latestEnquiryArgs?.eventType ?? '',
+                                    eventDate:
+                                        latestEnquiryArgs?.eventDate ??
+                                        DateTime.now(),
+                                  ),
+                                );
+
+                            if (didSendInvoice == true && context.mounted) {
+                              context.read<ClientInboxBloc>().add(
+                                InboxInvoiceSent(
+                                  enquiryFlowArgs: latestEnquiryArgs,
+                                ),
+                              );
+                              _scrollToBottom();
+                            }
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(

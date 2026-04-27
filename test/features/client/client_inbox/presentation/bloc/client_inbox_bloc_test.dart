@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
 import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/catalog_item.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -96,6 +97,20 @@ void main() {
           'typing...',
         ),
       ],
+    );
+
+    blocTest<ClientInboxBloc, ClientInboxState>(
+      'InboxInvoiceSent appends outgoing invoice message to selected thread',
+      build: ClientInboxBloc.new,
+      act: (bloc) => bloc
+        ..add(const InboxThreadSelected('vendor-001'))
+        ..add(const InboxInvoiceSent()),
+      verify: (bloc) {
+        final messages = bloc.state.currentMessages;
+        expect(messages.last.type, ChatMessageType.invoice);
+        expect(messages.last.isFromClient, isFalse);
+        expect(messages.last.text, 'Booking Invoice');
+      },
     );
 
     blocTest<ClientInboxBloc, ClientInboxState>(

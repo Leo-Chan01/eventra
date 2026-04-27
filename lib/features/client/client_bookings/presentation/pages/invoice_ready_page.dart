@@ -49,7 +49,7 @@ class InvoiceReadyPage extends StatelessWidget {
         minimum: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: EventraButton(
           buttonText: l10n.sendInvoiceButton,
-          onPressed: () => context.pop(),
+          onPressed: () => context.pop(true),
         ),
       ),
     );

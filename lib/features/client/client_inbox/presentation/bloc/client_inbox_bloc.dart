@@ -65,6 +65,15 @@ class InboxInputChanged extends ClientInboxEvent {
   List<Object?> get props => [text];
 }
 
+class InboxInvoiceSent extends ClientInboxEvent {
+  const InboxInvoiceSent({this.enquiryFlowArgs});
+
+  final EnquiryFlowDetailsArgs? enquiryFlowArgs;
+
+  @override
+  List<Object?> get props => [enquiryFlowArgs];
+}
+
 class ClientInboxState extends Equatable {
   const ClientInboxState({
     this.threads = const [],
@@ -129,6 +138,7 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
     on<InboxVendorStarted>(_onVendorStarted);
     on<InboxMessageSent>(_onMessageSent);
     on<InboxInputChanged>(_onInputChanged);
+    on<InboxInvoiceSent>(_onInvoiceSent);
   }
 
   void _onSearchChanged(
@@ -242,6 +252,53 @@ class ClientInboxBloc extends Bloc<ClientInboxEvent, ClientInboxState> {
     Emitter<ClientInboxState> emit,
   ) {
     emit(state.copyWith(currentInput: event.text));
+  }
+
+  void _onInvoiceSent(
+    InboxInvoiceSent event,
+    Emitter<ClientInboxState> emit,
+  ) {
+    if (state.selectedThreadId.isEmpty) {
+      return;
+    }
+
+    final newMessage = ChatMessage(
+      id: 'invoice-${DateTime.now().millisecondsSinceEpoch}',
+      text: 'Booking Invoice',
+      isFromClient: false,
+      time: _currentTimeLabel(),
+      type: ChatMessageType.invoice,
+      enquiryFlowArgs: event.enquiryFlowArgs,
+    );
+
+    final currentMessages = List<ChatMessage>.from(state.currentMessages)
+      ..add(newMessage);
+
+    final updatedMessages = Map<String, List<ChatMessage>>.from(
+      state.allMessages,
+    )..[state.selectedThreadId] = currentMessages;
+
+    final updatedThreads = state.threads.map((t) {
+      if (t.id == state.selectedThreadId) {
+        return MessageThread(
+          id: t.id,
+          vendorName: t.vendorName,
+          vendorAvatar: t.vendorAvatar,
+          lastMessage: newMessage.text,
+          lastMessageTime: 'Now',
+          unreadCount: t.unreadCount,
+          isOnline: t.isOnline,
+        );
+      }
+      return t;
+    }).toList();
+
+    emit(
+      state.copyWith(
+        allMessages: updatedMessages,
+        threads: updatedThreads,
+      ),
+    );
   }
 
   String _currentTimeLabel() {
