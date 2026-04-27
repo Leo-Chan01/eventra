@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class VendorEditProfileServiceField extends StatelessWidget {
   const VendorEditProfileServiceField({
     required this.initialValue,
+    this.hintText,
     super.key,
   });
 
   final String initialValue;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class VendorEditProfileServiceField extends StatelessWidget {
     return TextFormField(
       initialValue: initialValue,
       decoration: InputDecoration(
-        hintText: initialValue,
+        hintText: hintText ?? initialValue,
         hintStyle: inputDecoration.hintStyle,
         border: inputDecoration.border,
         enabledBorder: inputDecoration.enabledBorder,

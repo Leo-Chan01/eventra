@@ -194,6 +194,8 @@ class VendorHomeContent extends StatelessWidget {
                         ),
                       ),
                       InkWell(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () => context.read<HomeBloc>().add(
                           const HomeTabChanged(1),
                         ),

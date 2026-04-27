@@ -7,7 +7,7 @@ import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:flutter/material.dart';
 
-class VendorEditProfileBody extends StatelessWidget {
+class VendorEditProfileBody extends StatefulWidget {
   const VendorEditProfileBody({
     required this.vendor,
     super.key,
@@ -16,12 +16,24 @@ class VendorEditProfileBody extends StatelessWidget {
   final VendorDetail vendor;
 
   @override
+  State<VendorEditProfileBody> createState() => _VendorEditProfileBodyState();
+}
+
+class _VendorEditProfileBodyState extends State<VendorEditProfileBody> {
+  late final List<String> _services;
+
+  @override
+  void initState() {
+    super.initState();
+    _services = widget.vendor.services.isEmpty
+        ? ['']
+        : [...widget.vendor.services];
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
-    final services = vendor.services.isEmpty
-        ? [l10n.vendorBusinessServicesHint]
-        : vendor.services;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
@@ -31,7 +43,7 @@ class VendorEditProfileBody extends StatelessWidget {
           VendorBusinessDescriptionField(
             label: l10n.vendorBusinessDescriptionLabel,
             hint: l10n.vendorBusinessDescriptionHint,
-            initialValue: vendor.bio,
+            initialValue: widget.vendor.bio,
             onChanged: (_) {},
           ),
           24.vertSpacing,
@@ -40,15 +52,21 @@ class VendorEditProfileBody extends StatelessWidget {
             style: 14.w500.copyWith(color: colorScheme.onSurfaceVariant),
           ),
           12.vertSpacing,
-          ...services.map(
-            (service) => Padding(
+          ..._services.indexed.map(
+            (entry) => Padding(
               padding: const EdgeInsets.only(bottom: 12),
-              child: VendorEditProfileServiceField(initialValue: service),
+              child: VendorEditProfileServiceField(
+                key: ValueKey('vendor_service_field_${entry.$1}'),
+                initialValue: entry.$2,
+                hintText: l10n.vendorBusinessServicesHint,
+              ),
             ),
           ),
           InkWell(
             onTap: () {
-              
+              setState(() {
+                _services.add('');
+              });
             },
             borderRadius: BorderRadius.circular(8),
             child: Text(
@@ -59,13 +77,13 @@ class VendorEditProfileBody extends StatelessWidget {
           24.vertSpacing,
           VendorEditProfilePhotoSection(
             label: l10n.vendorBusinessLogoLabel,
-            imagePath: vendor.profileImage,
+            imagePath: widget.vendor.profileImage,
             buttonText: l10n.vendorEditProfileChangePhotoButton,
           ),
           24.vertSpacing,
           VendorEditProfilePhotoSection(
             label: l10n.vendorEditProfileCoverPhotoLabel,
-            imagePath: vendor.coverImage,
+            imagePath: widget.vendor.coverImage,
             buttonText: l10n.vendorEditProfileChangePhotoButton,
           ),
           24.vertSpacing,

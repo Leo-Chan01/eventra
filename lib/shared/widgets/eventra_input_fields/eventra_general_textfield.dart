@@ -104,6 +104,7 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
             hintText: widget.hint,
             hintStyle: inputDecoration.hintStyle,
             border: inputDecoration.border,
+            filled: false,
             enabledBorder: inputDecoration.enabledBorder,
             focusedBorder: inputDecoration.focusedBorder,
             errorBorder: inputDecoration.errorBorder,
