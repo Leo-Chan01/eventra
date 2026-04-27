@@ -19,6 +19,7 @@ class EventraGeneralTextfield extends StatefulWidget {
     this.minLines,
     this.readOnly = false,
     this.onTap,
+    this.isRequired = false,
     super.key,
   });
 
@@ -36,6 +37,7 @@ class EventraGeneralTextfield extends StatefulWidget {
     this.minLines,
     this.readOnly = false,
     this.onTap,
+    this.isRequired = false,
     super.key,
   });
 
@@ -52,6 +54,7 @@ class EventraGeneralTextfield extends StatefulWidget {
   final int? minLines;
   final bool readOnly;
   final VoidCallback? onTap;
+  final bool isRequired;
 
   @override
   State<EventraGeneralTextfield> createState() =>
@@ -77,9 +80,17 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
       spacing: 8,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.label,
-          style: 14.w500.copyWith(color: directColorScheme),
+        Row(
+          children: [
+            Text(widget.label, style: 14.w400),
+            if (widget.isRequired)
+              Text(
+                ' *',
+                style: 14.w500.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+          ],
         ),
         TextFormField(
           initialValue: widget.initialValue,

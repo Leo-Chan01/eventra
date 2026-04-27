@@ -1,11 +1,15 @@
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
+import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/new_invoice_page.dart';
 import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
+import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_bubble.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_input_bar.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -43,13 +47,17 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final accountType = context.read<AccountTypeTrackerBloc>().state.selectedAccountType;
+    final accountType = context
+        .read<AccountTypeTrackerBloc>()
+        .state
+        .selectedAccountType;
     final isVendorMode = accountType == AccountType.vendor;
 
     return BlocBuilder<ClientInboxBloc, ClientInboxState>(
       builder: (context, state) {
         final thread = state.selectedThread;
         final messages = state.currentMessages;
+        final latestEnquiryArgs = _resolveEnquiryFlowArgs(messages);
 
         return Scaffold(
           backgroundColor: colorScheme.surface,
@@ -68,19 +76,35 @@ class _ChatPageState extends State<ChatPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Center(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 14,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: colorScheme.primary,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            'Send Invoice',
-                            style: 14.w500.copyWith(
-                              color: colorScheme.onPrimary,
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(
+                              NewInvoicePage.name,
+                              extra: NewInvoicePageArgs(
+                                bookingId: thread.id,
+                                clientName: thread.vendorName,
+                                clientAvatarPath: thread.vendorAvatar,
+                                eventType: latestEnquiryArgs?.eventType ?? '',
+                                eventDate:
+                                    latestEnquiryArgs?.eventDate ??
+                                    DateTime.now(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: colorScheme.primary,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              'Send Invoice',
+                              style: 14.w500.copyWith(
+                                color: colorScheme.onPrimary,
+                              ),
                             ),
                           ),
                         ),
@@ -127,6 +151,15 @@ class _ChatPageState extends State<ChatPage> {
         );
       },
     );
+  }
+
+  EnquiryFlowDetailsArgs? _resolveEnquiryFlowArgs(List<ChatMessage> messages) {
+    for (final message in messages.reversed) {
+      if (message.enquiryFlowArgs != null) {
+        return message.enquiryFlowArgs;
+      }
+    }
+    return null;
   }
 }
 

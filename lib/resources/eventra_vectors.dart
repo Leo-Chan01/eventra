@@ -10,6 +10,7 @@ class EventraVectors {
   static const String addIconChatPage = 'assets/svgs/add-icon-chat-page.svg';
   static const String addIconRightSideChatPage =
       'assets/svgs/add-icon-right-side-chat-page.svg';
+  static const String addItemIcon = 'assets/svgs/add-item-icon.svg';
   static const String addressIcon = 'assets/svgs/address-icon.svg';
   static const String angleLeftIsolated = 'assets/svgs/angle-left-isolated.svg';
   static const String angleLeft = 'assets/svgs/angle-left.svg';
@@ -111,6 +112,7 @@ class EventraVectors {
   static const String microphoneChatPageIcon =
       'assets/svgs/microphone-chat-page-icon.svg';
   static const String minusButtonTicket = 'assets/svgs/minus-button-ticket.svg';
+  static const String minusItemIcon = 'assets/svgs/minus-item-icon.svg';
   static const String moneySendOutWhiteIcon =
       'assets/svgs/money-send-out-white-icon.svg';
   static const String nairaSymbol = 'assets/svgs/naira-symbol.svg';

@@ -33,6 +33,7 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/enqui
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_review_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/new_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/payment_received_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
@@ -369,6 +370,11 @@ class AppRouter {
         path: EnquiryInvoicePage.path,
         name: EnquiryInvoicePage.name,
         builder: (context, state) => const EnquiryInvoicePage(),
+      ),
+      GoRoute(
+        path: NewInvoicePage.path,
+        name: NewInvoicePage.name,
+        builder: (context, state) => const NewInvoicePage(),
       ),
       GoRoute(
         path: EnquiryContractPage.path,

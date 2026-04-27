@@ -13,6 +13,7 @@ void main() {
     expect(File(EventraVectors.addCircleFab).existsSync(), isTrue);
     expect(File(EventraVectors.addIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addIconRightSideChatPage).existsSync(), isTrue);
+    expect(File(EventraVectors.addItemIcon).existsSync(), isTrue);
     expect(File(EventraVectors.addressIcon).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeftIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);
@@ -110,6 +111,7 @@ void main() {
     expect(File(EventraVectors.messages).existsSync(), isTrue);
     expect(File(EventraVectors.microphoneChatPageIcon).existsSync(), isTrue);
     expect(File(EventraVectors.minusButtonTicket).existsSync(), isTrue);
+    expect(File(EventraVectors.minusItemIcon).existsSync(), isTrue);
     expect(File(EventraVectors.moneySendOutWhiteIcon).existsSync(), isTrue);
     expect(File(EventraVectors.nairaSymbol).existsSync(), isTrue);
     expect(File(EventraVectors.nextPageArrowIcon).existsSync(), isTrue);

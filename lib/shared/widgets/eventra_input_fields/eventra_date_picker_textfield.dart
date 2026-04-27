@@ -11,12 +11,14 @@ class EventraDatePickerTextfield extends StatefulWidget {
     required this.label,
     required this.hint,
     this.onChanged,
+    this.isRequired = false,
     super.key,
   });
 
   final String label;
   final String hint;
   final ValueChanged<String>? onChanged;
+  final bool isRequired;
 
   @override
   State<EventraDatePickerTextfield> createState() =>
@@ -42,9 +44,20 @@ class _EventraDatePickerTextfieldState
       spacing: 8,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.label,
-          style: 14.w500.copyWith(color: directColorScheme),
+        Row(
+          children: [
+            Text(
+              widget.label,
+              style: 14.w500.copyWith(color: directColorScheme),
+            ),
+            if (widget.isRequired)
+              Text(
+                ' *',
+                style: 14.w500.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+          ],
         ),
         TextFormField(
           controller: _controller,
