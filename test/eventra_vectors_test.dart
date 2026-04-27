@@ -156,6 +156,10 @@ void main() {
     );
     expect(File(EventraVectors.selfieIllustration).existsSync(), isTrue);
     expect(File(EventraVectors.sendIconChatPage).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.settingsButtonVendorDetails).existsSync(),
+      isTrue,
+    );
     expect(File(EventraVectors.settingsCogIconGrey).existsSync(), isTrue);
     expect(File(EventraVectors.shareButtonVendorDeets).existsSync(), isTrue);
     expect(File(EventraVectors.shareContractIcon).existsSync(), isTrue);

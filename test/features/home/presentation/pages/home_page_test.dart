@@ -13,6 +13,7 @@ import 'package:eventra/features/home/presentation/pages/profile_notification_se
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.dart';
+import 'package:eventra/features/home/presentation/widgets/vendor_inbox_tab.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
@@ -209,6 +210,32 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(EventraBottomNav), findsOneWidget);
+    });
+
+    testWidgets('vendor home View Messages opens vendor inbox tab', (
+      tester,
+    ) async {
+      await tester.pumpApp(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => HomeBloc()),
+            BlocProvider(create: (_) => ClientInboxBloc()),
+          ],
+          child: const HomePage(isVendorMode: true),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.scrollUntilVisible(
+        find.text('View Messages'),
+        200,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('View Messages'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Inbox'), findsOneWidget);
+      expect(find.byType(VendorInboxTab), findsOneWidget);
     });
 
     testWidgets('reel next control moves to next reel', (tester) async {

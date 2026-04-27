@@ -25,7 +25,7 @@ class VendorDetailBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: VendorDetailHeader(vendor: vendor),
+          child: VendorDetailHeader(vendor: vendor, isVendorMode: isVendorMode),
         ),
         SliverToBoxAdapter(
           child: Padding(

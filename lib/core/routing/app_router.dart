@@ -53,6 +53,7 @@ import 'package:eventra/features/client/vendor_details/presentation/models/add_s
 import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/add_service_page.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
+import 'package:eventra/features/home/presentation/models/vendor_edit_profile_page_args.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_reset_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
@@ -66,6 +67,7 @@ import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_p
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_completed_job_detail_page.dart';
+import 'package:eventra/features/home/presentation/pages/vendor_edit_profile_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_ongoing_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_transfer_success_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
@@ -159,6 +161,13 @@ class AppRouter {
         path: ProfileVendorContractPage.path,
         name: ProfileVendorContractPage.name,
         builder: (context, state) => const ProfileVendorContractPage(),
+      ),
+      GoRoute(
+        path: VendorEditProfilePage.path,
+        name: VendorEditProfilePage.name,
+        builder: (context, state) => VendorEditProfilePage(
+          args: state.extra! as VendorEditProfilePageArgs,
+        ),
       ),
       GoRoute(
         path: ProfileHelpSupportPage.path,

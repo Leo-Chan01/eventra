@@ -158,6 +158,8 @@ class EventraVectors {
   static const String selfieIllustration =
       'assets/svgs/selfie-illustration.svg';
   static const String sendIconChatPage = 'assets/svgs/send-icon-chat-page.svg';
+  static const String settingsButtonVendorDetails =
+      'assets/svgs/settings-button-vendor-details.svg';
   static const String settingsCogIconGrey =
       'assets/svgs/settings-cog-icon-grey.svg';
   static const String shareButtonVendorDeets =

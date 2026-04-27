@@ -12,6 +12,7 @@ import 'package:eventra/features/home/presentation/widgets/vendor_wallet_summary
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -193,9 +194,9 @@ class VendorHomeContent extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                        onTap: () {
-                          // context.goNamed(VendorInboxTab.name);
-                        },
+                        onTap: () => context.read<HomeBloc>().add(
+                          const HomeTabChanged(1),
+                        ),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 18,

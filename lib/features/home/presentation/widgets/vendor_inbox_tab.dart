@@ -88,6 +88,7 @@ class _VendorInboxTabState extends State<VendorInboxTab> {
                 width: 52,
                 height: 52,
                 child: FloatingActionButton(
+                  shape: const CircleBorder(),
                   elevation: 0,
                   backgroundColor: colorScheme.primary,
                   onPressed: () {},
