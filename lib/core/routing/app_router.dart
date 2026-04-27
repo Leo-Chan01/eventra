@@ -49,7 +49,9 @@ import 'package:eventra/features/client/client_notification/presentation/pages/c
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/client/featured_and_top_vendors/presentation/pages/category_vendors_page.dart';
+import 'package:eventra/features/client/vendor_details/presentation/models/add_service_page_args.dart';
 import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/add_service_page.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_reset_page.dart';
@@ -343,6 +345,14 @@ class AppRouter {
           args:
               state.extra as VendorDetailPageArgs? ??
               const VendorDetailPageArgs(),
+        ),
+      ),
+      GoRoute(
+        path: AddServicePage.path,
+        name: AddServicePage.name,
+        builder: (context, state) => AddServicePage(
+          args:
+              state.extra as AddServicePageArgs? ?? const AddServicePageArgs(),
         ),
       ),
       GoRoute(

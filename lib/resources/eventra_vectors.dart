@@ -70,6 +70,8 @@ class EventraVectors {
       'assets/svgs/details-under-review-illustration.svg';
   static const String downloadContractIcon =
       'assets/svgs/download-contract-icon.svg';
+  static const String editButtonVendorDetails =
+      'assets/svgs/edit-button-vendor-details.svg';
   static const String editPencilElevated =
       'assets/svgs/edit-pencil-elevated.svg';
   static const String emptyImageIcon = 'assets/svgs/empty-image-icon.svg';

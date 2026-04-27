@@ -75,6 +75,7 @@ void main() {
       isTrue,
     );
     expect(File(EventraVectors.downloadContractIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.editButtonVendorDetails).existsSync(), isTrue);
     expect(File(EventraVectors.editPencilElevated).existsSync(), isTrue);
     expect(File(EventraVectors.emptyImageIcon).existsSync(), isTrue);
     expect(File(EventraVectors.eventraBlackText).existsSync(), isTrue);

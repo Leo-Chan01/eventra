@@ -1,14 +1,19 @@
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_video.dart';
+import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_add_tile.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_video_thumbnail.dart';
 import 'package:flutter/material.dart';
 
 class VendorDetailVideosTab extends StatelessWidget {
   const VendorDetailVideosTab({
     required this.videos,
+    this.isVendorMode = false,
+    this.onAddTap,
     super.key,
   });
 
   final List<VendorVideo> videos;
+  final bool isVendorMode;
+  final VoidCallback? onAddTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,15 @@ class VendorDetailVideosTab extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
-        itemCount: videos.length,
+        itemCount: videos.length + (isVendorMode ? 1 : 0),
         itemBuilder: (context, index) {
+          if (index == videos.length && isVendorMode) {
+            return VendorDetailAddTile(
+              isFilled: true,
+              onTap: onAddTap,
+            );
+          }
+
           final video = videos[index];
           return VendorVideoThumbnail(
             imageUrl: video.thumbnailUrl,
