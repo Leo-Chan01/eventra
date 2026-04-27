@@ -5,9 +5,11 @@ import 'package:eventra/features/client/client_bookings/presentation/widgets/cli
 import 'package:eventra/features/client/client_bookings/presentation/widgets/invoice_add_item_field.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/item_card.dart';
 import 'package:eventra/l10n/l10n.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:eventra/shared/widgets/eventra_buttons/eventra_button.dart';
 import 'package:eventra/shared/widgets/eventra_input_fields/eventra_general_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -48,10 +50,7 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
   String _dueDateText = '';
   String _note = '';
   String _terms = '';
-  String _salesTaxPercentText = '0.00';
-  final TextEditingController _salesTaxController = TextEditingController(
-    text: '0.00',
-  );
+  String _salesTaxPercentText = '100.00';
 
   final List<InvoiceItem> _items = <InvoiceItem>[];
 
@@ -148,7 +147,6 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
 
   @override
   void dispose() {
-    _salesTaxController.dispose();
     super.dispose();
   }
 
@@ -308,7 +306,7 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                 onTap: _addItem,
               ),
               if (_items.isNotEmpty) ...[
-                12.vertSpacing,
+                14.vertSpacing,
                 Row(
                   children: [
                     Expanded(
@@ -332,8 +330,8 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                     GestureDetector(
                       onTap: _removeAllItems,
                       child: Text(
-                        l10n.profileSavedVendorsRemove,
-                        style: 16.w500.copyWith(color: colorScheme.error),
+                        l10n.removeAllItemsInvoice,
+                        style: 14.w500.copyWith(color: colorScheme.error),
                       ),
                     ),
                   ],
@@ -342,8 +340,10 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                 Container(
                   decoration: BoxDecoration(
                     color: colorScheme.surface,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: colorScheme.outline),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: colorScheme.onSurface.withValues(alpha: 0.1),
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,21 +363,22 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                         ),
                       ),
                       Divider(
-                        color: colorScheme.outline,
+                        color: colorScheme.onSurface.withValues(alpha: 0.1),
                         height: 1,
                       ),
+                      12.vertSpacing,
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 14),
-                        child: EventraButton.outlined(
-                          width: 146,
-                          height: 48,
-                          borderRadius: 14,
-                          buttonText: l10n.addButtonLabel,
-                          onPressed: _addItem,
+                        padding: const EdgeInsets.only(left: 11),
+                        child: InkWell(
+                          onTap: _addItem,
+                          child: SvgPicture.asset(
+                            EventraVectors.addItemWidgetIcon,
+                          ),
                         ),
                       ),
+                      12.vertSpacing,
                       Divider(
-                        color: colorScheme.outline,
+                        color: colorScheme.onSurface.withValues(alpha: 0.1),
                         height: 1,
                       ),
                       Padding(
@@ -389,14 +390,14 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                                 Expanded(
                                   child: Text(
                                     l10n.enquiryFlowInvoiceSubtotal,
-                                    style: 18.w500.copyWith(
+                                    style: 16.w400.copyWith(
                                       color: colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   _formatMoney(context, _subTotal),
-                                  style: 18.w500.copyWith(
+                                  style: 16.w400.copyWith(
                                     color: colorScheme.onSurface,
                                   ),
                                 ),
@@ -408,66 +409,41 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                                 Expanded(
                                   child: Text(
                                     l10n.enquiryFlowInvoiceVat,
-                                    style: 18.w500.copyWith(
+                                    style: 16.w400.copyWith(
                                       color: colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: 108,
-                                  height: 46,
+                                  width: 80,
+                                  height: 40,
                                   decoration: BoxDecoration(
-                                    color: colorScheme.surfaceContainerHighest,
-                                    borderRadius: BorderRadius.circular(10),
+                                    color: colorScheme.onSurface.withValues(
+                                      alpha: 0.04,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: TextField(
-                                          controller: _salesTaxController,
-                                          keyboardType:
-                                              const TextInputType.numberWithOptions(
-                                                decimal: true,
-                                              ),
-                                          textAlign: TextAlign.center,
-                                          style: 14.w500.copyWith(
-                                            color: colorScheme.onSurface,
-                                          ),
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            contentPadding:
-                                                EdgeInsets.symmetric(
-                                                  vertical: 12,
-                                                ),
-                                          ),
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _salesTaxPercentText = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          right: 12,
-                                        ),
-                                        child: Text(
-                                          '%',
-                                          style: 16.w500.copyWith(
-                                            color: colorScheme.onSurface,
+                                        child: Center(
+                                          child: Text(
+                                            '$_salesTaxPercentText %',
+                                            style: 14.w500.copyWith(
+                                              color: colorScheme.onSurface,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                12.horizSpacing,
+                                16.horizSpacing,
                                 SizedBox(
-                                  width: 72,
                                   child: Text(
                                     _formatMoney(context, _salesTaxAmount),
                                     textAlign: TextAlign.right,
-                                    style: 18.w500.copyWith(
+                                    style: 16.w400.copyWith(
                                       color: colorScheme.onSurface,
                                     ),
                                   ),
@@ -478,7 +454,7 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                         ),
                       ),
                       Divider(
-                        color: colorScheme.outline,
+                        color: colorScheme.onSurface.withValues(alpha: 0.1),
                         height: 1,
                       ),
                       Padding(
@@ -488,14 +464,14 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
                             Expanded(
                               child: Text(
                                 l10n.enquiryFlowInvoiceTotal,
-                                style: 18.w500.copyWith(
+                                style: 16.w400.copyWith(
                                   color: colorScheme.onSurface,
                                 ),
                               ),
                             ),
                             Text(
                               'N${_formatMoney(context, _grandTotal)}',
-                              style: 20.w500.copyWith(
+                              style: 16.w400.copyWith(
                                 color: colorScheme.onSurface,
                               ),
                             ),

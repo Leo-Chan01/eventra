@@ -360,6 +360,7 @@
     "profileSavedVendorsSearchHint": "Buscar proveedores",
     "profileSavedVendorsEmptyState": "Ningún proveedor favorito coincide con tu búsqueda.",
     "profileSavedVendorsRemove": "Eliminar",
+    "removeAllItemsInvoice" : "Remove todos",
     "profileHelpTitle": "Ayuda",
     "profileHelpSearchHint": "Buscar proveedores",
     "profileHelpChatLabel": "Chat",

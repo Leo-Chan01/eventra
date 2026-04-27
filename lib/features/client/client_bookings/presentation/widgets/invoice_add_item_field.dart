@@ -1,5 +1,7 @@
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class InvoiceAddItemField extends StatelessWidget {
   const InvoiceAddItemField({
@@ -46,21 +48,19 @@ class InvoiceAddItemField extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
               decoration: BoxDecoration(
                 color: colorScheme.surface,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: colorScheme.outline),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: colorScheme.onSurface.withValues(alpha: 0.1),
+                ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.add_circle_outline_rounded,
-                    size: 24,
-                    color: colorScheme.onSurfaceVariant,
-                  ),
+                  SvgPicture.asset(EventraVectors.addItemIcon),
                   12.horizSpacing,
                   Text(
                     buttonText,
-                    style: 16.w500.copyWith(
+                    style: 14.w400.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
                   ),

@@ -5,33 +5,30 @@ class TicketCounterButton extends StatelessWidget {
   const TicketCounterButton({
     required this.icon,
     required this.onTap,
+    this.size = 28,
     super.key,
   });
 
   final String icon;
   final VoidCallback onTap;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Material(
-      color: colorScheme.surface,
-      shape: const CircleBorder(),
-      child: InkWell(
-        customBorder: const CircleBorder(),
-        onTap: onTap,
-        child: SizedBox(
-          width: 28,
-          height: 28,
-          child: SvgPicture.asset(
-            icon,
-            width: 28,
-            height: 28,
-            colorFilter: ColorFilter.mode(
-              colorScheme.onSurface,
-              BlendMode.srcIn,
-            ),
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: SvgPicture.asset(
+          icon,
+          width: size,
+          height: size,
+          colorFilter: ColorFilter.mode(
+            colorScheme.onSurface,
+            BlendMode.srcIn,
           ),
         ),
       ),

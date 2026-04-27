@@ -11,6 +11,8 @@ class EventraVectors {
   static const String addIconRightSideChatPage =
       'assets/svgs/add-icon-right-side-chat-page.svg';
   static const String addItemIcon = 'assets/svgs/add-item-icon.svg';
+  static const String addItemWidgetIcon =
+      'assets/svgs/add-item-widget-icon.svg';
   static const String addressIcon = 'assets/svgs/address-icon.svg';
   static const String angleLeftIsolated = 'assets/svgs/angle-left-isolated.svg';
   static const String angleLeft = 'assets/svgs/angle-left.svg';

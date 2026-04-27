@@ -65,7 +65,6 @@ class _EventraGeneralTextfieldState extends State<EventraGeneralTextfield> {
   @override
   Widget build(BuildContext context) {
     final inputDecoration = Theme.of(context).inputDecorationTheme;
-    const directColorScheme = AppColorSchemes.subtitleTextColor;
 
     if (widget.isPin) {
       return Pinput(

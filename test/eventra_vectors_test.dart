@@ -14,6 +14,7 @@ void main() {
     expect(File(EventraVectors.addIconChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addIconRightSideChatPage).existsSync(), isTrue);
     expect(File(EventraVectors.addItemIcon).existsSync(), isTrue);
+    expect(File(EventraVectors.addItemWidgetIcon).existsSync(), isTrue);
     expect(File(EventraVectors.addressIcon).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeftIsolated).existsSync(), isTrue);
     expect(File(EventraVectors.angleLeft).existsSync(), isTrue);

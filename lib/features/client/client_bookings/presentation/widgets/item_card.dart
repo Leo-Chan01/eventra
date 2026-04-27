@@ -35,14 +35,14 @@ class ItemCard extends StatelessWidget {
               children: [
                 Text(
                   item.description,
-                  style: 18.w500.copyWith(color: colorScheme.onSurface),
+                  style: 16.w400.copyWith(color: colorScheme.onSurface),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 30.vertSpacing,
                 Text(
                   lineSummaryText,
-                  style: 16.w400.copyWith(
+                  style: 14.w400.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
                 ),
@@ -55,31 +55,32 @@ class ItemCard extends StatelessWidget {
             children: [
               Text(
                 amountText,
-                style: 18.w500.copyWith(color: colorScheme.onSurface),
+                style: 16.w400.copyWith(color: colorScheme.onSurface),
               ),
               24.vertSpacing,
               Container(
-                height: 48,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerHighest,
+                  color: colorScheme.onSurface.withValues(alpha: 0.04),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
                     TicketCounterButton(
-                      icon: EventraVectors.minusButtonTicket,
+                      icon: EventraVectors.minusItemIcon,
                       onTap: onDecrease,
+                      size: 16,
                     ),
                     16.horizSpacing,
                     Text(
                       '${item.quantity}',
-                      style: 18.w500.copyWith(color: colorScheme.onSurface),
+                      style: 16.w400.copyWith(color: colorScheme.onSurface),
                     ),
                     16.horizSpacing,
                     TicketCounterButton(
-                      icon: EventraVectors.addButtonTicket,
+                      icon: EventraVectors.addItemIcon,
                       onTap: onIncrease,
+                      size: 16,
                     ),
                   ],
                 ),
