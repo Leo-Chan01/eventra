@@ -3,6 +3,8 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
+import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_help_support_page.dart';
@@ -76,7 +78,21 @@ class HomeProfileTab extends StatelessWidget {
                   style: 20.w700.copyWith(color: colorScheme.onSurface),
                 ),
               ),
-              const SizedBox(width: 26),
+              // const SizedBox(width: 26),
+              if (isVendorMode)
+                InkWell(
+                  onTap: () async {
+                    await context.pushNamed(
+                      VendorDetailPage.name,
+                      extra: const VendorDetailPageArgs(
+                        vendorId: 'vendor-001',
+                        isVendorMode: true,
+                        initialTabIndex: 1,
+                      ),
+                    );
+                  },
+                  child: SvgPicture.asset(EventraVectors.catalogIconProfile),
+                ),
             ],
           ),
           20.vertSpacing,

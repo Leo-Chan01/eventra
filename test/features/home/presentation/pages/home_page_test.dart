@@ -1,8 +1,12 @@
 import 'package:eventra/app/view/app.dart';
 import 'package:eventra/features/account_type_tracker/domain/repositories/account_type_tracker_repository.dart';
 import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
-import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/bloc/client_booking_bloc.dart';
+import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
+import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
@@ -345,9 +349,64 @@ void main() {
       await tester.tap(find.byKey(const Key('home_profile_kyc_banner')));
       await tester.pumpAndSettle();
 
-      expect(find.text('KYC Verification'), findsOneWidget);
-      expect(find.text('National Identity Number (NIN)'), findsOneWidget);
+      expect(find.text('Complete your kyc'), findsOneWidget);
+      expect(find.text('NIN'), findsOneWidget);
     });
+
+    testWidgets(
+      'vendor profile catalog icon opens vendor detail in vendor mode on catalog tab',
+      (tester) async {
+        final router = GoRouter(
+          initialLocation: '${HomePage.path}?vendor=true',
+          routes: [
+            GoRoute(
+              path: HomePage.path,
+              name: HomePage.name,
+              builder: (context, state) => const HomePage(isVendorMode: true),
+            ),
+            GoRoute(
+              path: VendorDetailPage.path,
+              name: VendorDetailPage.name,
+              builder: (context, state) => VendorDetailPage(
+                args:
+                    state.extra as VendorDetailPageArgs? ??
+                    const VendorDetailPageArgs(),
+              ),
+            ),
+          ],
+        );
+
+        await tester.pumpWidget(
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => HomeBloc()),
+              BlocProvider(create: (_) => ClientInboxBloc()),
+              BlocProvider(create: (_) => VendorDetailBloc()),
+              BlocProvider(create: (_) => ClientBookingBloc()),
+            ],
+            child: ScreenUtilInit(
+              designSize: const Size(375, 812),
+              minTextAdapt: true,
+              builder: (_, _) => MaterialApp.router(
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                routerConfig: router,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byKey(const Key('nav_tab_4')));
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byType(InkWell).at(1));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Pre-wedding Photoshoot'), findsOneWidget);
+        expect(find.text('Make Enquiry'), findsNothing);
+      },
+    );
 
     testWidgets(
       'switching account type shows confirmation, splash, and home in the new mode',
@@ -370,12 +429,11 @@ void main() {
                     .read<AccountTypeTrackerBloc>()
                     .state;
                 final isVendorByTracker =
-                    trackerState.isGuestMode == false &&
+                    !trackerState.isGuestMode &&
                     trackerState.selectedAccountType == AccountType.vendor;
 
                 return HomePage(
-                  isGuestMode:
-                      isGuestByQuery || trackerState.isGuestMode == true,
+                  isGuestMode: isGuestByQuery || trackerState.isGuestMode,
                   isVendorMode: isVendorByQuery || isVendorByTracker,
                 );
               },
@@ -426,10 +484,18 @@ void main() {
 
         expect(find.text('Switch account type?'), findsOneWidget);
 
-        await tester.tap(find.text('Switch To Client').last);
+        await tester.tap(
+          find.descendant(
+            of: find.byType(Dialog),
+            matching: find.text('Switch To Client'),
+          ),
+        );
         await tester.pump();
 
-        expect(find.byType(OnboardingLoadingPage), findsOneWidget);
+        expect(
+          router.routeInformationProvider.value.uri.path,
+          OnboardingLoadingPage.path,
+        );
 
         await tester.pump(const Duration(seconds: 3));
         await tester.pumpAndSettle();

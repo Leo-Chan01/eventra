@@ -49,6 +49,7 @@ import 'package:eventra/features/client/client_notification/presentation/pages/c
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_details_page.dart';
 import 'package:eventra/features/client/client_notification/presentation/pages/transaction_history_page.dart';
 import 'package:eventra/features/client/featured_and_top_vendors/presentation/pages/category_vendors_page.dart';
+import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
 import 'package:eventra/features/client/vendor_details/presentation/pages/vendor_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_reset_page.dart';
@@ -338,7 +339,11 @@ class AppRouter {
       GoRoute(
         path: VendorDetailPage.path,
         name: VendorDetailPage.name,
-        builder: (context, state) => const VendorDetailPage(),
+        builder: (context, state) => VendorDetailPage(
+          args:
+              state.extra as VendorDetailPageArgs? ??
+              const VendorDetailPageArgs(),
+        ),
       ),
       GoRoute(
         path: CatalogItemDetailPage.path,

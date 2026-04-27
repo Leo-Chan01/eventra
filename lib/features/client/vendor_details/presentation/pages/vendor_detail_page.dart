@@ -4,6 +4,7 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/catal
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/vendor_details/domain/models/vendor_detail.dart';
 import 'package:eventra/features/client/vendor_details/presentation/bloc/vendor_detail_bloc.dart';
+import 'package:eventra/features/client/vendor_details/presentation/models/vendor_detail_page_args.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_about_tab.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_bottom_bar.dart';
 import 'package:eventra/features/client/vendor_details/presentation/widgets/vendor_detail_catalog_tab.dart';
@@ -17,10 +18,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class VendorDetailPage extends StatelessWidget {
-  const VendorDetailPage({super.key});
+  const VendorDetailPage({
+    this.args = const VendorDetailPageArgs(),
+    super.key,
+  });
 
   static const String path = '/vendor-detail';
   static const String name = 'vendor-detail';
+
+  final VendorDetailPageArgs args;
 
   @override
   Widget build(BuildContext context) {
@@ -34,22 +40,27 @@ class VendorDetailPage extends StatelessWidget {
       l10n.vendorDetailReviews,
     ];
 
-    return BlocBuilder<VendorDetailBloc, VendorDetailState>(
-      builder: (context, state) {
-        final vendor = state.selectedVendor;
+    return _VendorDetailEntry(
+      args: args,
+      child: BlocBuilder<VendorDetailBloc, VendorDetailState>(
+        builder: (context, state) {
+          final vendor = state.selectedVendor;
 
-        return Scaffold(
-          backgroundColor: colorScheme.surface,
-          body: _VendorDetailBody(
-            vendor: vendor,
-            tabs: tabs,
-            selectedTab: state.selectedTab,
-          ),
-          bottomNavigationBar: VendorDetailBottomBar(
-            onMakeEnquiry: () => _onMakeEnquiry(context, vendor),
-          ),
-        );
-      },
+          return Scaffold(
+            backgroundColor: colorScheme.surface,
+            body: _VendorDetailBody(
+              vendor: vendor,
+              tabs: tabs,
+              selectedTab: state.selectedTab,
+            ),
+            bottomNavigationBar: args.isVendorMode
+                ? null
+                : VendorDetailBottomBar(
+                    onMakeEnquiry: () => _onMakeEnquiry(context, vendor),
+                  ),
+          );
+        },
+      ),
     );
   }
 
@@ -81,6 +92,47 @@ class VendorDetailPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class _VendorDetailEntry extends StatefulWidget {
+  const _VendorDetailEntry({
+    required this.args,
+    required this.child,
+  });
+
+  final VendorDetailPageArgs args;
+  final Widget child;
+
+  @override
+  State<_VendorDetailEntry> createState() => _VendorDetailEntryState();
+}
+
+class _VendorDetailEntryState extends State<_VendorDetailEntry> {
+  bool _didSyncInitialState = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_didSyncInitialState) {
+      return;
+    }
+
+    final bloc = context.read<VendorDetailBloc>();
+    final args = widget.args;
+
+    if (args.vendorId != null && args.vendorId!.isNotEmpty) {
+      bloc.add(VendorSelected(args.vendorId!));
+    }
+
+    if (args.initialTabIndex != 0) {
+      bloc.add(VendorDetailTabChanged(args.initialTabIndex));
+    }
+
+    _didSyncInitialState = true;
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }
 
 class _VendorDetailBody extends StatelessWidget {

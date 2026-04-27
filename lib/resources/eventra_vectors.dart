@@ -37,6 +37,8 @@ class EventraVectors {
       'assets/svgs/cancel-icon-no-circle.svg';
   static const String cancelSearchIcon = 'assets/svgs/cancel-search-icon.svg';
   static const String cardIconIsolated = 'assets/svgs/card-icon-isolated.svg';
+  static const String catalogIconProfile =
+      'assets/svgs/catalog-icon-profile.svg';
   static const String cautionBlackGreyIconProfileSettings =
       'assets/svgs/caution-black-grey-icon-profile-settings.svg';
   static const String cautionRedExclamationIconProfileSettings =

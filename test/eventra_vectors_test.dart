@@ -35,6 +35,7 @@ void main() {
     expect(File(EventraVectors.cancelIconNoCircle).existsSync(), isTrue);
     expect(File(EventraVectors.cancelSearchIcon).existsSync(), isTrue);
     expect(File(EventraVectors.cardIconIsolated).existsSync(), isTrue);
+    expect(File(EventraVectors.catalogIconProfile).existsSync(), isTrue);
     expect(
       File(EventraVectors.cautionBlackGreyIconProfileSettings).existsSync(),
       isTrue,
