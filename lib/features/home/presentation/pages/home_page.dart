@@ -76,6 +76,7 @@ class HomePage extends StatelessWidget {
                       bottom: false,
                       child: HomeProfileTab(
                         profile: state.profile,
+                        isVendorMode: true,
                         onBack: () {
                           context.read<HomeBloc>().add(const HomeTabChanged(0));
                         },

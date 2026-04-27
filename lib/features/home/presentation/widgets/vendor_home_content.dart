@@ -192,23 +192,27 @@ class VendorHomeContent extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 18,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          color: colorScheme.surfaceContainerLow,
-                          borderRadius: BorderRadius.circular(999),
-                          border: Border.all(
-                            color: colorScheme.outline.withValues(alpha: 0.1),
-                            width: 1.5,
+                      InkWell(
+                        onTap: () {
+                          // context.goNamed(VendorInboxTab.name);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18,
+                            vertical: 12,
                           ),
-                        ),
-
-                        child: Text(
-                          l10n.vendorHomeViewMessages,
-                          style: 12.w500.copyWith(color: colorScheme.primary),
+                          decoration: BoxDecoration(
+                            color: colorScheme.surfaceContainerLow,
+                            borderRadius: BorderRadius.circular(999),
+                            border: Border.all(
+                              color: colorScheme.outline.withValues(alpha: 0.1),
+                              width: 1.5,
+                            ),
+                          ),
+                          child: Text(
+                            l10n.vendorHomeViewMessages,
+                            style: 12.w500.copyWith(color: colorScheme.primary),
+                          ),
                         ),
                       ),
                     ],

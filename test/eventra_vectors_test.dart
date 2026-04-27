@@ -57,6 +57,10 @@ void main() {
     );
     expect(File(EventraVectors.clientVector).existsSync(), isTrue);
     expect(File(EventraVectors.clockOrangeLineIcon).existsSync(), isTrue);
+    expect(
+      File(EventraVectors.completeKycVerificationIcon).existsSync(),
+      isTrue,
+    );
     expect(File(EventraVectors.copyBlackIcon).existsSync(), isTrue);
     expect(File(EventraVectors.copyIconWhiteBg).existsSync(), isTrue);
     expect(File(EventraVectors.creditCardBlueGbIcon).existsSync(), isTrue);
@@ -191,6 +195,7 @@ void main() {
     expect(File(EventraVectors.uploadCoverPhoto).existsSync(), isTrue);
     expect(File(EventraVectors.vendorVector).existsSync(), isTrue);
     expect(File(EventraVectors.verify).existsSync(), isTrue);
+    expect(File(EventraVectors.viewVendorsContract).existsSync(), isTrue);
     expect(
       File(EventraVectors.weLoveYourFeedbackIconProfileSettings).existsSync(),
       isTrue,

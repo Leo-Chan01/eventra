@@ -10,6 +10,7 @@ import 'package:eventra/features/home/presentation/pages/profile_personal_inform
 import 'package:eventra/features/home/presentation/pages/profile_privacy_security_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_header_card.dart';
+import 'package:eventra/features/home/presentation/widgets/home_profile_kyc_banner.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_logout_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_menu_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_section_title.dart';
@@ -24,11 +25,13 @@ class HomeProfileTab extends StatelessWidget {
   const HomeProfileTab({
     required this.profile,
     required this.onBack,
+    this.isVendorMode = false,
     super.key,
   });
 
   final HomeProfile profile;
   final VoidCallback onBack;
+  final bool isVendorMode;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +101,14 @@ class HomeProfileTab extends StatelessWidget {
             ],
           ),
           28.vertSpacing,
+          if (isVendorMode) ...[
+            HomeProfileKycBanner(
+              onTap: () {
+                GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+              },
+            ),
+            28.vertSpacing,
+          ],
           HomeProfileSectionTitle(title: l10n.homeProfileAccount),
           12.vertSpacing,
           Container(
@@ -129,6 +140,16 @@ class HomeProfileTab extends StatelessWidget {
                   },
                 ),
                 standardDividerUtil(context),
+                if (isVendorMode) ...[
+                  HomeProfileMenuTile(
+                    iconPath: EventraVectors.viewVendorsContract,
+                    label: l10n.homeProfileViewVendorContract,
+                    onTap: () {
+                      GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                    },
+                  ),
+                  standardDividerUtil(context),
+                ],
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.privacySecurityIconProfileSettings,
                   label: l10n.homeProfilePrivacySecurity,
@@ -160,7 +181,9 @@ class HomeProfileTab extends StatelessWidget {
                 standardDividerUtil(context),
                 HomeProfileMenuTile(
                   iconPath: EventraVectors.switchToVendorIconProfileSettings,
-                  label: l10n.homeProfileSwitchToVendor,
+                  label: isVendorMode
+                      ? l10n.homeProfileSwitchToClient
+                      : l10n.homeProfileSwitchToVendor,
                   onTap: () {
                     GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
                   },

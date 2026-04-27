@@ -54,6 +54,8 @@ class EventraVectors {
   static const String clientVector = 'assets/svgs/client-vector.svg';
   static const String clockOrangeLineIcon =
       'assets/svgs/clock-orange-line-icon.svg';
+  static const String completeKycVerificationIcon =
+      'assets/svgs/complete-kyc-verification-icon.svg';
   static const String copyBlackIcon = 'assets/svgs/copy-black-icon.svg';
   static const String copyIconWhiteBg = 'assets/svgs/copy-icon-white-bg.svg';
   static const String creditCardBlueGbIcon =
@@ -183,6 +185,8 @@ class EventraVectors {
   static const String uploadCoverPhoto = 'assets/svgs/upload-cover-photo.svg';
   static const String vendorVector = 'assets/svgs/vendor-vector.svg';
   static const String verify = 'assets/svgs/verify.svg';
+  static const String viewVendorsContract =
+      'assets/svgs/view-vendors-contract.svg';
   static const String weLoveYourFeedbackIconProfileSettings =
       'assets/svgs/we-love-your-feedback-icon-profile-settings.svg';
   static const String whitePencilSingleOnlyIcon =
