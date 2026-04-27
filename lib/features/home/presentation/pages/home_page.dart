@@ -61,6 +61,10 @@ class HomePage extends StatelessWidget {
                     ),
                     HomeReelsTab(
                       reels: state.reels,
+                      isVendorExperience: true,
+                      onExit: () {
+                        context.read<HomeBloc>().add(const HomeTabChanged(0));
+                      },
                       onShareReel: (reel) async {
                         await AppShareBottomSheet.show(
                           context,
@@ -101,6 +105,10 @@ class HomePage extends StatelessWidget {
                     HomeSearchPage(state: state),
                     HomeReelsTab(
                       reels: state.reels,
+                      isVendorExperience: false,
+                      onExit: () {
+                        context.read<HomeBloc>().add(const HomeTabChanged(0));
+                      },
                       onShareReel: (reel) async {
                         await AppShareBottomSheet.show(
                           context,
@@ -119,13 +127,15 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-          bottomNavigationBar: EventraBottomNav(
-            currentIndex: state.currentIndex,
-            isVendorMode: isVendorMode,
-            onTap: (index) {
-              context.read<HomeBloc>().add(HomeTabChanged(index));
-            },
-          ),
+          bottomNavigationBar: isVendorMode && state.currentIndex == 3
+              ? null
+              : EventraBottomNav(
+                  currentIndex: state.currentIndex,
+                  isVendorMode: isVendorMode,
+                  onTap: (index) {
+                    context.read<HomeBloc>().add(HomeTabChanged(index));
+                  },
+                ),
         );
       },
     );

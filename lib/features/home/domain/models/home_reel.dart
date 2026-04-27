@@ -7,6 +7,7 @@ class HomeReel extends Equatable {
     required this.caption,
     required this.imagePath,
     required this.creatorAvatarPath,
+    required this.viewCount,
     required this.likeCount,
     required this.shareCount,
     required this.saveCount,
@@ -17,6 +18,7 @@ class HomeReel extends Equatable {
   final String caption;
   final String imagePath;
   final String creatorAvatarPath;
+  final int viewCount;
   final int likeCount;
   final int shareCount;
   final int saveCount;
@@ -28,6 +30,7 @@ class HomeReel extends Equatable {
     caption,
     imagePath,
     creatorAvatarPath,
+    viewCount,
     likeCount,
     shareCount,
     saveCount,
