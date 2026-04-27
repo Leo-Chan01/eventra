@@ -119,6 +119,8 @@ class _EnquiryFormPageState extends State<EnquiryFormPage> {
         : intl.DateFormat('MMMM d, yyyy    h:mm a').format(
             _selectedEventDateTime!,
           );
+    //
+    // ignore: unused_local_variable
     final ratingLabel =
         (_args.vendorRating != null && _args.vendorReviewsCount != null)
         ? l10n.enquiryFlowPendingRating(

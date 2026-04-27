@@ -107,6 +107,8 @@ class VendorKycFacialVerificationPage extends StatelessWidget {
 
     if (!context.mounted) return;
 
+    //
+    // ignore: unused_local_variable
     final status = await Permission.camera.request();
     if (!context.mounted) return;
 

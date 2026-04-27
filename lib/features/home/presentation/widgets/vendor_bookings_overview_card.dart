@@ -1,4 +1,3 @@
-import 'package:eventra/core/utils/boxshadow_util.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/resources/resources.dart';
 import 'package:flutter/material.dart';

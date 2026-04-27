@@ -15,6 +15,8 @@ class VendorCategorySelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final isVendorFlow = context.select(
+      //
+      // ignore: avoid_types_on_closure_parameters
       (SignupBloc bloc) => bloc.state.accountType == AccountType.vendor,
     );
 

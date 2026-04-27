@@ -47,9 +47,9 @@ class HomePage extends StatelessWidget {
                       bottom: false,
                       child: VendorHomeContent(state: state),
                     ),
-                    SafeArea(
+                    const SafeArea(
                       bottom: false,
-                      child: const VendorInboxTab(),
+                      child: VendorInboxTab(),
                     ),
                     SafeArea(
                       bottom: false,

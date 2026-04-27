@@ -100,6 +100,8 @@ class VendorKycSelfiePageState extends State<VendorKycSelfiePage> {
   @override
   void dispose() {
     _autoCapTimer?.cancel();
+    //
+    // ignore: discarded_futures
     _controller?.dispose();
     super.dispose();
   }

@@ -33,8 +33,9 @@ import 'package:eventra/features/client/client_bookings/presentation/pages/enqui
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_form_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_review_page.dart';
-import 'package:eventra/features/client/client_bookings/presentation/pages/new_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/enquiry_sent_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/invoice_ready_page.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/new_invoice_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/payment_received_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/pending_enquiry_detail_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/review_submitted_page.dart';
@@ -375,6 +376,11 @@ class AppRouter {
         path: NewInvoicePage.path,
         name: NewInvoicePage.name,
         builder: (context, state) => const NewInvoicePage(),
+      ),
+      GoRoute(
+        path: InvoiceReadyPage.path,
+        name: InvoiceReadyPage.name,
+        builder: (context, state) => const InvoiceReadyPage(),
       ),
       GoRoute(
         path: EnquiryContractPage.path,

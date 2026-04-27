@@ -2,8 +2,8 @@ import 'package:eventra/core/utils/num_extensions.dart';
 import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/client/client_bookings/presentation/models/enquiry_flow_details_args.dart';
 import 'package:eventra/features/client/client_bookings/presentation/pages/new_invoice_page.dart';
-import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/client_inbox/domain/models/chat_message.dart';
+import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_bubble.dart';
 import 'package:eventra/features/client/client_inbox/presentation/widgets/chat_input_bar.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
@@ -77,8 +77,8 @@ class _ChatPageState extends State<ChatPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Center(
                         child: GestureDetector(
-                          onTap: () {
-                            context.pushNamed(
+                          onTap: () async {
+                            await context.pushNamed(
                               NewInvoicePage.name,
                               extra: NewInvoicePageArgs(
                                 bookingId: thread.id,

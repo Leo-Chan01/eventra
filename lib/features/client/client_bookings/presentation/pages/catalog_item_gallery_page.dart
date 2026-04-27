@@ -131,7 +131,7 @@ class _CatalogItemGalleryPageState extends State<CatalogItemGalleryPage> {
                 child: isLast
                     ? const EventraNavButton.clearType(
                         isNext: true,
-                        onTap: null,
+                        // onTap: null,
                       )
                     : EventraNavButton.regular(
                         isNext: true,

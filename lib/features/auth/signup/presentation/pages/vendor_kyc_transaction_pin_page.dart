@@ -66,7 +66,7 @@ class VendorKycTransactionPinPageState
     );
   }
 
-  void _onDigitPressed(String digit) {
+  Future<void> _onDigitPressed(String digit) async {
     if (pin.length >= 4) {
       return;
     }
@@ -76,7 +76,7 @@ class VendorKycTransactionPinPageState
     });
 
     if (pin.length == 4) {
-      _finishPinFlow();
+      await _finishPinFlow();
     }
   }
 

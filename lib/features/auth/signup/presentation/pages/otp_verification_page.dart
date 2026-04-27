@@ -57,6 +57,8 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final isVendorFlow = context.select(
+      //
+      // ignore: avoid_types_on_closure_parameters
       (SignupBloc bloc) => bloc.state.accountType == AccountType.vendor,
     );
 

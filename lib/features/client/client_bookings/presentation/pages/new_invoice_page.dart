@@ -1,5 +1,6 @@
 import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/client/client_bookings/presentation/pages/invoice_ready_page.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/add_item_bottomsheet.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/client_information_card.dart';
 import 'package:eventra/features/client/client_bookings/presentation/widgets/invoice_add_item_field.dart';
@@ -50,7 +51,8 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
   String _dueDateText = '';
   String _note = '';
   String _terms = '';
-  String _salesTaxPercentText = '100.00';
+  final String _salesTaxPercentText = '100.00';
+  bool _isGeneratingInvoice = false;
 
   final List<InvoiceItem> _items = <InvoiceItem>[];
 
@@ -132,22 +134,15 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
-      builder: (context) {
-        return AddItemBottomSheet(
-          onItemAdded: (item) {
-            setState(() {
-              _items.add(item);
-            });
-            Navigator.of(context).pop();
-          },
-        );
-      },
+      builder: (context) => AddItemBottomSheet(
+        onItemAdded: (item) {
+          setState(() {
+            _items.add(item);
+          });
+          Navigator.of(context).pop();
+        },
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   void _increaseItemQuantity(int index) {
@@ -169,13 +164,15 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
   }
 
   void _removeAllItems() {
-    setState(() {
-      _items.clear();
-    });
+    setState(_items.clear);
   }
 
   double get _subTotal {
-    return _items.fold<double>(0, (previous, item) => previous + item.total);
+    var value = 0.0;
+    for (final item in _items) {
+      value += item.total;
+    }
+    return value;
   }
 
   double get _salesTaxPercent {
@@ -195,7 +192,7 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
     return intl.NumberFormat('#,##0.00', localeTag).format(value);
   }
 
-  void _generateInvoice() {
+  Future<void> _generateInvoice() async {
     final l10n = context.l10n;
 
     if (_invoiceNumber.trim().isEmpty) {
@@ -218,8 +215,21 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
       return;
     }
 
-    GlobalSnackBar.showSuccess(l10n.invoiceGeneratedSuccessfully);
-    context.pop();
+    setState(() {
+      _isGeneratingInvoice = true;
+    });
+
+    await Future<void>.delayed(const Duration(milliseconds: 1300));
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      _isGeneratingInvoice = false;
+    });
+
+    await context.pushNamed(InvoiceReadyPage.name);
   }
 
   @override
@@ -509,6 +519,7 @@ class _NewInvoicePageState extends State<NewInvoicePage> {
           buttonText: l10n.generateInvoiceButton,
           height: 64,
           borderRadius: 32,
+          isLoading: _isGeneratingInvoice,
           onPressed: _generateInvoice,
         ),
       ),

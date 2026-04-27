@@ -77,7 +77,7 @@ void main() {
       expect(find.text('Allow'), findsOneWidget);
     });
 
-    testWidgets('tapping Don\'t Allow dismisses permission dialog', (
+    testWidgets("tapping Don't Allow dismisses permission dialog", (
       tester,
     ) async {
       await tester.pumpWidget(_buildApp());

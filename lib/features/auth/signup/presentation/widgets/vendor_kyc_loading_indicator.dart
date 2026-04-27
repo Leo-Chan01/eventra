@@ -1,3 +1,6 @@
+//
+// ignore_for_file: discarded_futures
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -78,15 +81,15 @@ class VendorKycLoadingPainter extends CustomPainter {
     final rotationAngle = progress * math.pi * 2;
     final shader = SweepGradient(
       colors: [
-        color.withValues(alpha: 0.0),
+        color.withValues(alpha: 0),
         color.withValues(alpha: 0.14),
         color.withValues(alpha: 0.32),
         color.withValues(alpha: 0.6),
         color,
       ],
       stops: const [0.0, 0.55, 0.74, 0.9, 1.0],
-      startAngle: 0,
-      endAngle: math.pi * 2,
+      // startAngle: 0,
+      // endAngle: math.pi * 2,
       transform: GradientRotation(rotationAngle - (math.pi * 0.5)),
     ).createShader(rect);
 

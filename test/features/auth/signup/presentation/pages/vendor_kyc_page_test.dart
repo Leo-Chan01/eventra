@@ -1,8 +1,8 @@
-import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_business_address_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_cac_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_gov_id_page.dart';
 import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_nin_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/auth/signup/presentation/widgets/vendor_kyc_loading_indicator.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -215,7 +215,7 @@ void main() {
       await tester.pumpWidget(_buildApp());
       await tester.pumpAndSettle();
 
-      ElevatedButton continueButton = tester.widget<ElevatedButton>(
+      var continueButton = tester.widget<ElevatedButton>(
         find
             .descendant(
               of: find.byType(VendorKycPage),

@@ -17,8 +17,8 @@ class SelfieOvalOverlayPainter extends CustomPainter {
     canvas
       ..saveLayer(Offset.zero & size, Paint())
       ..drawRect(Offset.zero & size, overlayPaint)
-      ..drawOval(ovalRect, clearPaint);
-    canvas.restore();
+      ..drawOval(ovalRect, clearPaint)
+      ..restore();
   }
 
   @override
