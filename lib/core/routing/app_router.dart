@@ -61,6 +61,7 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_completed_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_ongoing_job_detail_page.dart';
 import 'package:eventra/features/home/presentation/pages/vendor_transfer_success_page.dart';
@@ -98,7 +99,7 @@ class AppRouter {
         path: HomePage.path,
         name: HomePage.name,
         builder: (context, state) {
-          final isGuestMode = state.uri.queryParameters['guest'] == 'true';
+          final isGuestByQuery = state.uri.queryParameters['guest'] == 'true';
           final isVendorByQuery = state.uri.queryParameters['vendor'] == 'true';
           AccountTypeTrackerState? trackerState;
           try {
@@ -109,6 +110,8 @@ class AppRouter {
           final isVendorByTracker =
               trackerState?.isGuestMode == false &&
               trackerState?.selectedAccountType == AccountType.vendor;
+          final isGuestMode =
+              isGuestByQuery || trackerState?.isGuestMode == true;
 
           return HomePage(
             isGuestMode: isGuestMode,
@@ -148,6 +151,11 @@ class AppRouter {
         path: ProfileSavedVendorsPage.path,
         name: ProfileSavedVendorsPage.name,
         builder: (context, state) => const ProfileSavedVendorsPage(),
+      ),
+      GoRoute(
+        path: ProfileVendorContractPage.path,
+        name: ProfileVendorContractPage.name,
+        builder: (context, state) => const ProfileVendorContractPage(),
       ),
       GoRoute(
         path: ProfileHelpSupportPage.path,

@@ -1,5 +1,8 @@
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
+import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/bloc/onboarding_loading_bloc.dart';
 import 'package:eventra/features/onboarding/onboarding_loading/presentation/widgets/onboarding_loading_logo.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +32,22 @@ class OnboardingLoadingView extends StatelessWidget {
     return BlocListener<OnboardingLoadingBloc, OnboardingLoadingState>(
       listener: (context, state) {
         if (state is OnboardingLoadingSuccess) {
+          final trackerState = context.read<AccountTypeTrackerBloc>().state;
+
+          if (trackerState.isGuestMode) {
+            context.goNamed(
+              HomePage.name,
+              queryParameters: const {'guest': 'true'},
+            );
+            return;
+          }
+
+          if (trackerState.selectedAccountType == AccountType.client ||
+              trackerState.selectedAccountType == AccountType.vendor) {
+            context.goNamed(HomePage.name);
+            return;
+          }
+
           context.go(OnboardingSlidesPage.path);
         }
       },

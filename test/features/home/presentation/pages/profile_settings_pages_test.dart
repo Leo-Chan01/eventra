@@ -7,6 +7,7 @@ import 'package:eventra/features/home/presentation/pages/profile_privacy_securit
 import 'package:eventra/features/home/presentation/pages/profile_rate_us_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_terms_and_conditions_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/shared/theme/theme_bloc.dart';
 import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_confirmation_dialog.dart';
 import 'package:eventra/shared/widgets/eventra_dialogs/delete_account_password_dialog.dart';
@@ -65,6 +66,24 @@ void main() {
       expect(find.text('My Favourite Vendors'), findsOneWidget);
       expect(find.text('360 Events'), findsOneWidget);
       expect(find.text('View Profile'), findsWidgets);
+    });
+
+    testWidgets('vendor contract page renders contract summary', (
+      tester,
+    ) async {
+      await tester.pumpApp(
+        BlocProvider(
+          create: (_) => HomeBloc(),
+          child: const ProfileVendorContractPage(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text("View Vendor's Contract"), findsOneWidget);
+      expect(find.text('Chioma Okafor'), findsOneWidget);
+      expect(find.text('name@gmail.com'), findsOneWidget);
+      expect(find.text('4  VENDOR OBLIGATIONS'), findsOneWidget);
+      expect(find.text('7  DISPUTE RESOLUTION'), findsOneWidget);
     });
 
     testWidgets('help support page renders faq and support CTA', (

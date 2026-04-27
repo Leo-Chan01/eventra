@@ -1,7 +1,8 @@
 import 'package:eventra/core/utils/boxshadow_util.dart';
-import 'package:eventra/core/utils/global_snackbar.dart';
 import 'package:eventra/core/utils/num_extensions.dart';
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/auth/login/presentation/pages/login_page.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/home/domain/models/home_profile.dart';
 import 'package:eventra/features/home/presentation/pages/profile_app_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_help_support_page.dart';
@@ -9,15 +10,20 @@ import 'package:eventra/features/home/presentation/pages/profile_notification_se
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_privacy_security_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_saved_vendors_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_header_card.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_kyc_banner.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_logout_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_menu_tile.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_section_title.dart';
 import 'package:eventra/features/home/presentation/widgets/home_profile_stat_card.dart';
+import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
 import 'package:eventra/l10n/l10n.dart';
 import 'package:eventra/resources/resources.dart';
+import 'package:eventra/shared/widgets/eventra_dialogs/account_type_switch_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -103,8 +109,8 @@ class HomeProfileTab extends StatelessWidget {
           28.vertSpacing,
           if (isVendorMode) ...[
             HomeProfileKycBanner(
-              onTap: () {
-                GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+              onTap: () async {
+                await context.pushNamed(VendorKycPage.name);
               },
             ),
             28.vertSpacing,
@@ -144,8 +150,8 @@ class HomeProfileTab extends StatelessWidget {
                   HomeProfileMenuTile(
                     iconPath: EventraVectors.viewVendorsContract,
                     label: l10n.homeProfileViewVendorContract,
-                    onTap: () {
-                      GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                    onTap: () async {
+                      await context.pushNamed(ProfileVendorContractPage.name);
                     },
                   ),
                   standardDividerUtil(context),
@@ -184,8 +190,25 @@ class HomeProfileTab extends StatelessWidget {
                   label: isVendorMode
                       ? l10n.homeProfileSwitchToClient
                       : l10n.homeProfileSwitchToVendor,
-                  onTap: () {
-                    GlobalSnackBar.showInfo(l10n.homeProfileActionComingSoon);
+                  onTap: () async {
+                    final targetAccountType = isVendorMode
+                        ? AccountType.client
+                        : AccountType.vendor;
+                    final shouldSwitch =
+                        await AccountTypeSwitchConfirmationDialog.show(
+                          context,
+                          targetAccountType: targetAccountType,
+                        ) ??
+                        false;
+
+                    if (!context.mounted || !shouldSwitch) {
+                      return;
+                    }
+
+                    context.read<AccountTypeTrackerBloc>().add(
+                      AccountTypeSelected(targetAccountType),
+                    );
+                    context.goNamed(OnboardingLoadingPage.name);
                   },
                 ),
               ],

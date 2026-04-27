@@ -1,13 +1,23 @@
 import 'package:eventra/app/view/app.dart';
+import 'package:eventra/features/account_type_tracker/domain/repositories/account_type_tracker_repository.dart';
+import 'package:eventra/features/account_type_tracker/presentation/bloc/account_type_tracker_bloc.dart';
 import 'package:eventra/features/client/client_inbox/presentation/bloc/client_inbox_bloc.dart';
+import 'package:eventra/features/auth/signup/presentation/pages/vendor_kyc_page.dart';
 import 'package:eventra/features/home/presentation/bloc/home_bloc.dart';
 import 'package:eventra/features/home/presentation/pages/home_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_notification_settings_page.dart';
 import 'package:eventra/features/home/presentation/pages/profile_personal_information_page.dart';
+import 'package:eventra/features/home/presentation/pages/profile_vendor_contract_page.dart';
 import 'package:eventra/features/home/presentation/widgets/eventra_bottom_nav.dart';
+import 'package:eventra/features/onboarding/onboarding_loading/presentation/pages/onboarding_loading_page.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/domain/models/account_type.dart';
+import 'package:eventra/features/onboarding/onboarding_slides/presentation/pages/onboarding_slides_page.dart';
+import 'package:eventra/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../helpers/pump_app.dart';
 
@@ -236,6 +246,202 @@ void main() {
       expect(find.text('Log Out'), findsOneWidget);
     });
 
+    testWidgets('vendor contract tile opens the vendor contract page', (
+      tester,
+    ) async {
+      final router = GoRouter(
+        initialLocation: HomePage.path,
+        routes: [
+          GoRoute(
+            path: HomePage.path,
+            name: HomePage.name,
+            builder: (context, state) => const HomePage(isVendorMode: true),
+          ),
+          GoRoute(
+            path: ProfileVendorContractPage.path,
+            name: ProfileVendorContractPage.name,
+            builder: (context, state) => const ProfileVendorContractPage(),
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => HomeBloc()),
+            BlocProvider(create: (_) => ClientInboxBloc()),
+          ],
+          child: ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            builder: (_, _) => MaterialApp.router(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              routerConfig: router,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('nav_tab_4')));
+      await tester.pumpAndSettle();
+
+      await tester.scrollUntilVisible(
+        find.text("View Vendor's Contract"),
+        240,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text("View Vendor's Contract"));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const Key('profile_vendor_contract_page')),
+        findsOneWidget,
+      );
+      expect(find.text('Service Agreement'), findsOneWidget);
+      expect(find.text('Chioma Okafor'), findsOneWidget);
+    });
+
+    testWidgets('vendor KYC banner opens the KYC start page', (tester) async {
+      final router = GoRouter(
+        initialLocation: '${HomePage.path}?vendor=true',
+        routes: [
+          GoRoute(
+            path: HomePage.path,
+            name: HomePage.name,
+            builder: (context, state) => const HomePage(isVendorMode: true),
+          ),
+          GoRoute(
+            path: VendorKycPage.path,
+            name: VendorKycPage.name,
+            builder: (context, state) => const VendorKycPage(),
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => HomeBloc()),
+            BlocProvider(create: (_) => ClientInboxBloc()),
+          ],
+          child: ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            builder: (_, _) => MaterialApp.router(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              routerConfig: router,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('nav_tab_4')));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const Key('home_profile_kyc_banner')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('KYC Verification'), findsOneWidget);
+      expect(find.text('National Identity Number (NIN)'), findsOneWidget);
+    });
+
+    testWidgets(
+      'switching account type shows confirmation, splash, and home in the new mode',
+      (tester) async {
+        final trackerBloc = AccountTypeTrackerBloc(
+          repository: _FakeAccountTypeTrackerRepository(),
+        );
+        final router = GoRouter(
+          initialLocation: '${HomePage.path}?vendor=true',
+          routes: [
+            GoRoute(
+              path: HomePage.path,
+              name: HomePage.name,
+              builder: (context, state) {
+                final isGuestByQuery =
+                    state.uri.queryParameters['guest'] == 'true';
+                final isVendorByQuery =
+                    state.uri.queryParameters['vendor'] == 'true';
+                final trackerState = context
+                    .read<AccountTypeTrackerBloc>()
+                    .state;
+                final isVendorByTracker =
+                    trackerState.isGuestMode == false &&
+                    trackerState.selectedAccountType == AccountType.vendor;
+
+                return HomePage(
+                  isGuestMode:
+                      isGuestByQuery || trackerState.isGuestMode == true,
+                  isVendorMode: isVendorByQuery || isVendorByTracker,
+                );
+              },
+            ),
+            GoRoute(
+              path: OnboardingLoadingPage.path,
+              name: OnboardingLoadingPage.name,
+              builder: (context, state) => const OnboardingLoadingPage(),
+            ),
+            GoRoute(
+              path: OnboardingSlidesPage.path,
+              name: OnboardingSlidesPage.name,
+              builder: (context, state) => const SizedBox.shrink(),
+            ),
+          ],
+        );
+
+        await tester.pumpWidget(
+          MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: trackerBloc),
+              BlocProvider(create: (_) => HomeBloc()),
+              BlocProvider(create: (_) => ClientInboxBloc()),
+            ],
+            child: ScreenUtilInit(
+              designSize: const Size(375, 812),
+              minTextAdapt: true,
+              builder: (_, _) => MaterialApp.router(
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                routerConfig: router,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byKey(const Key('nav_tab_4')));
+        await tester.pumpAndSettle();
+
+        await tester.scrollUntilVisible(
+          find.text('Switch To Client'),
+          240,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(find.text('Switch To Client').first);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Switch account type?'), findsOneWidget);
+
+        await tester.tap(find.text('Switch To Client').last);
+        await tester.pump();
+
+        expect(find.byType(OnboardingLoadingPage), findsOneWidget);
+
+        await tester.pump(const Duration(seconds: 3));
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byKey(const Key('nav_tab_4')));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Switch To Vendor'), findsOneWidget);
+        expect(find.byKey(const Key('home_profile_kyc_banner')), findsNothing);
+      },
+    );
+
     testWidgets('personal information page renders profile details', (
       tester,
     ) async {
@@ -268,4 +474,34 @@ void main() {
       expect(find.text('Promotions & Offers'), findsOneWidget);
     });
   });
+}
+
+class _FakeAccountTypeTrackerRepository
+    implements AccountTypeTrackerRepository {
+  AccountType? _selectedAccountType;
+  bool _isGuestMode = false;
+
+  @override
+  Future<void> clear() async {
+    _selectedAccountType = null;
+    _isGuestMode = false;
+  }
+
+  @override
+  Future<AccountType?> getSelectedAccountType() async => _selectedAccountType;
+
+  @override
+  Future<bool> isGuestMode() async => _isGuestMode;
+
+  @override
+  Future<void> saveGuestMode() async {
+    _selectedAccountType = null;
+    _isGuestMode = true;
+  }
+
+  @override
+  Future<void> saveSelectedAccountType(AccountType accountType) async {
+    _selectedAccountType = accountType;
+    _isGuestMode = false;
+  }
 }
